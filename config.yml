@@ -1,0 +1,69 @@
+backend:
+  name: github
+  repo: maxwlzzyx-art/axeluf   # ← GANTI dengan username/repo kamu
+  branch: main                  # atau master
+
+media_folder: "static/images"
+public_folder: "/images"
+
+collections:
+  - name: "settings"
+    label: "Pengaturan Website"
+    files:
+      - name: "general"
+        label: "Pengaturan Umum"
+        file: "data-mod.json"
+        fields:
+          - { label: "Judul Web", name: "web_title", widget: "string" }
+          - { label: "Subjudul", name: "web_subtitle", widget: "string" }
+          - { label: "URL Logo", name: "web_logo", widget: "string" }
+          - { label: "URL Banner", name: "web_banner_image", widget: "string" }
+          - { label: "URL Background", name: "web_background_image", widget: "string", required: false }
+          - { label: "Teks Berjalan (pisah dengan |)", name: "web_broadcast_text", widget: "text" }
+          - { label: "Waktu Safelink (detik)", name: "web_safelink_time", widget: "number", default: 5 }
+          - { label: "Posisi Profil", name: "profile_alignment", widget: "select", options: ["items-start text-left", "items-center text-center", "items-end text-right"] }
+          - label: "Kategori Pinned"
+            name: "pinned_tags"
+            widget: "list"
+            field: { label: "Nama Kategori", name: "tag", widget: "string" }
+          - label: "Credit Sosial Media"
+            name: "credits"
+            widget: "list"
+            fields:
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "Handle", name: "handle", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Warna", name: "color", widget: "string", default: "#B5FF3D" }
+          - label: "Preset Tombol Kustom"
+            name: "custom_presets"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+              - { label: "Ikon", name: "iconType", widget: "select", options: ["video", "download", "chat", "key", "globe"] }
+          - label: "Daftar Mod"
+            name: "links"
+            widget: "list"
+            fields:
+              - { label: "Nama Mod", name: "name", widget: "string" }
+              - { label: "Kategori (pisah koma)", name: "tag", widget: "string" }
+              - { label: "Deskripsi", name: "desc", widget: "text" }
+              - { label: "Link Download", name: "url", widget: "string" }
+              - { label: "Password", name: "password", widget: "string", required: false }
+              - { label: "URL Gambar", name: "image", widget: "string" }
+              - { label: "Rasio Gambar", name: "imageRatio", widget: "select", options: ["aspect-video object-cover", "aspect-square object-cover", "aspect-[9/16] object-cover"], default: "aspect-video object-cover" }
+              - { label: "Views", name: "views", widget: "number", default: 0 }
+              - { label: "Likes", name: "likes", widget: "number", default: 0 }
+              - label: "Komentar"
+                name: "comments"
+                widget: "list"
+                fields:
+                  - { label: "Nama", name: "name", widget: "string" }
+                  - { label: "Teks", name: "text", widget: "text" }
+              - label: "Tombol Kustom"
+                name: "customButtons"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Ikon", name: "iconType", widget: "select", options: ["video", "download", "chat", "key", "globe"] }
