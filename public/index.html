@@ -21,49 +21,44 @@
             syne: ['Syne', 'sans-serif'],
             jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
-          boxShadow: {
-            'soft': '0 8px 24px -8px rgba(0,0,0,0.12), 0 4px 12px -6px rgba(0,0,0,0.08)',
-            'soft-lg': '0 16px 48px -12px rgba(0,0,0,0.18), 0 8px 24px -8px rgba(0,0,0,0.10)',
-          }
         }
       }
     }
   </script>
 
   <style>
-    /* ===== THEME VARIABLES ===== */
+    /* ===== NEO-BRUTALIST THEME VARIABLES ===== */
     :root {
-      --bg-color: #f6f7f9;
-      --accent-color: #7ee850;
-      --accent-hover: #6ad43a;
+      --bg-color: #F4F4F5;
+      --accent-color: #B5FF3D;
+      --accent-hover: #9ee632;
       --secondary-color: #121214;
-      --card-bg: #ffffff;
+      --card-bg: #FFFFFF;
       --text-color: #121214;
-      --border-color: #e2e4e8;
-      --shadow-color: rgba(0,0,0,0.06);
+      --border-color: #000000;
+      --shadow-color: #000000;
     }
     [data-theme="pink"] {
-      --bg-color: #fdf2f8;
-      --accent-color: #ff71cd;
+      --bg-color: #FFF0F5;
+      --accent-color: #FF71CD;
       --accent-hover: #e85db8;
     }
     [data-theme="mint"] {
-      --bg-color: #f0fdf7;
-      --accent-color: #4ccd99;
+      --bg-color: #F0FFF9;
+      --accent-color: #4CCD99;
       --accent-hover: #3ab885;
     }
     [data-theme="dark"] {
       --bg-color: #121214;
-      --accent-color: #7ee850;
-      --accent-hover: #6ad43a;
-      --card-bg: #1e1e24;
-      --text-color: #f0f0f0;
-      --border-color: #33333a;
-      --shadow-color: rgba(0,0,0,0.4);
+      --accent-color: #B5FF3D;
+      --accent-hover: #9ee632;
+      --card-bg: #1E1E24;
+      --text-color: #F0F0F0;
+      --border-color: #444;
     }
     [data-theme="orange"] {
-      --bg-color: #fef8f0;
-      --accent-color: #ff8a08;
+      --bg-color: #FFF8F0;
+      --accent-color: #FF8A08;
       --accent-hover: #e07800;
     }
 
@@ -73,125 +68,99 @@
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s, color 0.3s;
       min-height: 100vh;
       padding-bottom: 2rem;
     }
-    a { color: inherit; text-decoration: none; }
 
-    /* ===== SCROLLBAR ===== */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--border-color); border-radius: 999px; }
-    ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 999px; }
+    /* ===== NEO-BRUTALIST COMPONENTS (Rounded) ===== */
+    .brutal-border {
+      border: 4px solid #000000;
+      border-radius: 1.5rem; /* rounded-3xl */
+    }
+    .brutal-border-sm {
+      border: 3px solid #000000;
+      border-radius: 1rem; /* rounded-2xl */
+    }
+    .brutal-shadow {
+      box-shadow: 8px 8px 0px 0px #000000;
+    }
+    .brutal-shadow-sm {
+      box-shadow: 5px 5px 0px 0px #000000;
+    }
+    .brutal-shadow-lg {
+      box-shadow: 12px 12px 0px 0px #000000;
+    }
 
-    /* ===== CARDS & COMPONENTS ===== */
-    .card {
-      background: var(--card-bg);
-      border-radius: 1.5rem;
-      box-shadow: 0 8px 24px -8px var(--shadow-color), 0 4px 12px -6px var(--shadow-color);
-      border: 1px solid var(--border-color);
-      transition: box-shadow 0.2s ease, transform 0.15s ease;
-    }
-    .card:hover {
-      box-shadow: 0 16px 48px -12px var(--shadow-color), 0 8px 24px -8px var(--shadow-color);
-    }
-    .card-soft {
-      background: var(--card-bg);
-      border-radius: 1.25rem;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 4px 16px -6px var(--shadow-color);
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.4rem;
-      font-weight: 700;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      border-radius: 9999px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.15s ease;
+    /* Buttons */
+    .brutal-btn {
+      border-radius: 1.25rem !important;
+      border: 3px solid #000000;
+      box-shadow: 6px 6px 0px 0px #000000;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
       background: var(--accent-color);
       color: #121214;
-      box-shadow: 0 4px 12px -4px rgba(126,232,80,0.35);
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.6rem 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    .btn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px -6px rgba(126,232,80,0.45);
-      background: var(--accent-hover);
+    .brutal-btn:hover:not(:disabled) {
+      transform: translate(-3px, -3px);
+      box-shadow: 10px 10px 0px 0px #000000;
     }
-    .btn:active:not(:disabled) {
-      transform: translateY(0px);
+    .brutal-btn:active:not(:disabled) {
+      transform: translate(4px, 4px);
+      box-shadow: 2px 2px 0px 0px #000000;
     }
-    .btn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+    .brutal-btn-sm {
+      padding: 0.4rem 1rem;
+      font-size: 0.75rem;
+      border-radius: 1rem !important;
+      box-shadow: 4px 4px 0px 0px #000000;
     }
-    .btn-secondary {
-      background: var(--border-color);
-      color: var(--text-color);
-      box-shadow: none;
+    .brutal-btn-danger {
+      background: #FF6B6B;
+      color: #000;
     }
-    .btn-secondary:hover:not(:disabled) {
-      background: #d0d2d6;
-      box-shadow: none;
-    }
-    .btn-danger {
-      background: #ef4444;
-      color: #fff;
-      box-shadow: 0 4px 12px -4px rgba(239,68,68,0.35);
-    }
-    .btn-danger:hover:not(:disabled) {
-      background: #dc2626;
-      box-shadow: 0 8px 20px -6px rgba(239,68,68,0.45);
-    }
-    .btn-dark {
+    .brutal-btn-dark {
       background: #121214;
       color: #fff;
-      box-shadow: 0 4px 12px -4px rgba(0,0,0,0.25);
     }
-    .btn-dark:hover:not(:disabled) {
+    .brutal-btn-dark:hover {
       background: #2a2a2e;
     }
-    .btn-sm {
-      padding: 0.4rem 1rem;
-      font-size: 0.65rem;
+
+    /* Cards */
+    .brutal-card {
+      background: var(--card-bg);
+      border: 4px solid #000000;
+      border-radius: 2rem;
+      box-shadow: 8px 8px 0px 0px #000000;
+      padding: 1.5rem;
+    }
+    .brutal-card-sm {
+      border: 3px solid #000000;
+      border-radius: 1.5rem;
+      box-shadow: 6px 6px 0px 0px #000000;
     }
 
-    .input-field {
+    /* Inputs */
+    .brutal-input {
+      border: 3px solid #000000;
+      border-radius: 1rem;
+      padding: 0.6rem 1rem;
+      background: #fff;
+      color: #000;
+      font-weight: 700;
       width: 100%;
-      padding: 0.7rem 1rem;
-      border-radius: 9999px;
-      border: 1.5px solid var(--border-color);
-      background: var(--card-bg);
-      color: var(--text-color);
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
       outline: none;
+      transition: box-shadow 0.15s;
     }
-    .input-field:focus {
-      border-color: var(--accent-color);
-      box-shadow: 0 0 0 4px rgba(126,232,80,0.15);
-    }
-    .input-field-sm {
-      padding: 0.4rem 0.8rem;
-      font-size: 0.75rem;
-    }
-    textarea.input-field {
-      border-radius: 1.25rem;
-      resize: vertical;
-    }
-    select.input-field {
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-size: 1rem;
-      padding-right: 2.5rem;
+    .brutal-input:focus {
+      box-shadow: inset 0 0 0 2px var(--accent-color);
     }
 
     /* ===== TICKER ===== */
@@ -218,6 +187,72 @@
     }
     .shake { animation: shake 0.35s; }
 
+    /* ===== SIDEBAR ===== */
+    #sidebarDrawer {
+      position: fixed;
+      inset-y: 0;
+      left: 0;
+      width: 20rem;
+      max-width: 85vw;
+      background: var(--card-bg);
+      border: 4px solid #000;
+      border-left: none;
+      border-radius: 0 2rem 2rem 0;
+      box-shadow: 8px 0 0px 0px #000;
+      z-index: 50;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    #sidebarDrawer.open { transform: translateX(0); }
+    #sidebarBackdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 45;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #sidebarBackdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 55;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      background: var(--card-bg);
+      border: 4px solid #000;
+      border-radius: 2rem;
+      box-shadow: 12px 12px 0px 0px #000;
+      max-width: 28rem;
+      width: 100%;
+      padding: 2rem;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-overlay.open .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
     /* ===== TOAST ===== */
     #toastBox {
       position: fixed;
@@ -234,110 +269,44 @@
       opacity: 1;
     }
     #toastContent {
-      padding: 0.8rem 1.5rem;
-      border-radius: 9999px;
       background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      box-shadow: 0 8px 28px -8px rgba(0,0,0,0.15);
-      font-weight: 700;
+      border: 4px solid #000;
+      border-radius: 2rem;
+      box-shadow: 8px 8px 0px 0px #000;
+      padding: 0.8rem 1.5rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      font-weight: 800;
     }
 
-    /* ===== SIDEBAR ===== */
-    #sidebarDrawer {
-      position: fixed;
-      inset-y: 0;
-      left: 0;
-      width: 20rem;
-      max-width: 85vw;
-      background: var(--card-bg);
-      z-index: 50;
-      transform: translateX(-100%);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border-right: 1px solid var(--border-color);
-      box-shadow: 8px 0 40px -12px rgba(0,0,0,0.15);
-      display: flex;
-      flex-direction: column;
-      border-radius: 0 2rem 2rem 0;
-    }
-    #sidebarDrawer.open { transform: translateX(0); }
-    #sidebarBackdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(4px);
-      z-index: 45;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    #sidebarBackdrop.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: var(--accent-color); border: 2px solid #000; border-radius: 999px; }
 
-    /* ===== MODAL ===== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(6px);
-      z-index: 55;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .modal-box {
-      background: var(--card-bg);
-      border-radius: 2rem;
-      max-width: 28rem;
-      width: 100%;
-      padding: 2rem;
-      box-shadow: 0 24px 64px -16px rgba(0,0,0,0.25);
-      border: 1px solid var(--border-color);
-      transform: scale(0.95) translateY(12px);
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    .modal-overlay.open .modal-box {
-      transform: scale(1) translateY(0);
-    }
-
-    /* ===== ADMIN TABS ===== */
+    /* ===== ADMIN TAB ===== */
     .tab-btn {
+      border: 3px solid #000;
+      border-radius: 1rem;
       padding: 0.5rem 1.2rem;
-      border-radius: 9999px;
-      font-weight: 700;
-      font-size: 0.7rem;
+      font-weight: 800;
       text-transform: uppercase;
-      border: 1px solid var(--border-color);
-      background: transparent;
-      color: var(--text-color);
+      font-size: 0.7rem;
+      background: #fff;
+      color: #000;
+      box-shadow: 4px 4px 0px 0px #000;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.1s;
     }
     .tab-btn.active {
       background: var(--accent-color);
-      color: #121214;
-      border-color: var(--accent-color);
+      box-shadow: 2px 2px 0px 0px #000;
+      transform: translate(2px, 2px);
     }
-    .tab-btn:hover:not(.active) {
-      background: var(--border-color);
-    }
-
-    /* ===== RESPONSIVE TWEAKS ===== */
-    @media (max-width: 640px) {
-      .card { border-radius: 1.25rem; }
-      .modal-box { padding: 1.5rem; border-radius: 1.5rem; }
+    .tab-btn:not(.active):hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0px 0px #000;
     }
   </style>
 </head>
@@ -346,7 +315,7 @@
   <!-- ===== TOAST ===== -->
   <div id="toastBox">
     <div id="toastContent">
-      <span id="toastIcon" class="w-5 h-5 shrink-0"></span>
+      <span id="toastIcon"></span>
       <span id="toastMessage">Halo!</span>
     </div>
   </div>
@@ -354,12 +323,12 @@
   <!-- ===== CONFIRM MODAL ===== -->
   <div id="confirmModal" class="modal-overlay">
     <div class="modal-box text-center">
-      <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center mx-auto mb-4 text-xl font-bold text-black">!</div>
+      <div class="w-14 h-14 bg-yellow-400 border-4 border-black rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-black">!</div>
       <h3 class="font-syne font-extrabold text-2xl uppercase mb-2">Konfirmasi</h3>
-      <p id="confirmModalText" class="text-sm font-medium text-gray-500 mb-6">Apakah Anda yakin?</p>
+      <p id="confirmModalText" class="text-sm font-bold text-gray-600 mb-6">Apakah Anda yakin?</p>
       <div class="flex gap-3">
-        <button id="btnConfirmYes" class="btn btn-danger flex-1">Ya, Hapus</button>
-        <button onclick="closeConfirmModal()" class="btn btn-secondary flex-1">Batal</button>
+        <button id="btnConfirmYes" class="brutal-btn brutal-btn-danger flex-1">Ya, Hapus</button>
+        <button onclick="closeConfirmModal()" class="brutal-btn bg-gray-300 flex-1">Batal</button>
       </div>
     </div>
   </div>
@@ -367,37 +336,37 @@
   <!-- ===== SAFELINK MODAL ===== -->
   <div id="safelinkModal" class="modal-overlay">
     <div class="modal-box text-center relative">
-      <button onclick="closeSafelinkModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-black font-bold">✕</button>
+      <button onclick="closeSafelinkModal()" class="absolute top-4 right-4 w-10 h-10 bg-red-500 border-4 border-black rounded-2xl flex items-center justify-center font-black text-white">✕</button>
       <div class="mb-4">
-        <span class="text-xs font-bold bg-[#7ee850] px-3 py-1 rounded-full">SECURE</span>
+        <span class="bg-[#B5FF3D] px-4 py-2 border-4 border-black rounded-full text-xs font-black">SECURE</span>
       </div>
       <h3 class="font-syne font-extrabold text-2xl uppercase mb-1">Memindai Keamanan</h3>
       <p class="text-xs font-bold text-emerald-600 mb-4">Anti-Virus & Anti-Malware Active</p>
-      <div class="w-full bg-gray-200 rounded-full h-3 mb-4 overflow-hidden">
-        <div id="safelinkProgress" class="bg-[#7ee850] h-full transition-all duration-100" style="width:0%"></div>
+      <div class="w-full h-4 bg-gray-200 border-4 border-black rounded-full mb-4 overflow-hidden">
+        <div id="safelinkProgress" class="bg-[#B5FF3D] h-full transition-all duration-100" style="width:0%"></div>
       </div>
-      <p id="safelinkStatusText" class="text-sm font-medium text-gray-600 mb-6">Menghubungkan ke server cloud...</p>
+      <p id="safelinkStatusText" class="text-sm font-bold text-gray-700 mb-6">Menghubungkan ke server cloud...</p>
       <div id="safelinkButtonArea" class="hidden">
-        <a id="btnRealDownload" href="#" target="_blank" onclick="closeSafelinkModal()" class="btn w-full">Download File Sekarang</a>
+        <a id="btnRealDownload" href="#" target="_blank" onclick="closeSafelinkModal()" class="brutal-btn w-full justify-center">Download File Sekarang</a>
       </div>
     </div>
   </div>
 
   <!-- ===== BAN SCREEN ===== -->
   <div id="banScreen" class="fixed inset-0 bg-red-600 z-50 flex items-center justify-center p-6 hidden">
-    <div class="card bg-black text-white max-w-md w-full p-8 text-center">
-      <div class="w-16 h-12 bg-red-500 rounded-xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-2xl">!</div>
+    <div class="brutal-card bg-black text-white max-w-md w-full text-center">
+      <div class="w-16 h-12 bg-red-500 border-4 border-black rounded-2xl flex items-center justify-center mx-auto mb-6 text-white font-black text-3xl">!</div>
       <h1 class="font-syne font-extrabold text-4xl uppercase text-yellow-300">System Banned</h1>
       <p class="mt-4 font-bold text-lg">Akses Anda Telah Diblokir!</p>
       <p class="text-sm mt-2 text-gray-400">Aktivitas mencurigakan terdeteksi.</p>
-      <button onclick="simulateUnban()" class="btn mt-6 w-full">Minta Maaf ke Axeluf</button>
+      <button onclick="simulateUnban()" class="brutal-btn w-full justify-center mt-6">Minta Maaf ke Axeluf</button>
     </div>
   </div>
 
   <!-- ===== LOADING ===== -->
   <div id="loadingOverlay" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center transition-opacity duration-300">
-    <div class="card bg-[#7ee850] p-8 max-w-sm w-full text-center">
-      <div class="w-12 h-12 border-4 border-black border-t-transparent animate-spin rounded-full mx-auto mb-4"></div>
+    <div class="brutal-card bg-[#B5FF3D] p-8 max-w-sm w-full text-center">
+      <div class="w-14 h-14 border-4 border-black border-t-transparent animate-spin rounded-full mx-auto mb-4"></div>
       <h2 class="font-syne font-extrabold text-2xl uppercase">Sinkronisasi</h2>
       <p class="text-xs font-bold mt-2">Menghubungkan ke Cloud...</p>
     </div>
@@ -405,21 +374,21 @@
 
   <!-- ===== SIDEBAR DRAWER ===== -->
   <div id="sidebarDrawer">
-    <div class="p-5 border-b border-[var(--border-color)] flex items-center justify-between shrink-0 bg-[var(--accent-color)] rounded-tr-2xl">
+    <div class="p-5 border-b-4 border-black bg-[var(--accent-color)] rounded-tr-3xl flex items-center justify-between shrink-0">
       <div class="flex items-center gap-2">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
         <h2 class="font-syne font-extrabold text-xl uppercase tracking-tight">Menu Utama</h2>
       </div>
-      <button onclick="toggleSidebarDrawer()" class="w-9 h-9 rounded-full bg-red-500 text-white font-bold flex items-center justify-center hover:bg-red-600 transition-colors">✕</button>
+      <button onclick="toggleSidebarDrawer()" class="w-10 h-10 bg-red-500 border-4 border-black rounded-2xl flex items-center justify-center font-black text-white hover:bg-red-600">✕</button>
     </div>
     <div class="p-5 overflow-y-auto flex-1 flex flex-col justify-between">
       <div class="space-y-4">
-        <button onclick="selectCategoryFilter(''); toggleSidebarDrawer()" class="w-full text-left p-3 rounded-2xl bg-[var(--border-color)] hover:bg-[var(--accent-color)]/20 transition-colors font-bold text-sm flex items-center justify-between">
+        <button onclick="selectCategoryFilter(''); toggleSidebarDrawer()" class="w-full text-left p-3 border-4 border-black rounded-2xl bg-white hover:bg-[var(--accent-color)] transition-colors font-bold text-sm flex items-center justify-between">
           <span>🏠 Semua Mod</span>
-          <span class="bg-black text-white px-2 py-0.5 text-xs rounded-full" id="countAllMods">0</span>
+          <span class="bg-black text-white px-2 py-0.5 rounded-full text-xs" id="countAllMods">0</span>
         </button>
 
-        <div class="border-t border-[var(--border-color)] pt-4">
+        <div class="border-t-4 border-black pt-4">
           <h3 class="text-xs text-red-500 uppercase tracking-widest mb-3 flex items-center gap-1">
             <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
             Kategori Pinned
@@ -427,37 +396,37 @@
           <div id="pinnedTagsList" class="flex flex-col gap-2"></div>
         </div>
 
-        <div class="border-t border-[var(--border-color)] pt-4">
-          <h3 class="text-xs text-gray-400 uppercase tracking-widest mb-3">Semua Kategori</h3>
+        <div class="border-t-4 border-black pt-4">
+          <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-3">Semua Kategori</h3>
           <div id="dynamicTagsList" class="flex flex-col gap-2"></div>
         </div>
 
-        <div class="border-t border-[var(--border-color)] pt-4">
-          <h3 class="text-xs text-gray-400 uppercase tracking-widest mb-3">Saluran Resmi</h3>
+        <div class="border-t-4 border-black pt-4">
+          <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-3">Saluran Resmi</h3>
           <div class="grid grid-cols-1 gap-2">
-            <a href="https://whatsapp.com/channel/0029VaUl8HRBqbr8aHIeDW0s" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-emerald-500 text-black font-bold text-xs hover:bg-emerald-400 transition-colors">
-              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.234.002 9.493-4.254 9.495-9.491.002-2.54-1.01-4.922-2.85-6.766-1.841-1.844-4.288-2.86-6.83-2.861-5.241 0-9.503 4.257-9.505 9.496-.001 1.734.502 3.426 1.457 4.912L1.393 21.6l4.63-1.215-.1-.08-.106-.11-.17-.119zm12.385-6.61c-.333-.167-1.97-.972-2.275-1.083-.306-.113-.528-.167-.75.167-.221.333-.857 1.083-1.05 1.306-.194.222-.389.25-.722.083-.333-.167-1.408-.52-2.681-1.656-.99-.883-1.658-1.973-1.853-2.306-.194-.333-.02-.513.146-.68.15-.15.333-.389.5-.583.167-.195.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.75-1.807-1.028-2.478-.27-.652-.544-.564-.748-.574-.194-.01-.417-.012-.64-.012-.221 0-.583.083-.888.417-.306.333-1.166 1.139-1.166 2.778 0 1.64 1.194 3.22 1.361 3.444.167.222 2.35 3.589 5.694 5.034.795.343 1.417.549 1.9.704.8.254 1.528.218 2.103.132.64-.096 1.97-.806 2.247-1.583.278-.78.278-1.445.194-1.583-.083-.139-.306-.222-.639-.389z"/></svg>
+            <a href="https://whatsapp.com/channel/0029VaUl8HRBqbr8aHIeDW0s" target="_blank" class="flex items-center gap-2 p-3 border-4 border-black rounded-2xl bg-emerald-500 text-black font-bold text-xs hover:bg-emerald-400 transition-colors">
+              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.234.002 9.493-4.254 9.495-9.491.002-2.54-1.01-4.922-2.85-6.766-1.841-1.844-4.288-2.86-6.83-2.861-5.241 0-9.503 4.257-9.505 9.496-.001 1.734.502 3.426 1.457 4.912L1.393 21.6l4.63-1.215-.1-.08-.106-.11-.17-.119zm12.385-6.61c-.333-.167-1.97-.972-2.275-1.083-.306-.113-.528-.167-.75.167-.221.333-.857 1.083-1.05 1.306-.194.222-.389.25-.722.083-.333-.167-1.408-.52-2.681-1.656-.99-.883-1.658-1.973-1.853-2.306-.194-.333-.02-.513.146-.68.15-.15.333-.389.5-.583.167-.195.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.75-1.807-1.028-2.478-.27-.652-.544-.564-.748-.574-.194-.01-.417-.012-.64-.012-.221 0-.583.083-.888.417-.306.333-1.166 1.139-1.166 2.778 0 1.64 1.194 3.22 1.361 3.444.167.222 2.35 3.589 5.694 5.034.795.343 1.417.549 1.9.704.8.254 1.528.218 2.103.132.64-.096 1.97-.806 2.247-1.583.278-.78.278-1.445.194-1.583-.083-.139-.306-.222-.639-.389z"/></svg>
               WhatsApp
             </a>
-            <a href="https://youtube.com/@axelufey" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-red-600 text-white font-bold text-xs hover:bg-red-500 transition-colors">
-              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <a href="https://youtube.com/@axelufey" target="_blank" class="flex items-center gap-2 p-3 border-4 border-black rounded-2xl bg-red-600 text-white font-bold text-xs hover:bg-red-500 transition-colors">
+              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               YouTube Utama
             </a>
-            <a href="https://youtube.com/@maxmodw" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-red-500 text-white font-bold text-xs hover:bg-red-400 transition-colors">
-              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <a href="https://youtube.com/@maxmodw" target="_blank" class="flex items-center gap-2 p-3 border-4 border-black rounded-2xl bg-red-500 text-white font-bold text-xs hover:bg-red-400 transition-colors">
+              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               YouTube Cadangan
             </a>
-            <a href="https://www.instagram.com/maxl3rd" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-[#ff71cd] text-black font-bold text-xs hover:bg-[#f05cb8] transition-colors">
-              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <a href="https://www.instagram.com/maxl3rd" target="_blank" class="flex items-center gap-2 p-3 border-4 border-black rounded-2xl bg-[#ff71cd] text-black font-bold text-xs hover:bg-[#f05cb8] transition-colors">
+              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
               Instagram
             </a>
           </div>
         </div>
       </div>
 
-      <div class="border-t border-[var(--border-color)] pt-4 mt-auto">
-        <button id="btnNavAdmin" onclick="toggleAdminPanel(); toggleSidebarDrawer()" class="btn w-full">Panel Admin</button>
-        <button id="btnLogOut" onclick="logoutAdmin(); toggleSidebarDrawer()" class="hidden btn btn-secondary w-full mt-2">Keluar Mode</button>
+      <div class="border-t-4 border-black pt-4 mt-auto">
+        <button id="btnNavAdmin" onclick="toggleAdminPanel(); toggleSidebarDrawer()" class="brutal-btn w-full justify-center">Panel Admin</button>
+        <button id="btnLogOut" onclick="logoutAdmin(); toggleSidebarDrawer()" class="brutal-btn bg-gray-300 w-full justify-center mt-2 hidden">Keluar Mode</button>
       </div>
     </div>
   </div>
@@ -466,34 +435,34 @@
   <!-- ===== LOGIN MODAL ===== -->
   <div id="loginSection" class="modal-overlay">
     <div class="modal-box">
-      <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold">✕</button>
+      <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-10 h-10 bg-red-500 border-4 border-black rounded-2xl flex items-center justify-center font-black text-white">✕</button>
       <h2 class="font-syne font-extrabold text-2xl mb-6 uppercase">Verifikasi Admin</h2>
       <div class="space-y-4">
-        <input type="text" id="adminUser" placeholder="Username" class="input-field" />
-        <input type="password" id="adminPass" placeholder="Password" class="input-field" />
-        <button onclick="attemptLogin()" class="btn w-full">Masuk Sekarang</button>
+        <input type="text" id="adminUser" placeholder="Username" class="brutal-input" />
+        <input type="password" id="adminPass" placeholder="Password" class="brutal-input" />
+        <button onclick="attemptLogin()" class="brutal-btn w-full justify-center">Masuk Sekarang</button>
       </div>
     </div>
   </div>
 
   <!-- ===== TOP BAR ===== -->
-  <div class="bg-black text-white py-1.5 px-4 flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold">
+  <div class="bg-black text-white py-2 px-4 flex flex-wrap items-center justify-between gap-2 text-xs font-bold border-b-4 border-black">
     <span>AXELUF V4.5 Premium</span>
     <div class="flex items-center gap-3 flex-wrap">
-      <button id="btnToggleSound" onclick="toggleSound()" class="bg-zinc-800 px-3 py-0.5 rounded-full hover:bg-zinc-700 transition-colors text-[10px]">Suara: Aktif</button>
+      <button id="btnToggleSound" onclick="toggleSound()" class="bg-zinc-800 px-3 py-1 border-2 border-white rounded-full hover:bg-zinc-700">Suara: Aktif</button>
       <div class="flex items-center gap-1">
         <span>Tema:</span>
-        <button onclick="changeTheme('green')" class="w-4 h-4 rounded-full bg-[#7ee850] border border-white" title="Lime"></button>
-        <button onclick="changeTheme('pink')" class="w-4 h-4 rounded-full bg-[#ff71cd] border border-white" title="Pink"></button>
-        <button onclick="changeTheme('mint')" class="w-4 h-4 rounded-full bg-[#4ccd99] border border-white" title="Mint"></button>
-        <button onclick="changeTheme('dark')" class="w-4 h-4 rounded-full bg-[#121214] border border-white" title="Dark"></button>
-        <button onclick="changeTheme('orange')" class="w-4 h-4 rounded-full bg-[#ff8a08] border border-white" title="Orange"></button>
+        <button onclick="changeTheme('green')" class="w-5 h-5 border-2 border-white rounded-full bg-[#B5FF3D]"></button>
+        <button onclick="changeTheme('pink')" class="w-5 h-5 border-2 border-white rounded-full bg-[#FF71CD]"></button>
+        <button onclick="changeTheme('mint')" class="w-5 h-5 border-2 border-white rounded-full bg-[#4CCD99]"></button>
+        <button onclick="changeTheme('dark')" class="w-5 h-5 border-2 border-white rounded-full bg-[#121214]"></button>
+        <button onclick="changeTheme('orange')" class="w-5 h-5 border-2 border-white rounded-full bg-[#FF8A08]"></button>
       </div>
     </div>
   </div>
 
   <!-- ===== BROADCAST BAR ===== -->
-  <div id="broadcastBar" class="bg-black text-white py-1.5 border-b border-zinc-800 font-extrabold text-[11px] uppercase ticker-wrap relative z-30">
+  <div id="broadcastBar" class="bg-black text-white py-1.5 border-b-4 border-black font-extrabold text-xs uppercase ticker-wrap relative z-30">
     <div class="ticker-content inline-flex gap-12" id="broadcastTextContainer">
       <span>⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF</span>
       <span>⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru</span>
@@ -502,15 +471,15 @@
 
   <!-- ===== NAV ===== -->
   <nav class="max-w-5xl mx-auto px-4 pt-4">
-    <div class="card p-4 flex items-center justify-between gap-4">
+    <div class="brutal-card p-4 flex items-center justify-between gap-4">
       <div class="flex items-center gap-3">
-        <button onclick="toggleSidebarDrawer()" class="w-10 h-10 rounded-2xl bg-[var(--border-color)] hover:bg-[var(--accent-color)]/30 transition-colors flex items-center justify-center text-xl font-bold">☰</button>
+        <button onclick="toggleSidebarDrawer()" class="w-12 h-12 border-4 border-black rounded-2xl bg-white hover:bg-[var(--accent-color)] transition-colors flex items-center justify-center text-2xl font-black">☰</button>
         <div>
-          <span class="font-syne font-extrabold text-lg tracking-tight uppercase block leading-tight">AXELUF</span>
-          <span class="text-[9px] uppercase tracking-wider font-bold bg-[var(--accent-color)] px-2 py-0.5 rounded-full text-black">Official Portal</span>
+          <span class="font-syne font-extrabold text-xl tracking-tight uppercase block leading-tight">AXELUF</span>
+          <span class="text-[10px] uppercase tracking-wider font-bold bg-[var(--accent-color)] px-3 py-0.5 border-2 border-black rounded-full text-black">Official Portal</span>
         </div>
       </div>
-      <div class="w-10 h-10 rounded-2xl overflow-hidden border border-[var(--border-color)] shrink-0">
+      <div class="w-12 h-12 border-4 border-black rounded-2xl overflow-hidden shrink-0">
         <img id="navLogoMin" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo" />
       </div>
     </div>
@@ -520,29 +489,29 @@
   <main class="max-w-5xl mx-auto px-4 pt-4 pb-16">
 
     <!-- ===== PROFILE BANNER ===== -->
-    <div class="card overflow-hidden mb-8">
+    <div class="brutal-card overflow-hidden mb-8 p-0">
       <div class="relative w-full h-48 sm:h-56 bg-zinc-900 overflow-hidden">
         <img id="webBannerImage" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200" alt="Banner" />
       </div>
       <div id="headerProfileContainer" class="p-6 pt-0 relative flex flex-col items-start gap-4">
         <div class="relative -mt-14 sm:-mt-16 z-10">
-          <img id="mainLogo" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-4 border-white shadow-soft object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo" />
+          <img id="mainLogo" class="w-28 h-28 border-4 border-black rounded-3xl shadow-[-6px_6px_0px_0px_#000] object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo" />
         </div>
         <div>
           <h1 id="mainTitleText" class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight uppercase leading-tight">AXELUF</h1>
-          <p id="mainSubtitleText" class="text-xs font-bold bg-[var(--accent-color)] inline-block px-3 py-1.5 rounded-full mt-2 text-black">Link Mod Bersih & No Scam</p>
+          <p id="mainSubtitleText" class="text-xs font-bold bg-[var(--accent-color)] inline-block px-4 py-1.5 border-4 border-black rounded-full mt-2 text-black">Link Mod Bersih & No Scam</p>
         </div>
       </div>
     </div>
 
     <!-- ===== ADMIN DASHBOARD ===== -->
-    <section id="adminDashboard" class="hidden card p-6 mb-8">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-color)] pb-4 mb-6">
+    <section id="adminDashboard" class="hidden brutal-card mb-8 p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b-4 border-black pb-4 mb-6">
         <h2 class="font-syne font-bold text-2xl uppercase">Kelola Website</h2>
-        <span class="bg-[var(--accent-color)] px-3 py-1 rounded-full text-xs font-bold uppercase">Mode Admin</span>
+        <span class="bg-[var(--accent-color)] px-4 py-1 border-4 border-black rounded-full text-xs font-bold uppercase">Mode Admin</span>
       </div>
 
-      <div class="flex flex-wrap gap-2 mb-6">
+      <div class="flex flex-wrap gap-3 mb-6">
         <button onclick="switchAdminTab('mod')" id="tabMod" class="tab-btn active">Kelola Mod</button>
         <button onclick="switchAdminTab('branding')" id="tabBranding" class="tab-btn">Branding</button>
         <button onclick="switchAdminTab('social')" id="tabSocial" class="tab-btn">Sosmed</button>
@@ -551,58 +520,58 @@
 
       <!-- TAB MOD -->
       <div id="adminTabModContent">
-        <div class="card-soft p-5 mb-8">
-          <h3 id="formTitle" class="font-syne font-extrabold text-lg uppercase mb-4 text-[#ff8a08]">Tambah Mod Baru</h3>
+        <div class="brutal-card-sm p-5 mb-8">
+          <h3 id="formTitle" class="font-syne font-extrabold text-xl uppercase mb-4 text-[#FF8A08]">Tambah Mod Baru</h3>
           <input type="hidden" id="editIndex" value="" />
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="block font-bold text-xs uppercase mb-1">Nama Mod</label><input type="text" id="modName" placeholder="Mobile Legends Mod Skin" class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Kategori (pisah koma)</label><input type="text" id="modTag" placeholder="GAME, APK, SKIN" class="input-field" /></div>
-            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">Deskripsi</label><textarea id="modDesc" rows="4" placeholder="Fitur unggulan..." class="input-field"></textarea></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Link Download</label><input type="text" id="modUrl" placeholder="https://..." class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Password (jika ada)</label><input type="text" id="modPassword" placeholder="Password di video menit 04:20" class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">URL Gambar</label><input type="text" id="modImageUrl" placeholder="https://..." class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Gambar</label><input type="file" id="uploadModImageFile" accept="image/*" class="input-field input-field-sm" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Nama Mod</label><input type="text" id="modName" placeholder="Mobile Legends Mod Skin" class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Kategori (pisah koma)</label><input type="text" id="modTag" placeholder="GAME, APK, SKIN" class="brutal-input" /></div>
+            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">Deskripsi</label><textarea id="modDesc" rows="4" placeholder="Fitur unggulan..." class="brutal-input"></textarea></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Link Download</label><input type="text" id="modUrl" placeholder="https://..." class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Password (jika ada)</label><input type="text" id="modPassword" placeholder="Password di video menit 04:20" class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">URL Gambar</label><input type="text" id="modImageUrl" placeholder="https://..." class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Gambar</label><input type="file" id="uploadModImageFile" accept="image/*" class="brutal-input" /></div>
             <div><label class="block font-bold text-xs uppercase mb-1">Rasio Gambar</label>
-              <select id="modImageRatio" class="input-field">
+              <select id="modImageRatio" class="brutal-input">
                 <option value="aspect-video object-cover">16:9</option>
                 <option value="aspect-square object-cover">1:1</option>
                 <option value="aspect-[9/16] object-cover">9:16</option>
               </select>
             </div>
-            <div class="md:col-span-2 p-4 bg-yellow-50 rounded-2xl border border-yellow-400">
+            <div class="md:col-span-2 p-4 border-4 border-black rounded-2xl bg-yellow-100">
               <h4 class="font-bold text-xs uppercase text-yellow-800 mb-2">Statistik Manual</h4>
               <div class="grid grid-cols-2 gap-3">
-                <div><label class="block text-[10px] font-bold uppercase text-gray-600">Views</label><input type="number" id="modViewsInput" placeholder="0" class="input-field input-field-sm" /></div>
-                <div><label class="block text-[10px] font-bold uppercase text-gray-600">Likes</label><input type="number" id="modLikesInput" placeholder="0" class="input-field input-field-sm" /></div>
+                <div><label class="block text-[10px] font-bold uppercase text-gray-600">Views</label><input type="number" id="modViewsInput" placeholder="0" class="brutal-input" /></div>
+                <div><label class="block text-[10px] font-bold uppercase text-gray-600">Likes</label><input type="number" id="modLikesInput" placeholder="0" class="brutal-input" /></div>
               </div>
             </div>
           </div>
 
           <!-- Custom Tombol -->
-          <div class="mt-6 p-4 border border-[var(--border-color)] rounded-2xl">
+          <div class="mt-6 p-4 border-4 border-black rounded-2xl">
             <h4 class="font-syne font-extrabold text-sm uppercase mb-4 flex flex-wrap items-center justify-between gap-2">
               <span>Tombol Kustom (max 5)</span>
-              <button type="button" onclick="addCustomLinkField()" class="btn btn-sm">+ Tambah</button>
+              <button type="button" onclick="addCustomLinkField()" class="brutal-btn brutal-btn-sm">+ Tambah</button>
             </h4>
             <div id="customLinksContainer" class="space-y-4 mb-6"></div>
 
-            <div class="border-t border-[var(--border-color)] pt-4">
-              <h5 class="font-extrabold text-xs uppercase mb-3 text-purple-600">Preset Tombol</h5>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-purple-50 p-3 rounded-2xl border border-purple-200 mb-4">
+            <div class="border-t-4 border-black pt-4">
+              <h5 class="font-extrabold text-xs uppercase mb-3 text-purple-700">Preset Tombol</h5>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 p-3 border-4 border-black rounded-2xl bg-purple-50 mb-4">
                 <input type="hidden" id="editPresetIndex" value="" />
-                <input type="text" id="presetLabel" placeholder="Label" class="input-field input-field-sm" />
-                <input type="text" id="presetUrl" placeholder="URL" class="input-field input-field-sm" />
+                <input type="text" id="presetLabel" placeholder="Label" class="brutal-input" />
+                <input type="text" id="presetUrl" placeholder="URL" class="brutal-input" />
                 <div class="flex items-end gap-1">
-                  <select id="presetIcon" class="input-field input-field-sm flex-1">
+                  <select id="presetIcon" class="brutal-input flex-1">
                     <option value="video">🎬 Video</option>
                     <option value="download">⬇ Download</option>
                     <option value="chat">💬 Chat</option>
                     <option value="key">🔑 Key</option>
                     <option value="globe">🌐 Web</option>
                   </select>
-                  <button type="button" onclick="saveCustomPreset()" id="btnSavePreset" class="btn btn-sm">Simpan</button>
-                  <button type="button" onclick="clearPresetForm()" id="btnCancelPreset" class="hidden btn btn-secondary btn-sm">Batal</button>
+                  <button type="button" onclick="saveCustomPreset()" id="btnSavePreset" class="brutal-btn brutal-btn-sm">Simpan</button>
+                  <button type="button" onclick="clearPresetForm()" id="btnCancelPreset" class="hidden brutal-btn brutal-btn-sm bg-gray-300">Batal</button>
                 </div>
               </div>
               <div id="customPresetButtonList" class="flex flex-wrap gap-2"></div>
@@ -610,14 +579,14 @@
           </div>
 
           <div class="flex flex-wrap gap-3 mt-6">
-            <button onclick="saveMod()" class="btn flex-1">Simpan Mod ⚡</button>
-            <button onclick="clearForm()" class="btn btn-secondary">Reset</button>
+            <button onclick="saveMod()" class="brutal-btn flex-1">Simpan Mod ⚡</button>
+            <button onclick="clearForm()" class="brutal-btn bg-gray-300">Reset</button>
           </div>
         </div>
 
         <div>
           <h3 class="font-bold text-lg uppercase mb-3">Daftar Mod</h3>
-          <div class="card-soft overflow-hidden">
+          <div class="brutal-card-sm overflow-hidden p-0">
             <table class="w-full text-left text-sm">
               <thead class="bg-black text-[var(--accent-color)] uppercase font-bold text-xs">
                 <tr>
@@ -627,7 +596,7 @@
                   <th class="p-3">Aksi</th>
                 </tr>
               </thead>
-              <tbody id="adminTableBody" class="divide-y divide-[var(--border-color)]"></tbody>
+              <tbody id="adminTableBody" class="divide-y-4 divide-black"></tbody>
             </table>
           </div>
         </div>
@@ -635,83 +604,83 @@
 
       <!-- TAB BRANDING -->
       <div id="adminTabBrandingContent" class="hidden space-y-6">
-        <div class="card-soft p-5">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-purple-600">Branding Utama</h3>
+        <div class="brutal-card-sm p-5">
+          <h3 class="font-syne font-extrabold text-xl uppercase mb-4 text-purple-600">Branding Utama</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="block font-bold text-xs uppercase mb-1">Nama Web</label><input type="text" id="setMainTitle" placeholder="AXELUF" class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Subtitle</label><input type="text" id="setMainSubtitle" placeholder="LINK MOD BERSIH" class="input-field" /></div>
-            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">URL Logo</label><input type="text" id="setMainLogoUrl" placeholder="https://..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Nama Web</label><input type="text" id="setMainTitle" placeholder="AXELUF" class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Subtitle</label><input type="text" id="setMainSubtitle" placeholder="LINK MOD BERSIH" class="brutal-input" /></div>
+            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">URL Logo</label><input type="text" id="setMainLogoUrl" placeholder="https://..." class="brutal-input" /></div>
             <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">Posisi Profil</label>
-              <select id="setProfilePosition" class="input-field">
+              <select id="setProfilePosition" class="brutal-input">
                 <option value="items-start text-left">Kiri</option>
                 <option value="items-center text-center">Tengah</option>
                 <option value="items-end text-right">Kanan</option>
               </select>
             </div>
           </div>
-          <button onclick="saveBranding()" class="btn mt-4">Terapkan Branding</button>
+          <button onclick="saveBranding()" class="brutal-btn mt-4">Terapkan Branding</button>
         </div>
 
-        <div class="card-soft p-5">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-pink-500">Pengumuman & Safelink</h3>
+        <div class="brutal-card-sm p-5">
+          <h3 class="font-syne font-extrabold text-xl uppercase mb-4 text-pink-500">Pengumuman & Safelink</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="block font-bold text-xs uppercase mb-1">Teks Berjalan (pisah |)</label><input type="text" id="setBroadcastText" placeholder="Teks..." class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Safelink Timer (detik)</label><input type="number" id="setSafelinkTime" min="3" max="30" placeholder="5" class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Teks Berjalan (pisah |)</label><input type="text" id="setBroadcastText" placeholder="Teks..." class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Safelink Timer (detik)</label><input type="number" id="setSafelinkTime" min="3" max="30" placeholder="5" class="brutal-input" /></div>
           </div>
-          <button onclick="saveSafelinkAndBroadcast()" class="btn mt-4">Simpan Konfigurasi</button>
+          <button onclick="saveSafelinkAndBroadcast()" class="brutal-btn mt-4">Simpan Konfigurasi</button>
         </div>
 
-        <div class="card-soft p-5">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-emerald-600">Banner Website</h3>
+        <div class="brutal-card-sm p-5">
+          <h3 class="font-syne font-extrabold text-xl uppercase mb-4 text-emerald-600">Banner Website</h3>
           <div class="space-y-4">
-            <div><label class="block font-bold text-xs uppercase mb-1">URL Banner</label><input type="text" id="setBannerUrl" placeholder="https://..." class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Banner</label><input type="file" id="uploadBannerFile" accept="image/*" class="input-field input-field-sm" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">URL Banner</label><input type="text" id="setBannerUrl" placeholder="https://..." class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Banner</label><input type="file" id="uploadBannerFile" accept="image/*" class="brutal-input" /></div>
           </div>
-          <button onclick="saveBannerConfig()" class="btn mt-4">Terapkan Banner</button>
+          <button onclick="saveBannerConfig()" class="brutal-btn mt-4">Terapkan Banner</button>
         </div>
 
-        <div class="card-soft p-5">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-orange-500">Latar Belakang</h3>
+        <div class="brutal-card-sm p-5">
+          <h3 class="font-syne font-extrabold text-xl uppercase mb-4 text-orange-500">Latar Belakang</h3>
           <div class="space-y-4">
-            <div><label class="block font-bold text-xs uppercase mb-1">URL Background</label><input type="text" id="setBackgroundUrl" placeholder="https://..." class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Background</label><input type="file" id="uploadBgFile" accept="image/*" class="input-field input-field-sm" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">URL Background</label><input type="text" id="setBackgroundUrl" placeholder="https://..." class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Background</label><input type="file" id="uploadBgFile" accept="image/*" class="brutal-input" /></div>
           </div>
           <div class="flex flex-wrap gap-3 mt-4">
-            <button onclick="saveBackgroundConfig()" class="btn">Simpan Background</button>
-            <button onclick="resetBackgroundConfig()" class="btn btn-secondary">Reset ke Default</button>
+            <button onclick="saveBackgroundConfig()" class="brutal-btn">Simpan Background</button>
+            <button onclick="resetBackgroundConfig()" class="brutal-btn bg-gray-300">Reset ke Default</button>
           </div>
         </div>
 
-        <div class="card-soft p-5">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-red-600">Simulasi Ban</h3>
-          <p class="text-sm text-gray-500 mb-4">Blokir pengunjung untuk keperluan testing atau gimmick.</p>
+        <div class="brutal-card-sm p-5">
+          <h3 class="font-syne font-extrabold text-xl uppercase mb-4 text-red-600">Simulasi Ban</h3>
+          <p class="text-sm font-bold text-gray-600 mb-4">Blokir pengunjung untuk keperluan testing atau gimmick.</p>
           <div class="flex flex-wrap gap-3">
-            <button onclick="triggerBanScreen()" class="btn btn-danger">Ban Perangkat Saya</button>
-            <button onclick="clearAllBans()" class="btn btn-secondary">Hapus Ban</button>
+            <button onclick="triggerBanScreen()" class="brutal-btn brutal-btn-danger">Ban Perangkat Saya</button>
+            <button onclick="clearAllBans()" class="brutal-btn bg-gray-300">Hapus Ban</button>
           </div>
         </div>
       </div>
 
       <!-- TAB SOSMED -->
       <div id="adminTabSocialContent" class="hidden space-y-6">
-        <div class="card-soft p-5">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-pink-500">Kelola Credit Sosmed</h3>
+        <div class="brutal-card-sm p-5">
+          <h3 class="font-syne font-extrabold text-xl uppercase mb-4 text-pink-500">Kelola Credit Sosmed</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div><label class="block font-bold text-xs uppercase mb-1">Platform</label><input type="text" id="credPlatform" placeholder="YouTube" class="input-field" /></div>
-            <div><label class="block font-bold text-xs uppercase mb-1">Handle</label><input type="text" id="credHandle" placeholder="@axelufey" class="input-field" /></div>
-            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">URL</label><input type="text" id="credUrl" placeholder="https://..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Platform</label><input type="text" id="credPlatform" placeholder="YouTube" class="brutal-input" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Handle</label><input type="text" id="credHandle" placeholder="@axelufey" class="brutal-input" /></div>
+            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">URL</label><input type="text" id="credUrl" placeholder="https://..." class="brutal-input" /></div>
             <div><label class="block font-bold text-xs uppercase mb-1">Warna</label>
-              <select id="credColor" class="input-field">
-                <option value="#7ee850">Hijau Lime</option>
-                <option value="#4ccd99">Hijau Mint</option>
-                <option value="#ff8a08">Oranye</option>
-                <option value="#8d00ff">Ungu</option>
-                <option value="#ff71cd">Pink</option>
+              <select id="credColor" class="brutal-input">
+                <option value="#B5FF3D">Hijau Lime</option>
+                <option value="#4CCD99">Hijau Mint</option>
+                <option value="#FF8A08">Oranye</option>
+                <option value="#8D00FF">Ungu</option>
+                <option value="#FF71CD">Pink</option>
               </select>
             </div>
           </div>
-          <button onclick="addCredit()" class="btn mt-4">Tambah Credit</button>
-          <div class="mt-6 border-t border-[var(--border-color)] pt-4">
+          <button onclick="addCredit()" class="brutal-btn mt-4">Tambah Credit</button>
+          <div class="mt-6 border-t-4 border-black pt-4">
             <h4 class="font-bold text-sm uppercase mb-3">Daftar Credit</h4>
             <div id="adminCreditsList" class="space-y-2"></div>
           </div>
@@ -720,14 +689,14 @@
 
       <!-- TAB PINNING -->
       <div id="adminTabPinningContent" class="hidden space-y-6">
-        <div class="card-soft p-5">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-2 text-red-500">Pin Kategori</h3>
-          <p class="text-sm text-gray-500 mb-4">Sematkan kategori ke menu sidebar agar lebih terlihat.</p>
+        <div class="brutal-card-sm p-5">
+          <h3 class="font-syne font-extrabold text-xl uppercase mb-2 text-red-500">Pin Kategori</h3>
+          <p class="text-sm font-bold text-gray-600 mb-4">Sematkan kategori ke menu sidebar agar lebih terlihat.</p>
           <div class="flex flex-col sm:flex-row gap-3 items-end">
-            <div class="flex-1"><label class="block font-bold text-xs uppercase mb-1">Nama Kategori</label><input type="text" id="pinTagName" placeholder="MLBB" class="input-field" /></div>
-            <button onclick="addPinnedTag()" class="btn">Sematkan</button>
+            <div class="flex-1"><label class="block font-bold text-xs uppercase mb-1">Nama Kategori</label><input type="text" id="pinTagName" placeholder="MLBB" class="brutal-input" /></div>
+            <button onclick="addPinnedTag()" class="brutal-btn">Sematkan</button>
           </div>
-          <div class="mt-6 border-t border-[var(--border-color)] pt-4">
+          <div class="mt-6 border-t-4 border-black pt-4">
             <h4 class="font-bold text-sm uppercase mb-3">Kategori Terpin</h4>
             <div id="pinnedTagsAdminList" class="flex flex-wrap gap-2"></div>
           </div>
@@ -736,33 +705,35 @@
     </section>
 
     <!-- ===== FILTER BADGE ===== -->
-    <div id="activeFilterBadge" class="hidden card-soft p-4 mb-6 flex items-center justify-between">
+    <div id="activeFilterBadge" class="hidden brutal-card-sm p-4 mb-6 flex items-center justify-between">
       <div class="flex items-center gap-2">
-        <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707"/></svg>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707"/></svg>
         <span class="font-extrabold text-sm uppercase">Kategori: <span id="activeFilterLabel" class="text-[var(--accent-color)] underline">GAME</span></span>
       </div>
-      <button onclick="selectCategoryFilter('')" class="btn btn-danger btn-sm">Tampilkan Semua ✕</button>
+      <button onclick="selectCategoryFilter('')" class="brutal-btn brutal-btn-sm brutal-btn-danger">Tampilkan Semua ✕</button>
     </div>
 
     <!-- ===== SEARCH ===== -->
     <section class="mb-6">
-      <div class="card-soft flex items-center overflow-hidden">
-        <svg class="w-5 h-5 ml-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      <div class="brutal-card-sm flex items-center overflow-hidden p-1">
+        <svg class="w-5 h-5 ml-3 shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         <input type="text" id="searchBar" oninput="renderPublicLinks()" placeholder="Cari mod..." class="w-full p-4 font-bold text-lg bg-transparent outline-none text-[var(--text-color)]" />
       </div>
     </section>
 
     <!-- ===== INFO ===== -->
-    <div class="card-soft p-4 mb-6 flex items-center gap-3 bg-black text-white">
-      <svg class="w-6 h-6 shrink-0 text-[var(--accent-color)]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-      <p class="text-xs sm:text-sm text-zinc-300">Tautan mati? Laporkan di komentar YouTube resmi untuk perbaikan cepat oleh Axeluf.</p>
+    <div class="brutal-card-sm p-4 mb-6 bg-black text-white border-black">
+      <div class="flex items-center gap-3">
+        <svg class="w-6 h-6 shrink-0 text-[var(--accent-color)]" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        <p class="text-xs sm:text-sm text-zinc-300">Tautan mati? Laporkan di komentar YouTube resmi untuk perbaikan cepat oleh Axeluf.</p>
+      </div>
     </div>
 
     <!-- ===== LINK CONTAINER ===== -->
     <div id="linkContainer" class="space-y-6"></div>
 
     <!-- ===== FOOTER ===== -->
-    <footer class="card p-8 mt-12 text-center">
+    <footer class="brutal-card p-8 mt-12 text-center">
       <div id="footerCreditsContainer" class="mb-6 flex flex-wrap items-center justify-center gap-4"></div>
       <p class="font-syne font-bold uppercase tracking-wide text-sm">COPYRIGHT 2026 AXELUF</p>
       <p class="text-[10px] text-gray-400 mt-2 font-mono">POWERED BY VERCEL + SUPABASE</p>
@@ -825,9 +796,9 @@
       text.innerText = msg;
       const isSuccess = type === "success";
       const isError = type === "error";
-      icon.innerHTML = isSuccess ? `<svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>` :
-        isError ? `<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>` :
-        `<svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+      icon.innerHTML = isSuccess ? `<svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>` :
+        isError ? `<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>` :
+        `<svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
       box.classList.add("show");
       clearTimeout(box._timer);
       box._timer = setTimeout(() => box.classList.remove("show"), 3200);
@@ -1001,7 +972,7 @@
         });
         const wrap = document.createElement("div");
         wrap.className =
-          "w-full flex items-center justify-between gap-1 bg-[var(--border-color)] hover:bg-[var(--accent-color)]/20 p-2.5 text-sm rounded-2xl transition-colors";
+          "w-full flex items-center justify-between gap-1 border-4 border-black p-2.5 rounded-2xl bg-white hover:bg-[var(--accent-color)] transition-colors";
         const btn = document.createElement("button");
         btn.onclick = () => { selectCategoryFilter(tag);
           toggleSidebarDrawer(); };
@@ -1036,7 +1007,7 @@
         });
         const wrap = document.createElement("div");
         wrap.className =
-          "w-full flex items-center justify-between gap-1 bg-lime-100 hover:bg-lime-200 p-2.5 text-sm rounded-2xl transition-colors";
+          "w-full flex items-center justify-between gap-1 border-4 border-black p-2.5 rounded-2xl bg-lime-100 hover:bg-lime-200 transition-colors";
         const btn = document.createElement("button");
         btn.onclick = () => { selectCategoryFilter(clean);
           toggleSidebarDrawer(); };
@@ -1051,7 +1022,7 @@
 
         const pill = document.createElement("div");
         pill.className =
-          "bg-lime-100 border border-[var(--border-color)] p-2 text-sm font-bold flex items-center gap-2 rounded-2xl";
+          "border-4 border-black p-2 rounded-2xl bg-lime-100 font-bold text-sm flex items-center gap-2";
         pill.innerHTML =
           `📌 ${clean} <button onclick="unpinTag(${i})" class="bg-red-500 text-white font-bold px-2 py-0.5 rounded-full text-[10px] hover:bg-red-600">✕</button>`;
         admin.appendChild(pill);
@@ -1235,19 +1206,19 @@
       playSynth("click");
       const row = document.createElement("div");
       row.className =
-        "custom-link-row grid grid-cols-1 sm:grid-cols-3 gap-2 p-3 bg-[var(--border-color)] rounded-2xl";
+        "custom-link-row grid grid-cols-1 sm:grid-cols-3 gap-2 p-3 border-4 border-black rounded-2xl bg-white";
       row.innerHTML = `
-        <input type="text" value="${label}" placeholder="Label" class="input-btn-label input-field input-field-sm" />
-        <input type="text" value="${url}" placeholder="URL" class="input-btn-url input-field input-field-sm" />
+        <input type="text" value="${label}" placeholder="Label" class="input-btn-label brutal-input" />
+        <input type="text" value="${url}" placeholder="URL" class="input-btn-url brutal-input" />
         <div class="flex items-center gap-2">
-          <select class="input-btn-icon input-field input-field-sm flex-1">
+          <select class="input-btn-icon brutal-input flex-1">
             <option value="video" ${iconType==='video'?'selected':''}>🎬 Video</option>
             <option value="download" ${iconType==='download'?'selected':''}>⬇ Download</option>
             <option value="chat" ${iconType==='chat'?'selected':''}>💬 Chat</option>
             <option value="key" ${iconType==='key'?'selected':''}>🔑 Key</option>
             <option value="globe" ${iconType==='globe'?'selected':''}>🌐 Web</option>
           </select>
-          <button type="button" onclick="removeCustomLinkField(this)" class="btn btn-danger btn-sm">✕</button>
+          <button type="button" onclick="removeCustomLinkField(this)" class="brutal-btn brutal-btn-sm brutal-btn-danger">✕</button>
         </div>
       `;
       container.appendChild(row);
@@ -1333,7 +1304,8 @@
       }
       customPresets.forEach((c, i) => {
         const wrap = document.createElement("div");
-        wrap.className = "flex items-center bg-white border border-[var(--border-color)] p-1.5 gap-2 rounded-2xl";
+        wrap.className =
+          "flex items-center border-4 border-black p-1.5 rounded-2xl bg-white gap-2";
         const btn = document.createElement("button");
         btn.type = "button";
         btn.onclick = () => addCustomLinkField(c.label, c.url, c.iconType);
@@ -1396,16 +1368,16 @@
         const a = document.createElement("a");
         a.href = c.url;
         a.target = "_blank";
-        a.style.backgroundColor = c.color || "#7ee850";
+        a.style.backgroundColor = c.color || "#B5FF3D";
         a.className =
-          "px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 border border-[var(--border-color)] shadow-soft hover:shadow-soft-lg transition-all";
+          "px-4 py-2 border-4 border-black rounded-2xl font-bold text-sm flex items-center gap-2 bg-[var(--accent-color)] hover:bg-[var(--accent-hover)] transition-colors";
         a.innerText = `${c.platform}: ${c.handle}`;
         footer.appendChild(a);
         const div = document.createElement("div");
         div.className =
-          "flex items-center justify-between p-2.5 border border-[var(--border-color)] rounded-2xl bg-[var(--card-bg)]";
+          "flex items-center justify-between p-2.5 border-4 border-black rounded-2xl bg-white";
         div.innerHTML =
-          `<span class="text-sm font-bold">${c.platform} → ${c.handle}</span><button onclick="deleteCredit(${i})" class="btn btn-danger btn-sm">Hapus</button>`;
+          `<span class="text-sm font-bold">${c.platform} → ${c.handle}</span><button onclick="deleteCredit(${i})" class="brutal-btn brutal-btn-sm brutal-btn-danger">Hapus</button>`;
         admin.appendChild(div);
       });
     }
@@ -1420,17 +1392,17 @@
         let pills = "";
         (item.tag ? item.tag.split(",") : []).forEach(t => {
           if (t.trim()) pills +=
-            `<span class="bg-gray-200 px-2 py-0.5 border border-[var(--border-color)] text-[10px] uppercase font-bold rounded-full mr-1">${t.trim()}</span>`;
+            `<span class="bg-gray-200 px-2 py-0.5 border-2 border-black text-[10px] uppercase font-bold rounded-full mr-1">${t.trim()}</span>`;
         });
         const tr = document.createElement("tr");
-        tr.className = "border-b border-[var(--border-color)] hover:bg-[var(--border-color)]/30";
+        tr.className = "border-b-4 border-black hover:bg-gray-100";
         tr.innerHTML = `
-          <td class="p-3"><img src="${img}" class="w-12 h-12 object-cover rounded-xl border border-[var(--border-color)]" alt="Thumb" /></td>
+          <td class="p-3"><img src="${img}" class="w-14 h-14 object-cover border-4 border-black rounded-2xl" alt="Thumb" /></td>
           <td class="p-3 font-bold text-sm">${item.name}</td>
           <td class="p-3">${pills}</td>
           <td class="p-3 flex flex-wrap gap-2">
-            <button onclick="editMod(${i})" class="btn btn-secondary btn-sm">Edit</button>
-            <button onclick="triggerDelete(${i})" class="btn btn-danger btn-sm">Hapus</button>
+            <button onclick="editMod(${i})" class="brutal-btn brutal-btn-sm bg-gray-300">Edit</button>
+            <button onclick="triggerDelete(${i})" class="brutal-btn brutal-btn-sm brutal-btn-danger">Hapus</button>
           </td>
         `;
         tbody.appendChild(tr);
@@ -1454,7 +1426,7 @@
       setCustomLinksFields(item.customButtons);
       document.getElementById("editIndex").value = index;
       document.getElementById("formTitle").innerText = "Edit Mod";
-      document.getElementById("formTitle").className = "font-syne font-extrabold text-lg uppercase mb-4 text-blue-600";
+      document.getElementById("formTitle").className = "font-syne font-extrabold text-xl uppercase mb-4 text-blue-600";
       document.getElementById("formTitle").scrollIntoView({ behavior: "smooth" });
     }
 
@@ -1472,7 +1444,7 @@
       document.getElementById("customLinksContainer").innerHTML = "";
       document.getElementById("editIndex").value = "";
       document.getElementById("formTitle").innerText = "Tambah Mod Baru";
-      document.getElementById("formTitle").className = "font-syne font-extrabold text-lg uppercase mb-4 text-[#ff8a08]";
+      document.getElementById("formTitle").className = "font-syne font-extrabold text-xl uppercase mb-4 text-[#FF8A08]";
     }
 
     async function saveMod() {
@@ -1586,7 +1558,7 @@
 
       if (!filtered.length) {
         container.innerHTML =
-          `<div class="card p-8 text-center"><p class="font-syne font-extrabold text-xl uppercase">Mod Tidak Ditemukan</p><p class="text-sm text-gray-400">Coba ubah kata kunci atau reset filter.</p></div>`;
+          `<div class="brutal-card p-8 text-center"><p class="font-syne font-extrabold text-xl uppercase">Mod Tidak Ditemukan</p><p class="text-sm font-bold text-gray-400">Coba ubah kata kunci atau reset filter.</p></div>`;
         return;
       }
 
@@ -1604,7 +1576,7 @@
         (item.tag ? item.tag.split(",") : []).forEach(t => {
           const clean = t.trim();
           if (clean) tagsHtml +=
-            `<button onclick="selectCategoryFilter('${clean}')" class="bg-[var(--accent-color)] hover:bg-[var(--accent-hover)] text-[10px] font-bold uppercase px-2 py-0.5 rounded-full transition-colors">#${clean}</button>`;
+            `<button onclick="selectCategoryFilter('${clean}')" class="bg-[var(--accent-color)] hover:bg-[var(--accent-hover)] border-2 border-black text-[10px] font-bold uppercase px-2 py-0.5 rounded-full transition-colors">#${clean}</button>`;
         });
 
         let customBtns = "";
@@ -1612,7 +1584,7 @@
           item.customButtons.forEach(b => {
             const icons = { video: "🎬", download: "⬇", chat: "💬", key: "🔑", globe: "🌐" };
             customBtns +=
-              `<button onclick="handleActionClick(${realIndex}, '${b.url}')" class="btn btn-secondary btn-sm">${icons[b.iconType]||"🔗"} ${b.label}</button>`;
+              `<button onclick="handleActionClick(${realIndex}, '${b.url}')" class="brutal-btn brutal-btn-sm bg-gray-300">${icons[b.iconType]||"🔗"} ${b.label}</button>`;
           });
         }
 
@@ -1620,28 +1592,28 @@
         if (item.comments && item.comments.length) {
           item.comments.forEach(c => {
             commentsHtml +=
-              `<div class="p-2 border-b border-[var(--border-color)] text-sm"><span class="font-extrabold text-purple-600">@${c.name}:</span> <span class="font-medium">${c.text}</span></div>`;
+              `<div class="p-2 border-b-4 border-black text-sm"><span class="font-extrabold text-purple-600">@${c.name}:</span> <span class="font-medium">${c.text}</span></div>`;
           });
         } else {
           commentsHtml = `<p class="p-2 text-sm text-gray-400 italic text-center">Belum ada komentar.</p>`;
         }
 
         const card = document.createElement("div");
-        card.className = "card overflow-hidden";
+        card.className = "brutal-card overflow-hidden p-0";
 
         card.innerHTML = `
-          <div class="bg-black text-white px-4 py-2.5 flex items-center justify-between text-[10px] font-mono">
+          <div class="bg-black text-white px-4 py-2.5 flex items-center justify-between text-xs font-mono border-b-4 border-black">
             <div class="flex items-center gap-1.5">
               <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
               <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
               <span class="w-3 h-3 rounded-full bg-green-400 inline-block"></span>
             </div>
             <span class="bg-zinc-800 px-3 py-0.5 rounded-full text-zinc-400 truncate max-w-[180px]">axeluf.co/mod-${realIndex}</span>
-            <span class="text-zinc-500">⋯</span>
+            <span class="text-zinc-500 font-black">⋯</span>
           </div>
 
           <div class="p-5 flex flex-col lg:flex-row gap-5">
-            <div class="w-full lg:w-64 shrink-0 rounded-2xl overflow-hidden border border-[var(--border-color)] bg-zinc-100">
+            <div class="w-full lg:w-64 shrink-0 rounded-2xl overflow-hidden border-4 border-black bg-zinc-100">
               <img src="${img}" alt="Preview" class="w-full ${ratio} hover:scale-[1.02] transition-transform duration-200" />
             </div>
 
@@ -1649,47 +1621,47 @@
               <div>
                 <div class="flex flex-wrap gap-1.5 mb-2">${tagsHtml}</div>
                 <h3 class="font-syne font-extrabold text-xl uppercase mb-2">${item.name}</h3>
-                <p class="text-sm text-gray-600 mb-4 whitespace-pre-wrap leading-relaxed">${item.desc}</p>
+                <p class="text-sm font-medium text-gray-700 mb-4 whitespace-pre-wrap leading-relaxed">${item.desc}</p>
               </div>
 
               <div class="space-y-4">
-                <div class="bg-[var(--border-color)] p-3 rounded-2xl flex items-center gap-2 text-sm font-bold">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <div class="border-4 border-black p-3 rounded-2xl bg-gray-100 flex items-center gap-2 text-sm font-bold">
+                  <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                   Password: ${decPass}
                 </div>
 
                 <div class="flex flex-wrap gap-2">
-                  <button onclick="handleActionClick(${realIndex}, '${decUrl}', true)" class="btn flex-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                  <button onclick="handleActionClick(${realIndex}, '${decUrl}', true)" class="brutal-btn flex-1 justify-center">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
                     Download Mod
                   </button>
                   ${customBtns}
                 </div>
 
-                <div class="border-t border-[var(--border-color)] pt-3 flex flex-wrap items-center justify-between gap-2 text-sm font-bold text-gray-500">
+                <div class="border-t-4 border-black pt-3 flex flex-wrap items-center justify-between gap-2 text-sm font-bold text-gray-600">
                   <div class="flex items-center gap-1.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                     <span id="view-counter-${realIndex}">${item.views||0}</span> dilihat
                   </div>
                   <div class="flex items-center gap-3">
-                    <button onclick="likeMod(${realIndex})" ${likeDisabled} class="flex items-center gap-1 bg-[var(--border-color)] px-3 py-1.5 rounded-full text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                    <button onclick="likeMod(${realIndex})" ${likeDisabled} class="flex items-center gap-1 border-4 border-black px-3 py-1.5 rounded-full bg-white disabled:opacity-50 disabled:cursor-not-allowed">
                       ❤️ <span>${item.likes||0}</span> (${userLikes}/10)
                     </button>
-                    <button onclick="toggleCommentsSection(${realIndex})" class="flex items-center gap-1 bg-[var(--border-color)] px-3 py-1.5 rounded-full text-sm">
+                    <button onclick="toggleCommentsSection(${realIndex})" class="flex items-center gap-1 border-4 border-black px-3 py-1.5 rounded-full bg-white">
                       💬 Komentar
                     </button>
                   </div>
                 </div>
 
-                <div id="comments-panel-${realIndex}" class="hidden bg-[var(--border-color)] p-3 rounded-2xl">
+                <div id="comments-panel-${realIndex}" class="hidden border-4 border-black p-3 rounded-2xl bg-gray-50">
                   <h4 class="font-bold text-sm uppercase mb-2">Diskusi</h4>
-                  <div class="max-h-32 overflow-y-auto bg-[var(--card-bg)] border border-[var(--border-color)] rounded-2xl mb-3 divide-y divide-[var(--border-color)]">
+                  <div class="max-h-32 overflow-y-auto border-4 border-black rounded-2xl bg-white mb-3 divide-y-4 divide-black">
                     ${commentsHtml}
                   </div>
                   <div class="flex flex-wrap gap-2">
-                    <input type="text" id="comm-name-${realIndex}" placeholder="Nama" class="input-field input-field-sm w-24" />
-                    <input type="text" id="comm-text-${realIndex}" placeholder="Komentar..." class="input-field input-field-sm flex-1" />
-                    <button onclick="submitComment(${realIndex})" class="btn btn-sm">Kirim</button>
+                    <input type="text" id="comm-name-${realIndex}" placeholder="Nama" class="brutal-input w-24" />
+                    <input type="text" id="comm-text-${realIndex}" placeholder="Komentar..." class="brutal-input flex-1" />
+                    <button onclick="submitComment(${realIndex})" class="brutal-btn brutal-btn-sm">Kirim</button>
                   </div>
                 </div>
               </div>
