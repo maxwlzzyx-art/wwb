@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="id" data-theme="yellow">
+<html lang="id" data-theme="green">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AXELUF ID - Premium Portal V4.5 Pro</title>
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AXELUF ID - Premium Portal V4.5</title>
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Plus Jakarta Sans & Syne -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=500;700;800&family=Syne:wght=700;800&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -20,994 +20,873 @@
           fontFamily: {
             syne: ['Syne', 'sans-serif'],
             jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 8px 24px -8px rgba(0,0,0,0.12), 0 4px 12px -6px rgba(0,0,0,0.08)',
+            'soft-lg': '0 16px 48px -12px rgba(0,0,0,0.18), 0 8px 24px -8px rgba(0,0,0,0.10)',
           }
         }
       }
     }
   </script>
 
-  <style type="text/css">
-    /* Neo-Brutalist Theme Variables (Strict Square & Sharp Borders) */
+  <style>
+    /* ===== THEME VARIABLES ===== */
     :root {
-      --bg-color: #FFDE4D;
-      --accent-color: #4CCD99;
-      --secondary-color: #FF6B6B;
-      --card-bg: #FFFFFF;
-      --text-color: #0C0C0C;
-      --custom-bg-image: none;
+      --bg-color: #f6f7f9;
+      --accent-color: #7ee850;
+      --accent-hover: #6ad43a;
+      --secondary-color: #121214;
+      --card-bg: #ffffff;
+      --text-color: #121214;
+      --border-color: #e2e4e8;
+      --shadow-color: rgba(0,0,0,0.06);
     }
-
     [data-theme="pink"] {
-      --bg-color: #FF71CD;
-      --accent-color: #00F0FF;
-      --secondary-color: #FFF500;
-      --card-bg: #FFFFFF;
-      --text-color: #0C0C0C;
+      --bg-color: #fdf2f8;
+      --accent-color: #ff71cd;
+      --accent-hover: #e85db8;
     }
-
     [data-theme="mint"] {
-      --bg-color: #A3FFD6;
-      --accent-color: #8D00FF;
-      --secondary-color: #FF55BB;
-      --card-bg: #FFFFFF;
-      --text-color: #0C0C0C;
+      --bg-color: #f0fdf7;
+      --accent-color: #4ccd99;
+      --accent-hover: #3ab885;
     }
-
     [data-theme="dark"] {
       --bg-color: #121214;
-      --accent-color: #39FF14;
-      --secondary-color: #FF3131;
-      --card-bg: #1E1E24;
-      --text-color: #FFFFFF;
+      --accent-color: #7ee850;
+      --accent-hover: #6ad43a;
+      --card-bg: #1e1e24;
+      --text-color: #f0f0f0;
+      --border-color: #33333a;
+      --shadow-color: rgba(0,0,0,0.4);
     }
-
     [data-theme="orange"] {
-      --bg-color: #FF8A08;
-      --accent-color: #FFF200;
-      --secondary-color: #00FFD1;
-      --card-bg: #FFFFFF;
-      --text-color: #0C0C0C;
+      --bg-color: #fef8f0;
+      --accent-color: #ff8a08;
+      --accent-hover: #e07800;
     }
 
+    /* ===== GLOBAL ===== */
+    * { box-sizing: border-box; }
     body {
       background-color: var(--bg-color);
-      background-image: var(--custom-bg-image);
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
       color: var(--text-color);
       font-family: 'Plus Jakarta Sans', sans-serif;
       transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      padding-bottom: 2rem;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--border-color); border-radius: 999px; }
+    ::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 999px; }
+
+    /* ===== CARDS & COMPONENTS ===== */
+    .card {
+      background: var(--card-bg);
+      border-radius: 1.5rem;
+      box-shadow: 0 8px 24px -8px var(--shadow-color), 0 4px 12px -6px var(--shadow-color);
+      border: 1px solid var(--border-color);
+      transition: box-shadow 0.2s ease, transform 0.15s ease;
+    }
+    .card:hover {
+      box-shadow: 0 16px 48px -12px var(--shadow-color), 0 8px 24px -8px var(--shadow-color);
+    }
+    .card-soft {
+      background: var(--card-bg);
+      border-radius: 1.25rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 16px -6px var(--shadow-color);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: var(--accent-color);
+      color: #121214;
+      box-shadow: 0 4px 12px -4px rgba(126,232,80,0.35);
+    }
+    .btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px -6px rgba(126,232,80,0.45);
+      background: var(--accent-hover);
+    }
+    .btn:active:not(:disabled) {
+      transform: translateY(0px);
+    }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .btn-secondary {
+      background: var(--border-color);
+      color: var(--text-color);
+      box-shadow: none;
+    }
+    .btn-secondary:hover:not(:disabled) {
+      background: #d0d2d6;
+      box-shadow: none;
+    }
+    .btn-danger {
+      background: #ef4444;
+      color: #fff;
+      box-shadow: 0 4px 12px -4px rgba(239,68,68,0.35);
+    }
+    .btn-danger:hover:not(:disabled) {
+      background: #dc2626;
+      box-shadow: 0 8px 20px -6px rgba(239,68,68,0.45);
+    }
+    .btn-dark {
+      background: #121214;
+      color: #fff;
+      box-shadow: 0 4px 12px -4px rgba(0,0,0,0.25);
+    }
+    .btn-dark:hover:not(:disabled) {
+      background: #2a2a2e;
+    }
+    .btn-sm {
+      padding: 0.4rem 1rem;
+      font-size: 0.65rem;
     }
 
-    /* Strict Square Styles (No Border Radius Allowed) */
-    .brutal-border {
-      border: 4px solid #000000;
-      border-radius: 0px !important;
+    .input-field {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border-radius: 9999px;
+      border: 1.5px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-color);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+    .input-field:focus {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 4px rgba(126,232,80,0.15);
+    }
+    .input-field-sm {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+    }
+    textarea.input-field {
+      border-radius: 1.25rem;
+      resize: vertical;
+    }
+    select.input-field {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1rem;
+      padding-right: 2.5rem;
     }
 
-    .brutal-border-b {
-      border-bottom: 4px solid #000000;
-    }
-
-    .brutal-border-sm {
-      border: 2px solid #000000;
-      border-radius: 0px !important;
-    }
-
-    .brutal-shadow {
-      box-shadow: 6px 6px 0px 0px #000000;
-    }
-
-    .brutal-shadow-sm {
-      box-shadow: 4px 4px 0px 0px #000000;
-    }
-
-    .brutal-shadow-lg {
-      box-shadow: 8px 8px 0px 0px #000000;
-    }
-
-    /* Hover & Active Actions (No Rounded Corners) */
-    .brutal-btn {
-      border-radius: 0px !important;
-      transition: transform 0.1s ease, box-shadow 0.1s ease;
-    }
-    .brutal-btn:hover:not(:disabled) {
-      transform: translate(-2px, -2px);
-      box-shadow: 8px 8px 0px 0px #000000;
-    }
-    .brutal-btn:active:not(:disabled) {
-      transform: translate(4px, 4px);
-      box-shadow: 2px 2px 0px 0px #000000;
-    }
-
-    .brutal-btn-sm {
-      border-radius: 0px !important;
-      transition: transform 0.1s ease, box-shadow 0.1s ease;
-    }
-    .brutal-btn-sm:hover:not(:disabled) {
-      transform: translate(-1px, -1px);
-      box-shadow: 5px 5px 0px 0px #000000;
-    }
-    .brutal-btn-sm:active:not(:disabled) {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px 0px #000000;
-    }
-
-    /* Screen shake animation */
-    @keyframes shake {
-      0% { transform: translate(1px, 1px) rotate(0deg); }
-      10% { transform: translate(-1px, -2px) rotate(-1deg); }
-      20% { transform: translate(-3px, 0px) rotate(1deg); }
-      30% { transform: translate(0px, 2px) rotate(0deg); }
-      40% { transform: translate(1px, -1px) rotate(1deg); }
-      50% { transform: translate(-1px, 2px) rotate(-1deg); }
-      60% { transform: translate(-3px, 1px) rotate(0deg); }
-      75% { transform: translate(2px, 1px) rotate(-1deg); }
-      90% { transform: translate(-1px, -1px) rotate(1deg); }
-      100% { transform: translate(1px, 2px) rotate(0deg); }
-    }
-
-    .shake {
-      animation: shake 0.3s;
-    }
-
-    /* Custom Scrollbar (Square) */
-    ::-webkit-scrollbar {
-      width: 12px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #000000;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--secondary-color);
-      border: 3px solid #000000;
-      border-radius: 0px;
-    }
-
-    /* Ticker Text Animation */
+    /* ===== TICKER ===== */
     @keyframes ticker {
       0% { transform: translate3d(100%, 0, 0); }
       100% { transform: translate3d(-100%, 0, 0); }
     }
-    .ticker-wrap {
-      overflow: hidden;
-      white-space: nowrap;
+    .ticker-wrap { overflow: hidden; white-space: nowrap; }
+    .ticker-content { display: inline-block; animation: ticker 28s linear infinite; }
+    .ticker-content:hover { animation-play-state: paused; }
+
+    /* ===== SHAKE ===== */
+    @keyframes shake {
+      0%,100%{transform:translate(0)}
+      10%{transform:translate(-4px,2px)}
+      20%{transform:translate(4px,-2px)}
+      30%{transform:translate(-4px,2px)}
+      40%{transform:translate(4px,-2px)}
+      50%{transform:translate(-2px,1px)}
+      60%{transform:translate(2px,-1px)}
+      70%{transform:translate(-2px,1px)}
+      80%{transform:translate(2px,-1px)}
+      90%{transform:translate(-1px,0)}
     }
-    .ticker-content {
-      display: inline-block;
-      animation: ticker 25s linear infinite;
+    .shake { animation: shake 0.35s; }
+
+    /* ===== TOAST ===== */
+    #toastBox {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 60;
+      transform: translateY(2rem);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      pointer-events: none;
     }
-    .ticker-content:hover {
-      animation-play-state: paused;
+    #toastBox.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    #toastContent {
+      padding: 0.8rem 1.5rem;
+      border-radius: 9999px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 8px 28px -8px rgba(0,0,0,0.15);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* ===== SIDEBAR ===== */
+    #sidebarDrawer {
+      position: fixed;
+      inset-y: 0;
+      left: 0;
+      width: 20rem;
+      max-width: 85vw;
+      background: var(--card-bg);
+      z-index: 50;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-right: 1px solid var(--border-color);
+      box-shadow: 8px 0 40px -12px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      border-radius: 0 2rem 2rem 0;
+    }
+    #sidebarDrawer.open { transform: translateX(0); }
+    #sidebarBackdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(4px);
+      z-index: 45;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #sidebarBackdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      z-index: 55;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      background: var(--card-bg);
+      border-radius: 2rem;
+      max-width: 28rem;
+      width: 100%;
+      padding: 2rem;
+      box-shadow: 0 24px 64px -16px rgba(0,0,0,0.25);
+      border: 1px solid var(--border-color);
+      transform: scale(0.95) translateY(12px);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .modal-overlay.open .modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    /* ===== ADMIN TABS ===== */
+    .tab-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-color);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .tab-btn.active {
+      background: var(--accent-color);
+      color: #121214;
+      border-color: var(--accent-color);
+    }
+    .tab-btn:hover:not(.active) {
+      background: var(--border-color);
+    }
+
+    /* ===== RESPONSIVE TWEAKS ===== */
+    @media (max-width: 640px) {
+      .card { border-radius: 1.25rem; }
+      .modal-box { padding: 1.5rem; border-radius: 1.5rem; }
     }
   </style>
 </head>
-<body class="min-h-screen pb-16 relative overflow-x-hidden">
+<body>
 
-  <!-- ================= RUNNING TEXT BROADCAST BAR ================= -->
-  <div id="broadcastBar" class="bg-black text-yellow-300 py-1.5 border-b-4 border-black font-extrabold text-xs uppercase ticker-wrap relative z-40">
-    <div class="ticker-content inline-flex gap-8" id="broadcastTextContainer">
-      <span>INFO RESMI: Pastikan selalu mengunduh link modifikasi di portal resmi AXELUF untuk menghindari malware!</span>
-      <span>UPDATE: Semua MLBB Skin dan Radar Map Mod aktif untuk patch musim terbaru 2026!</span>
-    </div>
-  </div>
-
-  <!-- ================= SIDEBAR NAVIGATION DRAWER ================= -->
-  <div id="sidebarDrawer" class="fixed inset-y-0 left-0 w-80 max-w-[85vw] bg-white text-black z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-black shadow-[10px_0_0_0_#000000] flex flex-col !rounded-none">
-    <!-- Header Drawer -->
-    <div class="p-6 bg-[#FFDE4D] border-b-4 border-black flex justify-between items-center shrink-0">
-      <div class="flex items-center gap-2">
-        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        <h2 class="font-syne font-extrabold text-xl uppercase tracking-tight">MENU UTAMA</h2>
-      </div>
-      <button onclick="toggleSidebarDrawer()" class="bg-red-500 text-white border-2 border-black w-9 h-9 flex items-center justify-center font-bold text-lg brutal-shadow-sm active:translate-y-0.5 !rounded-none">X</button>
-    </div>
-
-    <!-- Content/Menu List -->
-    <div class="p-6 space-y-4 overflow-y-auto flex-1 font-bold flex flex-col justify-between">
-      <div class="space-y-4">
-        <button onclick="selectCategoryFilter(''); toggleSidebarDrawer()" class="w-full text-left p-3.5 bg-zinc-50 hover:bg-yellow-100 border-2 border-black brutal-shadow-sm text-xs uppercase flex items-center justify-between text-black !rounded-none">
-          <span>HOME / SEMUA MOD</span>
-          <span class="bg-black text-white px-2 py-0.5 text-xs brutal-border-sm !rounded-none" id="countAllMods">0</span>
-        </button>
-
-        <!-- SEPARATOR PINNED KATEGORI -->
-        <div class="border-t-4 border-dashed border-black pt-4">
-          <h3 class="text-xs text-red-500 uppercase tracking-widest mb-3 flex items-center gap-1">
-            <svg class="w-4 h-4 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
-            KATEGORI UTAMA (PINNED)
-          </h3>
-          <div id="pinnedTagsList" class="flex flex-col gap-2">
-            <!-- Rendered dynamically -->
-          </div>
-        </div>
-
-        <!-- SEPARATOR KATEGORI UNIK SELURUHNYA -->
-        <div class="border-t-4 border-dashed border-black pt-4">
-          <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-3">DAFTAR KATEGORI</h3>
-          <div id="dynamicTagsList" class="flex flex-col gap-2">
-            <!-- Rendered dynamically -->
-          </div>
-        </div>
-
-        <!-- SEPARATOR SOSMED UTAMA -->
-        <div class="border-t-4 border-dashed border-black pt-4">
-          <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-3">SALURAN RESMI</h3>
-          <div class="grid grid-cols-1 gap-2">
-            <a href="https://whatsapp.com/channel/0029VaUl8HRBqbr8aHIeDW0s" target="_blank" class="flex items-center gap-2 p-2.5 bg-emerald-500 text-black border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold !rounded-none">
-              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.234.002 9.493-4.254 9.495-9.491.002-2.54-1.01-4.922-2.85-6.766-1.841-1.844-4.288-2.86-6.83-2.861-5.241 0-9.503 4.257-9.505 9.496-.001 1.734.502 3.426 1.457 4.912L1.393 21.6l4.63-1.215-.1-.08-.106-.11l-.17-.119zm12.385-6.61c-.333-.167-1.97-.972-2.275-1.083-.306-.113-.528-.167-.75.167-.221.333-.857 1.083-1.05 1.306-.194.222-.389.25-.722.083-.333-.167-1.408-.52-2.681-1.656-.99-.883-1.658-1.973-1.853-2.306-.194-.333-.02-.513.146-.68.15-.15.333-.389.5-.583.167-.195.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.75-1.807-1.028-2.478-.27-.652-.544-.564-.748-.574-.194-.01-.417-.012-.64-.012-.221 0-.583.083-.888.417-.306.333-1.166 1.139-1.166 2.778 0 1.64 1.194 3.22 1.361 3.444.167.222 2.35 3.589 5.694 5.034.795.343 1.417.549 1.9.704.8.254 1.528.218 2.103.132.64-.096 1.97-.806 2.247-1.583.278-.78.278-1.445.194-1.583-.083-.139-.306-.222-.639-.389z"/></svg>
-              <span>SALURAN WA</span>
-            </a>
-            <a href="https://youtube.com/@axelufey" target="_blank" class="flex items-center gap-2 p-2.5 bg-red-600 text-white border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold !rounded-none">
-              YOUTUBE UTAMA
-            </a>
-            <a href="https://youtube.com/@maxmodw" target="_blank" class="flex items-center gap-2 p-2.5 bg-red-500 text-white border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold !rounded-none">
-              YOUTUBE CADANGAN
-            </a>
-            <a href="https://www.instagram.com/maxl3rd" target="_blank" class="flex items-center gap-2 p-2.5 bg-[#FF71CD] text-black border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold !rounded-none">
-              INSTAGRAM
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- TOMBOL ADMIN TERSEMBUNYI DI BAWAH SIDEBAR -->
-      <div class="border-t-4 border-dashed border-black pt-4 mt-auto">
-        <button id="btnNavAdmin" onclick="toggleAdminPanel(); toggleSidebarDrawer()" class="w-full bg-[#FF6B6B] text-black font-extrabold uppercase py-3 px-5 border-2 border-black brutal-shadow-sm brutal-btn-sm text-xs !rounded-none">
-          PANEL ADMIN
-        </button>
-        <button id="btnLogOut" onclick="logoutAdmin(); toggleSidebarDrawer()" class="hidden w-full bg-black text-white font-extrabold uppercase py-3 px-5 border-2 border-black brutal-shadow-sm brutal-btn-sm text-xs mt-2 !rounded-none">
-          KELUAR MODE
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- BACKDROP OVERLAY UNTUK SIDEBAR -->
-  <div id="sidebarBackdrop" onclick="toggleSidebarDrawer()" class="hidden fixed inset-0 bg-black/60 z-40 transition-opacity duration-300"></div>
-
-  <!-- ================= RETRO LOADING OVERLAY ================= -->
-  <div id="loadingOverlay" class="fixed inset-0 bg-black/85 z-50 flex items-center justify-center p-6 text-center select-none text-white transition-opacity duration-300">
-    <div class="brutal-border brutal-shadow bg-yellow-400 p-8 max-w-lg text-black !rounded-none">
-      <span class="text-6xl block mb-4 animate-spin">⏳</span>
-      <h2 class="font-syne font-extrabold text-2xl uppercase tracking-tighter">SINKRONISASI DATABASE V4.5</h2>
-      <p class="text-xs font-bold mt-2">Menghubungkan ke Cloud Supabase Premium Core...</p>
-    </div>
-  </div>
-
-  <!-- ================= RETRO BAN SCREEN ================= -->
-  <div id="banScreen" class="hidden fixed inset-0 bg-red-600 z-50 flex flex-col items-center justify-center p-6 text-center select-none text-white">
-    <div class="brutal-border brutal-shadow bg-black p-8 max-w-lg text-white !rounded-none">
-      <span class="text-7xl block mb-6 animate-bounce">🚨</span>
-      <h1 class="font-syne font-extrabold text-4xl sm:text-5xl uppercase tracking-tighter text-yellow-300">SYSTEM BANNED</h1>
-      <p class="mt-4 font-bold text-lg">AKSES ANDA TELAH DIBLOKIR OLEH AXELUF!</p>
-      <p class="text-sm mt-2 text-gray-300">Spam klik atau perilaku mencurigakan terdeteksi dari perangkat Anda.</p>
-      <div class="mt-8 p-4 border-2 border-dashed border-red-500 bg-red-950 font-mono text-xs">
-        CODE: AX_SUSPICIOUS_CLIENT_BLOCK_V4_5
-      </div>
-      <button onclick="simulateUnban()" class="mt-6 bg-yellow-400 text-black font-bold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn text-xs !rounded-none">
-        Minta Maaf ke Axeluf (Unban)
-      </button>
-    </div>
-  </div>
-
-  <!-- TOAST NOTIFICATION -->
-  <div id="toastBox" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
-    <div id="toastContent" class="brutal-border brutal-shadow bg-white p-4 font-bold text-lg flex items-center gap-3 text-black !rounded-none">
-      <span id="toastIcon">INFO</span>
+  <!-- ===== TOAST ===== -->
+  <div id="toastBox">
+    <div id="toastContent">
+      <span id="toastIcon" class="w-5 h-5 shrink-0"></span>
       <span id="toastMessage">Halo!</span>
     </div>
   </div>
 
-  <!-- CONFIRMATION MODAL -->
-  <div id="confirmModal" class="hidden fixed inset-0 bg-black/85 z-50 flex items-center justify-center p-4">
-    <div class="bg-white text-black brutal-border brutal-shadow-lg w-full max-w-md p-6 text-center !rounded-none">
-      <span class="text-5xl block mb-4">⚠️</span>
-      <h3 class="font-syne font-extrabold text-2xl uppercase mb-2">KONFIRMASI TINDAKAN</h3>
-      <p id="confirmModalText" class="text-sm font-medium text-gray-700 mb-6">Apakah Anda yakin ingin melakukan tindakan ini?</p>
-      
-      <div class="flex gap-4">
-        <button id="btnConfirmYes" class="flex-1 bg-red-500 text-white font-bold uppercase py-3 brutal-border brutal-shadow-sm brutal-btn text-sm !rounded-none">
-          YA, LAKUKAN!
-        </button>
-        <button onclick="closeConfirmModal()" class="flex-1 bg-gray-200 font-bold uppercase py-3 brutal-border brutal-shadow-sm brutal-btn text-sm !rounded-none">
-          BATAL
-        </button>
+  <!-- ===== CONFIRM MODAL ===== -->
+  <div id="confirmModal" class="modal-overlay">
+    <div class="modal-box text-center">
+      <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center mx-auto mb-4 text-xl font-bold text-black">!</div>
+      <h3 class="font-syne font-extrabold text-2xl uppercase mb-2">Konfirmasi</h3>
+      <p id="confirmModalText" class="text-sm font-medium text-gray-500 mb-6">Apakah Anda yakin?</p>
+      <div class="flex gap-3">
+        <button id="btnConfirmYes" class="btn btn-danger flex-1">Ya, Hapus</button>
+        <button onclick="closeConfirmModal()" class="btn btn-secondary flex-1">Batal</button>
       </div>
     </div>
   </div>
 
-  <!-- ================= PREMIUM SAFELINK DOWNLOAD MODAL ================= -->
-  <div id="safelinkModal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
-    <div class="bg-white text-black brutal-border brutal-shadow-lg w-full max-w-md p-6 text-center relative !rounded-none">
-      <button onclick="closeSafelinkModal()" class="absolute top-3 right-3 bg-red-500 text-white brutal-border-sm w-8 h-8 flex items-center justify-center font-bold !rounded-none">X</button>
-      
+  <!-- ===== SAFELINK MODAL ===== -->
+  <div id="safelinkModal" class="modal-overlay">
+    <div class="modal-box text-center relative">
+      <button onclick="closeSafelinkModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-black font-bold">✕</button>
       <div class="mb-4">
-        <span class="text-5xl animate-bounce inline-block">SECURE</span>
+        <span class="text-xs font-bold bg-[#7ee850] px-3 py-1 rounded-full">SECURE</span>
       </div>
-      <h3 class="font-syne font-extrabold text-2xl uppercase mb-1">MEMINDAI KEAMANAN FILE</h3>
-      <p class="text-xs font-bold text-emerald-600 mb-4 bg-emerald-100 py-1 brutal-border-sm !rounded-none">SYSTEM ANTIVIRUS DAN ANTI-MALWARE ACTIVE</p>
-      
-      <div class="w-full bg-gray-200 brutal-border-sm h-6 mb-4 relative overflow-hidden !rounded-none">
-        <div id="safelinkProgress" class="bg-yellow-400 h-full transition-all duration-100" style="width: 0%"></div>
-        <div class="absolute inset-0 flex items-center justify-center text-xs font-extrabold" id="safelinkProgressText">0%</div>
+      <h3 class="font-syne font-extrabold text-2xl uppercase mb-1">Memindai Keamanan</h3>
+      <p class="text-xs font-bold text-emerald-600 mb-4">Anti-Virus & Anti-Malware Active</p>
+      <div class="w-full bg-gray-200 rounded-full h-3 mb-4 overflow-hidden">
+        <div id="safelinkProgress" class="bg-[#7ee850] h-full transition-all duration-100" style="width:0%"></div>
       </div>
-
-      <p class="text-sm font-bold text-gray-700 mb-6" id="safelinkStatusText">Harap tunggu, server sedang menyiapkan tautan bersih...</p>
-      
+      <p id="safelinkStatusText" class="text-sm font-medium text-gray-600 mb-6">Menghubungkan ke server cloud...</p>
       <div id="safelinkButtonArea" class="hidden">
-        <a id="btnRealDownload" href="#" target="_blank" onclick="closeSafelinkModal()" class="block w-full bg-[#4CCD99] text-black font-extrabold text-center uppercase py-3.5 brutal-border brutal-shadow-sm brutal-btn text-sm !rounded-none">
-          KLIK UNTUK DOWNLOAD FILE SEKARANG
-        </a>
+        <a id="btnRealDownload" href="#" target="_blank" onclick="closeSafelinkModal()" class="btn w-full">Download File Sekarang</a>
       </div>
     </div>
   </div>
 
-  <!-- ================= PRE-HEADER BAR ================= -->
-  <div class="bg-black text-white py-2 px-4 flex justify-between items-center text-xs font-bold brutal-border-b">
-    <span>AXELUF V4.5 Premium (CLOUD OBFUSCATED STATE)</span>
-    <div class="flex items-center gap-4">
-      <!-- Mute/Unmute Synth -->
-      <button id="btnToggleSound" onclick="toggleSound()" class="bg-zinc-800 px-2.5 py-1 brutal-border-sm hover:bg-zinc-700 text-[10px] uppercase text-white !rounded-none">
-        SUARA: AKTIF
-      </button>
-      
-      <!-- Theme Switcher -->
-      <div class="flex items-center gap-1.5">
-        <span>TEMA:</span>
-        <button onclick="changeTheme('yellow')" class="w-4 h-4 bg-[#FFDE4D] border border-white !rounded-none" title="Kuning Klasik"></button>
-        <button onclick="changeTheme('pink')" class="w-4 h-4 bg-[#FF71CD] border border-white !rounded-none" title="Cyberpunk Pink"></button>
-        <button onclick="changeTheme('mint')" class="w-4 h-4 bg-[#A3FFD6] border border-white !rounded-none" title="Retro Mint"></button>
-        <button onclick="changeTheme('dark')" class="w-4 h-4 bg-[#121214] border border-white !rounded-none" title="Deep Dark"></button>
-        <button onclick="changeTheme('orange')" class="w-4 h-4 bg-[#FF8A08] border border-white !rounded-none" title="Lava Orange"></button>
+  <!-- ===== BAN SCREEN ===== -->
+  <div id="banScreen" class="fixed inset-0 bg-red-600 z-50 flex items-center justify-center p-6 hidden">
+    <div class="card bg-black text-white max-w-md w-full p-8 text-center">
+      <div class="w-16 h-12 bg-red-500 rounded-xl flex items-center justify-center mx-auto mb-6 text-white font-bold text-2xl">!</div>
+      <h1 class="font-syne font-extrabold text-4xl uppercase text-yellow-300">System Banned</h1>
+      <p class="mt-4 font-bold text-lg">Akses Anda Telah Diblokir!</p>
+      <p class="text-sm mt-2 text-gray-400">Aktivitas mencurigakan terdeteksi.</p>
+      <button onclick="simulateUnban()" class="btn mt-6 w-full">Minta Maaf ke Axeluf</button>
+    </div>
+  </div>
+
+  <!-- ===== LOADING ===== -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center transition-opacity duration-300">
+    <div class="card bg-[#7ee850] p-8 max-w-sm w-full text-center">
+      <div class="w-12 h-12 border-4 border-black border-t-transparent animate-spin rounded-full mx-auto mb-4"></div>
+      <h2 class="font-syne font-extrabold text-2xl uppercase">Sinkronisasi</h2>
+      <p class="text-xs font-bold mt-2">Menghubungkan ke Cloud...</p>
+    </div>
+  </div>
+
+  <!-- ===== SIDEBAR DRAWER ===== -->
+  <div id="sidebarDrawer">
+    <div class="p-5 border-b border-[var(--border-color)] flex items-center justify-between shrink-0 bg-[var(--accent-color)] rounded-tr-2xl">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <h2 class="font-syne font-extrabold text-xl uppercase tracking-tight">Menu Utama</h2>
+      </div>
+      <button onclick="toggleSidebarDrawer()" class="w-9 h-9 rounded-full bg-red-500 text-white font-bold flex items-center justify-center hover:bg-red-600 transition-colors">✕</button>
+    </div>
+    <div class="p-5 overflow-y-auto flex-1 flex flex-col justify-between">
+      <div class="space-y-4">
+        <button onclick="selectCategoryFilter(''); toggleSidebarDrawer()" class="w-full text-left p-3 rounded-2xl bg-[var(--border-color)] hover:bg-[var(--accent-color)]/20 transition-colors font-bold text-sm flex items-center justify-between">
+          <span>🏠 Semua Mod</span>
+          <span class="bg-black text-white px-2 py-0.5 text-xs rounded-full" id="countAllMods">0</span>
+        </button>
+
+        <div class="border-t border-[var(--border-color)] pt-4">
+          <h3 class="text-xs text-red-500 uppercase tracking-widest mb-3 flex items-center gap-1">
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+            Kategori Pinned
+          </h3>
+          <div id="pinnedTagsList" class="flex flex-col gap-2"></div>
+        </div>
+
+        <div class="border-t border-[var(--border-color)] pt-4">
+          <h3 class="text-xs text-gray-400 uppercase tracking-widest mb-3">Semua Kategori</h3>
+          <div id="dynamicTagsList" class="flex flex-col gap-2"></div>
+        </div>
+
+        <div class="border-t border-[var(--border-color)] pt-4">
+          <h3 class="text-xs text-gray-400 uppercase tracking-widest mb-3">Saluran Resmi</h3>
+          <div class="grid grid-cols-1 gap-2">
+            <a href="https://whatsapp.com/channel/0029VaUl8HRBqbr8aHIeDW0s" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-emerald-500 text-black font-bold text-xs hover:bg-emerald-400 transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.234.002 9.493-4.254 9.495-9.491.002-2.54-1.01-4.922-2.85-6.766-1.841-1.844-4.288-2.86-6.83-2.861-5.241 0-9.503 4.257-9.505 9.496-.001 1.734.502 3.426 1.457 4.912L1.393 21.6l4.63-1.215-.1-.08-.106-.11-.17-.119zm12.385-6.61c-.333-.167-1.97-.972-2.275-1.083-.306-.113-.528-.167-.75.167-.221.333-.857 1.083-1.05 1.306-.194.222-.389.25-.722.083-.333-.167-1.408-.52-2.681-1.656-.99-.883-1.658-1.973-1.853-2.306-.194-.333-.02-.513.146-.68.15-.15.333-.389.5-.583.167-.195.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.75-1.807-1.028-2.478-.27-.652-.544-.564-.748-.574-.194-.01-.417-.012-.64-.012-.221 0-.583.083-.888.417-.306.333-1.166 1.139-1.166 2.778 0 1.64 1.194 3.22 1.361 3.444.167.222 2.35 3.589 5.694 5.034.795.343 1.417.549 1.9.704.8.254 1.528.218 2.103.132.64-.096 1.97-.806 2.247-1.583.278-.78.278-1.445.194-1.583-.083-.139-.306-.222-.639-.389z"/></svg>
+              WhatsApp
+            </a>
+            <a href="https://youtube.com/@axelufey" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-red-600 text-white font-bold text-xs hover:bg-red-500 transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube Utama
+            </a>
+            <a href="https://youtube.com/@maxmodw" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-red-500 text-white font-bold text-xs hover:bg-red-400 transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              YouTube Cadangan
+            </a>
+            <a href="https://www.instagram.com/maxl3rd" target="_blank" class="flex items-center gap-2 p-3 rounded-2xl bg-[#ff71cd] text-black font-bold text-xs hover:bg-[#f05cb8] transition-colors">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-[var(--border-color)] pt-4 mt-auto">
+        <button id="btnNavAdmin" onclick="toggleAdminPanel(); toggleSidebarDrawer()" class="btn w-full">Panel Admin</button>
+        <button id="btnLogOut" onclick="logoutAdmin(); toggleSidebarDrawer()" class="hidden btn btn-secondary w-full mt-2">Keluar Mode</button>
+      </div>
+    </div>
+  </div>
+  <div id="sidebarBackdrop" onclick="toggleSidebarDrawer()"></div>
+
+  <!-- ===== LOGIN MODAL ===== -->
+  <div id="loginSection" class="modal-overlay">
+    <div class="modal-box">
+      <button onclick="closeLoginModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center font-bold">✕</button>
+      <h2 class="font-syne font-extrabold text-2xl mb-6 uppercase">Verifikasi Admin</h2>
+      <div class="space-y-4">
+        <input type="text" id="adminUser" placeholder="Username" class="input-field" />
+        <input type="password" id="adminPass" placeholder="Password" class="input-field" />
+        <button onclick="attemptLogin()" class="btn w-full">Masuk Sekarang</button>
       </div>
     </div>
   </div>
 
-  <!-- ================= TOP NAVIGATION BAR (TIDAK IKUT SCROLL - RELATIVE) ================= -->
-  <nav class="bg-white text-black brutal-border brutal-shadow p-4 relative z-30 max-w-4xl mx-auto mt-4 flex items-center justify-between gap-4 !rounded-none">
-    <div class="flex items-center gap-3">
-      <!-- TOMBOL GARIS TIGA -->
-      <button onclick="toggleSidebarDrawer()" class="bg-[#FFECEC] text-black border-4 border-black p-3 brutal-shadow-sm brutal-btn hover:bg-yellow-300 font-extrabold text-2xl flex items-center justify-center h-12 w-12 shrink-0 !rounded-none" title="Buka Sidebar Menu">
-        M
-      </button>
-      <div>
-        <span class="font-syne font-extrabold text-lg tracking-tight uppercase block leading-tight">AXELUF</span>
-        <span class="text-[9px] uppercase tracking-wider font-extrabold bg-[#4CCD99] px-1.5 py-0.5 brutal-border-sm text-black !rounded-none">Official Portal</span>
+  <!-- ===== TOP BAR ===== -->
+  <div class="bg-black text-white py-1.5 px-4 flex flex-wrap items-center justify-between gap-2 text-[10px] font-bold">
+    <span>AXELUF V4.5 Premium</span>
+    <div class="flex items-center gap-3 flex-wrap">
+      <button id="btnToggleSound" onclick="toggleSound()" class="bg-zinc-800 px-3 py-0.5 rounded-full hover:bg-zinc-700 transition-colors text-[10px]">Suara: Aktif</button>
+      <div class="flex items-center gap-1">
+        <span>Tema:</span>
+        <button onclick="changeTheme('green')" class="w-4 h-4 rounded-full bg-[#7ee850] border border-white" title="Lime"></button>
+        <button onclick="changeTheme('pink')" class="w-4 h-4 rounded-full bg-[#ff71cd] border border-white" title="Pink"></button>
+        <button onclick="changeTheme('mint')" class="w-4 h-4 rounded-full bg-[#4ccd99] border border-white" title="Mint"></button>
+        <button onclick="changeTheme('dark')" class="w-4 h-4 rounded-full bg-[#121214] border border-white" title="Dark"></button>
+        <button onclick="changeTheme('orange')" class="w-4 h-4 rounded-full bg-[#ff8a08] border border-white" title="Orange"></button>
       </div>
     </div>
-    
-    <div class="flex items-center gap-2">
-      <div class="relative w-10 h-10 shrink-0">
-        <img id="navLogoMin" class="w-full h-full bg-emerald-400 brutal-border-sm object-cover !rounded-none" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo">
+  </div>
+
+  <!-- ===== BROADCAST BAR ===== -->
+  <div id="broadcastBar" class="bg-black text-white py-1.5 border-b border-zinc-800 font-extrabold text-[11px] uppercase ticker-wrap relative z-30">
+    <div class="ticker-content inline-flex gap-12" id="broadcastTextContainer">
+      <span>⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF</span>
+      <span>⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru</span>
+    </div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav class="max-w-5xl mx-auto px-4 pt-4">
+    <div class="card p-4 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <button onclick="toggleSidebarDrawer()" class="w-10 h-10 rounded-2xl bg-[var(--border-color)] hover:bg-[var(--accent-color)]/30 transition-colors flex items-center justify-center text-xl font-bold">☰</button>
+        <div>
+          <span class="font-syne font-extrabold text-lg tracking-tight uppercase block leading-tight">AXELUF</span>
+          <span class="text-[9px] uppercase tracking-wider font-bold bg-[var(--accent-color)] px-2 py-0.5 rounded-full text-black">Official Portal</span>
+        </div>
+      </div>
+      <div class="w-10 h-10 rounded-2xl overflow-hidden border border-[var(--border-color)] shrink-0">
+        <img id="navLogoMin" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo" />
       </div>
     </div>
   </nav>
 
-  <div class="max-w-4xl mx-auto px-4 pt-4">
+  <!-- ===== MAIN ===== -->
+  <main class="max-w-5xl mx-auto px-4 pt-4 pb-16">
 
-    <!-- ================= MODERN PROFILE SECTION WITH BANNER BEHIND IT ================= -->
-    <div class="w-full bg-white brutal-border brutal-shadow mb-8 overflow-hidden relative !rounded-none">
-      <!-- YouTube Style Banner Background -->
-      <div id="webBannerWrapper" class="relative w-full h-48 sm:h-64 bg-zinc-900 border-b-4 border-black overflow-hidden flex items-center justify-center">
-        <img id="webBannerImage" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200" alt="Banner YouTube" class="w-full h-full object-cover select-none">
+    <!-- ===== PROFILE BANNER ===== -->
+    <div class="card overflow-hidden mb-8">
+      <div class="relative w-full h-48 sm:h-56 bg-zinc-900 overflow-hidden">
+        <img id="webBannerImage" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200" alt="Banner" />
       </div>
-
-      <!-- Container Profil & Deskripsi -->
-      <div id="headerProfileContainer" class="p-6 pt-0 relative flex flex-col items-start text-left gap-4">
-        <!-- Avatar Foto Profil Bulat Menimpa Banner -->
-        <div class="relative -mt-16 sm:-mt-20 z-10">
-          <img id="mainLogo" class="w-28 h-28 sm:w-36 sm:h-36 bg-emerald-400 brutal-border brutal-shadow object-cover !rounded-none" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo">
+      <div id="headerProfileContainer" class="p-6 pt-0 relative flex flex-col items-start gap-4">
+        <div class="relative -mt-14 sm:-mt-16 z-10">
+          <img id="mainLogo" class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl border-4 border-white shadow-soft object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo" />
         </div>
-
-        <!-- Text Title & Subtitle Portal -->
-        <div class="w-full">
-          <h1 id="mainTitleText" class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight uppercase text-black leading-tight">AXELUF</h1>
-          <p id="mainSubtitleText" class="text-xs font-bold bg-[#FF8A08] inline-block px-3 py-1.5 brutal-border mt-2 rounded-none text-black !rounded-none">
-            LINK MOD BERSIH DAN NO SCAM
-          </p>
+        <div>
+          <h1 id="mainTitleText" class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight uppercase leading-tight">AXELUF</h1>
+          <p id="mainSubtitleText" class="text-xs font-bold bg-[var(--accent-color)] inline-block px-3 py-1.5 rounded-full mt-2 text-black">Link Mod Bersih & No Scam</p>
         </div>
       </div>
     </div>
 
-    <!-- ================= LOGIN MODAL ================= -->
-    <div id="loginSection" class="hidden fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4">
-      <div class="bg-[#4CCD99] text-black brutal-border brutal-shadow-lg w-full max-w-md p-6 relative !rounded-none">
-        <button onclick="closeLoginModal()" class="absolute -top-3 -right-3 bg-white brutal-border w-10 h-10 flex items-center justify-center font-bold text-xl hover:bg-red-400 !rounded-none">X</button>
-        
-        <h2 class="font-syne font-extrabold text-2xl mb-6 uppercase tracking-tight">VERIFIKASI ADMIN</h2>
-        
-        <div class="space-y-4">
-          <div>
-            <label class="block font-bold mb-1 uppercase text-xs tracking-wider">Username</label>
-            <input type="text" id="adminUser" placeholder="Masukkan username" class="w-full brutal-border p-3 font-bold bg-white focus:outline-none focus:bg-[#FFF5C3] text-black !rounded-none">
-          </div>
-          <div>
-            <label class="block font-bold mb-1 uppercase text-xs tracking-wider">Password</label>
-            <input type="password" id="adminPass" placeholder="Masukkan password" class="w-full brutal-border p-3 font-bold bg-white focus:outline-none focus:bg-[#FFF5C3] text-black !rounded-none">
-          </div>
-          
-          <button onclick="attemptLogin()" class="w-full bg-[#FF8A08] font-bold uppercase py-3 brutal-border brutal-shadow-sm brutal-btn mt-4 text-black !rounded-none">
-            MASUK SEKARANG
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================= ADMIN DASHBOARD ================= -->
-    <section id="adminDashboard" class="hidden bg-[#FFF5C3] text-black brutal-border brutal-shadow p-6 mb-8 !rounded-none">
-      <div class="flex justify-between items-center border-b-4 border-black pb-4 mb-6">
-        <h2 class="font-syne font-bold text-2xl uppercase">Kelola Website dan Mod</h2>
-        <span class="bg-[#4CCD99] px-3 py-1 brutal-border text-xs font-bold uppercase border-black text-black !rounded-none">Mode Admin</span>
+    <!-- ===== ADMIN DASHBOARD ===== -->
+    <section id="adminDashboard" class="hidden card p-6 mb-8">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--border-color)] pb-4 mb-6">
+        <h2 class="font-syne font-bold text-2xl uppercase">Kelola Website</h2>
+        <span class="bg-[var(--accent-color)] px-3 py-1 rounded-full text-xs font-bold uppercase">Mode Admin</span>
       </div>
 
-      <!-- Tab Dashboard -->
       <div class="flex flex-wrap gap-2 mb-6">
-        <button onclick="switchAdminTab('mod')" id="tabMod" class="bg-black text-white px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none">Kelola Link Mod</button>
-        <button onclick="switchAdminTab('branding')" id="tabBranding" class="bg-white text-black px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none">Pengaturan Web dan Latar Belakang</button>
-        <button onclick="switchAdminTab('social')" id="tabSocial" class="bg-white text-black px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none">Atur Credit Sosmed</button>
-        <button onclick="switchAdminTab('pinning')" id="tabPinning" class="bg-white text-black px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none">Pin Kategori</button>
+        <button onclick="switchAdminTab('mod')" id="tabMod" class="tab-btn active">Kelola Mod</button>
+        <button onclick="switchAdminTab('branding')" id="tabBranding" class="tab-btn">Branding</button>
+        <button onclick="switchAdminTab('social')" id="tabSocial" class="tab-btn">Sosmed</button>
+        <button onclick="switchAdminTab('pinning')" id="tabPinning" class="tab-btn">Pin Kategori</button>
       </div>
 
-      <!-- TAB 1: KELOLA LINK MOD -->
+      <!-- TAB MOD -->
       <div id="adminTabModContent">
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 mb-8 text-black !rounded-none">
-          <h3 id="formTitle" class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF8A08]">Tambah Mod Baru</h3>
-          
-          <input type="hidden" id="editIndex" value="">
+        <div class="card-soft p-5 mb-8">
+          <h3 id="formTitle" class="font-syne font-extrabold text-lg uppercase mb-4 text-[#ff8a08]">Tambah Mod Baru</h3>
+          <input type="hidden" id="editIndex" value="" />
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Nama Aplikasi / Game Mod</label>
-              <input type="text" id="modName" placeholder="Contoh: Mobile Legends Mod Skin" class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Kategori (Tag) - Pisahkan dengan koma</label>
-              <input type="text" id="modTag" placeholder="Contoh: GAME, APK, PREMIUM, SKIN" class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            
-            <div class="md:col-span-2">
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Deskripsi Fitur Mod (Gunakan Enter untuk baris baru)</label>
-              <textarea id="modDesc" rows="4" placeholder="Sebutkan fitur unggulan mod..." class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black !rounded-none"></textarea>
-            </div>
-            
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Link Download Utama (Mediafire/Drive/dll)</label>
-              <input type="text" id="modUrl" placeholder="https://..." class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Info Password (Jika ada)</label>
-              <input type="text" id="modPassword" placeholder="Contoh: Password di Video Menit 04:20" class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-
-            <!-- UNGGUL GAMBAR DAN FILTER RASIO -->
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Link URL Gambar Mod</label>
-              <input type="text" id="modImageUrl" placeholder="https://..." class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Atau Unggah Gambar Lokal</label>
-              <input type="file" id="uploadModImageFile" accept="image/*" class="w-full brutal-border p-1.5 font-bold bg-white text-xs text-black !rounded-none">
-            </div>
-
-            <div class="md:col-span-2">
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Pilih Rasio/Tampilan Gambar</label>
-              <select id="modImageRatio" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs !rounded-none">
-                <option value="aspect-video object-cover">Rasio Video (16:9)</option>
-                <option value="aspect-square object-cover">Rasio Kotak (1:1)</option>
-                <option value="aspect-[9/16] object-cover">Rasio Vertikal (9:16)</option>
+            <div><label class="block font-bold text-xs uppercase mb-1">Nama Mod</label><input type="text" id="modName" placeholder="Mobile Legends Mod Skin" class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Kategori (pisah koma)</label><input type="text" id="modTag" placeholder="GAME, APK, SKIN" class="input-field" /></div>
+            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">Deskripsi</label><textarea id="modDesc" rows="4" placeholder="Fitur unggulan..." class="input-field"></textarea></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Link Download</label><input type="text" id="modUrl" placeholder="https://..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Password (jika ada)</label><input type="text" id="modPassword" placeholder="Password di video menit 04:20" class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">URL Gambar</label><input type="text" id="modImageUrl" placeholder="https://..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Gambar</label><input type="file" id="uploadModImageFile" accept="image/*" class="input-field input-field-sm" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Rasio Gambar</label>
+              <select id="modImageRatio" class="input-field">
+                <option value="aspect-video object-cover">16:9</option>
+                <option value="aspect-square object-cover">1:1</option>
+                <option value="aspect-[9/16] object-cover">9:16</option>
               </select>
             </div>
-
-            <!-- INPUT KHUSUS ADMIN MENGATUR VIEWS & LIKES SECARA MANUAL -->
-            <div class="p-3 bg-yellow-50 border-2 border-yellow-400 col-span-1 md:col-span-2 !rounded-none">
-              <h4 class="font-bold text-xs uppercase text-yellow-800 mb-2">PANEL STATISTIK ADMIN (MANUAL ADJUSTMENT)</h4>
-              <div class="grid grid-cols-2 gap-2">
-                <div>
-                  <label class="block text-[10px] font-bold uppercase text-gray-700">Set Views Manual</label>
-                  <input type="number" id="modViewsInput" placeholder="Ubah angka views..." class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-                </div>
-                <div>
-                  <label class="block text-[10px] font-bold uppercase text-gray-700">Set Likes Manual</label>
-                  <input type="number" id="modLikesInput" placeholder="Ubah angka likes..." class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-                </div>
+            <div class="md:col-span-2 p-4 bg-yellow-50 rounded-2xl border border-yellow-400">
+              <h4 class="font-bold text-xs uppercase text-yellow-800 mb-2">Statistik Manual</h4>
+              <div class="grid grid-cols-2 gap-3">
+                <div><label class="block text-[10px] font-bold uppercase text-gray-600">Views</label><input type="number" id="modViewsInput" placeholder="0" class="input-field input-field-sm" /></div>
+                <div><label class="block text-[10px] font-bold uppercase text-gray-600">Likes</label><input type="number" id="modLikesInput" placeholder="0" class="input-field input-field-sm" /></div>
               </div>
             </div>
           </div>
 
-          <!-- KUSTOMISASI TOMBOL AKSI -->
-          <div class="mt-6 p-4 border-4 border-black bg-zinc-50 text-black !rounded-none">
-            <h4 class="font-syne font-extrabold text-sm uppercase mb-4 text-black border-b-2 border-black pb-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-              <span>Kustomisasi Tombol Aksi (Max 5 Link)</span>
-              <button type="button" onclick="addCustomLinkField()" class="bg-[#4CCD99] brutal-border-sm hover:bg-[#3ec08a] font-bold text-xs px-2.5 py-1 text-black !rounded-none">
-                + Tambah Tombol Manual
-              </button>
+          <!-- Custom Tombol -->
+          <div class="mt-6 p-4 border border-[var(--border-color)] rounded-2xl">
+            <h4 class="font-syne font-extrabold text-sm uppercase mb-4 flex flex-wrap items-center justify-between gap-2">
+              <span>Tombol Kustom (max 5)</span>
+              <button type="button" onclick="addCustomLinkField()" class="btn btn-sm">+ Tambah</button>
             </h4>
+            <div id="customLinksContainer" class="space-y-4 mb-6"></div>
 
-            <div id="customLinksContainer" class="space-y-4 mb-6">
-              <!-- Field tombol dinamis dimasukkan di sini via JavaScript -->
-            </div>
-
-            <!-- KELOLA PRESET TOMBOL CUSTOM -->
-            <div class="border-t-4 border-dashed border-black pt-4">
-              <h5 class="font-extrabold text-xs uppercase mb-3 text-purple-700">Kelola Preset Tombol Anda (Cloud Persisted)</h5>
-              
-              <!-- Form Save/Edit Preset -->
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-purple-50 p-3 border-2 border-black mb-4 !rounded-none">
-                <input type="hidden" id="editPresetIndex" value="">
-                <div>
-                  <label class="block text-[9px] font-bold uppercase text-purple-900">Teks Preset</label>
-                  <input type="text" id="presetLabel" placeholder="Cara Pasang" class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-                </div>
-                <div>
-                  <label class="block text-[9px] font-bold uppercase text-purple-900">URL Preset</label>
-                  <input type="text" id="presetUrl" placeholder="https://..." class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-                </div>
-                <div class="flex items-end gap-1.5">
-                  <div class="flex-1">
-                    <label class="block text-[9px] font-bold uppercase text-purple-900">Pilih Ikon</label>
-                    <select id="presetIcon" class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-                      <option value="video">Tutorial Video</option>
-                      <option value="download">Download File</option>
-                      <option value="chat">Obrolan / Grup</option>
-                      <option value="key">Password / Key</option>
-                      <option value="globe">Situs Web</option>
-                    </select>
-                  </div>
-                  <div class="flex gap-1">
-                    <button type="button" onclick="saveCustomPreset()" id="btnSavePreset" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-3 py-1.5 text-xs brutal-border-sm !rounded-none">
-                      Simpan
-                    </button>
-                    <button type="button" onclick="clearPresetForm()" id="btnCancelPreset" class="hidden bg-gray-200 text-black font-bold px-2 py-1.5 text-xs brutal-border-sm !rounded-none">
-                      Batal
-                    </button>
-                  </div>
+            <div class="border-t border-[var(--border-color)] pt-4">
+              <h5 class="font-extrabold text-xs uppercase mb-3 text-purple-600">Preset Tombol</h5>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-purple-50 p-3 rounded-2xl border border-purple-200 mb-4">
+                <input type="hidden" id="editPresetIndex" value="" />
+                <input type="text" id="presetLabel" placeholder="Label" class="input-field input-field-sm" />
+                <input type="text" id="presetUrl" placeholder="URL" class="input-field input-field-sm" />
+                <div class="flex items-end gap-1">
+                  <select id="presetIcon" class="input-field input-field-sm flex-1">
+                    <option value="video">🎬 Video</option>
+                    <option value="download">⬇ Download</option>
+                    <option value="chat">💬 Chat</option>
+                    <option value="key">🔑 Key</option>
+                    <option value="globe">🌐 Web</option>
+                  </select>
+                  <button type="button" onclick="saveCustomPreset()" id="btnSavePreset" class="btn btn-sm">Simpan</button>
+                  <button type="button" onclick="clearPresetForm()" id="btnCancelPreset" class="hidden btn btn-secondary btn-sm">Batal</button>
                 </div>
               </div>
-
-              <!-- List Quick Presets -->
-              <div id="customPresetButtonList" class="flex flex-wrap gap-2">
-                <!-- Preset buttons rendered via JS -->
-              </div>
+              <div id="customPresetButtonList" class="flex flex-wrap gap-2"></div>
             </div>
           </div>
 
-          <div class="flex gap-2 mt-6">
-            <button onclick="saveMod()" class="flex-1 bg-[#4CCD99] font-bold uppercase py-2.5 brutal-border brutal-shadow-sm brutal-btn-sm text-sm text-black !rounded-none">
-              Simpan Link Mod ke Server
-            </button>
-            <button onclick="clearForm()" class="bg-gray-200 font-bold uppercase py-2.5 px-4 brutal-border text-sm text-black !rounded-none">
-              Reset Form
-            </button>
+          <div class="flex flex-wrap gap-3 mt-6">
+            <button onclick="saveMod()" class="btn flex-1">Simpan Mod ⚡</button>
+            <button onclick="clearForm()" class="btn btn-secondary">Reset</button>
           </div>
         </div>
 
         <div>
-          <h3 class="font-bold text-lg uppercase mb-3 text-black">List Link Aktif</h3>
-          <div class="overflow-x-auto brutal-border !rounded-none">
-            <table class="w-full bg-white text-left text-sm border-collapse">
-              <thead>
-                <tr class="bg-black text-white uppercase font-bold text-xs">
-                  <th class="p-3 border-r border-gray-700">Preview</th>
-                  <th class="p-3 border-r border-gray-700">Nama Mod</th>
-                  <th class="p-3 border-r border-gray-700">Kategori</th>
+          <h3 class="font-bold text-lg uppercase mb-3">Daftar Mod</h3>
+          <div class="card-soft overflow-hidden">
+            <table class="w-full text-left text-sm">
+              <thead class="bg-black text-[var(--accent-color)] uppercase font-bold text-xs">
+                <tr>
+                  <th class="p-3">Preview</th>
+                  <th class="p-3">Nama</th>
+                  <th class="p-3">Kategori</th>
                   <th class="p-3">Aksi</th>
                 </tr>
               </thead>
-              <tbody id="adminTableBody" class="divide-y divide-black font-bold">
-                <!-- Rendered via JS -->
-              </tbody>
+              <tbody id="adminTableBody" class="divide-y divide-[var(--border-color)]"></tbody>
             </table>
           </div>
         </div>
       </div>
 
-      <!-- TAB 2: BRANDING & LATAR BELAKANG / BANNER -->
+      <!-- TAB BRANDING -->
       <div id="adminTabBrandingContent" class="hidden space-y-6">
-        <!-- BRANDING UTAMA -->
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 !rounded-none">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#8D00FF]">Ubah Branding Utama Web</h3>
+        <div class="card-soft p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-purple-600">Branding Utama</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Nama Web Utama</label>
-              <input type="text" id="setMainTitle" placeholder="AXELUF" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Slogan / Subtitle</label>
-              <input type="text" id="setMainSubtitle" placeholder="LINK MOD BERSIH DAN NO SCAM" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div class="md:col-span-2">
-              <label class="block font-bold mb-1 text-xs uppercase text-purple-700">Link URL Foto Profil Web Utama</label>
-              <input type="text" id="setMainLogoUrl" placeholder="https://..." class="w-full brutal-border p-2.5 font-bold bg-white text-xs text-black !rounded-none">
-            </div>
-
-            <!-- SETTING POSISI FOTO PROFIL -->
-            <div class="md:col-span-2 p-3 bg-indigo-50 border-2 border-indigo-400 !rounded-none">
-              <label class="block font-bold mb-1 text-xs uppercase text-indigo-900">Pengaturan Posisi Foto Profil Header</label>
-              <select id="setProfilePosition" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs !rounded-none">
-                <option value="items-start text-left">Rata Kiri (Left Alignment)</option>
-                <option value="items-center text-center">Rata Tengah (Center Alignment)</option>
-                <option value="items-end text-right">Rata Kanan (Right Alignment)</option>
+            <div><label class="block font-bold text-xs uppercase mb-1">Nama Web</label><input type="text" id="setMainTitle" placeholder="AXELUF" class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Subtitle</label><input type="text" id="setMainSubtitle" placeholder="LINK MOD BERSIH" class="input-field" /></div>
+            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">URL Logo</label><input type="text" id="setMainLogoUrl" placeholder="https://..." class="input-field" /></div>
+            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">Posisi Profil</label>
+              <select id="setProfilePosition" class="input-field">
+                <option value="items-start text-left">Kiri</option>
+                <option value="items-center text-center">Tengah</option>
+                <option value="items-end text-right">Kanan</option>
               </select>
             </div>
           </div>
-          <button onclick="saveBranding()" class="mt-4 bg-[#8D00FF] text-white font-bold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs !rounded-none">
-            Terapkan Perubahan Branding & Posisi
-          </button>
+          <button onclick="saveBranding()" class="btn mt-4">Terapkan Branding</button>
         </div>
 
-        <!-- SETTING RUNNING TEXT & TIMEOUT SAFELINK -->
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 !rounded-none">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF55BB]">Pengaturan Pengumuman & Safelink</h3>
+        <div class="card-soft p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-pink-500">Pengumuman & Safelink</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Teks Pengumuman Berjalan (Gunakan | untuk pemisah)</label>
-              <input type="text" id="setBroadcastText" placeholder="Teks Pengumuman..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs !rounded-none">
-            </div>
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Waktu Hitung Mundur Safelink (Detik)</label>
-              <input type="number" id="setSafelinkTime" min="3" max="30" placeholder="5" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs !rounded-none">
-            </div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Teks Berjalan (pisah |)</label><input type="text" id="setBroadcastText" placeholder="Teks..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Safelink Timer (detik)</label><input type="number" id="setSafelinkTime" min="3" max="30" placeholder="5" class="input-field" /></div>
           </div>
-          <button onclick="saveSafelinkAndBroadcast()" class="mt-4 bg-[#FF55BB] text-black font-extrabold py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs uppercase !rounded-none">
-            Simpan Konfigurasi Portal
-          </button>
+          <button onclick="saveSafelinkAndBroadcast()" class="btn mt-4">Simpan Konfigurasi</button>
         </div>
 
-        <!-- PENGATURAN BANNER YOUTUBE -->
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 !rounded-none">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-emerald-600">Pengaturan Banner Website (Di Belakang Profil)</h3>
+        <div class="card-soft p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-emerald-600">Banner Website</h3>
           <div class="space-y-4">
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">URL Gambar Banner</label>
-              <input type="text" id="setBannerUrl" placeholder="https://..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs !rounded-none">
-            </div>
-            <div class="p-3 bg-zinc-50 border-2 border-dashed border-black !rounded-none">
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Atau Unggah Gambar Banner Lokal (Mendukung 16:9)</label>
-              <input type="file" id="uploadBannerFile" accept="image/*" class="w-full text-xs font-bold text-gray-700">
-            </div>
+            <div><label class="block font-bold text-xs uppercase mb-1">URL Banner</label><input type="text" id="setBannerUrl" placeholder="https://..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Banner</label><input type="file" id="uploadBannerFile" accept="image/*" class="input-field input-field-sm" /></div>
           </div>
-          <button onclick="saveBannerConfig()" class="mt-4 bg-emerald-500 text-black font-extrabold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs !rounded-none">
-            Terapkan Perubahan Banner
-          </button>
+          <button onclick="saveBannerConfig()" class="btn mt-4">Terapkan Banner</button>
         </div>
 
-        <!-- PENGATURAN LATAR BELAKANG -->
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 !rounded-none">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF8A08]">Atur Gambar Latar Belakang (Background)</h3>
+        <div class="card-soft p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-orange-500">Latar Belakang</h3>
           <div class="space-y-4">
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Link Gambar Latar Belakang</label>
-              <input type="text" id="setBackgroundUrl" placeholder="https://..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs !rounded-none">
-            </div>
-            <div class="p-3 bg-zinc-50 border-2 border-dashed border-black !rounded-none">
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Atau Unggah Latar Belakang Lokal</label>
-              <input type="file" id="uploadBgFile" accept="image/*" class="w-full text-xs font-bold text-gray-700">
-            </div>
-            <div class="flex gap-2">
-              <button onclick="saveBackgroundConfig()" class="bg-[#FF8A08] text-black font-extrabold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs !rounded-none">
-                Simpan Background
-              </button>
-              <button onclick="resetBackgroundConfig()" class="bg-gray-200 text-black font-extrabold uppercase py-2 px-4 brutal-border text-xs !rounded-none">
-                Gunakan Warna Tema Default
-              </button>
-            </div>
+            <div><label class="block font-bold text-xs uppercase mb-1">URL Background</label><input type="text" id="setBackgroundUrl" placeholder="https://..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Unggah Background</label><input type="file" id="uploadBgFile" accept="image/*" class="input-field input-field-sm" /></div>
+          </div>
+          <div class="flex flex-wrap gap-3 mt-4">
+            <button onclick="saveBackgroundConfig()" class="btn">Simpan Background</button>
+            <button onclick="resetBackgroundConfig()" class="btn btn-secondary">Reset ke Default</button>
           </div>
         </div>
 
-        <!-- SIMULASI BAN -->
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 !rounded-none">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-red-600">Simulasi Ban Pengguna</h3>
-          <p class="text-xs text-gray-500 mb-4">Kamu bisa memblokir sementara pengunjung website untuk menguji keamanan atau sebagai gimmick bercandaan di video YouTube-mu!</p>
-          
-          <div class="flex flex-col sm:flex-row gap-3">
-            <button onclick="triggerBanScreen()" class="bg-red-600 text-white font-bold uppercase py-2.5 px-6 brutal-border brutal-shadow-sm brutal-btn text-xs !rounded-none">
-              Simulasi BAN PERANGKAT SAYA (Coba Layar Ban)
-            </button>
-            <button onclick="clearAllBans()" class="bg-gray-200 text-black font-bold uppercase py-2.5 px-6 brutal-border brutal-shadow-sm brutal-btn text-xs !rounded-none">
-              Kosongkan Ban List
-            </button>
+        <div class="card-soft p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-red-600">Simulasi Ban</h3>
+          <p class="text-sm text-gray-500 mb-4">Blokir pengunjung untuk keperluan testing atau gimmick.</p>
+          <div class="flex flex-wrap gap-3">
+            <button onclick="triggerBanScreen()" class="btn btn-danger">Ban Perangkat Saya</button>
+            <button onclick="clearAllBans()" class="btn btn-secondary">Hapus Ban</button>
           </div>
         </div>
       </div>
 
-      <!-- TAB 3: CREDIT SOSMED MANAGER -->
+      <!-- TAB SOSMED -->
       <div id="adminTabSocialContent" class="hidden space-y-6">
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 !rounded-none">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF55BB]">Kelola Credit Sosmed (Footer)</h3>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Platform (Contoh: YouTube, TikTok, IG)</label>
-              <input type="text" id="credPlatform" placeholder="Contoh: YouTube" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Username / Handle</label>
-              <input type="text" id="credHandle" placeholder="Contoh: @axelufey" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div class="md:col-span-2">
-              <label class="block font-bold mb-1 text-xs uppercase text-black">URL Profil Sosmed</label>
-              <input type="text" id="credUrl" placeholder="https://..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Warna Latar Belakang Tombol</label>
-              <select id="credColor" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black !rounded-none">
-                <option value="#FF6B6B">Merah Brutalist (#FF6B6B)</option>
-                <option value="#4CCD99">Hijau Brutalist (#4CCD99)</option>
-                <option value="#FF8A08">Oranye Terang (#FF8A08)</option>
-                <option value="#8D00FF">Ungu Cyber (#8D00FF)</option>
-                <option value="#FF71CD">Pink Neon (#FF71CD)</option>
+        <div class="card-soft p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-pink-500">Kelola Credit Sosmed</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div><label class="block font-bold text-xs uppercase mb-1">Platform</label><input type="text" id="credPlatform" placeholder="YouTube" class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Handle</label><input type="text" id="credHandle" placeholder="@axelufey" class="input-field" /></div>
+            <div class="md:col-span-2"><label class="block font-bold text-xs uppercase mb-1">URL</label><input type="text" id="credUrl" placeholder="https://..." class="input-field" /></div>
+            <div><label class="block font-bold text-xs uppercase mb-1">Warna</label>
+              <select id="credColor" class="input-field">
+                <option value="#7ee850">Hijau Lime</option>
+                <option value="#4ccd99">Hijau Mint</option>
+                <option value="#ff8a08">Oranye</option>
+                <option value="#8d00ff">Ungu</option>
+                <option value="#ff71cd">Pink</option>
               </select>
             </div>
           </div>
-          
-          <button onclick="addCredit()" class="bg-[#FF55BB] text-black font-bold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs !rounded-none">
-            Tambah Credit Baru
-          </button>
-
-          <!-- List Credit Aktif -->
-          <div class="mt-8 border-t-2 border-black pt-4">
-            <h4 class="font-bold text-sm uppercase mb-3 text-black">Daftar Credit Sosmed Aktif:</h4>
-            <div id="adminCreditsList" class="space-y-2">
-              <!-- Rendered via JS -->
-            </div>
+          <button onclick="addCredit()" class="btn mt-4">Tambah Credit</button>
+          <div class="mt-6 border-t border-[var(--border-color)] pt-4">
+            <h4 class="font-bold text-sm uppercase mb-3">Daftar Credit</h4>
+            <div id="adminCreditsList" class="space-y-2"></div>
           </div>
         </div>
       </div>
 
-      <!-- TAB 4: PINNING KATEGORI -->
+      <!-- TAB PINNING -->
       <div id="adminTabPinningContent" class="hidden space-y-6">
-        <div class="bg-white brutal-border brutal-shadow-sm p-5 !rounded-none">
-          <h3 class="font-syne font-extrabold text-lg uppercase mb-2 text-red-500">Pin Kategori Penting ke Menu Sidebar</h3>
-          <p class="text-xs text-gray-500 mb-4">Tandai kategori yang ingin kamu tampilkan paling atas di navigasi sidebar agar pengunjung langsung menemukan isi game/apk unggulanmu.</p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-            <div>
-              <label class="block font-bold mb-1 text-xs uppercase text-black">Nama Kategori yang akan di-pin</label>
-              <input type="text" id="pinTagName" placeholder="Contoh: MLBB atau GAME" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black !rounded-none">
-            </div>
-            <button onclick="addPinnedTag()" class="bg-red-500 text-white font-extrabold uppercase py-3 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs !rounded-none">
-              Sematkan Kategori Ini!
-            </button>
+        <div class="card-soft p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-2 text-red-500">Pin Kategori</h3>
+          <p class="text-sm text-gray-500 mb-4">Sematkan kategori ke menu sidebar agar lebih terlihat.</p>
+          <div class="flex flex-col sm:flex-row gap-3 items-end">
+            <div class="flex-1"><label class="block font-bold text-xs uppercase mb-1">Nama Kategori</label><input type="text" id="pinTagName" placeholder="MLBB" class="input-field" /></div>
+            <button onclick="addPinnedTag()" class="btn">Sematkan</button>
           </div>
-
-          <div class="mt-6 border-t-2 border-black pt-4">
-            <h4 class="font-bold text-sm uppercase mb-3 text-black">Daftar Kategori yang Di-pin:</h4>
-            <div id="pinnedTagsAdminList" class="flex flex-wrap gap-2">
-              <!-- Rendered via JS -->
-            </div>
+          <div class="mt-6 border-t border-[var(--border-color)] pt-4">
+            <h4 class="font-bold text-sm uppercase mb-3">Kategori Terpin</h4>
+            <div id="pinnedTagsAdminList" class="flex flex-wrap gap-2"></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ================= VIEW 3: HALAMAN UTAMA (PUBLIC) ================= -->
-    <main class="text-black">
-      <!-- Active Filter Indicator -->
-      <div id="activeFilterBadge" class="hidden bg-black text-white p-4 mb-6 brutal-border brutal-shadow-sm flex items-center justify-between !rounded-none">
-        <div class="flex items-center gap-2">
-          <svg class="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707"/></svg>
-          <span class="font-extrabold text-sm uppercase">Kategori Aktif: <span id="activeFilterLabel" class="text-[#FFDE4D] underline">GAME</span></span>
-        </div>
-        <button onclick="selectCategoryFilter('')" class="bg-[#FF6B6B] text-black brutal-border-sm hover:bg-red-400 font-extrabold text-xs px-3 py-1 uppercase active:translate-y-0.5 !rounded-none">
-          Tampilkan Semua X
-        </button>
+    <!-- ===== FILTER BADGE ===== -->
+    <div id="activeFilterBadge" class="hidden card-soft p-4 mb-6 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-yellow-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707"/></svg>
+        <span class="font-extrabold text-sm uppercase">Kategori: <span id="activeFilterLabel" class="text-[var(--accent-color)] underline">GAME</span></span>
       </div>
+      <button onclick="selectCategoryFilter('')" class="btn btn-danger btn-sm">Tampilkan Semua ✕</button>
+    </div>
 
-      <!-- Kolom Pencarian -->
-      <section class="mb-8">
-        <div class="bg-white text-black brutal-border brutal-shadow flex items-center !rounded-none">
-          <span class="px-4 text-xl">Q</span>
-          <input type="text" id="searchBar" oninput="renderPublicLinks()" placeholder="Cari APK Mod gampang di sini..." class="w-full p-4 font-bold text-lg focus:outline-none bg-transparent text-black !rounded-none">
-        </div>
-      </section>
-
-      <!-- Informasi Pengguna -->
-      <div class="bg-[#FF8A08] brutal-border brutal-shadow-sm p-4 mb-8 font-bold flex gap-3 items-center !rounded-none">
-        <svg class="w-6 h-6 text-black shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
-        <p class="text-xs sm:text-sm text-black">Bila download gagal atau file error, silakan tinggalkan komentar di video YouTube terbaru agar segera diperbarui oleh Axeluf!</p>
+    <!-- ===== SEARCH ===== -->
+    <section class="mb-6">
+      <div class="card-soft flex items-center overflow-hidden">
+        <svg class="w-5 h-5 ml-4 text-gray-400" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        <input type="text" id="searchBar" oninput="renderPublicLinks()" placeholder="Cari mod..." class="w-full p-4 font-bold text-lg bg-transparent outline-none text-[var(--text-color)]" />
       </div>
+    </section>
 
-      <!-- Container Cards Link Mod -->
-      <div id="linkContainer" class="space-y-8">
-        <!-- Rendered via JS -->
-      </div>
-    </main>
+    <!-- ===== INFO ===== -->
+    <div class="card-soft p-4 mb-6 flex items-center gap-3 bg-black text-white">
+      <svg class="w-6 h-6 shrink-0 text-[var(--accent-color)]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+      <p class="text-xs sm:text-sm text-zinc-300">Tautan mati? Laporkan di komentar YouTube resmi untuk perbaikan cepat oleh Axeluf.</p>
+    </div>
 
-    <!-- ================= FOOTER & CREDIT SOCIAL MEDIA ================= -->
-    <footer class="mt-16 bg-white text-black brutal-border brutal-shadow p-8 text-center font-bold !rounded-none">
-      <!-- Container Link Credit Dinamis -->
-      <div id="footerCreditsContainer" class="mb-6 flex flex-wrap items-center justify-center gap-4">
-        <!-- Rendered dynamically -->
-      </div>
+    <!-- ===== LINK CONTAINER ===== -->
+    <div id="linkContainer" class="space-y-6"></div>
 
-      <p class="font-syne font-bold uppercase tracking-wide text-sm">COPYRIGHT 2026 AXELUF - Developed by Axeluf</p>
-      <p class="text-[10px] text-gray-500 mt-2 font-mono">POWERED BY VERCEL SERVERLESS BACKEND WITH SUPABASE CORE</p>
+    <!-- ===== FOOTER ===== -->
+    <footer class="card p-8 mt-12 text-center">
+      <div id="footerCreditsContainer" class="mb-6 flex flex-wrap items-center justify-center gap-4"></div>
+      <p class="font-syne font-bold uppercase tracking-wide text-sm">COPYRIGHT 2026 AXELUF</p>
+      <p class="text-[10px] text-gray-400 mt-2 font-mono">POWERED BY VERCEL + SUPABASE</p>
     </footer>
 
-  </div>
+  </main>
 
-  <!-- Safe Client Side Execution Engine -->
-  <script type="text/javascript">
-    // --- API SERVERLESS RUTE ---
+  <!-- ============================================================ -->
+  <!-- ==================== JAVASCRIPT ENGINE ====================== -->
+  <script>
+    // ===== CONFIG =====
     const API_ENDPOINT = "/api/get-data";
 
-    // --- GLOBAL STATE ---
+    // ===== STATE =====
     let activeCategoryFilter = "";
     let pinnedTags = [];
-    let safelinkTimerValue = 5; 
+    let safelinkTimerValue = 5;
     let customPresets = [];
     let links = [];
     let credits = [];
     let isAdmin = false;
     let activeDeleteIndex = null;
     let antiSpamCounter = 0;
-
     const ADMIN_USER_KEY = "axeluf";
     const ADMIN_PASS_KEY = "brandalz70";
 
-    // --- SECURE CRYPTO UTILS ---
+    // ===== CRYPTO HELPERS =====
     function encodeSafe(str) {
       if (!str) return "";
-      try {
-        return btoa(unescape(encodeURIComponent(str)));
-      } catch (e) {
-        return str;
-      }
+      try { return btoa(unescape(encodeURIComponent(str))); } catch { return str; }
     }
-
     function decodeSafe(str) {
       if (!str) return "";
-      try {
-        return decodeURIComponent(escape(atob(str)));
-      } catch (e) {
-        return str; 
-      }
+      try { return decodeURIComponent(escape(atob(str))); } catch { return str; }
     }
 
-    // --- SIDEBAR DRAWER CONTROLLER ---
-    function toggleSidebarDrawer() {
-      playSynth('click');
-      const drawer = document.getElementById('sidebarDrawer');
-      const backdrop = document.getElementById('sidebarBackdrop');
-      const isOpen = !drawer.classList.contains('-translate-x-full');
-      
-      if (isOpen) {
-        drawer.classList.add('-translate-x-full');
-        backdrop.classList.add('hidden');
-        document.body.classList.remove('overflow-hidden');
-      } else {
-        drawer.classList.remove('-translate-x-full');
-        backdrop.classList.remove('hidden');
-        document.body.classList.add('overflow-hidden');
-      }
-    }
-
-    // --- SELECT CATEGORY FILTER ---
-    function selectCategoryFilter(category) {
-      playSynth('success');
-      activeCategoryFilter = category.trim().toUpperCase();
-      const filterBadge = document.getElementById('activeFilterBadge');
-      const filterLabel = document.getElementById('activeFilterLabel');
-
-      if (activeCategoryFilter) {
-        filterLabel.innerText = activeCategoryFilter;
-        filterBadge.classList.remove('hidden');
-        filterBadge.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        filterBadge.classList.add('hidden');
-      }
-      renderPublicLinks();
-    }
-
-    // --- UNIFIED API COMMUNICATION HELPER ---
+    // ===== API =====
     async function apiRequest(action, payload = {}) {
       try {
-        const response = await fetch(API_ENDPOINT, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
+        const res = await fetch(API_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action, ...payload })
         });
-        const result = await response.json();
-        if (!response.ok) {
-          throw new Error(result.message || 'API request failed');
-        }
-        return result.data;
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || "API error");
+        return data.data;
       } catch (err) {
-        console.error("Kesalahan API:", err);
-        showToast("Gagal berkomunikasi dengan API Serverless!", "error");
+        console.error("API error:", err);
+        showToast("Gagal komunikasi dengan server!", "error");
         return null;
       }
     }
 
-    // --- TOAST NOTIFICATION ---
-    function showToast(message, type = 'info') {
-      const toastBox = document.getElementById('toastBox');
-      const toastContent = document.getElementById('toastContent');
-      const toastIcon = document.getElementById('toastIcon');
-      const toastMessage = document.getElementById('toastMessage');
-
-      toastMessage.innerText = message;
-
-      if (type === 'success') {
-        toastIcon.innerText = "SUCCESS";
-        toastContent.className = "brutal-border brutal-shadow bg-[#4CCD99] p-4 font-bold text-lg flex items-center gap-3 text-black !rounded-none";
-      } else if (type === 'error') {
-        toastIcon.innerText = "ERROR";
-        toastContent.className = "brutal-border brutal-shadow bg-[#FF6B6B] p-4 font-bold text-lg flex items-center gap-3 text-black !rounded-none";
-      } else {
-        toastIcon.innerText = "INFO";
-        toastContent.className = "brutal-border brutal-shadow bg-white p-4 font-bold text-lg flex items-center gap-3 text-black !rounded-none";
-      }
-
-      toastBox.classList.remove('translate-y-20', 'opacity-0');
-      toastBox.classList.add('translate-y-0', 'opacity-100');
-
-      setTimeout(() => {
-        toastBox.classList.remove('translate-y-0', 'opacity-100');
-        toastBox.classList.add('translate-y-20', 'opacity-0');
-      }, 3000);
+    // ===== TOAST =====
+    function showToast(msg, type = "info") {
+      const box = document.getElementById("toastBox");
+      const icon = document.getElementById("toastIcon");
+      const text = document.getElementById("toastMessage");
+      text.innerText = msg;
+      const isSuccess = type === "success";
+      const isError = type === "error";
+      icon.innerHTML = isSuccess ? `<svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>` :
+        isError ? `<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>` :
+        `<svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`;
+      box.classList.add("show");
+      clearTimeout(box._timer);
+      box._timer = setTimeout(() => box.classList.remove("show"), 3200);
     }
 
-    // --- AUDIO RETRO SYNTH ---
+    // ===== SIDEBAR =====
+    function toggleSidebarDrawer() {
+      playSynth("click");
+      const d = document.getElementById("sidebarDrawer");
+      const b = document.getElementById("sidebarBackdrop");
+      const open = d.classList.toggle("open");
+      b.classList.toggle("show", open);
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+
+    // ===== AUDIO =====
     let audioCtx = null;
     let soundEnabled = true;
 
-    function getAudioContext() {
-      if (!audioCtx) {
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
+    function getAudioCtx() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       return audioCtx;
     }
 
     function toggleSound() {
       soundEnabled = !soundEnabled;
-      const btn = document.getElementById('btnToggleSound');
-      if (soundEnabled) {
-        btn.innerText = "SUARA: AKTIF";
-        btn.classList.replace('bg-zinc-600', 'bg-zinc-800');
-        playSynth('click');
-      } else {
-        btn.innerText = "SUARA: MATI";
-        btn.classList.replace('bg-zinc-800', 'bg-zinc-600');
-      }
+      document.getElementById("btnToggleSound").innerText = soundEnabled ? "Suara: Aktif" : "Suara: Mati";
+      if (soundEnabled) playSynth("click");
     }
 
     function playSynth(type) {
       if (!soundEnabled) return;
       try {
-        const ctx = getAudioContext();
-        if (ctx.state === 'suspended') ctx.resume();
-
+        const ctx = getAudioCtx();
+        if (ctx.state === "suspended") ctx.resume();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.connect(gain);
         gain.connect(ctx.destination);
         const now = ctx.currentTime;
-
-        if (type === 'click') {
-          osc.type = 'triangle';
+        if (type === "click") {
+          osc.type = "triangle";
           osc.frequency.setValueAtTime(450, now);
           osc.frequency.exponentialRampToValueAtTime(150, now + 0.1);
           gain.gain.setValueAtTime(0.12, now);
           gain.gain.linearRampToValueAtTime(0.01, now + 0.15);
           osc.start(now);
           osc.stop(now + 0.15);
-        } else if (type === 'success') {
-          osc.type = 'square';
-          osc.frequency.setValueAtTime(261.63, now); 
-          osc.frequency.setValueAtTime(329.63, now + 0.08); 
-          osc.frequency.setValueAtTime(392.00, now + 0.16); 
-          osc.frequency.setValueAtTime(523.25, now + 0.24); 
+        } else if (type === "success") {
+          osc.type = "square";
+          [261.63, 329.63, 392.00, 523.25].forEach((freq, i) => {
+            osc.frequency.setValueAtTime(freq, now + i * 0.08);
+          });
           gain.gain.setValueAtTime(0.08, now);
           gain.gain.linearRampToValueAtTime(0.01, now + 0.35);
           osc.start(now);
           osc.stop(now + 0.35);
-        } else if (type === 'delete') {
-          osc.type = 'sawtooth';
+        } else if (type === "delete") {
+          osc.type = "sawtooth";
           osc.frequency.setValueAtTime(300, now);
           osc.frequency.exponentialRampToValueAtTime(30, now + 0.3);
           gain.gain.setValueAtTime(0.12, now);
@@ -1015,1115 +894,670 @@
           osc.start(now);
           osc.stop(now + 0.3);
         }
-      } catch (err) {
-        console.warn("Audio Context blocked.");
-      }
+      } catch (_) {}
     }
 
-    // --- SYSTEM SVG ICON DICTIONARY ---
-    const SVG_ICONS = {
-      download: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
-      video: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-      chat: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>`,
-      key: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m0 0a2 2 0 01-2 2m2-2h1a2 2 0 012 2v3a2 2 0 01-2 2h-1m-5 3a5 5 0 01-9-3c0-2.76 2.24-5 5-5a4.912 4.912 0 012.35.6L15 2l5 5-5 5-3.65-3.6A4.965 4.965 0 0110 15z"/></svg>`,
-      globe: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>`
-    };
+    function triggerScreenShake() {
+      document.body.classList.add("shake");
+      setTimeout(() => document.body.classList.remove("shake"), 400);
+    }
 
-    // --- DATA LOADING DENGAN API SERVERLESS ---
+    // ===== SELECT CATEGORY =====
+    function selectCategoryFilter(cat) {
+      playSynth("success");
+      activeCategoryFilter = cat.trim().toUpperCase();
+      const badge = document.getElementById("activeFilterBadge");
+      document.getElementById("activeFilterLabel").innerText = activeCategoryFilter || "";
+      badge.classList.toggle("hidden", !activeCategoryFilter);
+      renderPublicLinks();
+    }
+
+    // ===== LOAD DATA =====
     async function loadAllDataFromDB() {
-      const overlay = document.getElementById('loadingOverlay');
-
-      // Ambil konfigurasi gabungan dari Serverless API
-      const settings = await apiRequest('get_all_settings');
-
+      const overlay = document.getElementById("loadingOverlay");
+      const settings = await apiRequest("get_all_settings");
       if (settings) {
-        document.getElementById('mainTitleText').innerText = settings.web_title || "AXELUF";
-        document.getElementById('setMainTitle').value = settings.web_title || "AXELUF";
-
-        document.getElementById('mainSubtitleText').innerText = settings.web_subtitle || "LINK MOD BERSIH DAN NO SCAM";
-        document.getElementById('setMainSubtitle').value = settings.web_subtitle || "LINK MOD BERSIH DAN NO SCAM";
-
-        const logo = settings.web_logo || "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200";
-        document.getElementById('mainLogo').src = logo;
-        document.getElementById('navLogoMin').src = logo;
-        document.getElementById('setMainLogoUrl').value = logo;
-
-        const alignmentClass = settings.profile_alignment || "items-start text-left";
-        const profileContainer = document.getElementById('headerProfileContainer');
-        profileContainer.className = `p-6 pt-0 relative flex flex-col ${alignmentClass} gap-4`;
-        document.getElementById('setProfilePosition').value = alignmentClass;
-
-        const bgImg = settings.web_background_image || "none";
-        if (bgImg && bgImg !== "none") {
-          document.documentElement.style.setProperty('--custom-bg-image', `url(${bgImg})`);
-          document.getElementById('setBackgroundUrl').value = bgImg;
+        document.getElementById("mainTitleText").innerText = settings.web_title || "AXELUF";
+        document.getElementById("setMainTitle").value = settings.web_title || "AXELUF";
+        document.getElementById("mainSubtitleText").innerText = settings.web_subtitle || "LINK MOD BERSIH DAN NO SCAM";
+        document.getElementById("setMainSubtitle").value = settings.web_subtitle || "LINK MOD BERSIH DAN NO SCAM";
+        const logo = settings.web_logo ||
+          "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200";
+        document.getElementById("mainLogo").src = logo;
+        document.getElementById("navLogoMin").src = logo;
+        document.getElementById("setMainLogoUrl").value = logo;
+        const align = settings.profile_alignment || "items-start text-left";
+        document.getElementById("headerProfileContainer").className =
+          `p-6 pt-0 relative flex flex-col ${align} gap-4`;
+        document.getElementById("setProfilePosition").value = align;
+        const bg = settings.web_background_image;
+        if (bg && bg !== "none") {
+          document.documentElement.style.setProperty("--custom-bg-image", `url(${bg})`);
+          document.getElementById("setBackgroundUrl").value = bg;
         }
-
-        const bannerImg = settings.web_banner_image || "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200";
-        document.getElementById('webBannerImage').src = bannerImg;
-        document.getElementById('setBannerUrl').value = bannerImg;
-
-        const rawBroadcast = settings.web_broadcast_text || "INFO RESMI: Pastikan selalu mengunduh link modifikasi di portal resmi AXELUF untuk menghindari malware! | UPDATE: Semua MLBB Skin dan Radar Map Mod aktif untuk patch musim terbaru 2026!";
-        document.getElementById('setBroadcastText').value = rawBroadcast;
-        updateBroadcastBanner(rawBroadcast);
-
+        const banner = settings.web_banner_image ||
+          "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200";
+        document.getElementById("webBannerImage").src = banner;
+        document.getElementById("setBannerUrl").value = banner;
+        const broadcast = settings.web_broadcast_text ||
+          "⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF | ⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru";
+        document.getElementById("setBroadcastText").value = broadcast;
+        updateBroadcastBanner(broadcast);
         safelinkTimerValue = parseInt(settings.web_safelink_time || "5");
-        document.getElementById('setSafelinkTime').value = safelinkTimerValue;
-
+        document.getElementById("setSafelinkTime").value = safelinkTimerValue;
         pinnedTags = settings.pinned_tags || [];
         credits = settings.credits || [];
         customPresets = settings.custom_presets || [];
         links = settings.links || [];
       }
-
       renderCredits();
       renderCustomPresets();
       renderPublicLinks();
       renderAdminTable();
       calculateCategoryCounts();
       renderPinnedTagsList();
-
-      if (sessionStorage.getItem('admin_logged') === 'true') {
-        setAdminState(true);
-      }
-
-      if (overlay) {
-        overlay.style.opacity = '0';
-        setTimeout(() => overlay.remove(), 300);
-      }
+      if (sessionStorage.getItem("admin_logged") === "true") setAdminState(true);
+      overlay.style.opacity = "0";
+      setTimeout(() => overlay.remove(), 400);
     }
 
-    // --- CALCULATE UNIQUE CATEGORIES & COUNTS ---
-    function calculateCategoryCounts() {
-      let totalAll = links.length;
-      let uniqueTags = new Set();
-
-      links.forEach(item => {
-        const rawTags = item.tag ? item.tag.split(',') : [];
-        rawTags.forEach(t => {
-          const cleanTag = t.trim().toUpperCase();
-          if (cleanTag) {
-            uniqueTags.add(cleanTag);
-          }
-        });
-      });
-
-      document.getElementById('countAllMods').innerText = totalAll;
-
-      const container = document.getElementById('dynamicTagsList');
-      container.innerHTML = '';
-      
-      if (uniqueTags.size === 0) {
-        container.innerHTML = `<span class="text-xs italic text-gray-500">Belum ada kategori</span>`;
-        return;
-      }
-
-      uniqueTags.forEach(tag => {
-        if (pinnedTags.map(pt => pt.toUpperCase()).includes(tag)) {
-          return;
+    // ===== BROADCAST =====
+    function updateBroadcastBanner(raw) {
+      const c = document.getElementById("broadcastTextContainer");
+      c.innerHTML = "";
+      raw.split("|").forEach(t => {
+        if (t.trim()) {
+          const s = document.createElement("span");
+          s.className = "inline-block mr-10 text-zinc-300";
+          s.innerText = t.trim();
+          c.appendChild(s);
         }
+      });
+    }
 
+    // ===== CATEGORY COUNTS =====
+    function calculateCategoryCounts() {
+      document.getElementById("countAllMods").innerText = links.length;
+      const unique = new Set();
+      links.forEach(item => {
+        (item.tag ? item.tag.split(",") : []).forEach(t => {
+          const clean = t.trim().toUpperCase();
+          if (clean) unique.add(clean);
+        });
+      });
+      const container = document.getElementById("dynamicTagsList");
+      container.innerHTML = "";
+      if (!unique.size) {
+        container.innerHTML = `<span class="text-xs italic text-gray-400">Belum ada kategori</span>`;
+        return;
+      }
+      const pinnedUpper = pinnedTags.map(p => p.toUpperCase());
+      unique.forEach(tag => {
+        if (pinnedUpper.includes(tag)) return;
         let count = 0;
         links.forEach(item => {
-          const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
-          if (itemTags.includes(tag)) count++;
+          const tags = (item.tag ? item.tag.split(",") : []).map(t => t.trim().toUpperCase());
+          if (tags.includes(tag)) count++;
         });
-
-        const wrapper = document.createElement('div');
-        wrapper.className = "w-full flex items-center justify-between gap-1 bg-zinc-100 hover:bg-[#4CCD99]/20 border-2 border-black p-2.5 text-xs brutal-shadow-sm !rounded-none";
-
-        const btn = document.createElement('button');
-        btn.onclick = () => {
-          selectCategoryFilter(tag);
-          toggleSidebarDrawer();
-        };
-        btn.className = "text-left font-extrabold uppercase flex-1 text-black truncate";
+        const wrap = document.createElement("div");
+        wrap.className =
+          "w-full flex items-center justify-between gap-1 bg-[var(--border-color)] hover:bg-[var(--accent-color)]/20 p-2.5 text-sm rounded-2xl transition-colors";
+        const btn = document.createElement("button");
+        btn.onclick = () => { selectCategoryFilter(tag);
+          toggleSidebarDrawer(); };
+        btn.className = "text-left font-extrabold uppercase flex-1 truncate";
         btn.innerText = `# ${tag}`;
-
-        const counterSpan = document.createElement('span');
-        counterSpan.className = "bg-black text-white text-[10px] font-bold px-1.5 py-0.5 brutal-border-sm !rounded-none";
-        counterSpan.innerText = count;
-
-        wrapper.appendChild(btn);
-        wrapper.appendChild(counterSpan);
-        container.appendChild(wrapper);
+        const span = document.createElement("span");
+        span.className = "bg-black text-white text-[10px] font-bold px-2 py-0.5 rounded-full";
+        span.innerText = count;
+        wrap.appendChild(btn);
+        wrap.appendChild(span);
+        container.appendChild(wrap);
       });
     }
 
-    // --- RENDER PINNED TAGS DI SIDEBAR ---
+    // ===== PINNED TAGS =====
     function renderPinnedTagsList() {
-      const sidebarContainer = document.getElementById('pinnedTagsList');
-      const adminContainer = document.getElementById('pinnedTagsAdminList');
-      
-      sidebarContainer.innerHTML = '';
-      adminContainer.innerHTML = '';
-
-      if (pinnedTags.length === 0) {
-        sidebarContainer.innerHTML = `<span class="text-xs italic text-gray-400">Belum ada pin kategori</span>`;
-        adminContainer.innerHTML = `<span class="text-xs italic text-gray-500">Belum ada kategori yang disematkan</span>`;
+      const sidebar = document.getElementById("pinnedTagsList");
+      const admin = document.getElementById("pinnedTagsAdminList");
+      sidebar.innerHTML = "";
+      admin.innerHTML = "";
+      if (!pinnedTags.length) {
+        sidebar.innerHTML = `<span class="text-xs italic text-gray-400">Belum ada pin</span>`;
+        admin.innerHTML = `<span class="text-xs italic text-gray-400">Belum ada pin</span>`;
         return;
       }
-
-      pinnedTags.forEach((tag, index) => {
-        const cleanTag = tag.trim().toUpperCase();
+      pinnedTags.forEach((tag, i) => {
+        const clean = tag.toUpperCase();
         let count = 0;
         links.forEach(item => {
-          const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
-          if (itemTags.includes(cleanTag)) count++;
+          const tags = (item.tag ? item.tag.split(",") : []).map(t => t.trim().toUpperCase());
+          if (tags.includes(clean)) count++;
         });
+        const wrap = document.createElement("div");
+        wrap.className =
+          "w-full flex items-center justify-between gap-1 bg-lime-100 hover:bg-lime-200 p-2.5 text-sm rounded-2xl transition-colors";
+        const btn = document.createElement("button");
+        btn.onclick = () => { selectCategoryFilter(clean);
+          toggleSidebarDrawer(); };
+        btn.className = "text-left font-extrabold uppercase flex-1 truncate flex items-center gap-1.5";
+        btn.innerHTML = `<span class="text-red-500 text-[10px]">📌</span> ${clean}`;
+        const span = document.createElement("span");
+        span.className = "bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full";
+        span.innerText = count;
+        wrap.appendChild(btn);
+        wrap.appendChild(span);
+        sidebar.appendChild(wrap);
 
-        const wrapper = document.createElement('div');
-        wrapper.className = "w-full flex items-center justify-between gap-1 bg-yellow-100 hover:bg-yellow-200 border-2 border-black p-2.5 text-xs brutal-shadow-sm !rounded-none";
-
-        const btn = document.createElement('button');
-        btn.onclick = () => {
-          selectCategoryFilter(cleanTag);
-          toggleSidebarDrawer();
-        };
-        btn.className = "text-left font-extrabold uppercase flex-1 text-black flex items-center gap-1.5 truncate";
-        btn.innerHTML = `
-          <span>PIN: ${cleanTag}</span>
-        `;
-
-        const counterSpan = document.createElement('span');
-        counterSpan.className = "bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 brutal-border-sm !rounded-none";
-        counterSpan.innerText = count;
-
-        wrapper.appendChild(btn);
-        wrapper.appendChild(counterSpan);
-        sidebarContainer.appendChild(wrapper);
-
-        const adminPill = document.createElement('div');
-        adminPill.className = "bg-yellow-200 border-2 border-black p-2 text-xs font-bold flex items-center gap-2 text-black !rounded-none";
-        adminPill.innerHTML = `
-          <span>PIN: ${cleanTag}</span>
-          <button onclick="unpinTag(${index})" class="bg-red-500 text-white font-extrabold px-1.5 py-0.5 hover:bg-red-600 brutal-border-sm text-[10px] !rounded-none">X</button>
-        `;
-        adminContainer.appendChild(adminPill);
+        const pill = document.createElement("div");
+        pill.className =
+          "bg-lime-100 border border-[var(--border-color)] p-2 text-sm font-bold flex items-center gap-2 rounded-2xl";
+        pill.innerHTML =
+          `📌 ${clean} <button onclick="unpinTag(${i})" class="bg-red-500 text-white font-bold px-2 py-0.5 rounded-full text-[10px] hover:bg-red-600">✕</button>`;
+        admin.appendChild(pill);
       });
     }
 
-    // --- PIN / UNPIN ---
     async function addPinnedTag() {
-      const tagInput = document.getElementById('pinTagName').value.trim();
-      if (!tagInput) {
-        showToast("Masukkan nama kategori terlebih dahulu!", "error");
-        return;
-      }
-
-      const upperTag = tagInput.toUpperCase();
-      if (pinnedTags.includes(upperTag)) {
-        showToast("Kategori ini sudah disematkan!", "error");
-        return;
-      }
-
-      playSynth('success');
-      pinnedTags.push(upperTag);
-      await apiRequest('set_setting', { key: _0x4f12._0x0f, value: pinnedTags });
-      document.getElementById('pinTagName').value = '';
-      showToast(`Kategori ${upperTag} berhasil di-pin!`, "success");
-      
+      const val = document.getElementById("pinTagName").value.trim();
+      if (!val) return showToast("Masukkan kategori!", "error");
+      const upper = val.toUpperCase();
+      if (pinnedTags.includes(upper)) return showToast("Sudah terpin!", "error");
+      playSynth("success");
+      pinnedTags.push(upper);
+      await apiRequest("set_setting", { key: "pinned_tags_db", value: pinnedTags });
+      document.getElementById("pinTagName").value = "";
+      showToast(`Kategori ${upper} terpin!`, "success");
       renderPinnedTagsList();
       calculateCategoryCounts();
     }
 
     async function unpinTag(index) {
-      playSynth('delete');
+      playSynth("delete");
       const removed = pinnedTags[index];
       pinnedTags.splice(index, 1);
-      await apiRequest('set_setting', { key: _0x4f12._0x0f, value: pinnedTags });
-      showToast(`Pin ${removed} dihapus!`, "info");
-      
+      await apiRequest("set_setting", { key: "pinned_tags_db", value: pinnedTags });
+      showToast(`Pin ${removed} dihapus`, "info");
       renderPinnedTagsList();
       calculateCategoryCounts();
     }
 
-    // --- BRANDING, BANNER, BACKGROUND ---
+    // ===== BRANDING =====
     async function saveBranding() {
-      playSynth('success');
-      const title = document.getElementById('setMainTitle').value.trim();
-      const subtitle = document.getElementById('setMainSubtitle').value.trim();
-      const logoUrl = document.getElementById('setMainLogoUrl').value.trim();
-      const alignment = document.getElementById('setProfilePosition').value;
-
-      if (title) {
-        await apiRequest('set_setting', { key: 'web_title', value: title });
-        document.getElementById('mainTitleText').innerText = title;
-      }
-      if (subtitle) {
-        await apiRequest('set_setting', { key: 'web_subtitle', value: subtitle });
-        document.getElementById('mainSubtitleText').innerText = subtitle;
-      }
-      if (logoUrl) {
-        await apiRequest('set_setting', { key: 'web_logo', value: logoUrl });
-        document.getElementById('mainLogo').src = logoUrl;
-        document.getElementById('navLogoMin').src = logoUrl;
-      }
-      
-      await apiRequest('set_setting', { key: 'profile_alignment', value: alignment });
-      const profileContainer = document.getElementById('headerProfileContainer');
-      profileContainer.className = `p-6 pt-0 relative flex flex-col ${alignment} gap-4`;
-
-      showToast("Setelan branding berhasil disimpan!", "success");
+      playSynth("success");
+      const title = document.getElementById("setMainTitle").value.trim();
+      const subtitle = document.getElementById("setMainSubtitle").value.trim();
+      const logo = document.getElementById("setMainLogoUrl").value.trim();
+      const align = document.getElementById("setProfilePosition").value;
+      if (title) { await apiRequest("set_setting", { key: "web_title", value: title });
+        document.getElementById("mainTitleText").innerText = title; }
+      if (subtitle) { await apiRequest("set_setting", { key: "web_subtitle", value: subtitle });
+        document.getElementById("mainSubtitleText").innerText = subtitle; }
+      if (logo) { await apiRequest("set_setting", { key: "web_logo", value: logo });
+        document.getElementById("mainLogo").src = logo;
+        document.getElementById("navLogoMin").src = logo; }
+      await apiRequest("set_setting", { key: "profile_alignment", value: align });
+      document.getElementById("headerProfileContainer").className =
+        `p-6 pt-0 relative flex flex-col ${align} gap-4`;
+      showToast("Branding tersimpan!", "success");
     }
 
     async function saveBackgroundConfig() {
-      playSynth('success');
-      const bgUrlInput = document.getElementById('setBackgroundUrl').value.trim();
-      const bgFile = document.getElementById('uploadBgFile').files[0];
-
-      if (bgFile) {
+      playSynth("success");
+      const url = document.getElementById("setBackgroundUrl").value.trim();
+      const file = document.getElementById("uploadBgFile").files[0];
+      if (file) {
         const reader = new FileReader();
-        reader.onloadend = async function () {
-          const base64String = reader.result;
-          document.documentElement.style.setProperty('--custom-bg-image', `url(${base64String})`);
-          await apiRequest('set_setting', { key: 'web_background_image', value: base64String });
-          showToast("Latar belakang lokal berhasil diunggah!", "success");
+        reader.onloadend = async function() {
+          const base64 = reader.result;
+          document.documentElement.style.setProperty("--custom-bg-image", `url(${base64})`);
+          await apiRequest("set_setting", { key: "web_background_image", value: base64 });
+          showToast("Background lokal diunggah!", "success");
         };
-        reader.readAsDataURL(bgFile);
-      } else if (bgUrlInput) {
-        document.documentElement.style.setProperty('--custom-bg-image', `url(${bgUrlInput})`);
-        await apiRequest('set_setting', { key: 'web_background_image', value: bgUrlInput });
-        showToast("Latar belakang URL berhasil disimpan!", "success");
+        reader.readAsDataURL(file);
+      } else if (url) {
+        document.documentElement.style.setProperty("--custom-bg-image", `url(${url})`);
+        await apiRequest("set_setting", { key: "web_background_image", value: url });
+        showToast("Background URL disimpan!", "success");
       }
     }
 
     async function resetBackgroundConfig() {
-      playSynth('delete');
-      document.documentElement.style.setProperty('--custom-bg-image', 'none');
-      document.getElementById('setBackgroundUrl').value = '';
-      document.getElementById('uploadBgFile').value = '';
-      await apiRequest('set_setting', { key: 'web_background_image', value: 'none' });
-      showToast("Latar belakang direset.", "info");
+      playSynth("delete");
+      document.documentElement.style.setProperty("--custom-bg-image", "none");
+      document.getElementById("setBackgroundUrl").value = "";
+      document.getElementById("uploadBgFile").value = "";
+      await apiRequest("set_setting", { key: "web_background_image", value: "none" });
+      showToast("Background direset", "info");
     }
 
     async function saveBannerConfig() {
-      playSynth('success');
-      const bannerUrlInput = document.getElementById('setBannerUrl').value.trim();
-      const bannerFile = document.getElementById('uploadBannerFile').files[0];
-
-      if (bannerFile) {
+      playSynth("success");
+      const url = document.getElementById("setBannerUrl").value.trim();
+      const file = document.getElementById("uploadBannerFile").files[0];
+      if (file) {
         const reader = new FileReader();
-        reader.onloadend = async function () {
-          const base64String = reader.result;
-          document.getElementById('webBannerImage').src = base64String;
-          await apiRequest('set_setting', { key: 'web_banner_image', value: base64String });
-          showToast("Banner lokal berhasil diterapkan!", "success");
+        reader.onloadend = async function() {
+          const base64 = reader.result;
+          document.getElementById("webBannerImage").src = base64;
+          await apiRequest("set_setting", { key: "web_banner_image", value: base64 });
+          showToast("Banner lokal diterapkan!", "success");
         };
-        reader.readAsDataURL(bannerFile);
-      } else if (bannerUrlInput) {
-        document.getElementById('webBannerImage').src = bannerUrlInput;
-        await apiRequest('set_setting', { key: 'web_banner_image', value: bannerUrlInput });
-        showToast("Banner URL berhasil disimpan!", "success");
+        reader.readAsDataURL(file);
+      } else if (url) {
+        document.getElementById("webBannerImage").src = url;
+        await apiRequest("set_setting", { key: "web_banner_image", value: url });
+        showToast("Banner URL disimpan!", "success");
       }
     }
 
-    // --- ADMIN PANEL AUTHENTICATION ---
+    async function saveSafelinkAndBroadcast() {
+      playSynth("success");
+      const text = document.getElementById("setBroadcastText").value.trim();
+      const time = parseInt(document.getElementById("setSafelinkTime").value) || 5;
+      if (text) {
+        await apiRequest("set_setting", { key: "web_broadcast_text", value: text });
+        updateBroadcastBanner(text);
+      }
+      await apiRequest("set_setting", { key: "web_safelink_time", value: time });
+      safelinkTimerValue = time;
+      showToast("Konfigurasi tersimpan!", "success");
+    }
+
+    // ===== ADMIN AUTH =====
     function toggleAdminPanel() {
-      playSynth('click');
+      playSynth("click");
       if (isAdmin) {
-        document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("adminDashboard").scrollIntoView({ behavior: "smooth" });
       } else {
-        document.getElementById('loginSection').classList.remove('hidden');
+        document.getElementById("loginSection").classList.add("open");
       }
     }
 
     function closeLoginModal() {
-      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById("loginSection").classList.remove("open");
     }
 
     function attemptLogin() {
-      const user = document.getElementById('adminUser').value;
-      const pass = document.getElementById('adminPass').value;
-
-      if (user === ADMIN_USER_KEY && pass === ADMIN_PASS_KEY) {
+      const u = document.getElementById("adminUser").value;
+      const p = document.getElementById("adminPass").value;
+      if (u === ADMIN_USER_KEY && p === ADMIN_PASS_KEY) {
         setAdminState(true);
-        sessionStorage.setItem('admin_logged', 'true');
+        sessionStorage.setItem("admin_logged", "true");
         closeLoginModal();
-        playSynth('success');
-        showToast("Login Berhasil! Selamat datang Axeluf.", "success");
-        document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
+        playSynth("success");
+        showToast("Login berhasil!", "success");
+        document.getElementById("adminDashboard").scrollIntoView({ behavior: "smooth" });
       } else {
-        playSynth('delete');
+        playSynth("delete");
         triggerScreenShake();
-        showToast("Kredensial Admin Salah!", "error");
+        showToast("Username atau password salah!", "error");
       }
     }
 
     function logoutAdmin() {
-      playSynth('click');
+      playSynth("click");
       setAdminState(false);
-      sessionStorage.removeItem('admin_logged');
-      showToast("Berhasil keluar dari mode admin.", "info");
+      sessionStorage.removeItem("admin_logged");
+      showToast("Keluar dari mode admin.", "info");
     }
 
     function setAdminState(active) {
       isAdmin = active;
-      const adminDashboard = document.getElementById('adminDashboard');
-      const btnNavAdmin = document.getElementById('btnNavAdmin');
-      const btnLogOut = document.getElementById('btnLogOut');
-
+      const dashboard = document.getElementById("adminDashboard");
+      const btnNav = document.getElementById("btnNavAdmin");
+      const btnLog = document.getElementById("btnLogOut");
       if (active) {
-        adminDashboard.classList.remove('hidden');
-        btnNavAdmin.innerText = "DASHBOARD ADMIN";
-        btnNavAdmin.classList.replace('bg-[#FF6B6B]', 'bg-[#4CCD99]');
-        btnLogOut.classList.remove('hidden');
+        dashboard.classList.remove("hidden");
+        btnNav.innerText = "Dashboard Admin";
+        btnLog.classList.remove("hidden");
       } else {
-        adminDashboard.classList.add('hidden');
-        btnNavAdmin.innerText = "PANEL ADMIN";
-        btnNavAdmin.classList.replace('bg-[#4CCD99]', 'bg-[#FF6B6B]');
-        btnLogOut.classList.add('hidden');
+        dashboard.classList.add("hidden");
+        btnNav.innerText = "Panel Admin";
+        btnLog.classList.add("hidden");
       }
       renderAdminTable();
     }
 
-    function switchAdminTab(tabName) {
-      playSynth('click');
-      const tabMod = document.getElementById('tabMod');
-      const tabBranding = document.getElementById('tabBranding');
-      const tabSocial = document.getElementById('tabSocial');
-      const tabPinning = document.getElementById('tabPinning');
-      
-      const modContent = document.getElementById('adminTabModContent');
-      const brandingContent = document.getElementById('adminTabBrandingContent');
-      const socialContent = document.getElementById('adminTabSocialContent');
-      const pinningContent = document.getElementById('adminTabPinningContent');
-
-      tabMod.className = "bg-white text-black px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-      tabBranding.className = "bg-white text-black px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-      tabSocial.className = "bg-white text-black px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-      tabPinning.className = "bg-white text-black px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-      
-      modContent.classList.add('hidden');
-      brandingContent.classList.add('hidden');
-      socialContent.classList.add('hidden');
-      pinningContent.classList.add('hidden');
-
-      if (tabName === 'mod') {
-        tabMod.className = "bg-black text-white px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-        modContent.classList.remove('hidden');
-      } else if (tabName === 'branding') {
-        tabBranding.className = "bg-black text-white px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-        brandingContent.classList.remove('hidden');
-      } else if (tabName === 'social') {
-        tabSocial.className = "bg-black text-white px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-        socialContent.classList.remove('hidden');
-      } else if (tabName === 'pinning') {
-        tabPinning.className = "bg-black text-white px-4 py-2 text-xs uppercase font-bold brutal-border brutal-shadow-sm !rounded-none";
-        pinningContent.classList.remove('hidden');
-      }
-    }
-
-    function injectQuickLinkPreset(label, url, iconType) {
-      addCustomLinkField(label, url, iconType);
-      showToast(`Tombol "${label}" disuntikkan!`, 'success');
-    }
-
-    // --- PRESET SYSTEM AND DATABASE WRITING ---
-    async function saveCustomPreset() {
-      const label = document.getElementById('presetLabel').value.trim();
-      const url = document.getElementById('presetUrl').value.trim();
-      const iconType = document.getElementById('presetIcon').value;
-      const editIndex = document.getElementById('editPresetIndex').value;
-
-      if (!label || !url) {
-        showToast("Teks preset dan URL preset wajib diisi!", "error");
-        return;
-      }
-
-      playSynth('success');
-      const presetData = { label, url, iconType };
-
-      if (editIndex !== "") {
-        customPresets[parseInt(editIndex)] = presetData;
-        showToast("Preset tombol diperbarui!", "success");
-      } else {
-        customPresets.push(presetData);
-        showToast("Preset tombol disimpan!", "success");
-      }
-
-      await apiRequest('set_setting', { key: 'web_custom_presets_db', value: customPresets });
-      clearPresetForm();
-      renderCustomPresets();
-    }
-
-    function editCustomPreset(index, event) {
-      if (event) event.stopPropagation();
-      playSynth('click');
-      const item = customPresets[index];
-      document.getElementById('presetLabel').value = item.label;
-      document.getElementById('presetUrl').value = item.url;
-      document.getElementById('presetIcon').value = item.iconType;
-      document.getElementById('editPresetIndex').value = index;
-
-      document.getElementById('btnSavePreset').innerText = "Update";
-      document.getElementById('btnCancelPreset').classList.remove('hidden');
-    }
-
-    async function deleteCustomPreset(index, event) {
-      if (event) event.stopPropagation();
-      playSynth('delete');
-      customPresets.splice(index, 1);
-      await apiRequest('set_setting', { key: 'web_custom_presets_db', value: customPresets });
-      showToast("Preset dihapus!", "info");
-      clearPresetForm();
-      renderCustomPresets();
-    }
-
-    function clearPresetForm() {
-      document.getElementById('presetLabel').value = "";
-      document.getElementById('presetUrl').value = "";
-      document.getElementById('presetIcon').selectedIndex = 0;
-      document.getElementById('editPresetIndex').value = "";
-      document.getElementById('btnSavePreset').innerText = "Simpan";
-      document.getElementById('btnCancelPreset').classList.add('hidden');
-    }
-
-    function renderCustomPresets() {
-      const container = document.getElementById('customPresetButtonList');
-      container.innerHTML = "";
-
-      if (customPresets.length === 0) {
-        container.innerHTML = `<span class="text-xs italic text-gray-400">Belum ada preset kustom yang disimpan.</span>`;
-        return;
-      }
-
-      customPresets.forEach((c, index) => {
-        const wrapper = document.createElement('div');
-        wrapper.className = "flex items-center bg-white border-2 border-black text-xs font-bold brutal-shadow-sm p-1.5 gap-2 hover:bg-purple-100 transition-colors !rounded-none";
-
-        const triggerBtn = document.createElement('button');
-        triggerBtn.type = "button";
-        triggerBtn.onclick = () => injectQuickLinkPreset(c.label, c.url, c.iconType);
-        triggerBtn.className = "hover:text-purple-700 uppercase flex items-center gap-1.5 flex-1 select-none text-left";
-        
-        let iconHtml = SVG_ICONS[c.iconType] || "🔗";
-        triggerBtn.innerHTML = `<span>${iconHtml}</span> <span>${c.label}</span>`;
-
-        const editBtn = document.createElement('button');
-        editBtn.type = "button";
-        editBtn.onclick = (e) => editCustomPreset(index, e);
-        editBtn.className = "text-blue-600 hover:underline px-1 text-[10px]";
-        editBtn.innerText = "EDIT";
-
-        const delBtn = document.createElement('button');
-        delBtn.type = "button";
-        delBtn.onclick = (e) => deleteCustomPreset(index, e);
-        delBtn.className = "text-red-500 hover:underline px-1 text-[10px]";
-        delBtn.innerText = "HAPUS";
-
-        wrapper.appendChild(triggerBtn);
-        wrapper.appendChild(editBtn);
-        wrapper.appendChild(delBtn);
-        container.appendChild(wrapper);
+    function switchAdminTab(tab) {
+      playSynth("click");
+      ["mod", "branding", "social", "pinning"].forEach(t => {
+        document.getElementById(`tab${t.charAt(0).toUpperCase()+t.slice(1)}`).classList.toggle("active", t === tab);
+        document.getElementById(`adminTab${t.charAt(0).toUpperCase()+t.slice(1)}Content`).classList.toggle("hidden", t !==
+        tab);
       });
     }
 
-    // --- DYNAMIC LINKS ACTION ---
+    // ===== CUSTOM LINKS =====
     function addCustomLinkField(label = "", url = "", iconType = "video") {
-      const container = document.getElementById('customLinksContainer');
-      const currentFields = container.getElementsByClassName('custom-link-row');
-      
-      if (currentFields.length >= 5) {
-        showToast("Maksimal tombol kustomisasi hanya 5 link!", "error");
-        return;
-      }
-
-      playSynth('click');
-      const row = document.createElement('div');
-      row.className = "custom-link-row grid grid-cols-1 sm:grid-cols-3 gap-2 p-3 bg-white brutal-border relative !rounded-none";
+      const container = document.getElementById("customLinksContainer");
+      if (container.children.length >= 5) return showToast("Maksimal 5 tombol!", "error");
+      playSynth("click");
+      const row = document.createElement("div");
+      row.className =
+        "custom-link-row grid grid-cols-1 sm:grid-cols-3 gap-2 p-3 bg-[var(--border-color)] rounded-2xl";
       row.innerHTML = `
-        <div>
-          <label class="block text-[9px] font-bold uppercase text-gray-500">Teks Tombol</label>
-          <input type="text" value="${label}" placeholder="Contoh: Tonton Tutorial" class="input-btn-label w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-        </div>
-        <div>
-          <label class="block text-[9px] font-bold uppercase text-gray-500">URL Tujuan</label>
-          <input type="text" value="${url}" placeholder="https://..." class="input-btn-url w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-        </div>
-        <div class="flex items-end gap-2">
-          <div class="flex-1">
-            <label class="block text-[9px] font-bold uppercase text-gray-500">Pilih Icon</label>
-            <select class="input-btn-icon w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-              <option value="video" ${iconType === 'video' ? 'selected' : ''}>Tutorial Video</option>
-              <option value="download" ${iconType === 'download' ? 'selected' : ''}>Download File</option>
-              <option value="chat" ${iconType === 'chat' ? 'selected' : ''}>Obrolan / Grup</option>
-              <option value="key" ${iconType === 'key' ? 'selected' : ''}>Password / Key</option>
-              <option value="globe" ${iconType === 'globe' ? 'selected' : ''}>Situs Web</option>
-            </select>
-          </div>
-          <button type="button" onclick="removeCustomLinkField(this)" class="bg-red-500 text-white font-bold p-1.5 brutal-border-sm hover:bg-red-600 text-xs uppercase shrink-0 !rounded-none">
-            Hapus
-          </button>
+        <input type="text" value="${label}" placeholder="Label" class="input-btn-label input-field input-field-sm" />
+        <input type="text" value="${url}" placeholder="URL" class="input-btn-url input-field input-field-sm" />
+        <div class="flex items-center gap-2">
+          <select class="input-btn-icon input-field input-field-sm flex-1">
+            <option value="video" ${iconType==='video'?'selected':''}>🎬 Video</option>
+            <option value="download" ${iconType==='download'?'selected':''}>⬇ Download</option>
+            <option value="chat" ${iconType==='chat'?'selected':''}>💬 Chat</option>
+            <option value="key" ${iconType==='key'?'selected':''}>🔑 Key</option>
+            <option value="globe" ${iconType==='globe'?'selected':''}>🌐 Web</option>
+          </select>
+          <button type="button" onclick="removeCustomLinkField(this)" class="btn btn-danger btn-sm">✕</button>
         </div>
       `;
       container.appendChild(row);
     }
 
-    function removeCustomLinkField(button) {
-      playSynth('delete');
-      button.closest('.custom-link-row').remove();
+    function removeCustomLinkField(btn) {
+      playSynth("delete");
+      btn.closest(".custom-link-row").remove();
     }
 
     function getCustomLinksData() {
-      const container = document.getElementById('customLinksContainer');
-      const rows = container.getElementsByClassName('custom-link-row');
+      const rows = document.querySelectorAll(".custom-link-row");
       const list = [];
-      for (let i = 0; i < rows.length; i++) {
-        const label = rows[i].querySelector('.input-btn-label').value.trim();
-        const url = rows[i].querySelector('.input-btn-url').value.trim();
-        const iconType = rows[i].querySelector('.input-btn-icon').value;
-        if (label && url) {
-          list.push({ label, url, iconType });
-        }
-      }
+      rows.forEach(row => {
+        const label = row.querySelector(".input-btn-label").value.trim();
+        const url = row.querySelector(".input-btn-url").value.trim();
+        const iconType = row.querySelector(".input-btn-icon").value;
+        if (label && url) list.push({ label, url, iconType });
+      });
       return list;
     }
 
-    function setCustomLinksFields(customButtons) {
-      const container = document.getElementById('customLinksContainer');
-      container.innerHTML = '';
-      if (customButtons && customButtons.length > 0) {
-        customButtons.forEach(btn => {
-          addCustomLinkField(btn.label, btn.url, btn.iconType);
-        });
-      }
+    function setCustomLinksFields(custom) {
+      const container = document.getElementById("customLinksContainer");
+      container.innerHTML = "";
+      if (custom && custom.length) custom.forEach(c => addCustomLinkField(c.label, c.url, c.iconType));
     }
 
-    // --- SAFELINK CONTROLLER ---
-    let safelinkInterval = null;
-    function openSafelinkModal(targetUrl) {
-      playSynth('success');
-      const modal = document.getElementById('safelinkModal');
-      const progress = document.getElementById('safelinkProgress');
-      const progressText = document.getElementById('safelinkProgressText');
-      const statusText = document.getElementById('safelinkStatusText');
-      const buttonArea = document.getElementById('safelinkButtonArea');
-      const downloadBtn = document.getElementById('btnRealDownload');
-
-      modal.classList.remove('hidden');
-      buttonArea.classList.add('hidden');
-      progress.style.width = '0%';
-      progressText.innerText = '0%';
-      statusText.innerText = 'Menghubungkan ke server cloud premium, mengamankan tautan...';
-
-      let count = 0;
-      const stepTime = (safelinkTimerValue * 1000) / 100;
-
-      if (safelinkInterval) clearInterval(safelinkInterval);
-
-      safelinkInterval = setInterval(() => {
-        count++;
-        progress.style.width = `${count}%`;
-        progressText.innerText = `${count}%`;
-
-        if (count === 30) {
-          statusText.innerText = 'Memindai dari ancaman malware, virus, dan bot spam...';
-        } else if (count === 70) {
-          statusText.innerText = 'Verifikasi berkas berhasil, mendekripsi alamat tujuan...';
-        }
-
-        if (count >= 100) {
-          clearInterval(safelinkInterval);
-          statusText.innerText = 'Selesai! Link Modifikasi kamu aman untuk diunduh.';
-          buttonArea.classList.remove('hidden');
-          downloadBtn.href = targetUrl;
-          playSynth('success');
-        }
-      }, stepTime);
+    // ===== PRESETS =====
+    async function saveCustomPreset() {
+      const label = document.getElementById("presetLabel").value.trim();
+      const url = document.getElementById("presetUrl").value.trim();
+      const icon = document.getElementById("presetIcon").value;
+      const editIdx = document.getElementById("editPresetIndex").value;
+      if (!label || !url) return showToast("Label dan URL wajib!", "error");
+      playSynth("success");
+      const data = { label, url, iconType: icon };
+      if (editIdx !== "") customPresets[parseInt(editIdx)] = data;
+      else customPresets.push(data);
+      await apiRequest("set_setting", { key: "web_custom_presets_db", value: customPresets });
+      clearPresetForm();
+      renderCustomPresets();
+      showToast("Preset tersimpan!", "success");
     }
 
-    function closeSafelinkModal() {
-      if (safelinkInterval) clearInterval(safelinkInterval);
-      document.getElementById('safelinkModal').classList.add('hidden');
+    function editCustomPreset(index, e) {
+      e.stopPropagation();
+      playSynth("click");
+      const item = customPresets[index];
+      document.getElementById("presetLabel").value = item.label;
+      document.getElementById("presetUrl").value = item.url;
+      document.getElementById("presetIcon").value = item.iconType;
+      document.getElementById("editPresetIndex").value = index;
+      document.getElementById("btnSavePreset").innerText = "Update";
+      document.getElementById("btnCancelPreset").classList.remove("hidden");
     }
 
-    // --- CORE RENDERING CARDS (PUBLIC VIEW) ---
-    function renderPublicLinks() {
-      const linkContainer = document.getElementById('linkContainer');
-      const searchQuery = document.getElementById('searchBar').value.toLowerCase();
-      linkContainer.innerHTML = '';
+    async function deleteCustomPreset(index, e) {
+      e.stopPropagation();
+      playSynth("delete");
+      customPresets.splice(index, 1);
+      await apiRequest("set_setting", { key: "web_custom_presets_db", value: customPresets });
+      showToast("Preset dihapus", "info");
+      clearPresetForm();
+      renderCustomPresets();
+    }
 
-      const filteredLinks = links.filter(item => {
-        const matchSearch = item.name.toLowerCase().includes(searchQuery) || 
-                            item.tag.toLowerCase().includes(searchQuery) ||
-                            item.desc.toLowerCase().includes(searchQuery);
+    function clearPresetForm() {
+      document.getElementById("presetLabel").value = "";
+      document.getElementById("presetUrl").value = "";
+      document.getElementById("presetIcon").selectedIndex = 0;
+      document.getElementById("editPresetIndex").value = "";
+      document.getElementById("btnSavePreset").innerText = "Simpan";
+      document.getElementById("btnCancelPreset").classList.add("hidden");
+    }
 
-        if (!matchSearch) return false;
-
-        if (activeCategoryFilter) {
-          const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
-          return itemTags.includes(activeCategoryFilter);
-        }
-        return true;
-      });
-
-      if (filteredLinks.length === 0) {
-        linkContainer.innerHTML = `
-          <div class="bg-white text-black brutal-border brutal-shadow p-8 text-center font-bold !rounded-none">
-            <p class="text-lg uppercase font-syne">Mod Tidak Ditemukan!</p>
-            <p class="text-sm text-gray-500 font-normal mt-1">Coba cari dengan nama game atau reset filter kategori di menu.</p>
-          </div>
-        `;
+    function renderCustomPresets() {
+      const container = document.getElementById("customPresetButtonList");
+      container.innerHTML = "";
+      if (!customPresets.length) {
+        container.innerHTML = `<span class="text-xs italic text-gray-400">Belum ada preset</span>`;
         return;
       }
-
-      filteredLinks.forEach((item) => {
-        const decryptedUrl = decodeSafe(item.url);
-        const decryptedPassword = decodeSafe(item.password);
-        const imageSrc = item.image ? item.image : 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800';
-        const ratioClass = item.imageRatio ? item.imageRatio : 'aspect-video object-cover';
-        const cardIndex = links.indexOf(item); 
-
-        let tagsHtml = "";
-        if (item.tag) {
-          item.tag.split(',').forEach(t => {
-            const cleanTag = t.trim();
-            if (cleanTag) {
-              tagsHtml += `
-                <button onclick="selectCategoryFilter('${cleanTag}')" class="bg-[#4CCD99] hover:bg-[#3dbd8c] transition-colors brutal-border-sm text-[10px] font-bold uppercase px-2 py-0.5 text-black !rounded-none">
-                  #${cleanTag}
-                </button>
-              `;
-            }
-          });
-        }
-
-        let customButtonsHtml = "";
-        if (item.customButtons && item.customButtons.length > 0) {
-          item.customButtons.forEach(btn => {
-            const iconSvg = SVG_ICONS[btn.iconType] || "";
-            customButtonsHtml += `
-              <button onclick="handleActionClick(${cardIndex}, '${btn.url}')" class="bg-black text-white font-bold text-xs uppercase py-3 px-4 brutal-border brutal-shadow-sm brutal-btn flex items-center justify-center gap-2 !rounded-none">
-                ${iconSvg} <span>${btn.label}</span>
-              </button>
-            `;
-          });
-        }
-
-        let commentsListHtml = "";
-        if (item.comments && item.comments.length > 0) {
-          item.comments.forEach(c => {
-            commentsListHtml += `
-              <div class="p-2 border-b border-black text-xs">
-                <span class="font-extrabold text-[#8D00FF]">@${c.name}:</span>
-                <span class="font-medium text-gray-800">${c.text}</span>
-              </div>
-            `;
-          });
-        } else {
-          commentsListHtml = `<p class="p-2 text-xs text-gray-500 italic text-center">Belum ada tanggapan komentar.</p>`;
-        }
-
-        const userLikesCount = parseInt(localStorage.getItem(`like_count_card_${cardIndex}`) || '0');
-        const isLikeDisabled = userLikesCount >= 10 ? "disabled" : "";
-
-        const card = document.createElement('div');
-        card.className = "bg-white text-black brutal-border brutal-shadow overflow-hidden flex flex-col !rounded-none";
-        
-        card.innerHTML = `
-          <!-- Browser Retro Top Header Decoration with 3 dots (Strict Square) -->
-          <div class="bg-black text-white px-4 py-2.5 flex items-center justify-between brutal-border-b font-mono text-xs select-none">
-            <!-- Window Control Square Flags -->
-            <div class="flex items-center gap-1.5 shrink-0">
-              <span class="w-3 h-3 bg-[#FF6B6B] border-2 border-black inline-block"></span>
-              <span class="w-3 h-3 bg-[#FFDE4D] border-2 border-black inline-block"></span>
-              <span class="w-3 h-3 bg-[#4CCD99] border-2 border-black inline-block"></span>
-            </div>
-            
-            <div class="bg-zinc-900 border border-zinc-700 px-3 py-0.5 text-[10px] text-zinc-400 font-extrabold tracking-wide truncate max-w-[140px] sm:max-w-xs md:max-w-md !rounded-none">
-              axeluf.co/portal/mod-${cardIndex}
-            </div>
-
-            <!-- Stylized Titik 3 / Windows-Browser Ellipsis Menu -->
-            <div class="flex items-center gap-2 cursor-pointer text-zinc-400 hover:text-yellow-300 transition-colors font-extrabold text-lg select-none leading-none pr-1">
-              ...
-            </div>
-          </div>
-
-          <!-- Card Body Content -->
-          <div class="p-6 flex flex-col lg:flex-row gap-6 items-stretch">
-            <div class="w-full lg:w-72 shrink-0 brutal-border bg-zinc-100 overflow-hidden relative shadow-inner flex items-center justify-center !rounded-none">
-              <img src="${imageSrc}" alt="Screenshot Mod" class="w-full ${ratioClass} transition-transform duration-200 hover:scale-[1.03]">
-            </div>
-
-            <div class="flex-1 flex flex-col justify-between">
-              <div>
-                <div class="flex flex-wrap gap-1.5 mb-2">
-                  ${tagsHtml}
-                </div>
-                <h3 class="font-syne font-extrabold text-xl md:text-2xl uppercase mb-2 leading-tight">${item.name}</h3>
-                <p class="text-sm text-gray-700 mb-4 leading-relaxed font-medium whitespace-pre-wrap">${item.desc}</p>
-              </div>
-              
-              <div class="space-y-4">
-                <div class="bg-[#FFF5C3] brutal-border p-3 flex items-center gap-2 text-xs font-bold text-orange-800 !rounded-none">
-                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-                  <span>PASSWORD: ${decryptedPassword}</span>
-                </div>
-
-                <div class="flex flex-col sm:flex-row flex-wrap gap-2">
-                  <button onclick="handleActionClick(${cardIndex}, '${decryptedUrl}', true)" class="flex-1 text-center bg-[#FF6B6B] font-bold text-xs uppercase py-3 px-4 brutal-border brutal-shadow-sm brutal-btn flex items-center justify-center gap-2 text-black !rounded-none">
-                    ${SVG_ICONS.download} <span>DOWNLOAD APK MOD</span>
-                  </button>
-                  ${customButtonsHtml}
-                </div>
-
-                <div class="border-t-2 border-dashed border-black pt-3 flex flex-col gap-3">
-                  <div class="flex justify-between items-center text-xs font-bold text-gray-600">
-                    <div class="flex items-center gap-1.5">
-                      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                      <span id="view-counter-${cardIndex}">${item.views || 0}</span> kali dilihat
-                    </div>
-                    <div class="flex items-center gap-4">
-                      <button onclick="likeMod(${cardIndex})" ${isLikeDisabled} class="flex items-center gap-1.5 bg-[#FFECEC] px-3 py-1.5 brutal-border-sm brutal-btn-sm text-[10px] text-black disabled:opacity-50 disabled:cursor-not-allowed !rounded-none">
-                        ❤️ <span>${item.likes || 0}</span> Suka (${userLikesCount}/10)
-                      </button>
-                      <button onclick="toggleCommentsSection(${cardIndex})" class="flex items-center gap-1 bg-zinc-100 px-2 py-1 brutal-border-sm brutal-btn-sm text-[10px] text-black !rounded-none">
-                        Komentar
-                      </button>
-                    </div>
-                  </div>
-
-                  <div id="comments-panel-${cardIndex}" class="hidden bg-zinc-50 border-2 border-black p-3 text-black !rounded-none">
-                    <h4 class="font-bold text-xs uppercase mb-2 border-b border-black pb-1">Kolom Diskusi Komentar</h4>
-                    <div class="max-h-28 overflow-y-auto bg-white border border-black mb-3 divide-y divide-gray-200">
-                      ${commentsListHtml}
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-1.5">
-                      <input type="text" id="comm-name-${cardIndex}" placeholder="Nama..." class="brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none w-full sm:w-28 text-black !rounded-none">
-                      <input type="text" id="comm-text-${cardIndex}" placeholder="Tulis komentar..." class="flex-1 brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black !rounded-none">
-                      <button onclick="submitComment(${cardIndex})" class="bg-[#4CCD99] hover:bg-[#3ec08a] font-bold text-xs uppercase py-1.5 px-3 brutal-border-sm brutal-btn-sm text-black !rounded-none">
-                        Kirim
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        `;
-        linkContainer.appendChild(card);
+      customPresets.forEach((c, i) => {
+        const wrap = document.createElement("div");
+        wrap.className = "flex items-center bg-white border border-[var(--border-color)] p-1.5 gap-2 rounded-2xl";
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.onclick = () => addCustomLinkField(c.label, c.url, c.iconType);
+        btn.className = "text-xs font-bold flex items-center gap-1.5 flex-1 text-left hover:text-[var(--accent-color)]";
+        const icons = { video: "🎬", download: "⬇", chat: "💬", key: "🔑", globe: "🌐" };
+        btn.innerHTML = `<span>${icons[c.iconType]||"🔗"}</span> ${c.label}`;
+        const edit = document.createElement("button");
+        edit.type = "button";
+        edit.onclick = e => editCustomPreset(i, e);
+        edit.className = "text-blue-600 text-[10px] font-bold px-1";
+        edit.innerText = "Edit";
+        const del = document.createElement("button");
+        del.type = "button";
+        del.onclick = e => deleteCustomPreset(i, e);
+        del.className = "text-red-500 text-[10px] font-bold px-1";
+        del.innerText = "Hapus";
+        wrap.appendChild(btn);
+        wrap.appendChild(edit);
+        wrap.appendChild(del);
+        container.appendChild(wrap);
       });
     }
 
-    async function handleActionClick(index, targetUrl, isMainDownload = false) {
-      playSynth('success');
-      if (!links[index].views) links[index].views = 0;
-      links[index].views += 1;
-
-      const viewCounterEl = document.getElementById(`view-counter-${index}`);
-      if (viewCounterEl) {
-        viewCounterEl.innerText = links[index].views;
-      }
-
-      await apiRequest('set_setting', { key: _0x4f12._0x0d, value: links });
-
-      if (isMainDownload) {
-        antiSpamCounter++;
-        if (antiSpamCounter > 6) {
-          triggerBanScreen();
-          return;
-        }
-        setTimeout(() => { if (antiSpamCounter > 0) antiSpamCounter--; }, 5000);
-        openSafelinkModal(targetUrl);
-      } else {
-        if (targetUrl) {
-          window.open(targetUrl, '_blank');
-        }
-      }
+    function injectQuickLinkPreset(label, url, iconType) {
+      addCustomLinkField(label, url, iconType);
+      showToast(`Tombol "${label}" ditambahkan!`, "success");
     }
 
-    async function likeMod(index) {
-      let userLikesCount = parseInt(localStorage.getItem(`like_count_card_${index}`) || '0');
-
-      if (userLikesCount >= 10) {
-        playSynth('delete');
-        triggerScreenShake();
-        showToast("Batas menyukai maksimal 10x per perangkat!", "error");
-        return;
-      }
-
-      playSynth('success');
-      userLikesCount += 1;
-      localStorage.setItem(`like_count_card_${index}`, userLikesCount);
-
-      if (!links[index].likes) links[index].likes = 0;
-      links[index].likes += 1;
-      
-      await apiRequest('set_setting', { key: _0x4f12._0x0d, value: links });
-      renderPublicLinks();
-    }
-
-    function toggleCommentsSection(index) {
-      playSynth('click');
-      const panel = document.getElementById(`comments-panel-${index}`);
-      panel.classList.toggle('hidden');
-    }
-
-    async function submitComment(index) {
-      const nameInput = document.getElementById(`comm-name-${index}`);
-      const textInput = document.getElementById(`comm-text-${index}`);
-      const name = nameInput.value.trim();
-      const text = textInput.value.trim();
-
-      if (!name || !text) {
-        showToast("Form nama dan komentar wajib diisi!", "error");
-        return;
-      }
-
-      playSynth('success');
-      if (!links[index].comments) links[index].comments = [];
-      links[index].comments.push({ name, text });
-
-      nameInput.value = "";
-      textInput.value = "";
-
-      await apiRequest('set_setting', { key: _0x4f12._0x0d, value: links });
-      renderPublicLinks();
-      showToast("Komentar berhasil dikirim!", "success");
-    }
-
-    async function saveMod() {
-      const name = document.getElementById('modName').value.trim();
-      const tag = document.getElementById('modTag').value.trim();
-      const desc = document.getElementById('modDesc').value; 
-      const url = document.getElementById('modUrl').value.trim();
-      const password = document.getElementById('modPassword').value.trim();
-      const imageUrlInput = document.getElementById('modImageUrl').value.trim();
-      const imageRatio = document.getElementById('modImageRatio').value;
-      const fileInput = document.getElementById('uploadModImageFile');
-      const editIndex = document.getElementById('editIndex').value;
-
-      const manualViews = parseInt(document.getElementById('modViewsInput').value) || 0;
-      const manualLikes = parseInt(document.getElementById('modLikesInput').value) || 0;
-
-      const customButtons = getCustomLinksData();
-
-      if (!name || !tag || !desc || !url) {
-        showToast("Kolom Nama, Tag, Deskripsi, dan URL wajib diisi!", "error");
-        return;
-      }
-
-      let viewsToSave = manualViews;
-      let likesToSave = manualLikes;
-      let commentsToSave = [];
-      let finalImg = imageUrlInput;
-
-      if (editIndex !== "") {
-        const oldItem = links[parseInt(editIndex)];
-        viewsToSave = manualViews !== 0 ? manualViews : (oldItem.views || 0);
-        likesToSave = manualLikes !== 0 ? manualLikes : (oldItem.likes || 0);
-        commentsToSave = oldItem.comments || [];
-        if (!finalImg) finalImg = oldItem.image;
-      }
-
-      const proceedSaving = async (imgSource) => {
-        const modData = {
-          name,
-          tag: tag.toUpperCase(), 
-          desc,
-          url: encodeSafe(url),
-          password: encodeSafe(password || "Tanpa Password / Langsung Ekstrak"),
-          image: imgSource || "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800",
-          imageRatio: imageRatio,
-          views: viewsToSave,
-          likes: likesToSave,
-          comments: commentsToSave,
-          customButtons: customButtons
-        };
-
-        if (editIndex !== "") {
-          links[parseInt(editIndex)] = modData;
-          showToast("Link Modifikasi berhasil diupdate!", "success");
-        } else {
-          links.unshift(modData);
-          showToast("Mod baru berhasil dirilis!", "success");
-        }
-
-        playSynth('success');
-        await apiRequest('set_setting', { key: _0x4f12._0x0d, value: links });
-        clearForm();
-        renderPublicLinks();
-        renderAdminTable();
-        calculateCategoryCounts();
-      };
-
-      if (fileInput && fileInput.files && fileInput.files[0]) {
-        const reader = new FileReader();
-        reader.onloadend = async function () {
-          await proceedSaving(reader.result);
-        };
-        reader.readAsDataURL(fileInput.files[0]);
-      } else {
-        await proceedSaving(finalImg);
-      }
-    }
-
-    function editMod(index) {
-      playSynth('click');
-      const item = links[index];
-      
-      document.getElementById('modName').value = item.name;
-      document.getElementById('modTag').value = item.tag;
-      document.getElementById('modDesc').value = item.desc;
-      document.getElementById('modUrl').value = decodeSafe(item.url);
-      document.getElementById('modPassword').value = decodeSafe(item.password) === "Tanpa Password / Langsung Ekstrak" ? "" : decodeSafe(item.password);
-      document.getElementById('modImageUrl').value = item.image && !item.image.startsWith("data:") ? item.image : "";
-      
-      document.getElementById('modViewsInput').value = item.views || 0;
-      document.getElementById('modLikesInput').value = item.likes || 0;
-      
-      if (item.imageRatio) {
-        document.getElementById('modImageRatio').value = item.imageRatio;
-      }
-
-      setCustomLinksFields(item.customButtons);
-
-      document.getElementById('editIndex').value = index;
-      document.getElementById('formTitle').innerText = "Edit Link Modifikasi";
-      document.getElementById('formTitle').classList.replace('text-[#FF8A08]', 'text-blue-600');
-      document.getElementById('formTitle').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function clearForm() {
-      document.getElementById('modName').value = '';
-      document.getElementById('modTag').value = '';
-      document.getElementById('modDesc').value = '';
-      document.getElementById('modUrl').value = '';
-      document.getElementById('modPassword').value = '';
-      document.getElementById('modImageUrl').value = '';
-      if (document.getElementById('uploadModImageFile')) {
-        document.getElementById('uploadModImageFile').value = '';
-      }
-      document.getElementById('modImageRatio').selectedIndex = 0;
-      document.getElementById('modViewsInput').value = '';
-      document.getElementById('modLikesInput').value = '';
-      document.getElementById('customLinksContainer').innerHTML = '';
-      document.getElementById('editIndex').value = '';
-      
-      document.getElementById('formTitle').innerText = "Tambah Mod Baru";
-      document.getElementById('formTitle').classList.add('text-[#FF8A08]');
-    }
-
-    // --- CREDITS SOSMED OPERATORS ---
+    // ===== CREDITS =====
     async function addCredit() {
-      const platform = document.getElementById('credPlatform').value.trim();
-      const handle = document.getElementById('credHandle').value.trim();
-      const url = document.getElementById('credUrl').value.trim();
-      const color = document.getElementById('credColor').value;
-
-      if (!platform || !handle || !url) {
-        showToast("Lengkapi semua kolom isian credit sosmed!", "error");
-        return;
-      }
-
-      playSynth('success');
+      const platform = document.getElementById("credPlatform").value.trim();
+      const handle = document.getElementById("credHandle").value.trim();
+      const url = document.getElementById("credUrl").value.trim();
+      const color = document.getElementById("credColor").value;
+      if (!platform || !handle || !url) return showToast("Lengkapi semua field!", "error");
+      playSynth("success");
       credits.push({ platform, handle, url, color });
-      await apiRequest('set_setting', { key: _0x4f12._0x0e, value: credits });
-      showToast("Credit baru ditambahkan!", "success");
-      document.getElementById('credPlatform').value = '';
-      document.getElementById('credHandle').value = '';
-      document.getElementById('credUrl').value = '';
+      await apiRequest("set_setting", { key: "credits_supabase_db", value: credits });
+      showToast("Credit ditambahkan!", "success");
+      document.getElementById("credPlatform").value = "";
+      document.getElementById("credHandle").value = "";
+      document.getElementById("credUrl").value = "";
       renderCredits();
     }
 
     async function deleteCredit(index) {
-      playSynth('delete');
+      playSynth("delete");
       credits.splice(index, 1);
-      await apiRequest('set_setting', { key: _0x4f12._0x0e, value: credits });
-      showToast("Credit berhasil dihapus!", "info");
+      await apiRequest("set_setting", { key: "credits_supabase_db", value: credits });
+      showToast("Credit dihapus", "info");
       renderCredits();
     }
 
     function renderCredits() {
-      const container = document.getElementById('footerCreditsContainer');
-      const adminList = document.getElementById('adminCreditsList');
-      container.innerHTML = '';
-      adminList.innerHTML = '';
-
-      credits.forEach((c, index) => {
-        const a = document.createElement('a');
+      const footer = document.getElementById("footerCreditsContainer");
+      const admin = document.getElementById("adminCreditsList");
+      footer.innerHTML = "";
+      admin.innerHTML = "";
+      credits.forEach((c, i) => {
+        const a = document.createElement("a");
         a.href = c.url;
         a.target = "_blank";
-        a.onclick = () => playSynth('click');
-        a.style.backgroundColor = c.color || '#4CCD99';
-        a.className = "px-4 py-2 brutal-border brutal-shadow-sm brutal-btn-sm flex items-center gap-2 text-xs uppercase text-black font-bold !rounded-none";
-        
-        a.innerHTML = `<span>${c.platform}:</span> <span class="font-extrabold">${c.handle}</span>`;
-        container.appendChild(a);
-
-        const div = document.createElement('div');
-        div.className = "flex items-center justify-between p-2.5 border-2 border-black bg-white text-black !rounded-none";
-        div.innerHTML = `
-          <span class="text-xs font-bold uppercase">${c.platform} -> ${c.handle}</span>
-          <button onclick="deleteCredit(${index})" class="bg-red-500 text-white font-bold text-[10px] px-2 py-1 hover:bg-red-600 !rounded-none">Hapus</button>
-        `;
-        adminList.appendChild(div);
+        a.style.backgroundColor = c.color || "#7ee850";
+        a.className =
+          "px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 border border-[var(--border-color)] shadow-soft hover:shadow-soft-lg transition-all";
+        a.innerText = `${c.platform}: ${c.handle}`;
+        footer.appendChild(a);
+        const div = document.createElement("div");
+        div.className =
+          "flex items-center justify-between p-2.5 border border-[var(--border-color)] rounded-2xl bg-[var(--card-bg)]";
+        div.innerHTML =
+          `<span class="text-sm font-bold">${c.platform} → ${c.handle}</span><button onclick="deleteCredit(${i})" class="btn btn-danger btn-sm">Hapus</button>`;
+        admin.appendChild(div);
       });
     }
 
-    // --- ADMIN TABLE ---
+    // ===== ADMIN TABLE =====
     function renderAdminTable() {
-      const tbody = document.getElementById('adminTableBody');
-      tbody.innerHTML = '';
-
-      links.forEach((item, index) => {
-        const imageSrc = item.image ? item.image : 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=150';
+      const tbody = document.getElementById("adminTableBody");
+      tbody.innerHTML = "";
+      links.forEach((item, i) => {
+        const img = item.image ||
+          "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=150";
         let pills = "";
-        if (item.tag) {
-          item.tag.split(',').forEach(t => {
-            if (t.trim()) {
-              pills += `<span class="bg-gray-200 px-1.5 py-0.5 border border-black text-[9px] uppercase text-black font-extrabold mr-1 rounded-none">${t.trim()}</span>`;
-            }
-          });
-        }
-
-        const tr = document.createElement('tr');
-        tr.className = "border-b border-black hover:bg-gray-50 text-black";
+        (item.tag ? item.tag.split(",") : []).forEach(t => {
+          if (t.trim()) pills +=
+            `<span class="bg-gray-200 px-2 py-0.5 border border-[var(--border-color)] text-[10px] uppercase font-bold rounded-full mr-1">${t.trim()}</span>`;
+        });
+        const tr = document.createElement("tr");
+        tr.className = "border-b border-[var(--border-color)] hover:bg-[var(--border-color)]/30";
         tr.innerHTML = `
-          <td class="p-3 border-r border-black w-20">
-            <img src="${imageSrc}" class="w-12 h-12 object-cover brutal-border !rounded-none" alt="Thumb">
-          </td>
-          <td class="p-3 border-r border-black font-bold text-xs sm:text-sm text-black">
-            ${item.name}
-          </td>
-          <td class="p-3 border-r border-black">
-            <div class="flex flex-wrap gap-1">${pills}</div>
-          </td>
-          <td class="p-3">
-            <div class="flex flex-col sm:flex-row gap-1.5">
-              <button onclick="editMod(${index})" class="bg-[#FF8A08] brutal-border brutal-shadow-sm brutal-btn-sm py-1 px-3.5 text-xs uppercase text-white font-bold !rounded-none">Edit</button>
-              <button onclick="triggerDelete(${index})" class="bg-red-500 brutal-border brutal-shadow-sm brutal-btn-sm py-1 px-3.5 text-xs uppercase text-white font-bold !rounded-none">Hapus</button>
-            </div>
+          <td class="p-3"><img src="${img}" class="w-12 h-12 object-cover rounded-xl border border-[var(--border-color)]" alt="Thumb" /></td>
+          <td class="p-3 font-bold text-sm">${item.name}</td>
+          <td class="p-3">${pills}</td>
+          <td class="p-3 flex flex-wrap gap-2">
+            <button onclick="editMod(${i})" class="btn btn-secondary btn-sm">Edit</button>
+            <button onclick="triggerDelete(${i})" class="btn btn-danger btn-sm">Hapus</button>
           </td>
         `;
         tbody.appendChild(tr);
       });
     }
 
+    // ===== CRUD MOD =====
+    function editMod(index) {
+      playSynth("click");
+      const item = links[index];
+      document.getElementById("modName").value = item.name;
+      document.getElementById("modTag").value = item.tag;
+      document.getElementById("modDesc").value = item.desc;
+      document.getElementById("modUrl").value = decodeSafe(item.url);
+      document.getElementById("modPassword").value = decodeSafe(item.password) === "Tanpa Password / Langsung Ekstrak" ? "" :
+        decodeSafe(item.password);
+      document.getElementById("modImageUrl").value = item.image && !item.image.startsWith("data:") ? item.image : "";
+      document.getElementById("modViewsInput").value = item.views || 0;
+      document.getElementById("modLikesInput").value = item.likes || 0;
+      if (item.imageRatio) document.getElementById("modImageRatio").value = item.imageRatio;
+      setCustomLinksFields(item.customButtons);
+      document.getElementById("editIndex").value = index;
+      document.getElementById("formTitle").innerText = "Edit Mod";
+      document.getElementById("formTitle").className = "font-syne font-extrabold text-lg uppercase mb-4 text-blue-600";
+      document.getElementById("formTitle").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function clearForm() {
+      document.getElementById("modName").value = "";
+      document.getElementById("modTag").value = "";
+      document.getElementById("modDesc").value = "";
+      document.getElementById("modUrl").value = "";
+      document.getElementById("modPassword").value = "";
+      document.getElementById("modImageUrl").value = "";
+      document.getElementById("uploadModImageFile").value = "";
+      document.getElementById("modImageRatio").selectedIndex = 0;
+      document.getElementById("modViewsInput").value = "";
+      document.getElementById("modLikesInput").value = "";
+      document.getElementById("customLinksContainer").innerHTML = "";
+      document.getElementById("editIndex").value = "";
+      document.getElementById("formTitle").innerText = "Tambah Mod Baru";
+      document.getElementById("formTitle").className = "font-syne font-extrabold text-lg uppercase mb-4 text-[#ff8a08]";
+    }
+
+    async function saveMod() {
+      const name = document.getElementById("modName").value.trim();
+      const tag = document.getElementById("modTag").value.trim();
+      const desc = document.getElementById("modDesc").value;
+      const url = document.getElementById("modUrl").value.trim();
+      const password = document.getElementById("modPassword").value.trim();
+      const imageUrl = document.getElementById("modImageUrl").value.trim();
+      const ratio = document.getElementById("modImageRatio").value;
+      const file = document.getElementById("uploadModImageFile").files[0];
+      const editIdx = document.getElementById("editIndex").value;
+      const manualViews = parseInt(document.getElementById("modViewsInput").value) || 0;
+      const manualLikes = parseInt(document.getElementById("modLikesInput").value) || 0;
+      const customButtons = getCustomLinksData();
+
+      if (!name || !tag || !desc || !url) return showToast("Nama, Tag, Deskripsi, URL wajib!", "error");
+
+      let views = manualViews,
+        likes = manualLikes,
+        comments = [],
+        finalImg = imageUrl;
+      if (editIdx !== "") {
+        const old = links[parseInt(editIdx)];
+        views = manualViews || old.views || 0;
+        likes = manualLikes || old.likes || 0;
+        comments = old.comments || [];
+        if (!finalImg) finalImg = old.image;
+      }
+
+      const doSave = async (imgSrc) => {
+        const data = {
+          name,
+          tag: tag.toUpperCase(),
+          desc,
+          url: encodeSafe(url),
+          password: encodeSafe(password || "Tanpa Password / Langsung Ekstrak"),
+          image: imgSrc ||
+            "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800",
+          imageRatio: ratio,
+          views,
+          likes,
+          comments,
+          customButtons
+        };
+        if (editIdx !== "") links[parseInt(editIdx)] = data;
+        else links.unshift(data);
+        playSynth("success");
+        await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+        clearForm();
+        renderPublicLinks();
+        renderAdminTable();
+        calculateCategoryCounts();
+        showToast(editIdx !== "" ? "Mod diupdate!" : "Mod baru ditambahkan!", "success");
+      };
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = async function() { await doSave(reader.result); };
+        reader.readAsDataURL(file);
+      } else {
+        await doSave(finalImg);
+      }
+    }
+
     function triggerDelete(index) {
-      playSynth('click');
+      playSynth("click");
       triggerScreenShake();
       activeDeleteIndex = index;
-      const targetName = links[index].name;
-      document.getElementById('confirmModalText').innerText = `Apakah kamu yakin ingin menghapus "${targetName}" secara permanen?`;
-      document.getElementById('confirmModal').classList.remove('hidden');
+      document.getElementById("confirmModalText").innerText =
+        `Hapus "${links[index].name}" secara permanen?`;
+      document.getElementById("confirmModal").classList.add("open");
     }
 
     function closeConfirmModal() {
-      playSynth('click');
-      document.getElementById('confirmModal').classList.add('hidden');
+      document.getElementById("confirmModal").classList.remove("open");
       activeDeleteIndex = null;
     }
 
-    document.getElementById('btnConfirmYes').addEventListener('click', async function() {
+    document.getElementById("btnConfirmYes").addEventListener("click", async function() {
       if (activeDeleteIndex !== null) {
-        playSynth('delete');
+        playSynth("delete");
         links.splice(activeDeleteIndex, 1);
-        await apiRequest('set_setting', { key: _0x4f12._0x0d, value: links });
-        showToast("Link Mod berhasil dihapus!", "info");
+        await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+        showToast("Mod dihapus!", "info");
         closeConfirmModal();
         renderPublicLinks();
         renderAdminTable();
@@ -2132,34 +1566,279 @@
       }
     });
 
+    // ===== PUBLIC RENDER =====
+    function renderPublicLinks() {
+      const container = document.getElementById("linkContainer");
+      const q = document.getElementById("searchBar").value.toLowerCase();
+      container.innerHTML = "";
+
+      const filtered = links.filter(item => {
+        const match = item.name.toLowerCase().includes(q) ||
+          item.tag.toLowerCase().includes(q) ||
+          item.desc.toLowerCase().includes(q);
+        if (!match) return false;
+        if (activeCategoryFilter) {
+          const tags = (item.tag ? item.tag.split(",") : []).map(t => t.trim().toUpperCase());
+          return tags.includes(activeCategoryFilter);
+        }
+        return true;
+      });
+
+      if (!filtered.length) {
+        container.innerHTML =
+          `<div class="card p-8 text-center"><p class="font-syne font-extrabold text-xl uppercase">Mod Tidak Ditemukan</p><p class="text-sm text-gray-400">Coba ubah kata kunci atau reset filter.</p></div>`;
+        return;
+      }
+
+      filtered.forEach((item, idx) => {
+        const realIndex = links.indexOf(item);
+        const decUrl = decodeSafe(item.url);
+        const decPass = decodeSafe(item.password);
+        const img = item.image ||
+          "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800";
+        const ratio = item.imageRatio || "aspect-video object-cover";
+        const userLikes = parseInt(localStorage.getItem(`like_count_card_${realIndex}`) || "0");
+        const likeDisabled = userLikes >= 10 ? "disabled" : "";
+
+        let tagsHtml = "";
+        (item.tag ? item.tag.split(",") : []).forEach(t => {
+          const clean = t.trim();
+          if (clean) tagsHtml +=
+            `<button onclick="selectCategoryFilter('${clean}')" class="bg-[var(--accent-color)] hover:bg-[var(--accent-hover)] text-[10px] font-bold uppercase px-2 py-0.5 rounded-full transition-colors">#${clean}</button>`;
+        });
+
+        let customBtns = "";
+        if (item.customButtons && item.customButtons.length) {
+          item.customButtons.forEach(b => {
+            const icons = { video: "🎬", download: "⬇", chat: "💬", key: "🔑", globe: "🌐" };
+            customBtns +=
+              `<button onclick="handleActionClick(${realIndex}, '${b.url}')" class="btn btn-secondary btn-sm">${icons[b.iconType]||"🔗"} ${b.label}</button>`;
+          });
+        }
+
+        let commentsHtml = "";
+        if (item.comments && item.comments.length) {
+          item.comments.forEach(c => {
+            commentsHtml +=
+              `<div class="p-2 border-b border-[var(--border-color)] text-sm"><span class="font-extrabold text-purple-600">@${c.name}:</span> <span class="font-medium">${c.text}</span></div>`;
+          });
+        } else {
+          commentsHtml = `<p class="p-2 text-sm text-gray-400 italic text-center">Belum ada komentar.</p>`;
+        }
+
+        const card = document.createElement("div");
+        card.className = "card overflow-hidden";
+
+        card.innerHTML = `
+          <div class="bg-black text-white px-4 py-2.5 flex items-center justify-between text-[10px] font-mono">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-yellow-400 inline-block"></span>
+              <span class="w-3 h-3 rounded-full bg-green-400 inline-block"></span>
+            </div>
+            <span class="bg-zinc-800 px-3 py-0.5 rounded-full text-zinc-400 truncate max-w-[180px]">axeluf.co/mod-${realIndex}</span>
+            <span class="text-zinc-500">⋯</span>
+          </div>
+
+          <div class="p-5 flex flex-col lg:flex-row gap-5">
+            <div class="w-full lg:w-64 shrink-0 rounded-2xl overflow-hidden border border-[var(--border-color)] bg-zinc-100">
+              <img src="${img}" alt="Preview" class="w-full ${ratio} hover:scale-[1.02] transition-transform duration-200" />
+            </div>
+
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex flex-wrap gap-1.5 mb-2">${tagsHtml}</div>
+                <h3 class="font-syne font-extrabold text-xl uppercase mb-2">${item.name}</h3>
+                <p class="text-sm text-gray-600 mb-4 whitespace-pre-wrap leading-relaxed">${item.desc}</p>
+              </div>
+
+              <div class="space-y-4">
+                <div class="bg-[var(--border-color)] p-3 rounded-2xl flex items-center gap-2 text-sm font-bold">
+                  <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                  Password: ${decPass}
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <button onclick="handleActionClick(${realIndex}, '${decUrl}', true)" class="btn flex-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                    Download Mod
+                  </button>
+                  ${customBtns}
+                </div>
+
+                <div class="border-t border-[var(--border-color)] pt-3 flex flex-wrap items-center justify-between gap-2 text-sm font-bold text-gray-500">
+                  <div class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    <span id="view-counter-${realIndex}">${item.views||0}</span> dilihat
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <button onclick="likeMod(${realIndex})" ${likeDisabled} class="flex items-center gap-1 bg-[var(--border-color)] px-3 py-1.5 rounded-full text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                      ❤️ <span>${item.likes||0}</span> (${userLikes}/10)
+                    </button>
+                    <button onclick="toggleCommentsSection(${realIndex})" class="flex items-center gap-1 bg-[var(--border-color)] px-3 py-1.5 rounded-full text-sm">
+                      💬 Komentar
+                    </button>
+                  </div>
+                </div>
+
+                <div id="comments-panel-${realIndex}" class="hidden bg-[var(--border-color)] p-3 rounded-2xl">
+                  <h4 class="font-bold text-sm uppercase mb-2">Diskusi</h4>
+                  <div class="max-h-32 overflow-y-auto bg-[var(--card-bg)] border border-[var(--border-color)] rounded-2xl mb-3 divide-y divide-[var(--border-color)]">
+                    ${commentsHtml}
+                  </div>
+                  <div class="flex flex-wrap gap-2">
+                    <input type="text" id="comm-name-${realIndex}" placeholder="Nama" class="input-field input-field-sm w-24" />
+                    <input type="text" id="comm-text-${realIndex}" placeholder="Komentar..." class="input-field input-field-sm flex-1" />
+                    <button onclick="submitComment(${realIndex})" class="btn btn-sm">Kirim</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // ===== INTERACTIONS =====
+    async function handleActionClick(index, targetUrl, isMain = false) {
+      playSynth("success");
+      if (!links[index].views) links[index].views = 0;
+      links[index].views += 1;
+      const el = document.getElementById(`view-counter-${index}`);
+      if (el) el.innerText = links[index].views;
+      await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+
+      if (isMain) {
+        antiSpamCounter++;
+        if (antiSpamCounter > 6) { triggerBanScreen(); return; }
+        setTimeout(() => { if (antiSpamCounter > 0) antiSpamCounter--; }, 5000);
+        openSafelinkModal(targetUrl);
+      } else {
+        if (targetUrl) window.open(targetUrl, "_blank");
+      }
+    }
+
+    async function likeMod(index) {
+      let userLikes = parseInt(localStorage.getItem(`like_count_card_${index}`) || "0");
+      if (userLikes >= 10) {
+        playSynth("delete");
+        triggerScreenShake();
+        return showToast("Batas like 10x per perangkat!", "error");
+      }
+      playSynth("success");
+      userLikes += 1;
+      localStorage.setItem(`like_count_card_${index}`, userLikes);
+      if (!links[index].likes) links[index].likes = 0;
+      links[index].likes += 1;
+      await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+      renderPublicLinks();
+    }
+
+    function toggleCommentsSection(index) {
+      playSynth("click");
+      document.getElementById(`comments-panel-${index}`).classList.toggle("hidden");
+    }
+
+    async function submitComment(index) {
+      const name = document.getElementById(`comm-name-${index}`).value.trim();
+      const text = document.getElementById(`comm-text-${index}`).value.trim();
+      if (!name || !text) return showToast("Nama dan komentar wajib!", "error");
+      playSynth("success");
+      if (!links[index].comments) links[index].comments = [];
+      links[index].comments.push({ name, text });
+      document.getElementById(`comm-name-${index}`).value = "";
+      document.getElementById(`comm-text-${index}`).value = "";
+      await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+      renderPublicLinks();
+      showToast("Komentar dikirim!", "success");
+    }
+
+    // ===== SAFELINK =====
+    let safelinkInterval = null;
+
+    function openSafelinkModal(targetUrl) {
+      playSynth("success");
+      const modal = document.getElementById("safelinkModal");
+      const progress = document.getElementById("safelinkProgress");
+      const status = document.getElementById("safelinkStatusText");
+      const btnArea = document.getElementById("safelinkButtonArea");
+      const downloadBtn = document.getElementById("btnRealDownload");
+      modal.classList.add("open");
+      btnArea.classList.add("hidden");
+      progress.style.width = "0%";
+      status.innerText = "Menghubungkan ke server cloud...";
+      let count = 0;
+      const step = (safelinkTimerValue * 1000) / 100;
+      if (safelinkInterval) clearInterval(safelinkInterval);
+      safelinkInterval = setInterval(() => {
+        count++;
+        progress.style.width = count + "%";
+        if (count === 30) status.innerText = "Memindai malware & virus...";
+        else if (count === 70) status.innerText = "Mendekripsi tautan aman...";
+        if (count >= 100) {
+          clearInterval(safelinkInterval);
+          status.innerText = "Selesai! Tautan siap diunduh.";
+          btnArea.classList.remove("hidden");
+          downloadBtn.href = targetUrl;
+          playSynth("success");
+        }
+      }, step);
+    }
+
+    function closeSafelinkModal() {
+      if (safelinkInterval) clearInterval(safelinkInterval);
+      document.getElementById("safelinkModal").classList.remove("open");
+    }
+
+    // ===== BAN =====
     function triggerBanScreen() {
-      playSynth('ban');
-      localStorage.setItem('banned_client_status', 'true');
-      document.getElementById('banScreen').classList.remove('hidden');
+      playSynth("delete");
+      localStorage.setItem("banned_client_status", "true");
+      document.getElementById("banScreen").classList.remove("hidden");
     }
 
     function simulateUnban() {
-      playSynth('success');
-      localStorage.removeItem('banned_client_status');
-      document.getElementById('banScreen').classList.add('hidden');
-      showToast("Akses dipulihkan! Jangan spam lagi ya.", "success");
+      playSynth("success");
+      localStorage.removeItem("banned_client_status");
+      document.getElementById("banScreen").classList.add("hidden");
+      showToast("Akses dipulihkan!", "success");
+    }
+
+    function clearAllBans() {
+      localStorage.removeItem("banned_client_status");
+      document.getElementById("banScreen").classList.add("hidden");
+      showToast("Ban list dikosongkan", "info");
     }
 
     function checkBanStatus() {
-      if (localStorage.getItem('banned_client_status') === 'true') {
-        document.getElementById('banScreen').classList.remove('hidden');
-        playSynth('ban');
+      if (localStorage.getItem("banned_client_status") === "true") {
+        document.getElementById("banScreen").classList.remove("hidden");
+        playSynth("delete");
       }
     }
 
-    // --- RUNTIME BOOTSTRAP ---
-    window.addEventListener('DOMContentLoaded', () => {
+    // ===== THEME =====
+    function changeTheme(name) {
+      playSynth("click");
+      document.documentElement.setAttribute("data-theme", name);
+      localStorage.setItem("user_theme_choice", name);
+      showToast(`Tema: ${name.toUpperCase()}`, "info");
+    }
+
+    // ===== BOOT =====
+    window.addEventListener("DOMContentLoaded", () => {
       loadAllDataFromDB();
-      const savedTheme = localStorage.getItem('user_theme_choice');
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      const saved = localStorage.getItem("user_theme_choice");
+      if (saved) document.documentElement.setAttribute("data-theme", saved);
       checkBanStatus();
+
+      // Close modals on backdrop click
+      document.querySelectorAll(".modal-overlay").forEach(el => {
+        el.addEventListener("click", function(e) {
+          if (e.target === this) this.classList.remove("open");
+        });
+      });
     });
   </script>
 </body>
