@@ -1,1 +1,16 @@
-{"name": "proyek-axeluf","version": "4.5.0","description": "Premium Portal AXELUF Pro dengan Vercel Serverless dan Supabase Core","type": "module","main": "api/get-data.js","dependencies": {"@supabase/supabase-js": "^2.39.8"},"engines": {"node": ">=18"}}
+{
+  "name": "axeluf-portal",
+  "version": "4.5.0",
+  "description": "AXELUF Premium Mod Portal - Vercel + Supabase",
+  "main": "api/get-data.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "devDependencies": {
+    "vercel": "^34.0.0"
+  },
+  "license": "MIT"
+}
