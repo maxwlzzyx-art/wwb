@@ -9,13 +9,15 @@
 <body>
   <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
   <script>
-    // Konfigurasi inline Decap CMS
     CMS.init({
       config: {
         backend: {
           name: 'github',
-          repo: 'maxwlzzyx-art/axeluf',   // ← Ganti jika nama repo berbeda
-          branch: 'main',                 // ← Ganti jika branch kamu 'master'
+          repo: 'maxwlzzyx-art/axeluf',
+          branch: 'main',
+          auth_type: 'pkce',
+          site_domain: 'axeluf.vercel.app',
+          base_url: 'https://axeluf.vercel.app',
         },
         media_folder: 'static/images',
         public_folder: '/images',
