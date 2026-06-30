@@ -1,143 +1,2340 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="yellow">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NewsWave - Neo Brutalism Portal</title>
-    
-    <!-- Menggunakan font Space Grotesk untuk estetika Brutalisme yang kuat -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Link langsung ke file style.css -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AXELUF ID - Premium Portal V5.0 Square</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & Syne -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=500;700;800&family=Syne:wght=700;800&display=swap" rel="stylesheet">
+
+  <!-- Supabase JS Client CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style type="text/css">
+    /* Neo-Brutalist Theme Variables - SIKU KAKU / NO ROUNDED */
+    :root {
+      --bg-color: #FFDE4D;
+      --accent-color: #4CCD99;
+      --secondary-color: #FF6B6B;
+      --card-bg: #FFFFFF;
+      --text-color: #000000;
+      --custom-bg-image: none;
+    }
+
+    [data-theme="pink"] {
+      --bg-color: #FF71CD;
+      --accent-color: #00F0FF;
+      --secondary-color: #FFF500;
+      --card-bg: #FFFFFF;
+      --text-color: #000000;
+    }
+
+    [data-theme="mint"] {
+      --bg-color: #A3FFD6;
+      --accent-color: #8D00FF;
+      --secondary-color: #FF55BB;
+      --card-bg: #FFFFFF;
+      --text-color: #000000;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121214;
+      --accent-color: #39FF14;
+      --secondary-color: #FF3131;
+      --card-bg: #1E1E24;
+      --text-color: #FFFFFF;
+    }
+
+    [data-theme="orange"] {
+      --bg-color: #FF8A08;
+      --accent-color: #FFF200;
+      --secondary-color: #00FFD1;
+      --card-bg: #FFFFFF;
+      --text-color: #000000;
+    }
+
+    /* Strict Square Reset & Design Tokens */
+    * {
+      border-radius: 0px !important; /* Memaksa semua elemen menjadi kotak sempurna */
+    }
+
+    body {
+      background-color: var(--bg-color);
+      background-image: var(--custom-bg-image);
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text-color);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Brutalist Borders with Zero Radius */
+    .brutal-border {
+      border: 4px solid #000000;
+    }
+
+    .brutal-border-b {
+      border-bottom: 4px solid #000000;
+    }
+
+    .brutal-border-sm {
+      border: 2px solid #000000;
+    }
+
+    /* Perfect Flat Hard Shadow (No Blur, Sharp Angle) */
+    .brutal-shadow {
+      box-shadow: 6px 6px 0px 0px #000000;
+    }
+
+    .brutal-shadow-sm {
+      box-shadow: 4px 4px 0px 0px #000000;
+    }
+
+    .brutal-shadow-lg {
+      box-shadow: 10px 10px 0px 0px #000000;
+    }
+
+    /* Strict Actions: Isometric Pressed Effect */
+    .brutal-btn {
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .brutal-btn:hover:not(:disabled) {
+      transform: translate(-3px, -3px);
+      box-shadow: 9px 9px 0px 0px #000000;
+    }
+    .brutal-btn:active:not(:disabled) {
+      transform: translate(3px, 3px);
+      box-shadow: 3px 3px 0px 0px #000000;
+    }
+
+    .brutal-btn-sm {
+      transition: transform 0.08s ease, box-shadow 0.08s ease;
+    }
+    .brutal-btn-sm:hover:not(:disabled) {
+      transform: translate(-1.5px, -1.5px);
+      box-shadow: 5px 5px 0px 0px #000000;
+    }
+    .brutal-btn-sm:active:not(:disabled) {
+      transform: translate(1.5px, 1.5px);
+      box-shadow: 1px 1px 0px 0px #000000;
+    }
+
+    /* Screen shake animation */
+    @keyframes shake {
+      0% { transform: translate(1px, 1px) rotate(0deg); }
+      15% { transform: translate(-2px, -1px) rotate(0deg); }
+      30% { transform: translate(-3px, 1px) rotate(0deg); }
+      45% { transform: translate(0px, 2px) rotate(0deg); }
+      60% { transform: translate(2px, -1px) rotate(0deg); }
+      80% { transform: translate(-1px, 1px) rotate(0deg); }
+      100% { transform: translate(1px, 1px) rotate(0deg); }
+    }
+
+    .shake {
+      animation: shake 0.25s;
+    }
+
+    /* Custom Scrollbar - Strictly Flat & Square */
+    ::-webkit-scrollbar {
+      width: 12px;
+      height: 12px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border: 3px solid #000000;
+    }
+
+    /* Ticker Text Animation */
+    @keyframes ticker {
+      0% { transform: translate3d(100%, 0, 0); }
+      100% { transform: translate3d(-100%, 0, 0); }
+    }
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker-content {
+      display: inline-block;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker-content:hover {
+      animation-play-state: paused;
+    }
+  </style>
 </head>
-<body>
+<body class="min-h-screen pb-16 relative overflow-x-hidden">
 
-    <!-- NAVBAR ATAS -->
-    <header>
-        <div class="logo">NEWSWAVE</div>
-        
-        <div class="search-bar">
-            <input type="text" placeholder="CARI BERITA HARI INI...">
-            <button>[ CARI ]</button>
+  <!-- ================= RUNNING TEXT BROADCAST BAR ================= -->
+  <div id="broadcastBar" class="bg-black text-yellow-300 py-2 border-b-4 border-black font-extrabold text-xs uppercase ticker-wrap relative z-40">
+    <div class="ticker-content inline-flex gap-12" id="broadcastTextContainer">
+      <span>[ PENGUMUMAN RESMI ] Pastikan selalu mengunduh link modifikasi di portal resmi AXELUF untuk menghindari malware!</span>
+      <span>[ SYSTEM UPDATE ] Semua MLBB Skin & Radar Map Mod aktif untuk patch musim terbaru 2026!</span>
+    </div>
+  </div>
+
+  <!-- ================= SIDEBAR NAVIGATION DRAWER ================= -->
+  <div id="sidebarDrawer" class="fixed inset-y-0 left-0 w-80 max-w-[85vw] bg-white text-black z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-black shadow-[10px_0_0_0_#000000] flex flex-col">
+    <!-- Header Drawer -->
+    <div class="p-6 bg-[#FFDE4D] border-b-4 border-black flex justify-between items-center shrink-0">
+      <div class="flex items-center gap-2">
+        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <h2 class="font-syne font-extrabold text-xl uppercase tracking-tight">MENU UTAMA</h2>
+      </div>
+      <button onclick="toggleSidebarDrawer()" class="bg-black text-white border-2 border-black w-9 h-9 flex items-center justify-center font-bold text-sm brutal-shadow-sm active:translate-y-0.5">X</button>
+    </div>
+
+    <!-- Content/Menu List -->
+    <div class="p-6 space-y-4 overflow-y-auto flex-1 font-bold flex flex-col justify-between">
+      <div class="space-y-4">
+        <button onclick="selectCategoryFilter(''); toggleSidebarDrawer()" class="w-full text-left p-4 bg-zinc-50 hover:bg-yellow-100 border-2 border-black brutal-shadow-sm text-xs uppercase flex items-center justify-between text-black">
+          <span>[ HOME / SEMUA MOD ]</span>
+          <span class="bg-black text-white px-2 py-0.5 text-xs brutal-border-sm" id="countAllMods">0</span>
+        </button>
+
+        <!-- SEPARATOR PINNED KATEGORI -->
+        <div class="border-t-4 border-black pt-4">
+          <h3 class="text-xs text-red-500 uppercase tracking-widest mb-3 flex items-center gap-1 font-black">
+            <svg class="w-4 h-4 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+            KATEGORI UTAMA (PINNED)
+          </h3>
+          <div id="pinnedTagsList" class="flex flex-col gap-2">
+            <!-- Rendered dynamically -->
+          </div>
         </div>
 
-        <div class="nav-actions">
-            <button class="btn" style="background-color: var(--white);">[ TERSIMPAN ]</button>
-            <button class="btn">[ PROFIL ]</button>
+        <!-- SEPARATOR KATEGORI UNIK SELURUHNYA -->
+        <div class="border-t-4 border-black pt-4">
+          <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-3 font-black">[ DAFTAR KATEGORI ]</h3>
+          <div id="dynamicTagsList" class="flex flex-col gap-2">
+            <!-- Rendered dynamically -->
+          </div>
         </div>
-    </header>
 
-    <!-- AREA KONTEN UTAMA -->
-    <main class="container">
+        <!-- SEPARATOR SOSMED UTAMA -->
+        <div class="border-t-4 border-black pt-4">
+          <h3 class="text-xs text-gray-500 uppercase tracking-widest mb-3 font-black">[ SALURAN RESMI ]</h3>
+          <div class="grid grid-cols-1 gap-2">
+            <a href="https://whatsapp.com/channel/0029VaUl8HRBqbr8aHIeDW0s" target="_blank" class="flex items-center gap-2 p-3 bg-emerald-500 text-black border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold">
+              <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.234.002 9.493-4.254 9.495-9.491.002-2.54-1.01-4.922-2.85-6.766-1.841-1.844-4.288-2.86-6.83-2.861-5.241 0-9.503 4.257-9.505 9.496-.001 1.734.502 3.426 1.457 4.912L1.393 21.6l4.63-1.215-.1-.08-.106-.11l-.17-.119zm12.385-6.61c-.333-.167-1.97-.972-2.275-1.083-.306-.113-.528-.167-.75.167-.221.333-.857 1.083-1.05 1.306-.194.222-.389.25-.722.083-.333-.167-1.408-.52-2.681-1.656-.99-.883-1.658-1.973-1.853-2.306-.194-.333-.02-.513.146-.68.15-.15.333-.389.5-.583.167-.195.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.75-1.807-1.028-2.478-.27-.652-.544-.564-.748-.574-.194-.01-.417-.012-.64-.012-.221 0-.583.083-.888.417-.306.333-1.166 1.139-1.166 2.778 0 1.64 1.194 3.22 1.361 3.444.167.222 2.35 3.589 5.694 5.034.795.343 1.417.549 1.9.704.8.254 1.528.218 2.103.132.64-.096 1.97-.806 2.247-1.583.278-.78.278-1.445.194-1.583-.083-.139-.306-.222-.639-.389z"/></svg>
+              <span>SALURAN WA</span>
+            </a>
+            <a href="https://youtube.com/@axelufey?si=Z5fOumfvWbfhpXP7" target="_blank" class="flex items-center gap-2 p-3 bg-red-600 text-white border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold">
+              <span>YOUTUBE UTAMA</span>
+            </a>
+            <a href="https://youtube.com/@maxmodw?si=1ts0SoCZaesTdXfv" target="_blank" class="flex items-center gap-2 p-3 bg-red-500 text-white border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold">
+              <span>YOUTUBE CADANGAN</span>
+            </a>
+            <a href="https://www.instagram.com/maxl3rd?igsh=MTFjbXpnZTN0aDB1bA==" target="_blank" class="flex items-center gap-2 p-3 bg-[#FF71CD] text-black border-2 border-black brutal-shadow-sm text-xs uppercase hover:translate-y-0.5 font-extrabold">
+              <span>INSTAGRAM</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOMBOL ADMIN TERSEMBUNYI DI BAWAH SIDEBAR -->
+      <div class="border-t-4 border-black pt-4 mt-auto">
+        <button id="btnNavAdmin" onclick="toggleAdminPanel(); toggleSidebarDrawer()" class="w-full bg-[#FF6B6B] text-black font-extrabold uppercase py-3.5 px-5 border-2 border-black brutal-shadow-sm brutal-btn-sm text-xs">
+          [ PANEL ADMIN ]
+        </button>
+        <button id="btnLogOut" onclick="logoutAdmin(); toggleSidebarDrawer()" class="hidden w-full bg-black text-white font-extrabold uppercase py-3.5 px-5 border-2 border-black brutal-shadow-sm brutal-btn-sm text-xs mt-2">
+          [ KELUAR MODE ]
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACKDROP OVERLAY UNTUK SIDEBAR -->
+  <div id="sidebarBackdrop" onclick="toggleSidebarDrawer()" class="hidden fixed inset-0 bg-black/70 z-40 transition-opacity duration-300"></div>
+
+  <!-- ================= RETRO LOADING OVERLAY ================= -->
+  <div id="loadingOverlay" class="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6 text-center select-none text-white transition-opacity duration-300">
+    <div class="brutal-border brutal-shadow bg-yellow-400 p-8 max-w-lg text-black">
+      <span class="text-4xl font-mono block mb-4 animate-pulse">[ MEMUAT DATABASE ]</span>
+      <h2 class="font-syne font-extrabold text-2xl uppercase tracking-tighter">SINKRONISASI DATABASE V5.0</h2>
+      <p class="text-xs font-bold mt-2">Menghubungkan ke Cloud Supabase Premium Core...</p>
+    </div>
+  </div>
+
+  <!-- ================= RETRO BAN SCREEN ================= -->
+  <div id="banScreen" class="hidden fixed inset-0 bg-red-600 z-50 flex flex-col items-center justify-center p-6 text-center select-none text-white">
+    <div class="brutal-border brutal-shadow bg-black p-8 max-w-lg text-white">
+      <span class="text-5xl font-mono block mb-6 animate-bounce">[ BLOKIR ]</span>
+      <h1 class="font-syne font-extrabold text-4xl sm:text-5xl uppercase tracking-tighter text-yellow-300">SYSTEM BANNED</h1>
+      <p class="mt-4 font-bold text-lg">AKSES ANDA TELAH DIBLOKIR OLEH AXELUF!</p>
+      <p class="text-sm mt-2 text-gray-300">Spam klik atau perilaku mencurigakan terdeteksi dari perangkat Anda.</p>
+      <div class="mt-8 p-4 border-2 border-dashed border-red-500 bg-red-950 font-mono text-xs">
+        CODE: AX_SUSPICIOUS_CLIENT_BLOCK_V5_0
+      </div>
+      <button onclick="simulateUnban()" class="mt-6 bg-yellow-400 text-black font-bold uppercase py-2.5 px-6 brutal-border brutal-shadow-sm brutal-btn text-xs">
+        Minta Maaf ke Axeluf (Unban)
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toastBox" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toastContent" class="brutal-border brutal-shadow bg-white p-4 font-bold text-sm flex items-center gap-3 text-black">
+      <span id="toastIcon" class="font-mono">[!]</span>
+      <span id="toastMessage">Halo!</span>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION MODAL -->
+  <div id="confirmModal" class="hidden fixed inset-0 bg-black/85 z-50 flex items-center justify-center p-4">
+    <div class="bg-white text-black brutal-border brutal-shadow-lg w-full max-w-md p-6 text-center">
+      <span class="text-4xl font-mono block mb-4">[ PERINGATAN ]</span>
+      <h3 class="font-syne font-extrabold text-2xl uppercase mb-2">KONFIRMASI TINDAKAN</h3>
+      <p id="confirmModalText" class="text-sm font-medium text-gray-700 mb-6">Apakah Anda yakin ingin melakukan tindakan ini?</p>
+      
+      <div class="flex gap-4">
+        <button id="btnConfirmYes" class="flex-1 bg-red-500 text-white font-bold uppercase py-3 brutal-border brutal-shadow-sm brutal-btn text-sm">
+          YA, LAKUKAN!
+        </button>
+        <button onclick="closeConfirmModal()" class="flex-1 bg-gray-200 font-bold uppercase py-3 brutal-border brutal-shadow-sm brutal-btn text-sm">
+          BATAL
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PREMIUM SAFELINK DOWNLOAD MODAL ================= -->
+  <div id="safelinkModal" class="hidden fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4">
+    <div class="bg-white text-black brutal-border brutal-shadow-lg w-full max-w-md p-6 text-center relative">
+      <button onclick="closeSafelinkModal()" class="absolute top-3 right-3 bg-red-500 text-white brutal-border-sm w-8 h-8 flex items-center justify-center font-bold">X</button>
+      
+      <div class="mb-4">
+        <span class="text-3xl font-mono block animate-pulse">[ AMAN ]</span>
+      </div>
+      <h3 class="font-syne font-extrabold text-2xl uppercase mb-1">MEMINDAI KEAMANAN FILE</h3>
+      <p class="text-[10px] font-bold text-emerald-600 mb-4 bg-emerald-100 py-1 brutal-border-sm uppercase">[ SYSTEM ANTIVIRUS & ANTI-MALWARE ACTIVE ]</p>
+      
+      <div class="w-full bg-gray-200 brutal-border-sm h-6 mb-4 relative overflow-hidden">
+        <div id="safelinkProgress" class="bg-yellow-400 h-full transition-all duration-100" style="width: 0%"></div>
+        <div class="absolute inset-0 flex items-center justify-center text-xs font-extrabold" id="safelinkProgressText">0%</div>
+      </div>
+
+      <p class="text-xs font-bold text-gray-700 mb-6 uppercase" id="safelinkStatusText">Harap tunggu, server sedang menyiapkan tautan bersih...</p>
+      
+      <div id="safelinkButtonArea" class="hidden">
+        <a id="btnRealDownload" href="#" target="_blank" onclick="closeSafelinkModal()" class="block w-full bg-[#4CCD99] text-black font-extrabold text-center uppercase py-3.5 brutal-border brutal-shadow-sm brutal-btn text-sm">
+          KLIK UNTUK DOWNLOAD FILE SEKARANG
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PRE-HEADER BAR ================= -->
+  <div class="bg-black text-white py-2 px-4 flex justify-between items-center text-xs font-bold brutal-border-b">
+    <span class="hidden sm:inline">[ AXELUF V5.0 Premium | STRICT SQUARE EDITION ]</span>
+    <div class="flex items-center gap-4">
+      <!-- Mute/Unmute Synth -->
+      <button id="btnToggleSound" onclick="toggleSound()" class="bg-zinc-800 px-3 py-1 brutal-border-sm hover:bg-zinc-700 text-[10px] uppercase text-white font-black">
+        SUARA: AKTIF
+      </button>
+      
+      <!-- Theme Switcher -->
+      <div class="flex items-center gap-1.5">
+        <span>TEMA:</span>
+        <button onclick="changeTheme('yellow')" class="w-4 h-4 bg-[#FFDE4D] border border-white" title="Kuning Klasik"></button>
+        <button onclick="changeTheme('pink')" class="w-4 h-4 bg-[#FF71CD] border border-white" title="Cyberpunk Pink"></button>
+        <button onclick="changeTheme('mint')" class="w-4 h-4 bg-[#A3FFD6] border border-white" title="Retro Mint"></button>
+        <button onclick="changeTheme('dark')" class="w-4 h-4 bg-[#121214] border border-white" title="Deep Dark"></button>
+        <button onclick="changeTheme('orange')" class="w-4 h-4 bg-[#FF8A08] border border-white" title="Lava Orange"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TOP NAVIGATION BAR (RELATIVE / STICKY AS PER SPEC) ================= -->
+  <nav class="bg-white text-black brutal-border brutal-shadow p-4 relative z-30 max-w-4xl mx-auto mt-4 flex items-center justify-between gap-4">
+    <div class="flex items-center gap-3">
+      <!-- TOMBOL GARIS TIGA - FULL SQUARE -->
+      <button onclick="toggleSidebarDrawer()" class="bg-[#FFECEC] text-black border-4 border-black p-3 brutal-shadow-sm brutal-btn hover:bg-yellow-300 font-extrabold text-2xl flex items-center justify-center h-12 w-12 shrink-0" title="Buka Sidebar Menu">
+        =
+      </button>
+      <div>
+        <span class="font-syne font-extrabold text-lg tracking-tight uppercase block leading-tight">AXELUF</span>
+        <span class="text-[9px] uppercase tracking-wider font-extrabold bg-[#4CCD99] px-2 py-0.5 brutal-border-sm text-black inline-block">Official Portal</span>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <div class="relative w-10 h-10 shrink-0 brutal-border-sm">
+        <img id="navLogoMin" class="w-full h-full bg-emerald-400 object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo">
+      </div>
+    </div>
+  </nav>
+
+  <div class="max-w-4xl mx-auto px-4 pt-4">
+
+    <!-- ================= MODERN PROFILE SECTION WITH BANNER BEHIND IT ================= -->
+    <div class="w-full bg-white brutal-border brutal-shadow mb-8 overflow-hidden relative">
+      <!-- Banner Background -->
+      <div id="webBannerWrapper" class="relative w-full h-48 sm:h-64 bg-zinc-900 border-b-4 border-black overflow-hidden flex items-center justify-center">
+        <img id="webBannerImage" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200" alt="Banner YouTube" class="w-full h-full object-cover select-none">
+      </div>
+
+      <!-- Container Profil & Deskripsi -->
+      <div id="headerProfileContainer" class="p-6 pt-0 relative flex flex-col items-start text-left gap-4">
+        <!-- Avatar Foto Profil Kotak Menimpa Banner -->
+        <div class="relative -mt-16 sm:-mt-20 z-10">
+          <img id="mainLogo" class="w-28 h-28 sm:w-36 sm:h-36 bg-emerald-400 brutal-border brutal-shadow object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo">
+        </div>
+
+        <!-- Text Title & Subtitle Portal -->
+        <div class="w-full">
+          <h1 id="mainTitleText" class="font-syne font-extrabold text-3xl sm:text-4xl tracking-tight uppercase text-black leading-tight">AXELUF</h1>
+          <p id="mainSubtitleText" class="text-xs font-bold bg-[#FF8A08] inline-block px-3 py-1.5 brutal-border mt-2 text-black uppercase">
+            [ LINK MOD BERSIH & NO SCAM ]
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= LOGIN MODAL ================= -->
+    <div id="loginSection" class="hidden fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4">
+      <div class="bg-[#4CCD99] text-black brutal-border brutal-shadow-lg w-full max-w-md p-6 relative">
+        <button onclick="closeLoginModal()" class="absolute -top-3 -right-3 bg-white brutal-border w-10 h-10 flex items-center justify-center font-bold text-xl hover:bg-red-400">X</button>
         
-        <!-- BAGIAN KIRI: FEED BERITA -->
-        <section class="main-content">
-            <!-- Navigasi Kategori (Tab) -->
-            <div class="kategori-nav">
-                <button class="btn active">TERBARU</button>
-                <button class="btn" style="background-color: var(--white);">TEKNOLOGI</button>
-                <button class="btn" style="background-color: var(--white);">GAYA HIDUP</button>
-                <button class="btn" style="background-color: var(--white);">LINGKUNGAN</button>
+        <h2 class="font-syne font-extrabold text-2xl mb-6 uppercase tracking-tight">[ VERIFIKASI ADMIN ]</h2>
+        
+        <div class="space-y-4">
+          <div>
+            <label class="block font-bold mb-1 uppercase text-xs tracking-wider">Username</label>
+            <input type="text" id="adminUser" placeholder="Masukkan username" class="w-full brutal-border p-3 font-bold bg-white focus:outline-none focus:bg-[#FFF5C3] text-black">
+          </div>
+          <div>
+            <label class="block font-bold mb-1 uppercase text-xs tracking-wider">Password</label>
+            <input type="password" id="adminPass" placeholder="Masukkan password" class="w-full brutal-border p-3 font-bold bg-white focus:outline-none focus:bg-[#FFF5C3] text-black">
+          </div>
+          
+          <button onclick="attemptLogin()" class="w-full bg-[#FF8A08] font-bold uppercase py-3.5 brutal-border brutal-shadow-sm brutal-btn mt-4 text-black text-sm">
+            MASUK SEKARANG
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= ADMIN DASHBOARD ================= -->
+    <section id="adminDashboard" class="hidden bg-[#FFF5C3] text-black brutal-border brutal-shadow p-6 mb-8">
+      <div class="flex justify-between items-center border-b-4 border-black pb-4 mb-6">
+        <h2 class="font-syne font-bold text-2xl uppercase">[ KELOLA WEBSITE ]</h2>
+        <span class="bg-[#4CCD99] px-3 py-1.5 brutal-border text-xs font-bold uppercase border-black text-black">Mode Admin</span>
+      </div>
+
+      <!-- Tab Dashboard -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <button onclick="switchAdminTab('mod')" id="tabMod" class="bg-black text-white px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm">Kelola Link Mod</button>
+        <button onclick="switchAdminTab('branding')" id="tabBranding" class="bg-white text-black px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm">Pengaturan Web</button>
+        <button onclick="switchAdminTab('social')" id="tabSocial" class="bg-white text-black px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm">Atur Credit Sosmed</button>
+        <button onclick="switchAdminTab('pinning')" id="tabPinning" class="bg-white text-black px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm">Pin Kategori</button>
+      </div>
+
+      <!-- TAB 1: KELOLA LINK MOD -->
+      <div id="adminTabModContent">
+        <div class="bg-white brutal-border brutal-shadow-sm p-5 mb-8 text-black">
+          <h3 id="formTitle" class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF8A08]">[ TAMBAH MOD BARU ]</h3>
+          
+          <input type="hidden" id="editIndex" value="">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Nama Aplikasi / Game Mod</label>
+              <input type="text" id="modName" placeholder="Contoh: Mobile Legends Mod Skin" class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Kategori (Tag) - Pisahkan dengan koma</label>
+              <input type="text" id="modTag" placeholder="Contoh: GAME, APK, PREMIUM, SKIN" class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black">
+            </div>
+            
+            <div class="md:col-span-2">
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Deskripsi Fitur Mod (Gunakan Enter untuk baris baru)</label>
+              <textarea id="modDesc" rows="4" placeholder="Sebutkan fitur unggulan mod..." class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black"></textarea>
+            </div>
+            
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Link Download Utama (Mediafire/Drive/dll)</label>
+              <input type="text" id="modUrl" placeholder="https://..." class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Info Password (Jika ada)</label>
+              <input type="text" id="modPassword" placeholder="Contoh: Password di Video Menit 04:20" class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black">
             </div>
 
-            <!-- Daftar Kartu Berita -->
-            <div class="news-feed">
-                
-                <!-- Kartu Berita 1 -->
-                <article class="news-card">
-                    <div class="news-image-placeholder">
-                        [ REVOLUSI HIJAU ]
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span>22 Nov 2026</span>
-                            <span>[ 5 Mnt Baca ]</span>
-                        </div>
-                        <h2 class="news-title">Green Revolution: Praktik Keberlanjutan Toko Lokal</h2>
-                        <p>Mengubah pola konsumsi masyarakat modern melalui inovasi tanpa kemasan plastik sekali pakai di pusat perkotaan.</p>
-                        
-                        <div class="news-footer">
-                            <span class="tag green">Lingkungan</span>
-                            <div class="author">
-                                <div class="author-avatar">EI</div>
-                                <span>Eco Insider</span>
-                                <button class="btn" style="padding: 0.2rem 0.5rem; font-size: 0.7rem;">+ IKUTI</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Kartu Berita 2 -->
-                <article class="news-card">
-                    <div class="news-image-placeholder img-2">
-                        [ KULINER MEDITERANIA ]
-                    </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span>22 Nov 2026</span>
-                            <span>[ 8 Mnt Baca ]</span>
-                        </div>
-                        <h2 class="news-title">Culinary Connoisseur: Menemukan Cita Rasa Mediterania</h2>
-                        <p>Eksplorasi mendalam mengenai rempah asli, minyak zaitun murni, dan bahan-bahan segar khas pesisir laut selatan Eropa.</p>
-                        
-                        <div class="news-footer">
-                            <span class="tag red">Kuliner</span>
-                            <div class="author">
-                                <div class="author-avatar">FJ</div>
-                                <span>Food Journey</span>
-                                <button class="btn" style="padding: 0.2rem 0.5rem; font-size: 0.7rem; background-color: var(--white);">DIIKUTI</button>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
+            <!-- UNGGUL GAMBAR DAN FILTER RASIO -->
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Link URL Gambar Mod</label>
+              <input type="text" id="modImageUrl" placeholder="https://..." class="w-full brutal-border p-2.5 font-bold bg-white focus:outline-none text-black">
             </div>
-        </section>
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Atau Unggah Gambar Lokal</label>
+              <input type="file" id="uploadModImageFile" accept="image/*" class="w-full brutal-border p-1.5 font-bold bg-white text-xs text-black">
+            </div>
 
-        <!-- BAGIAN KANAN: SIDEBAR -->
-        <aside class="sidebar">
-            <div class="sidebar-section">
-                <h3 class="section-title">BARU DISIMPAN</h3>
-                
-                <div class="saved-item">
-                    <span class="tag red" style="font-size: 0.6rem; display: inline-block; margin-bottom: 0.5rem;">Kuliner</span>
-                    <h4>Culinary Connoisseur: Menemukan Cita Rasa...</h4>
-                    <span style="font-size: 0.8rem; font-weight: 700;">Baru Saja</span>
+            <div class="md:col-span-2">
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Pilih Rasio/Tampilan Gambar</label>
+              <select id="modImageRatio" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs">
+                <option value="aspect-video object-cover">Rasio Video (16:9)</option>
+                <option value="aspect-square object-cover">Rasio Kotak (1:1)</option>
+                <option value="aspect-[9/16] object-cover">Rasio Vertikal (9:16)</option>
+              </select>
+            </div>
+
+            <!-- INPUT KHUSUS ADMIN MENGATUR VIEWS & LIKES SECARA MANUAL -->
+            <div class="p-3 bg-yellow-50 border-2 border-yellow-400 col-span-1 md:col-span-2">
+              <h4 class="font-bold text-xs uppercase text-yellow-800 mb-2">[ PANEL STATISTIK ADMIN ]</h4>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-gray-700">Set Views Manual</label>
+                  <input type="number" id="modViewsInput" placeholder="Ubah angka views..." class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
                 </div>
-
-                <div class="saved-item">
-                    <span class="tag green" style="font-size: 0.6rem; display: inline-block; margin-bottom: 0.5rem;">Lingkungan</span>
-                    <h4>Green Revolution: Keberlanjutan Toko...</h4>
-                    <span style="font-size: 0.8rem; font-weight: 700;">1 Jam yang lalu</span>
+                <div>
+                  <label class="block text-[10px] font-bold uppercase text-gray-700">Set Likes Manual</label>
+                  <input type="number" id="modLikesInput" placeholder="Ubah angka likes..." class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
                 </div>
+              </div>
+            </div>
+          </div>
 
-                <button class="btn" style="width: 100%; text-align: center; background-color: var(--white);">[ LIHAT SEMUA ]</button>
+          <!-- KUSTOMISASI TOMBOL AKSI -->
+          <div class="mt-6 p-4 border-4 border-black bg-zinc-50 text-black">
+            <h4 class="font-syne font-extrabold text-sm uppercase mb-4 text-black border-b-2 border-black pb-2 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+              <span>[ Kustomisasi Tombol Aksi (Max 5 Link) ]</span>
+              <button type="button" onclick="addCustomLinkField()" class="bg-[#4CCD99] brutal-border-sm hover:bg-[#3ec08a] font-bold text-xs px-2.5 py-1 text-black">
+                + Tambah Tombol Manual
+              </button>
+            </h4>
+
+            <div id="customLinksContainer" class="space-y-4 mb-6">
+              <!-- Field tombol dinamis dimasukkan di sini via JavaScript -->
             </div>
 
-            <div class="sidebar-section">
-                <h3 class="section-title">KOLEKSI SAYA</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-                    <div style="border: var(--border-thin); padding: 1rem; text-align: center; font-weight: 800; cursor: pointer;">
-                        [ KESEHATAN ]
-                    </div>
-                    <div style="border: var(--border-thin); padding: 1rem; text-align: center; font-weight: 800; cursor: pointer; background-color: var(--black); color: var(--white);">
-                        [ HIBURAN ]
-                    </div>
+            <!-- KELOLA PRESET TOMBOL CUSTOM -->
+            <div class="border-t-4 border-black pt-4">
+              <h5 class="font-extrabold text-xs uppercase mb-3 text-purple-700">[ Kelola Preset Tombol Anda (Cloud Persisted) ]</h5>
+              
+              <!-- Form Save/Edit Preset -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 bg-purple-50 p-3 border-2 border-black mb-4">
+                <input type="hidden" id="editPresetIndex" value="">
+                <div>
+                  <label class="block text-[9px] font-bold uppercase text-purple-900">Teks Preset</label>
+                  <input type="text" id="presetLabel" placeholder="Cara Pasang" class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
                 </div>
-            </div>
-        </aside>
+                <div>
+                  <label class="block text-[9px] font-bold uppercase text-purple-900">URL Preset</label>
+                  <input type="text" id="presetUrl" placeholder="https://..." class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
+                </div>
+                <div class="flex items-end gap-1.5">
+                  <div class="flex-1">
+                    <label class="block text-[9px] font-bold uppercase text-purple-900">Pilih Ikon</label>
+                    <select id="presetIcon" class="w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
+                      <option value="video">Tutorial Video</option>
+                      <option value="download">Download File</option>
+                      <option value="chat">Obrolan / Grup</option>
+                      <option value="key">Password / Key</option>
+                      <option value="globe">Situs Web</option>
+                    </select>
+                  </div>
+                  <div class="flex gap-1">
+                    <button type="button" onclick="saveCustomPreset()" id="btnSavePreset" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-3 py-1.5 text-xs brutal-border-sm">
+                      Simpan
+                    </button>
+                    <button type="button" onclick="clearPresetForm()" id="btnCancelPreset" class="hidden bg-gray-200 text-black font-bold px-2 py-1.5 text-xs brutal-border-sm">
+                      Batal
+                    </button>
+                  </div>
+                </div>
+              </div>
 
+              <!-- List Quick Presets -->
+              <div id="customPresetButtonList" class="flex flex-wrap gap-2">
+                <!-- Preset buttons rendered via JS -->
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-2 mt-6">
+            <button onclick="saveMod()" class="flex-1 bg-[#4CCD99] font-bold uppercase py-2.5 brutal-border brutal-shadow-sm brutal-btn-sm text-sm text-black">
+              Simpan Link Mod ke Server
+            </button>
+            <button onclick="clearForm()" class="bg-gray-200 font-bold uppercase py-2.5 px-4 brutal-border text-sm text-black">
+              Reset Form
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-bold text-lg uppercase mb-3 text-black">[ LIST LINK AKTIF ]</h3>
+          <div class="overflow-x-auto brutal-border">
+            <table class="w-full bg-white text-left text-sm border-collapse">
+              <thead>
+                <tr class="bg-black text-white uppercase font-bold text-xs">
+                  <th class="p-3 border-r border-gray-700">Preview</th>
+                  <th class="p-3 border-r border-gray-700">Nama Mod</th>
+                  <th class="p-3 border-r border-gray-700">Kategori</th>
+                  <th class="p-3">Aksi</th>
+                </tr>
+              </thead>
+              <tbody id="adminTableBody" class="divide-y divide-black font-bold">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: BRANDING & LATAR BELAKANG / BANNER -->
+      <div id="adminTabBrandingContent" class="hidden space-y-6">
+        <!-- BRANDING UTAMA -->
+        <div class="bg-white brutal-border brutal-shadow-sm p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#8D00FF]">[ UBAH BRANDING UTAMA ]</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Nama Web Utama</label>
+              <input type="text" id="setMainTitle" placeholder="AXELUF" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Slogan / Subtitle</label>
+              <input type="text" id="setMainSubtitle" placeholder="LINK MOD BERSIH & NO SCAM" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <div class="md:col-span-2">
+              <label class="block font-bold mb-1 text-xs uppercase text-purple-700">Link URL Foto Profil Web Utama</label>
+              <input type="text" id="setMainLogoUrl" placeholder="https://..." class="w-full brutal-border p-2.5 font-bold bg-white text-xs text-black">
+            </div>
+
+            <!-- SETTING POSISI FOTO PROFIL -->
+            <div class="md:col-span-2 p-3 bg-indigo-50 border-2 border-indigo-400">
+              <label class="block font-bold mb-1 text-xs uppercase text-indigo-900">Pengaturan Posisi Foto Profil Header</label>
+              <select id="setProfilePosition" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs">
+                <option value="items-start text-left">Rata Kiri (Left Alignment)</option>
+                <option value="items-center text-center">Rata Tengah (Center Alignment)</option>
+                <option value="items-end text-right">Rata Kanan (Right Alignment)</option>
+              </select>
+            </div>
+          </div>
+          <button onclick="saveBranding()" class="mt-4 bg-[#8D00FF] text-white font-bold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs">
+            Terapkan Perubahan Branding & Posisi
+          </button>
+        </div>
+
+        <!-- SETTING RUNNING TEXT & TIMEOUT SAFELINK -->
+        <div class="bg-white brutal-border brutal-shadow-sm p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF55BB] font-black">[ PENGATURAN PORTAL ]</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Teks Pengumuman Berjalan (Gunakan | untuk pemisah)</label>
+              <input type="text" id="setBroadcastText" placeholder="Teks Pengumuman..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Waktu Hitung Mundur Safelink (Detik)</label>
+              <input type="number" id="setSafelinkTime" min="3" max="30" placeholder="5" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs">
+            </div>
+          </div>
+          <button onclick="saveSafelinkAndBroadcast()" class="mt-4 bg-[#FF55BB] text-black font-extrabold py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs uppercase">
+            Simpan Konfigurasi Portal
+          </button>
+        </div>
+
+        <!-- PENGATURAN BANNER -->
+        <div class="bg-white brutal-border brutal-shadow-sm p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-emerald-600">[ PENGATURAN BANNER WEBSITE ]</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">URL Gambar Banner</label>
+              <input type="text" id="setBannerUrl" placeholder="https://..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs">
+            </div>
+            <div class="p-3 bg-zinc-50 border-2 border-dashed border-black">
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Atau Unggah Gambar Banner Lokal (Mendukung 16:9)</label>
+              <input type="file" id="uploadBannerFile" accept="image/*" class="w-full text-xs font-bold text-gray-700">
+            </div>
+          </div>
+          <button onclick="saveBannerConfig()" class="mt-4 bg-emerald-500 text-black font-extrabold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs">
+            Terapkan Perubahan Banner
+          </button>
+        </div>
+
+        <!-- PENGATURAN LATAR BELAKANG -->
+        <div class="bg-white brutal-border brutal-shadow-sm p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF8A08]">[ LATAR BELAKANG (BACKGROUND) ]</h3>
+          <div class="space-y-4">
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Link Gambar Latar Belakang</label>
+              <input type="text" id="setBackgroundUrl" placeholder="https://..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black text-xs">
+            </div>
+            <div class="p-3 bg-zinc-50 border-2 border-dashed border-black">
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Atau Unggah Latar Belakang Lokal</label>
+              <input type="file" id="uploadBgFile" accept="image/*" class="w-full text-xs font-bold text-gray-700">
+            </div>
+            <div class="flex gap-2">
+              <button onclick="saveBackgroundConfig()" class="bg-[#FF8A08] text-black font-extrabold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs">
+                Simpan Background
+              </button>
+              <button onclick="resetBackgroundConfig()" class="bg-gray-200 text-black font-extrabold uppercase py-2 px-4 brutal-border text-xs">
+                Gunakan Warna Tema Default
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SIMULASI BAN -->
+        <div class="bg-white brutal-border brutal-shadow-sm p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-red-600">[ SIMULASI BAN PENGGUNA ]</h3>
+          <p class="text-xs text-gray-500 mb-4">Anda bisa memblokir sementara pengunjung website untuk menguji sistem atau membuat simulasi kejutan!</p>
+          
+          <div class="flex flex-col sm:flex-row gap-3">
+            <button onclick="triggerBanScreen()" class="bg-red-600 text-white font-bold uppercase py-2.5 px-6 brutal-border brutal-shadow-sm brutal-btn text-xs">
+              Simulasi BAN PERANGKAT SAYA
+            </button>
+            <button onclick="clearAllBans()" class="bg-gray-200 text-black font-bold uppercase py-2.5 px-6 brutal-border brutal-shadow-sm brutal-btn text-xs">
+              Kosongkan Ban List
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: CREDIT SOSMED MANAGER -->
+      <div id="adminTabSocialContent" class="hidden space-y-6">
+        <div class="bg-white brutal-border brutal-shadow-sm p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-4 text-[#FF55BB]">[ KELOLA CREDIT SOSMED ]</h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Platform (Contoh: YouTube, WhatsApp, IG)</label>
+              <input type="text" id="credPlatform" placeholder="Contoh: YouTube" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Username / Handle</label>
+              <input type="text" id="credHandle" placeholder="Contoh: @axelufey" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <div class="md:col-span-2">
+              <label class="block font-bold mb-1 text-xs uppercase text-black">URL Profil Sosmed</label>
+              <input type="text" id="credUrl" placeholder="https://..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Warna Latar Belakang Tombol</label>
+              <select id="credColor" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black">
+                <option value="#FF6B6B">Merah Brutalist</option>
+                <option value="#4CCD99">Hijau Brutalist</option>
+                <option value="#FF8A08">Oranye Terang</option>
+                <option value="#8D00FF">Ungu Cyber</option>
+                <option value="#FF71CD">Pink Neon</option>
+              </select>
+            </div>
+          </div>
+          
+          <button onclick="addCredit()" class="bg-[#FF55BB] text-black font-bold uppercase py-2 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs">
+            Tambah Credit Baru
+          </button>
+
+          <!-- List Credit Aktif -->
+          <div class="mt-8 border-t-2 border-black pt-4">
+            <h4 class="font-bold text-sm uppercase mb-3 text-black">Daftar Credit Sosmed Aktif:</h4>
+            <div id="adminCreditsList" class="space-y-2">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: PINNING KATEGORI -->
+      <div id="adminTabPinningContent" class="hidden space-y-6">
+        <div class="bg-white brutal-border brutal-shadow-sm p-5">
+          <h3 class="font-syne font-extrabold text-lg uppercase mb-2 text-red-500">[ PIN KATEGORI UTAMA ]</h3>
+          <p class="text-xs text-gray-500 mb-4">Sematkan kategori agar selalu tampil paling atas di sidebar menu.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
+            <div>
+              <label class="block font-bold mb-1 text-xs uppercase text-black">Nama Kategori yang akan di-pin</label>
+              <input type="text" id="pinTagName" placeholder="Contoh: MLBB atau GAME" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black">
+            </div>
+            <button onclick="addPinnedTag()" class="bg-red-500 text-white font-extrabold uppercase py-3 px-6 brutal-border brutal-shadow-sm brutal-btn-sm text-xs">
+              Sematkan Kategori!
+            </button>
+          </div>
+
+          <div class="mt-6 border-t-2 border-black pt-4">
+            <h4 class="font-bold text-sm uppercase mb-3 text-black">Daftar Kategori yang Di-pin:</h4>
+            <div id="pinnedTagsAdminList" class="flex flex-wrap gap-2">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PUBLIC MAIN CONTENT ================= -->
+    <main class="text-black">
+      <!-- Active Filter Indicator -->
+      <div id="activeFilterBadge" class="hidden bg-black text-white p-4 mb-6 brutal-border brutal-shadow-sm flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-yellow-300" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3"/></svg>
+          <span class="font-extrabold text-sm uppercase">Kategori: <span id="activeFilterLabel" class="text-[#FFDE4D] underline">GAME</span></span>
+        </div>
+        <button onclick="selectCategoryFilter('')" class="bg-[#FF6B6B] text-black brutal-border-sm hover:bg-red-400 font-extrabold text-xs px-3 py-1.5 uppercase">
+          Tampilkan Semua [X]
+        </button>
+      </div>
+
+      <!-- Kolom Pencarian -->
+      <section class="mb-8">
+        <div class="bg-white text-black brutal-border brutal-shadow flex items-center">
+          <span class="px-4 text-sm font-bold font-mono uppercase shrink-0 bg-black text-white h-14 flex items-center justify-center">Cari</span>
+          <input type="text" id="searchBar" oninput="renderPublicLinks()" placeholder="Cari berkas APK modifikasi di sini..." class="w-full p-4 font-bold text-md focus:outline-none bg-transparent text-black">
+        </div>
+      </section>
+
+      <!-- Informasi Pengguna -->
+      <div class="bg-[#FF8A08] brutal-border brutal-shadow-sm p-4 mb-8 font-bold flex gap-3 items-center text-black">
+        <svg class="w-6 h-6 text-black shrink-0" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        <p class="text-xs sm:text-sm">Bila download gagal atau file corrupt, silakan laporkan atau tinggalkan komentar di video YouTube terbaru agar segera diperbarui!</p>
+      </div>
+
+      <!-- Container Cards Link Mod -->
+      <div id="linkContainer" class="space-y-8">
+        <!-- Rendered via JS -->
+      </div>
     </main>
 
-    <!-- NAVIGASI BAWAH UNTUK VERSI MOBILE -->
-    <nav class="bottom-nav">
-        <a href="#" class="bottom-nav-item active">[ JELAJAHI ]</a>
-        <a href="#" class="bottom-nav-item">[ SIMPANAN ]</a>
-        <a href="#" class="bottom-nav-item">[ PROFIL ]</a>
-    </nav>
+    <!-- ================= FOOTER & CREDIT SOCIAL MEDIA ================= -->
+    <footer class="mt-16 bg-white text-black brutal-border brutal-shadow p-8 text-center font-bold">
+      <!-- Container Link Credit Dinamis -->
+      <div id="footerCreditsContainer" class="mb-6 flex flex-wrap items-center justify-center gap-4">
+        <!-- Rendered dynamically -->
+      </div>
 
+      <p class="font-syne font-bold uppercase tracking-wide text-sm">[ © 2026 AXELUF - STRICTLY ZERO CURVES ]</p>
+      <p class="text-[9px] text-gray-500 mt-2 font-mono uppercase">POWERED BY SUPABASE REAL-TIME CLOUD CORE</p>
+    </footer>
+
+  </div>
+
+  <!-- Safe Obfuscated JavaScript Runtime -->
+  <script type="text/javascript">
+    // =========================================================================
+    // INITIALIZE SUPABASE CLIENT
+    // =========================================================================
+    const SUPABASE_URL = "https://vfkribtxnkwjnxduvvul.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_Y6r3wH62GFwnIs-4cWvesg_ibPuFm4_";
+    const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const _0x4f12 = {
+      _0x0a: "\x61\x78\x65\x6c\x75\x66",                 // axeluf
+      _0x0b: "\x62\x72\x61\x6e\x64\x61\x6c\x7a\x37\x30", // brandalz70
+      _0x0d: "links_supabase_db",                     
+      _0x0e: "credits_supabase_db",
+      _0x0f: "pinned_tags_db" 
+    };
+
+    // GLOBAL STATE
+    let activeCategoryFilter = "";
+    let pinnedTags = [];
+    let safelinkTimerValue = 5; 
+    let customPresets = []; 
+
+    // SECURE CRYPTO UTILS
+    function encodeSafe(str) {
+      if (!str) return "";
+      try {
+        return btoa(unescape(encodeURIComponent(str)));
+      } catch (e) {
+        return str;
+      }
+    }
+
+    function decodeSafe(str) {
+      if (!str) return "";
+      try {
+        return decodeURIComponent(escape(atob(str)));
+      } catch (e) {
+        return str; 
+      }
+    }
+
+    // SIDEBAR DRAWER CONTROLLER
+    function toggleSidebarDrawer() {
+      playSynth('click');
+      const drawer = document.getElementById('sidebarDrawer');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      
+      const isOpen = !drawer.classList.contains('-translate-x-full');
+      
+      if (isOpen) {
+        drawer.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      } else {
+        drawer.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    // SELECT CATEGORY FILTER
+    function selectCategoryFilter(category) {
+      playSynth('success');
+      activeCategoryFilter = category.trim().toUpperCase();
+      
+      const filterBadge = document.getElementById('activeFilterBadge');
+      const filterLabel = document.getElementById('activeFilterLabel');
+
+      if (activeCategoryFilter) {
+        filterLabel.innerText = activeCategoryFilter;
+        filterBadge.classList.remove('hidden');
+        filterBadge.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        filterBadge.classList.add('hidden');
+      }
+
+      renderPublicLinks();
+    }
+
+    // SUPABASE SINKRONISASI WRAPPER
+    async function cloudGet(key, defaultValue) {
+      try {
+        const { data, error } = await supabaseClient
+          .from('settings')
+          .select('value')
+          .eq('key', key)
+          .maybeSingle();
+
+        if (error) {
+          console.warn(`Supabase get error untuk ${key}:`, error.message);
+          return defaultValue;
+        }
+
+        if (data && data.value !== undefined && data.value !== null) {
+          return data.value;
+        }
+        return defaultValue;
+      } catch (err) {
+        console.error("Gagal membaca database Supabase Cloud:", err);
+        return defaultValue;
+      }
+    }
+
+    async function cloudSet(key, value) {
+      try {
+        const { error } = await supabaseClient
+          .from('settings')
+          .upsert({ key: key, value: value }, { onConflict: 'key' });
+
+        if (error) {
+          console.error(`Supabase set error untuk ${key}:`, error.message);
+          showToast("Gagal menyimpan ke Cloud!", "error");
+        }
+      } catch (err) {
+        console.error("Gagal menulis data ke database Supabase Cloud:", err);
+      }
+    }
+
+    // TOAST NOTIFICATION
+    function showToast(message, type = 'info') {
+      const toastBox = document.getElementById('toastBox');
+      const toastContent = document.getElementById('toastContent');
+      const toastIcon = document.getElementById('toastIcon');
+      const toastMessage = document.getElementById('toastMessage');
+
+      toastMessage.innerText = message;
+
+      if (type === 'success') {
+        toastIcon.innerText = "[OK]";
+        toastContent.className = "brutal-border brutal-shadow bg-[#4CCD99] p-4 font-bold text-sm flex items-center gap-3 text-black";
+      } else if (type === 'error') {
+        toastIcon.innerText = "[X]";
+        toastContent.className = "brutal-border brutal-shadow bg-[#FF6B6B] p-4 font-bold text-sm flex items-center gap-3 text-black";
+      } else {
+        toastIcon.innerText = "[!]";
+        toastContent.className = "brutal-border brutal-shadow bg-white p-4 font-bold text-sm flex items-center gap-3 text-black";
+      }
+
+      toastBox.classList.remove('translate-y-20', 'opacity-0');
+      toastBox.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toastBox.classList.remove('translate-y-0', 'opacity-100');
+        toastBox.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // AUDIO RETRO SYNTH
+    let audioCtx = null;
+    let soundEnabled = true;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      return audioCtx;
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const btn = document.getElementById('btnToggleSound');
+      if (soundEnabled) {
+        btn.innerText = "SUARA: AKTIF";
+        btn.classList.replace('bg-zinc-600', 'bg-zinc-800');
+        playSynth('click');
+      } else {
+        btn.innerText = "SUARA: MATI";
+        btn.classList.replace('bg-zinc-800', 'bg-zinc-600');
+      }
+    }
+
+    function playSynth(type) {
+      if (!soundEnabled) return;
+      try {
+        const ctx = getAudioContext();
+        if (ctx.state === 'suspended') ctx.resume();
+
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        const now = ctx.currentTime;
+
+        if (type === 'click') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(450, now);
+          osc.frequency.exponentialRampToValueAtTime(150, now + 0.1);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.15);
+          osc.start(now);
+          osc.stop(now + 0.15);
+        } else if (type === 'success') {
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(261.63, now); 
+          osc.frequency.setValueAtTime(329.63, now + 0.08); 
+          osc.frequency.setValueAtTime(392.00, now + 0.16); 
+          osc.frequency.setValueAtTime(523.25, now + 0.24); 
+          gain.gain.setValueAtTime(0.08, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.35);
+          osc.start(now);
+          osc.stop(now + 0.35);
+        } else if (type === 'delete') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(300, now);
+          osc.frequency.exponentialRampToValueAtTime(30, now + 0.3);
+          gain.gain.setValueAtTime(0.12, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+          osc.start(now);
+          osc.stop(now + 0.3);
+        } else if (type === 'ban') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(100, now);
+          osc.frequency.linearRampToValueAtTime(250, now + 0.25);
+          osc.frequency.linearRampToValueAtTime(100, now + 0.5);
+          gain.gain.setValueAtTime(0.18, now);
+          gain.gain.linearRampToValueAtTime(0.01, now + 1.0);
+          osc.start(now);
+          osc.stop(now + 1.0);
+        }
+      } catch (err) {
+        console.warn("Audio context error.");
+      }
+    }
+
+    // STRICT FLAT SVG ICONS DICTIONARY (NO EMOTICONS / ALL MONOCHROME VECTOR)
+    const SVG_ICONS = {
+      download: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>`,
+      video: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+      chat: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>`,
+      key: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M15 7a2 2 0 012 2m0 0a2 2 0 01-2 2m2-2h1a2 2 0 012 2v3a2 2 0 01-2 2h-1m-5 3a5 5 0 01-9-3c0-2.76 2.24-5 5-5a4.912 4.912 0 012.35.6L15 2l5 5-5 5-3.65-3.6A4.965 4.965 0 0110 15z"/></svg>`,
+      globe: `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>`
+    };
+
+    // SYSTEM WORKFLOW CORE STATE
+    let links = [];
+    let credits = [];
+    let isAdmin = false;
+    let activeDeleteIndex = null;
+    let antiSpamCounter = 0;
+
+    // Default Fallbacks
+    const initialMockData = [
+      {
+        name: "Mobile Legends Mod Skin & Radar Map",
+        tag: "MLBB, GAME, SKIN",
+        desc: "Unlock semua skin hero favoritmu secara aman, anti banned lengkap dengan radar map di pojok kiri atas. Patch Terbaru!",
+        url: encodeSafe("https://www.mediafire.com/example-mlbb-mod"),
+        password: encodeSafe("KUNCI-VIDEO-MENIT-03"),
+        image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
+        imageRatio: "aspect-video object-cover", 
+        views: 384,
+        likes: 120,
+        comments: [
+          { name: "Rian_Slayer", text: "Mantap bang langsung work di akun smurf gua!" },
+          { name: "BocilMaju", text: "Password dapet di menit ke 4 guys, tonton dlu!" }
+        ],
+        customButtons: [
+          { label: "Cara Pasang", url: "https://youtube.com/@axelufey", iconType: "video" },
+          { label: "Grup WA Mabar", url: "https://chat.whatsapp.com", iconType: "chat" }
+        ]
+      }
+    ];
+
+    const initialCredits = [
+      { platform: "WhatsApp", handle: "Saluran Resmi", url: "https://whatsapp.com/channel/0029VaUl8HRBqbr8aHIeDW0s", color: "#4CCD99" },
+      { platform: "YouTube", handle: "@axelufey", url: "https://youtube.com/@axelufey?si=Z5fOumfvWbfhpXP7", color: "#FF6B6B" },
+      { platform: "Instagram", handle: "@maxl3rd", url: "https://www.instagram.com/maxl3rd?igsh=MTFjbXpnZTN0aDB1bA==", color: "#FF71CD" }
+    ];
+
+    const initialPinnedTags = ["MLBB", "GAME", "APK"];
+
+    const initialCustomPresets = [
+      { label: "Cara Pasang", url: "https://youtube.com/@axelufey", iconType: "video" },
+      { label: "Grup WA Mabar", url: "https://chat.whatsapp.com", iconType: "chat" }
+    ];
+
+    function triggerScreenShake() {
+      document.body.classList.add('shake');
+      setTimeout(() => { document.body.classList.remove('shake'); }, 250);
+    }
+
+    function changeTheme(themeName) {
+      playSynth('click');
+      document.documentElement.setAttribute('data-theme', themeName);
+      localStorage.setItem('user_theme_choice', themeName);
+      showToast(`TEMA AKTIF: ${themeName.toUpperCase()}`, 'info');
+    }
+
+    // DATABASE SINKRONISASI
+    async function loadAllDataFromDB() {
+      const overlay = document.getElementById('loadingOverlay');
+
+      const title = await cloudGet("web_title", "AXELUF");
+      document.getElementById('mainTitleText').innerText = title;
+      document.getElementById('setMainTitle').value = title;
+
+      const subtitle = await cloudGet("web_subtitle", "[ LINK MOD BERSIH & NO SCAM ]");
+      document.getElementById('mainSubtitleText').innerText = subtitle;
+      document.getElementById('setMainSubtitle').value = subtitle;
+
+      const logo = await cloudGet("web_logo", "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200");
+      document.getElementById('mainLogo').src = logo;
+      document.getElementById('navLogoMin').src = logo;
+      document.getElementById('setMainLogoUrl').value = logo;
+
+      const alignmentClass = await cloudGet("profile_alignment", "items-start text-left");
+      const profileContainer = document.getElementById('headerProfileContainer');
+      profileContainer.className = `p-6 pt-0 relative flex flex-col ${alignmentClass} gap-4`;
+      document.getElementById('setProfilePosition').value = alignmentClass;
+
+      const bgImg = await cloudGet("web_background_image", "none");
+      if (bgImg && bgImg !== "none") {
+        document.documentElement.style.setProperty('--custom-bg-image', `url(${bgImg})`);
+        document.getElementById('setBackgroundUrl').value = bgImg;
+      }
+
+      const bannerImg = await cloudGet("web_banner_image", "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200");
+      document.getElementById('webBannerImage').src = bannerImg;
+      document.getElementById('setBannerUrl').value = bannerImg;
+
+      const rawBroadcast = await cloudGet("web_broadcast_text", "[ PENGUMUMAN RESMI ] Pastikan selalu mengunduh link modifikasi di portal resmi AXELUF untuk menghindari malware! | [ SYSTEM UPDATE ] Semua MLBB Skin & Radar Map Mod aktif untuk patch musim terbaru 2026!");
+      document.getElementById('setBroadcastText').value = rawBroadcast;
+      updateBroadcastBanner(rawBroadcast);
+
+      safelinkTimerValue = parseInt(await cloudGet("web_safelink_time", "5"));
+      document.getElementById('setSafelinkTime').value = safelinkTimerValue;
+
+      customPresets = await cloudGet("web_custom_presets_db", initialCustomPresets);
+      renderCustomPresets();
+
+      pinnedTags = await cloudGet(_0x4f12._0x0f, initialPinnedTags);
+
+      credits = await cloudGet(_0x4f12._0x0e, initialCredits);
+      renderCredits();
+
+      links = await cloudGet(_0x4f12._0x0d, initialMockData);
+      renderPublicLinks();
+      renderAdminTable();
+      calculateCategoryCounts();
+      renderPinnedTagsList();
+
+      if (sessionStorage.getItem('admin_logged') === 'true') {
+        setAdminState(true);
+      }
+
+      if (overlay) {
+        overlay.style.opacity = '0';
+        setTimeout(() => overlay.remove(), 250);
+      }
+    }
+
+    function updateBroadcastBanner(rawText) {
+      const container = document.getElementById('broadcastTextContainer');
+      container.innerHTML = '';
+      const items = rawText.split('|');
+      items.forEach(text => {
+        if (text.trim()) {
+          const span = document.createElement('span');
+          span.className = "inline-block mr-12";
+          span.innerText = text.trim();
+          container.appendChild(span);
+        }
+      });
+    }
+
+    // CALCULATE CATEGORY COUNTS
+    function calculateCategoryCounts() {
+      let totalAll = links.length;
+      let uniqueTags = new Set();
+
+      links.forEach(item => {
+        const rawTags = item.tag ? item.tag.split(',') : [];
+        rawTags.forEach(t => {
+          const cleanTag = t.trim().toUpperCase();
+          if (cleanTag) {
+            uniqueTags.add(cleanTag);
+          }
+        });
+      });
+
+      document.getElementById('countAllMods').innerText = totalAll;
+
+      const container = document.getElementById('dynamicTagsList');
+      container.innerHTML = '';
+      
+      if (uniqueTags.size === 0) {
+        container.innerHTML = `<span class="text-xs italic text-gray-500 font-bold">[ BELUM ADA KATEGORI ]</span>`;
+        return;
+      }
+
+      uniqueTags.forEach(tag => {
+        if (pinnedTags.map(pt => pt.toUpperCase()).includes(tag)) {
+          return;
+        }
+
+        let count = 0;
+        links.forEach(item => {
+          const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
+          if (itemTags.includes(tag)) count++;
+        });
+
+        const wrapper = document.createElement('div');
+        wrapper.className = "w-full flex items-center justify-between gap-1 bg-zinc-100 hover:bg-[#4CCD99]/20 border-2 border-black p-3 text-xs brutal-shadow-sm";
+
+        const btn = document.createElement('button');
+        btn.onclick = () => {
+          selectCategoryFilter(tag);
+          toggleSidebarDrawer();
+        };
+        btn.className = "text-left font-extrabold uppercase flex-1 text-black truncate";
+        btn.innerText = `[ #${tag} ]`;
+
+        const counterSpan = document.createElement('span');
+        counterSpan.className = "bg-black text-white text-[10px] font-bold px-2 py-0.5 brutal-border-sm";
+        counterSpan.innerText = count;
+
+        wrapper.appendChild(btn);
+        wrapper.appendChild(counterSpan);
+        container.appendChild(wrapper);
+      });
+    }
+
+    // RENDER PINNED TAGS
+    function renderPinnedTagsList() {
+      const sidebarContainer = document.getElementById('pinnedTagsList');
+      const adminContainer = document.getElementById('pinnedTagsAdminList');
+      
+      sidebarContainer.innerHTML = '';
+      adminContainer.innerHTML = '';
+
+      if (pinnedTags.length === 0) {
+        sidebarContainer.innerHTML = `<span class="text-xs italic text-gray-400 font-bold">[ BELUM ADA PIN KATEGORI ]</span>`;
+        adminContainer.innerHTML = `<span class="text-xs italic text-gray-500 font-bold">[ BELUM ADA PIN KATEGORI ]</span>`;
+        return;
+      }
+
+      pinnedTags.forEach((tag, index) => {
+        const cleanTag = tag.trim().toUpperCase();
+
+        let count = 0;
+        links.forEach(item => {
+          const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
+          if (itemTags.includes(cleanTag)) count++;
+        });
+
+        const wrapper = document.createElement('div');
+        wrapper.className = "w-full flex items-center justify-between gap-1 bg-yellow-100 hover:bg-yellow-200 border-2 border-black p-3 text-xs brutal-shadow-sm";
+
+        const btn = document.createElement('button');
+        btn.onclick = () => {
+          selectCategoryFilter(cleanTag);
+          toggleSidebarDrawer();
+        };
+        btn.className = "text-left font-extrabold uppercase flex-1 text-black flex items-center gap-1.5 truncate";
+        btn.innerHTML = `
+          <svg class="w-4 h-4 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M16 12V4h1V2H7v2h1v8l-2 2v2h5.2v6h1.6v-6H18v-2l-2-2z"/></svg>
+          <span>[ ${cleanTag} ]</span>
+        `;
+
+        const counterSpan = document.createElement('span');
+        counterSpan.className = "bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 brutal-border-sm";
+        counterSpan.innerText = count;
+
+        wrapper.appendChild(btn);
+        wrapper.appendChild(counterSpan);
+        sidebarContainer.appendChild(wrapper);
+
+        const adminPill = document.createElement('div');
+        adminPill.className = "bg-yellow-200 border-2 border-black p-2 text-xs font-bold flex items-center gap-2 text-black";
+        adminPill.innerHTML = `
+          <span>[ 📌 ${cleanTag} ]</span>
+          <button onclick="unpinTag(${index})" class="bg-red-500 text-white font-extrabold px-2 py-0.5 hover:bg-red-600 brutal-border-sm text-[10px]">BATAL</button>
+        `;
+        adminContainer.appendChild(adminPill);
+      });
+    }
+
+    // PIN TAG
+    async function addPinnedTag() {
+      const tagInput = document.getElementById('pinTagName').value.trim();
+      if (!tagInput) {
+        showToast("Masukkan nama kategori terlebih dahulu!", "error");
+        return;
+      }
+
+      const upperTag = tagInput.toUpperCase();
+      if (pinnedTags.includes(upperTag)) {
+        showToast("Kategori ini sudah disematkan!", "error");
+        return;
+      }
+
+      playSynth('success');
+      pinnedTags.push(upperTag);
+      await cloudSet(_0x4f12._0x0f, pinnedTags);
+      document.getElementById('pinTagName').value = '';
+      showToast(`Kategori ${upperTag} disematkan!`, "success");
+      
+      renderPinnedTagsList();
+      calculateCategoryCounts();
+    }
+
+    async function unpinTag(index) {
+      playSynth('delete');
+      const removed = pinnedTags[index];
+      pinnedTags.splice(index, 1);
+      await cloudSet(_0x4f12._0x0f, pinnedTags);
+      showToast(`Sematkan ${removed} dibatalkan!`, "info");
+      
+      renderPinnedTagsList();
+      calculateCategoryCounts();
+    }
+
+    // PENYIMPANAN BRANDING
+    async function saveBranding() {
+      playSynth('success');
+      const title = document.getElementById('setMainTitle').value.trim();
+      const subtitle = document.getElementById('setMainSubtitle').value.trim();
+      const logoUrl = document.getElementById('setMainLogoUrl').value.trim();
+      const alignment = document.getElementById('setProfilePosition').value;
+
+      if (title) {
+        await cloudSet("web_title", title);
+        document.getElementById('mainTitleText').innerText = title;
+      }
+      if (subtitle) {
+        await cloudSet("web_subtitle", subtitle);
+        document.getElementById('mainSubtitleText').innerText = subtitle;
+      }
+      if (logoUrl) {
+        await cloudSet("web_logo", logoUrl);
+        document.getElementById('mainLogo').src = logoUrl;
+        document.getElementById('navLogoMin').src = logoUrl;
+      }
+      
+      await cloudSet("profile_alignment", alignment);
+      const profileContainer = document.getElementById('headerProfileContainer');
+      profileContainer.className = `p-6 pt-0 relative flex flex-col ${alignment} gap-4`;
+
+      showToast("Setelan branding berhasil disimpan!", "success");
+    }
+
+    // SAVE SAFELINK CONFIG
+    async function saveSafelinkAndBroadcast() {
+      playSynth('success');
+      const broadcastText = document.getElementById('setBroadcastText').value.trim();
+      const MathSafelink = document.getElementById('setSafelinkTime').value.trim();
+
+      if (broadcastText) {
+        await cloudSet("web_broadcast_text", broadcastText);
+        updateBroadcastBanner(broadcastText);
+      }
+      if (MathSafelink) {
+        safelinkTimerValue = parseInt(MathSafelink);
+        await cloudSet("web_safelink_time", safelinkTimerValue.toString());
+      }
+      showToast("Konfigurasi portal berhasil disimpan!", "success");
+    }
+
+    // PENGATURAN BACKGROUND
+    async function saveBackgroundConfig() {
+      playSynth('success');
+      const bgUrlInput = document.getElementById('setBackgroundUrl').value.trim();
+      const bgFile = document.getElementById('uploadBgFile').files[0];
+
+      if (bgFile) {
+        const reader = new FileReader();
+        reader.onloadend = async function () {
+          const base64String = reader.result;
+          document.documentElement.style.setProperty('--custom-bg-image', `url(${base64String})`);
+          await cloudSet("web_background_image", base64String);
+          showToast("Latar belakang lokal berhasil disimpan!", "success");
+        };
+        reader.readAsDataURL(bgFile);
+      } else if (bgUrlInput) {
+        document.documentElement.style.setProperty('--custom-bg-image', `url(${bgUrlInput})`);
+        await cloudSet("web_background_image", bgUrlInput);
+        showToast("Latar belakang URL berhasil disimpan!", "success");
+      } else {
+        showToast("Masukkan URL atau unggah berkas terlebih dahulu!", "error");
+      }
+    }
+
+    async function resetBackgroundConfig() {
+      playSynth('delete');
+      document.documentElement.style.setProperty('--custom-bg-image', 'none');
+      document.getElementById('setBackgroundUrl').value = '';
+      document.getElementById('uploadBgFile').value = '';
+      await cloudSet("web_background_image", "none");
+      showToast("Latar belakang direset ke bawaan.", "info");
+    }
+
+    // PENGATURAN BANNER
+    async function saveBannerConfig() {
+      playSynth('success');
+      const bannerUrlInput = document.getElementById('setBannerUrl').value.trim();
+      const bannerFile = document.getElementById('uploadBannerFile').files[0];
+
+      if (bannerFile) {
+        const reader = new FileReader();
+        reader.onloadend = async function () {
+          const base64String = reader.result;
+          document.getElementById('webBannerImage').src = base64String;
+          await cloudSet("web_banner_image", base64String);
+          showToast("Banner lokal diterapkan!", "success");
+        };
+        reader.readAsDataURL(bannerFile);
+      } else if (bannerUrlInput) {
+        document.getElementById('webBannerImage').src = bannerUrlInput;
+        await cloudSet("web_banner_image", bannerUrlInput);
+        showToast("Banner URL disimpan!", "success");
+      }
+    }
+
+    // AUTH ADMIN PANEL
+    function toggleAdminPanel() {
+      playSynth('click');
+      if (isAdmin) {
+        document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        document.getElementById('loginSection').classList.remove('hidden');
+      }
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginSection').classList.add('hidden');
+    }
+
+    function attemptLogin() {
+      const user = document.getElementById('adminUser').value;
+      const pass = document.getElementById('adminPass').value;
+
+      if (user === _0x4f12._0x0a && pass === _0x4f12._0x0b) {
+        setAdminState(true);
+        sessionStorage.setItem('admin_logged', 'true');
+        closeLoginModal();
+        playSynth('success');
+        showToast("Akses diizinkan, selamat bekerja!", "success");
+        document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        playSynth('delete');
+        triggerScreenShake();
+        showToast("Kredensial Admin Salah!", "error");
+      }
+    }
+
+    function logoutAdmin() {
+      playSynth('click');
+      setAdminState(false);
+      sessionStorage.removeItem('admin_logged');
+      showToast("Sesi admin berakhir.", "info");
+    }
+
+    function setAdminState(active) {
+      isAdmin = active;
+      const adminDashboard = document.getElementById('adminDashboard');
+      const btnNavAdmin = document.getElementById('btnNavAdmin');
+      const btnLogOut = document.getElementById('btnLogOut');
+
+      if (active) {
+        adminDashboard.classList.remove('hidden');
+        btnNavAdmin.innerText = "[ DASHBOARD ADMIN ]";
+        btnNavAdmin.classList.replace('bg-[#FF6B6B]', 'bg-[#4CCD99]');
+        btnLogOut.classList.remove('hidden');
+      } else {
+        adminDashboard.classList.add('hidden');
+        btnNavAdmin.innerText = "[ PANEL ADMIN ]";
+        btnNavAdmin.classList.replace('bg-[#4CCD99]', 'bg-[#FF6B6B]');
+        btnLogOut.classList.add('hidden');
+      }
+      renderAdminTable();
+    }
+
+    // SWITCH TAB
+    function switchAdminTab(tabName) {
+      playSynth('click');
+      const tabMod = document.getElementById('tabMod');
+      const tabBranding = document.getElementById('tabBranding');
+      const tabSocial = document.getElementById('tabSocial');
+      const tabPinning = document.getElementById('tabPinning');
+      
+      const modContent = document.getElementById('adminTabModContent');
+      const brandingContent = document.getElementById('adminTabBrandingContent');
+      const socialContent = document.getElementById('adminTabSocialContent');
+      const pinningContent = document.getElementById('adminTabPinningContent');
+
+      tabMod.className = "bg-white text-black px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+      tabBranding.className = "bg-white text-black px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+      tabSocial.className = "bg-white text-black px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+      tabPinning.className = "bg-white text-black px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+      
+      modContent.classList.add('hidden');
+      brandingContent.classList.add('hidden');
+      socialContent.classList.add('hidden');
+      pinningContent.classList.add('hidden');
+
+      if (tabName === 'mod') {
+        tabMod.className = "bg-black text-white px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+        modContent.classList.remove('hidden');
+      } else if (tabName === 'branding') {
+        tabBranding.className = "bg-black text-white px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+        brandingContent.classList.remove('hidden');
+      } else if (tabName === 'social') {
+        tabSocial.className = "bg-black text-white px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+        socialContent.classList.remove('hidden');
+      } else if (tabName === 'pinning') {
+        tabPinning.className = "bg-black text-white px-4 py-2.5 text-xs uppercase font-bold brutal-border brutal-shadow-sm";
+        pinningContent.classList.remove('hidden');
+      }
+    }
+
+    function injectQuickLinkPreset(label, url, iconType) {
+      addCustomLinkField(label, url, iconType);
+      showToast(`Tombol "${label}" ditambahkan ke Form!`, 'success');
+    }
+
+    // PRESET ENGINE
+    async function saveCustomPreset() {
+      const label = document.getElementById('presetLabel').value.trim();
+      const url = document.getElementById('presetUrl').value.trim();
+      const iconType = document.getElementById('presetIcon').value;
+      const editIndex = document.getElementById('editPresetIndex').value;
+
+      if (!label || !url) {
+        showToast("Teks preset dan URL preset wajib diisi!", "error");
+        return;
+      }
+
+      playSynth('success');
+      const presetData = { label, url, iconType };
+
+      if (editIndex !== "") {
+        customPresets[parseInt(editIndex)] = presetData;
+        showToast("Preset diperbarui!", "success");
+      } else {
+        customPresets.push(presetData);
+        showToast("Preset baru ditambahkan!", "success");
+      }
+
+      await cloudSet("web_custom_presets_db", customPresets);
+      clearPresetForm();
+      renderCustomPresets();
+    }
+
+    function editCustomPreset(index, event) {
+      if (event) event.stopPropagation();
+      playSynth('click');
+      const item = customPresets[index];
+      
+      document.getElementById('presetLabel').value = item.label;
+      document.getElementById('presetUrl').value = item.url;
+      document.getElementById('presetIcon').value = item.iconType;
+      document.getElementById('editPresetIndex').value = index;
+
+      document.getElementById('btnSavePreset').innerText = "UPDATE";
+      document.getElementById('btnCancelPreset').classList.remove('hidden');
+    }
+
+    async function deleteCustomPreset(index, event) {
+      if (event) event.stopPropagation();
+      playSynth('delete');
+      const removed = customPresets[index].label;
+      customPresets.splice(index, 1);
+
+      await cloudSet("web_custom_presets_db", customPresets);
+      showToast(`Preset "${removed}" dihapus!`, "info");
+      clearPresetForm();
+      renderCustomPresets();
+    }
+
+    function clearPresetForm() {
+      document.getElementById('presetLabel').value = "";
+      document.getElementById('presetUrl').value = "";
+      document.getElementById('presetIcon').selectedIndex = 0;
+      document.getElementById('editPresetIndex').value = "";
+      document.getElementById('btnSavePreset').innerText = "SIMPAN";
+      document.getElementById('btnCancelPreset').classList.add('hidden');
+    }
+
+    function renderCustomPresets() {
+      const container = document.getElementById('customPresetButtonList');
+      container.innerHTML = "";
+
+      if (customPresets.length === 0) {
+        container.innerHTML = `<span class="text-xs italic text-gray-400 font-bold">[ BELUM ADA PRESET KUSTOM ]</span>`;
+        return;
+      }
+
+      customPresets.forEach((c, index) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = "flex items-center bg-white border-2 border-black text-xs font-bold brutal-shadow-sm p-2 gap-2 hover:bg-purple-100 transition-colors";
+
+        const triggerBtn = document.createElement('button');
+        triggerBtn.type = "button";
+        triggerBtn.onclick = () => injectQuickLinkPreset(c.label, c.url, c.iconType);
+        triggerBtn.className = "hover:text-purple-700 uppercase flex items-center gap-1.5 flex-1 select-none text-left";
+        
+        let iconHtml = SVG_ICONS[c.iconType] || "[+]";
+        triggerBtn.innerHTML = `<span>${iconHtml}</span> <span>${c.label}</span>`;
+
+        const divider = document.createElement('span');
+        divider.className = "text-zinc-400";
+        divider.innerText = "|";
+
+        const editBtn = document.createElement('button');
+        editBtn.type = "button";
+        editBtn.onclick = (e) => editCustomPreset(index, e);
+        editBtn.className = "text-blue-600 hover:underline px-1 text-[10px] font-black";
+        editBtn.innerText = "EDIT";
+
+        const delBtn = document.createElement('button');
+        delBtn.type = "button";
+        delBtn.onclick = (e) => deleteCustomPreset(index, e);
+        delBtn.className = "text-red-500 hover:underline px-1 text-[10px] font-black";
+        delBtn.innerText = "HAPUS";
+
+        wrapper.appendChild(triggerBtn);
+        wrapper.appendChild(divider);
+        wrapper.appendChild(editBtn);
+        wrapper.appendChild(delBtn);
+        container.appendChild(wrapper);
+      });
+    }
+
+    // ACTIONS FOR ACTION LINKS
+    function addCustomLinkField(label = "", url = "", iconType = "video") {
+      const container = document.getElementById('customLinksContainer');
+      const currentFields = container.getElementsByClassName('custom-link-row');
+      
+      if (currentFields.length >= 5) {
+        showToast("Maksimal tombol kustomisasi hanya 5 link!", "error");
+        return;
+      }
+
+      playSynth('click');
+      const row = document.createElement('div');
+      row.className = "custom-link-row grid grid-cols-1 sm:grid-cols-3 gap-2 p-3 bg-white brutal-border relative";
+      row.innerHTML = `
+        <div>
+          <label class="block text-[9px] font-bold uppercase text-gray-500">Teks Tombol</label>
+          <input type="text" value="${label}" placeholder="Contoh: Tonton Tutorial" class="input-btn-label w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
+        </div>
+        <div>
+          <label class="block text-[9px] font-bold uppercase text-gray-500">URL Tujuan</label>
+          <input type="text" value="${url}" placeholder="https://..." class="input-btn-url w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
+        </div>
+        <div class="flex items-end gap-2">
+          <div class="flex-1">
+            <label class="block text-[9px] font-bold uppercase text-gray-500">Pilih Icon</label>
+            <select class="input-btn-icon w-full brutal-border-sm p-1.5 text-xs font-bold bg-white focus:outline-none text-black">
+              <option value="video" ${iconType === 'video' ? 'selected' : ''}>Tutorial Video</option>
+              <option value="download" ${iconType === 'download' ? 'selected' : ''}>Download File</option>
+              <option value="chat" ${iconType === 'chat' ? 'selected' : ''}>Obrolan / Grup</option>
+              <option value="key" ${iconType === 'key' ? 'selected' : ''}>Password / Key</option>
+              <option value="globe" ${iconType === 'globe' ? 'selected' : ''}>Situs Web</option>
+            </select>
+          </div>
+          <button type="button" onclick="removeCustomLinkField(this)" class="bg-red-500 text-white font-bold p-1.5 brutal-border-sm hover:bg-red-600 text-xs uppercase shrink-0">
+            HAPUS
+          </button>
+        </div>
+      `;
+      container.appendChild(row);
+    }
+
+    function removeCustomLinkField(button) {
+      playSynth('delete');
+      button.closest('.custom-link-row').remove();
+    }
+
+    function getCustomLinksData() {
+      const container = document.getElementById('customLinksContainer');
+      const rows = container.getElementsByClassName('custom-link-row');
+      const list = [];
+      for (let i = 0; i < rows.length; i++) {
+        const label = rows[i].querySelector('.input-btn-label').value.trim();
+        const url = rows[i].querySelector('.input-btn-url').value.trim();
+        const iconType = rows[i].querySelector('.input-btn-icon').value;
+        if (label && url) {
+          list.push({ label, url, iconType });
+        }
+      }
+      return list;
+    }
+
+    function setCustomLinksFields(customButtons) {
+      const container = document.getElementById('customLinksContainer');
+      container.innerHTML = '';
+      if (customButtons && customButtons.length > 0) {
+        customButtons.forEach(btn => {
+          addCustomLinkField(btn.label, btn.url, btn.iconType);
+        });
+      }
+    }
+
+    // BAN CLIENT CONTROL
+    function checkBanStatus() {
+      if (localStorage.getItem('banned_client_status') === 'true') {
+        document.getElementById('banScreen').classList.remove('hidden');
+        playSynth('ban');
+      }
+    }
+
+    // SAFELINK POPUP TIMEOUT SYSTEM
+    let safelinkInterval = null;
+    function openSafelinkModal(targetUrl) {
+      playSynth('success');
+      const modal = document.getElementById('safelinkModal');
+      const progress = document.getElementById('safelinkProgress');
+      const progressText = document.getElementById('safelinkProgressText');
+      const statusText = document.getElementById('safelinkStatusText');
+      const buttonArea = document.getElementById('safelinkButtonArea');
+      const downloadBtn = document.getElementById('btnRealDownload');
+
+      modal.classList.remove('hidden');
+      buttonArea.classList.add('hidden');
+      progress.style.width = '0%';
+      progressText.innerText = '0%';
+      statusText.innerText = 'MEMBUKA SALURAN AMAN SERVER...';
+
+      let count = 0;
+      const stepTime = (safelinkTimerValue * 1000) / 100;
+
+      if (safelinkInterval) clearInterval(safelinkInterval);
+
+      safelinkInterval = setInterval(() => {
+        count++;
+        progress.style.width = `${count}%`;
+        progressText.innerText = `${count}%`;
+
+        if (count === 30) {
+          statusText.innerText = 'MEMINDAI VIRUS, EXPLOIT DAN MALWARE...';
+        } else if (count === 70) {
+          statusText.innerText = 'MENYIAPKAN DEKRIPSI ALAMAT BERKAS...';
+        }
+
+        if (count >= 100) {
+          clearInterval(safelinkInterval);
+          statusText.innerText = 'DEKRIPSI SELESAI, UNDUHAN SIAP DIJALANKAN!';
+          buttonArea.classList.remove('hidden');
+          downloadBtn.href = targetUrl;
+          playSynth('success');
+        }
+      }, stepTime);
+    }
+
+    function closeSafelinkModal() {
+      if (safelinkInterval) clearInterval(safelinkInterval);
+      document.getElementById('safelinkModal').classList.add('hidden');
+    }
+
+    // PUBLIC MOD LINKS CARDS RENDERING (STRICTLY NO EMOJIS, SHARP SQUARE ELEMENTS)
+    function renderPublicLinks() {
+      const linkContainer = document.getElementById('linkContainer');
+      const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+      linkContainer.innerHTML = '';
+
+      const filteredLinks = links.filter(item => {
+        const matchSearch = item.name.toLowerCase().includes(searchQuery) || 
+                            item.tag.toLowerCase().includes(searchQuery) ||
+                            item.desc.toLowerCase().includes(searchQuery);
+
+        if (!matchSearch) return false;
+
+        if (activeCategoryFilter) {
+          const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
+          return itemTags.includes(activeCategoryFilter);
+        }
+
+        return true;
+      });
+
+      if (filteredLinks.length === 0) {
+        linkContainer.innerHTML = `
+          <div class="bg-white text-black brutal-border brutal-shadow p-8 text-center font-bold">
+            <span class="text-4xl block mb-2 font-mono">[!]</span>
+            <p class="text-lg uppercase font-syne">BERKAS TIDAK DITEMUKAN!</p>
+            <p class="text-xs text-gray-500 font-normal mt-1 uppercase">Silakan periksa kata kunci pencarian Anda atau reset filter.</p>
+          </div>
+        `;
+        return;
+      }
+
+      filteredLinks.forEach((item) => {
+        const decryptedUrl = decodeSafe(item.url);
+        const decryptedPassword = decodeSafe(item.password);
+        const imageSrc = item.image ? item.image : 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800';
+        const ratioClass = item.imageRatio ? item.imageRatio : 'aspect-video object-cover';
+
+        const cardIndex = links.indexOf(item); 
+
+        // Tags
+        let tagsHtml = "";
+        if (item.tag) {
+          const rawTags = item.tag.split(',');
+          rawTags.forEach(t => {
+            const cleanTag = t.trim();
+            if (cleanTag) {
+              tagsHtml += `
+                <button onclick="selectCategoryFilter('${cleanTag}')" class="bg-[#4CCD99] hover:bg-[#3dbd8c] transition-colors brutal-border-sm text-[10px] font-black uppercase px-2.5 py-1 text-black">
+                  #${cleanTag}
+                </button>
+              `;
+            }
+          });
+        }
+
+        // Custom Buttons
+        let customButtonsHtml = "";
+        if (item.customButtons && item.customButtons.length > 0) {
+          item.customButtons.forEach(btn => {
+            const iconSvg = SVG_ICONS[btn.iconType] || "";
+            customButtonsHtml += `
+              <button onclick="handleActionClick(${cardIndex}, '${btn.url}')" class="bg-black text-white font-bold text-xs uppercase py-3.5 px-4 brutal-border brutal-shadow-sm brutal-btn flex items-center justify-center gap-2">
+                ${iconSvg} <span>${btn.label}</span>
+              </button>
+            `;
+          });
+        }
+
+        // Comments
+        let commentsListHtml = "";
+        if (item.comments && item.comments.length > 0) {
+          item.comments.forEach(c => {
+            commentsListHtml += `
+              <div class="p-2.5 border-b border-black text-xs font-bold">
+                <span class="text-[#8D00FF]">@${c.name}:</span>
+                <span class="text-gray-800">${c.text}</span>
+              </div>
+            `;
+          });
+        } else {
+          commentsListHtml = `<p class="p-4 text-xs text-gray-500 font-bold uppercase text-center">[ BELUM ADA DISKUSI KOMENTAR ]</p>`;
+        }
+
+        const userLikesCount = parseInt(localStorage.getItem(`like_count_card_${cardIndex}`) || '0');
+        const isLikeDisabled = userLikesCount >= 10 ? "disabled" : "";
+
+        const card = document.createElement('div');
+        card.className = "bg-white text-black brutal-border brutal-shadow overflow-hidden flex flex-col";
+        
+        card.innerHTML = `
+          <!-- Browser Retro Top Header Decoration - PURE SQUARE -->
+          <div class="bg-black text-white px-4 py-3 flex items-center justify-between brutal-border-b font-mono text-[11px] select-none">
+            <!-- Window Perfect Squares -->
+            <div class="flex items-center gap-1.5 shrink-0">
+              <span class="w-3.5 h-3.5 bg-[#FF6B6B] border border-white inline-block"></span>
+              <span class="w-3.5 h-3.5 bg-[#FFDE4D] border border-white inline-block"></span>
+              <span class="w-3.5 h-3.5 bg-[#4CCD99] border border-white inline-block"></span>
+            </div>
+            
+            <!-- Path Bar -->
+            <div class="bg-zinc-900 border border-zinc-700 px-3 py-1 text-[10px] text-zinc-400 font-extrabold tracking-wide truncate max-w-[150px] sm:max-w-xs md:max-w-md">
+              AXELUF://SECURE_PORTAL/MOD_${cardIndex}
+            </div>
+
+            <!-- Ellipsis indicator -->
+            <div class="font-extrabold text-white text-sm select-none leading-none pr-1">
+              [ ... ]
+            </div>
+          </div>
+
+          <!-- Card Body Content -->
+          <div class="p-6 flex flex-col lg:flex-row gap-6 items-stretch">
+            <!-- Square Screenshot Box -->
+            <div class="w-full lg:w-72 shrink-0 brutal-border bg-zinc-100 overflow-hidden relative shadow-inner flex items-center justify-center">
+              <img src="${imageSrc}" alt="Tangkapan Layar Mod" class="w-full ${ratioClass} transition-transform duration-200 hover:scale-[1.02]">
+            </div>
+
+            <!-- Mod Specifications Column -->
+            <div class="flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex flex-wrap gap-1.5 mb-3">
+                  ${tagsHtml}
+                </div>
+                <h3 class="font-syne font-extrabold text-xl md:text-2xl uppercase mb-3 leading-tight">[ ${item.name} ]</h3>
+                <p class="text-xs sm:text-sm text-gray-700 mb-5 leading-relaxed font-bold whitespace-pre-wrap">${item.desc}</p>
+              </div>
+              
+              <div class="space-y-4">
+                <!-- Static Password Container -->
+                <div class="bg-[#FFF5C3] brutal-border p-3.5 flex items-center gap-2.5 text-xs font-bold text-orange-950 uppercase">
+                  <span>PASSWORD BERKAS: ${decryptedPassword}</span>
+                </div>
+
+                <!-- Interactive Buttons Action -->
+                <div class="flex flex-col sm:flex-row flex-wrap gap-2">
+                  <button onclick="handleActionClick(${cardIndex}, '${decryptedUrl}', true)" class="flex-1 text-center bg-[#FF6B6B] font-bold text-xs uppercase py-3.5 px-4 brutal-border brutal-shadow-sm brutal-btn flex items-center justify-center gap-2 text-black">
+                    ${SVG_ICONS.download} <span>UNDUH FILE MODIFIKASI</span>
+                  </button>
+                  ${customButtonsHtml}
+                </div>
+
+                <!-- INTERACTION SOCIAL BOARD -->
+                <div class="border-t-4 border-black pt-4 flex flex-col gap-3">
+                  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs font-bold text-gray-600 gap-3">
+                    <div class="flex items-center gap-1.5 uppercase font-black text-black">
+                      <span>DILIHAT: ${item.views || 0} KALI</span>
+                    </div>
+                    <div class="flex items-center gap-3 w-full sm:w-auto">
+                      <button onclick="likeMod(${cardIndex})" ${isLikeDisabled} class="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 bg-[#FFECEC] px-3 py-2 brutal-border-sm brutal-btn-sm text-[10px] text-black disabled:opacity-50 font-black">
+                        LIKE: ${item.likes || 0} (${userLikesCount}/10)
+                      </button>
+                      <button onclick="toggleCommentsSection(${cardIndex})" class="flex-1 sm:flex-initial flex items-center justify-center gap-1 bg-zinc-100 px-3 py-2 brutal-border-sm brutal-btn-sm text-[10px] text-black font-black">
+                        DISKUSI
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Comment Panel Section -->
+                  <div id="comments-panel-${cardIndex}" class="hidden bg-zinc-50 border-2 border-black p-4 text-black">
+                    <h4 class="font-extrabold text-xs uppercase mb-3 border-b-2 border-black pb-1.5">[ DISKUSI PORTAL ]</h4>
+                    <div class="max-h-32 overflow-y-auto bg-white border border-black mb-3 divide-y divide-black">
+                      ${commentsListHtml}
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-1.5">
+                      <input type="text" id="comm-name-${cardIndex}" placeholder="Username..." class="brutal-border-sm p-2 text-xs font-bold bg-white focus:outline-none w-full sm:w-28 text-black">
+                      <input type="text" id="comm-text-${cardIndex}" placeholder="Tulis masukan atau tanggapan..." class="flex-1 brutal-border-sm p-2 text-xs font-bold bg-white focus:outline-none text-black">
+                      <button onclick="submitComment(${cardIndex})" class="bg-[#4CCD99] hover:bg-[#3ec08a] font-bold text-xs uppercase py-2 px-4 brutal-border-sm brutal-btn-sm text-black shrink-0">
+                        KIRIM
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        `;
+        linkContainer.appendChild(card);
+      });
+    }
+
+    // INTERACTION COUNTER
+    async function handleActionClick(index, targetUrl, isMainDownload = false) {
+      playSynth('success');
+
+      if (!links[index].views) links[index].views = 0;
+      links[index].views += 1;
+
+      const viewCounterEl = document.getElementById(`view-counter-${index}`);
+      if (viewCounterEl) {
+        viewCounterEl.innerText = links[index].views;
+      }
+
+      await cloudSet(_0x4f12._0x0d, links);
+
+      if (isMainDownload) {
+        antiSpamCounter++;
+        if (antiSpamCounter > 6) {
+          triggerBanScreen();
+          return;
+        }
+        setTimeout(() => { if (antiSpamCounter > 0) antiSpamCounter--; }, 5000);
+        
+        openSafelinkModal(targetUrl);
+      } else {
+        if (targetUrl) {
+          window.open(targetUrl, '_blank');
+        }
+      }
+    }
+
+    async function likeMod(index) {
+      let userLikesCount = parseInt(localStorage.getItem(`like_count_card_${index}`) || '0');
+
+      if (userLikesCount >= 10) {
+        playSynth('delete');
+        triggerScreenShake();
+        showToast("Batas menyukai maksimal 10x!", "error");
+        return;
+      }
+
+      playSynth('success');
+      userLikesCount += 1;
+      localStorage.setItem(`like_count_card_${index}`, userLikesCount);
+
+      if (!links[index].likes) links[index].likes = 0;
+      links[index].likes += 1;
+      
+      await cloudSet(_0x4f12._0x0d, links);
+      renderPublicLinks();
+    }
+
+    function toggleCommentsSection(index) {
+      playSynth('click');
+      const panel = document.getElementById(`comments-panel-${index}`);
+      panel.classList.toggle('hidden');
+    }
+
+    async function submitComment(index) {
+      const nameInput = document.getElementById(`comm-name-${index}`);
+      const textInput = document.getElementById(`comm-text-${index}`);
+      const name = nameInput.value.trim();
+      const text = textInput.value.trim();
+
+      if (!name || !text) {
+        showToast("Username dan teks pesan wajib diisi!", "error");
+        return;
+      }
+
+      playSynth('success');
+      if (!links[index].comments) links[index].comments = [];
+      links[index].comments.push({ name, text });
+
+      nameInput.value = "";
+      textInput.value = "";
+
+      await cloudSet(_0x4f12._0x0d, links);
+      renderPublicLinks();
+      showToast("Komentar dikirim!", "success");
+    }
+
+    // ADMIN DATA OPERATIONS
+    function renderAdminTable() {
+      const tbody = document.getElementById('adminTableBody');
+      tbody.innerHTML = '';
+
+      links.forEach((item, index) => {
+        const imageSrc = item.image ? item.image : 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=150';
+        
+        let pills = "";
+        if (item.tag) {
+          item.tag.split(',').forEach(t => {
+            if (t.trim()) {
+              pills += `<span class="bg-gray-200 px-2 py-0.5 border border-black text-[9px] uppercase text-black font-extrabold mr-1 inline-block">[ ${t.trim()} ]</span>`;
+            }
+          });
+        }
+
+        const tr = document.createElement('tr');
+        tr.className = "border-b border-black hover:bg-gray-50 text-black";
+        tr.innerHTML = `
+          <td class="p-3 border-r border-black w-20">
+            <img src="${imageSrc}" class="w-12 h-12 object-cover brutal-border" alt="Thumb">
+          </td>
+          <td class="p-3 border-r border-black font-bold text-xs sm:text-sm text-black uppercase">
+            ${item.name}
+          </td>
+          <td class="p-3 border-r border-black">
+            <div class="flex flex-wrap gap-1">${pills}</div>
+          </td>
+          <td class="p-3">
+            <div class="flex flex-col sm:flex-row gap-1.5">
+              <button onclick="editMod(${index})" class="bg-[#FF8A08] brutal-border brutal-shadow-sm brutal-btn-sm py-1.5 px-3 text-xs uppercase text-black font-black">EDIT</button>
+              <button onclick="triggerDelete(${index})" class="bg-red-500 brutal-border brutal-shadow-sm brutal-btn-sm py-1.5 px-3 text-xs uppercase text-white font-black">HAPUS</button>
+            </div>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderCredits() {
+      const container = document.getElementById('footerCreditsContainer');
+      const adminList = document.getElementById('adminCreditsList');
+      container.innerHTML = '';
+      adminList.innerHTML = '';
+
+      credits.forEach((c, index) => {
+        const a = document.createElement('a');
+        a.href = c.url;
+        a.target = "_blank";
+        a.onclick = () => playSynth('click');
+        a.style.backgroundColor = c.color || '#4CCD99';
+        a.className = "px-4 py-2.5 brutal-border brutal-shadow-sm brutal-btn-sm flex items-center gap-2 text-xs uppercase text-black font-bold";
+        
+        let socialIcon = "";
+        if (c.platform.toLowerCase().includes('youtube')) {
+          socialIcon = `<svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 00-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 00-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 002.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.003 3.003 0 002.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`;
+        } else if (c.platform.toLowerCase().includes('instagram')) {
+          socialIcon = `<svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>`;
+        } else if (c.platform.toLowerCase().includes('whatsapp')) {
+          socialIcon = `<svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.62.962 3.21 1.493 4.904 1.495 5.234.002 9.493-4.254 9.495-9.491.002-2.54-1.01-4.922-2.85-6.766-1.841-1.844-4.288-2.86-6.83-2.861-5.241 0-9.503 4.257-9.505 9.496-.001 1.734.502 3.426 1.457 4.912L1.393 21.6l4.63-1.215-.1-.08-.106-.11l-.17-.119zm12.385-6.61c-.333-.167-1.97-.972-2.275-1.083-.306-.113-.528-.167-.75.167-.221.333-.857 1.083-1.05 1.306-.194.222-.389.25-.722.083-.333-.167-1.408-.52-2.681-1.656-.99-.883-1.658-1.973-1.853-2.306-.194-.333-.02-.513.146-.68.15-.15.333-.389.5-.583.167-.195.222-.333.333-.556.111-.222.056-.417-.028-.583-.083-.167-.75-1.807-1.028-2.478-.27-.652-.544-.564-.748-.574-.194-.01-.417-.012-.64-.012-.221 0-.583.083-.888.417-.306.333-1.166 1.139-1.166 2.778 0 1.64 1.194 3.22 1.361 3.444.167.222 2.35 3.589 5.694 5.034.795.343 1.417.549 1.9.704.8.254 1.528.218 2.103.132.64-.096 1.97-.806 2.247-1.583.278-.78.278-1.445.194-1.583-.083-.139-.306-.222-.639-.389z"/></svg>`;
+        } else {
+          socialIcon = `[-]`;
+        }
+
+        a.innerHTML = `${socialIcon} <span>${c.platform}:</span> <span class="font-extrabold">${c.handle}</span>`;
+        container.appendChild(a);
+
+        const div = document.createElement('div');
+        div.className = "flex items-center justify-between p-3 border-2 border-black bg-white text-black";
+        div.innerHTML = `
+          <span class="text-xs font-bold uppercase">[ ${c.platform} -> ${c.handle} ]</span>
+          <button onclick="deleteCredit(${index})" class="bg-red-500 text-white font-bold text-[10px] px-3 py-1 hover:bg-red-600 brutal-border-sm">HAPUS</button>
+        `;
+        adminList.appendChild(div);
+      });
+    }
+
+    function triggerDelete(index) {
+      playSynth('click');
+      triggerScreenShake();
+      activeDeleteIndex = index;
+      const targetName = links[index].name;
+      document.getElementById('confirmModalText').innerText = `Apakah Anda yakin ingin menghapus "${targetName}" secara permanen?`;
+      document.getElementById('confirmModal').classList.remove('hidden');
+    }
+
+    function closeConfirmModal() {
+      playSynth('click');
+      document.getElementById('confirmModal').classList.add('hidden');
+      activeDeleteIndex = null;
+    }
+
+    document.getElementById('btnConfirmYes').addEventListener('click', async function() {
+      if (activeDeleteIndex !== null) {
+        playSynth('delete');
+        links.splice(activeDeleteIndex, 1);
+        
+        await cloudSet(_0x4f12._0x0d, links);
+        showToast("Link Modifikasi dihapus!", "info");
+        closeConfirmModal();
+        renderPublicLinks();
+        renderAdminTable();
+        calculateCategoryCounts();
+        clearForm();
+      }
+    });
+
+    // CRUD CONTROLLERS
+    async function saveMod() {
+      const name = document.getElementById('modName').value.trim();
+      const tag = document.getElementById('modTag').value.trim();
+      const desc = document.getElementById('modDesc').value; 
+      const url = document.getElementById('modUrl').value.trim();
+      const password = document.getElementById('modPassword').value.trim();
+      const imageUrlInput = document.getElementById('modImageUrl').value.trim();
+      const imageRatio = document.getElementById('modImageRatio').value;
+      const fileInput = document.getElementById('uploadModImageFile');
+      const editIndex = document.getElementById('editIndex').value;
+
+      const manualViews = parseInt(document.getElementById('modViewsInput').value) || 0;
+      const manualLikes = parseInt(document.getElementById('modLikesInput').value) || 0;
+
+      const customButtons = getCustomLinksData();
+
+      if (!name || !tag || !desc || !url) {
+        showToast("Mohon lengkapi semua isian bertanda wajib!", "error");
+        return;
+      }
+
+      let viewsToSave = manualViews;
+      let likesToSave = manualLikes;
+      let commentsToSave = [];
+      let finalImg = imageUrlInput;
+
+      if (editIndex !== "") {
+        const oldItem = links[parseInt(editIndex)];
+        viewsToSave = manualViews !== 0 ? manualViews : (oldItem.views || 0);
+        likesToSave = manualLikes !== 0 ? manualLikes : (oldItem.likes || 0);
+        commentsToSave = oldItem.comments || [];
+        if (!finalImg) finalImg = oldItem.image;
+      }
+
+      const proceedSaving = async (imgSource) => {
+        const modData = {
+          name,
+          tag: tag.toUpperCase(), 
+          desc,
+          url: encodeSafe(url),
+          password: encodeSafe(password || "TANPA-PASSWORD"),
+          image: imgSource || "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800",
+          imageRatio: imageRatio,
+          views: viewsToSave,
+          likes: likesToSave,
+          comments: commentsToSave,
+          customButtons: customButtons
+        };
+
+        if (editIndex !== "") {
+          links[parseInt(editIndex)] = modData;
+          showToast("Berkas modifikasi berhasil diperbarui!", "success");
+        } else {
+          links.unshift(modData);
+          showToast("Berkas modifikasi baru berhasil ditambahkan!", "success");
+        }
+
+        playSynth('success');
+        await cloudSet(_0x4f12._0x0d, links);
+        clearForm();
+        renderPublicLinks();
+        renderAdminTable();
+        calculateCategoryCounts();
+      };
+
+      if (fileInput && fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onloadend = async function () {
+          await proceedSaving(reader.result);
+        };
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        await proceedSaving(finalImg);
+      }
+    }
+
+    function editMod(index) {
+      playSynth('click');
+      const item = links[index];
+      
+      document.getElementById('modName').value = item.name;
+      document.getElementById('modTag').value = item.tag;
+      document.getElementById('modDesc').value = item.desc;
+      document.getElementById('modUrl').value = decodeSafe(item.url);
+      document.getElementById('modPassword').value = decodeSafe(item.password) === "TANPA-PASSWORD" ? "" : decodeSafe(item.password);
+      document.getElementById('modImageUrl').value = item.image && !item.image.startsWith("data:") ? item.image : "";
+      
+      document.getElementById('modViewsInput').value = item.views || 0;
+      document.getElementById('modLikesInput').value = item.likes || 0;
+      
+      if (item.imageRatio) {
+        document.getElementById('modImageRatio').value = item.imageRatio;
+      }
+
+      setCustomLinksFields(item.customButtons);
+
+      document.getElementById('editIndex').value = index;
+      document.getElementById('formTitle').innerText = "[ EDIT BERKAS MODIFIKASI ]";
+      document.getElementById('formTitle').classList.replace('text-[#FF8A08]', 'text-blue-600');
+      document.getElementById('formTitle').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function clearForm() {
+      document.getElementById('modName').value = '';
+      document.getElementById('modTag').value = '';
+      document.getElementById('modDesc').value = '';
+      document.getElementById('modUrl').value = '';
+      document.getElementById('modPassword').value = '';
+      document.getElementById('modImageUrl').value = '';
+      if (document.getElementById('uploadModImageFile')) {
+        document.getElementById('uploadModImageFile').value = '';
+      }
+      document.getElementById('modImageRatio').selectedIndex = 0;
+      document.getElementById('modViewsInput').value = '';
+      document.getElementById('modLikesInput').value = '';
+      document.getElementById('customLinksContainer').innerHTML = '';
+      document.getElementById('editIndex').value = '';
+      
+      document.getElementById('formTitle').innerText = "[ TAMBAH MOD BARU ]";
+      document.getElementById('formTitle').classList.add('text-[#FF8A08]');
+    }
+
+    // SOCIAL MANAGER
+    async function addCredit() {
+      const platform = document.getElementById('credPlatform').value.trim();
+      const handle = document.getElementById('credHandle').value.trim();
+      const url = document.getElementById('credUrl').value.trim();
+      const color = document.getElementById('credColor').value;
+
+      if (!platform || !handle || !url) {
+        showToast("Lengkapi formulir credit sosial media!", "error");
+        return;
+      }
+
+      playSynth('success');
+      credits.push({ platform, handle, url, color });
+      
+      await cloudSet(_0x4f12._0x0e, credits);
+      showToast("Credit baru ditambahkan!", "success");
+      document.getElementById('credPlatform').value = '';
+      document.getElementById('credHandle').value = '';
+      document.getElementById('credUrl').value = '';
+      renderCredits();
+    }
+
+    async function deleteCredit(index) {
+      playSynth('delete');
+      credits.splice(index, 1);
+      await cloudSet(_0x4f12._0x0e, credits);
+      showToast("Credit berhasil dihapus!", "info");
+      renderCredits();
+    }
+
+    function triggerBanScreen() {
+      playSynth('ban');
+      localStorage.setItem('banned_client_status', 'true');
+      document.getElementById('banScreen').classList.remove('hidden');
+    }
+
+    function simulateUnban() {
+      playSynth('success');
+      localStorage.removeItem('banned_client_status');
+      document.getElementById('banScreen').classList.add('hidden');
+      showToast("Akses Anda telah dipulihkan.", "success");
+    }
+
+    function clearAllBans() {
+      playSynth('success');
+      localStorage.removeItem('banned_client_status');
+      showToast("Ban list dikosongkan!", "success");
+    }
+
+    // BOOTSTRAP INITIALIZATION
+    window.addEventListener('DOMContentLoaded', () => {
+      loadAllDataFromDB();
+
+      const savedTheme = localStorage.getItem('user_theme_choice');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+      
+      checkBanStatus();
+    });
+  </script>
 </body>
 </html>
