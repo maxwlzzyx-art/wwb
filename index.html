@@ -1,43 +1,143 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Axeluf</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NewsWave - Neo Brutalism Portal</title>
+    
+    <!-- Menggunakan font Space Grotesk untuk estetika Brutalisme yang kuat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Link langsung ke file style.css -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-<div class="logo">AXELUF</div>
-<nav>
-<a href="#">Home</a>
-<a href="#">Apps</a>
-<a href="#">Games</a>
-<a href="#">About</a>
-</nav>
-</header>
 
-<section class="hero">
-<div class="left">
-<span class="tag">MOD APK COLLECTION</span>
-<h1>Download<br>Premium APK<br>Without Limits</h1>
-<p>Fast update, clean download, modern interface and easy navigation.</p>
-<div class="buttons">
-<a class="btn-primary" href="#">Explore</a>
-<a class="btn-outline" href="#">Latest</a>
-</div>
-</div>
+    <!-- NAVBAR ATAS -->
+    <header>
+        <div class="logo">NEWSWAVE</div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="CARI BERITA HARI INI...">
+            <button>[ CARI ]</button>
+        </div>
 
-<div class="right">
-<div class="mockup">
-<div class="topbar"></div>
-<div class="screen">
-<h2>My Supermarket Simulator</h2>
-<p>Unlimited Money</p>
-<div class="download">DOWNLOAD</div>
-</div>
-</div>
-</div>
-</section>
+        <div class="nav-actions">
+            <button class="btn" style="background-color: var(--white);">[ TERSIMPAN ]</button>
+            <button class="btn">[ PROFIL ]</button>
+        </div>
+    </header>
+
+    <!-- AREA KONTEN UTAMA -->
+    <main class="container">
+        
+        <!-- BAGIAN KIRI: FEED BERITA -->
+        <section class="main-content">
+            <!-- Navigasi Kategori (Tab) -->
+            <div class="kategori-nav">
+                <button class="btn active">TERBARU</button>
+                <button class="btn" style="background-color: var(--white);">TEKNOLOGI</button>
+                <button class="btn" style="background-color: var(--white);">GAYA HIDUP</button>
+                <button class="btn" style="background-color: var(--white);">LINGKUNGAN</button>
+            </div>
+
+            <!-- Daftar Kartu Berita -->
+            <div class="news-feed">
+                
+                <!-- Kartu Berita 1 -->
+                <article class="news-card">
+                    <div class="news-image-placeholder">
+                        [ REVOLUSI HIJAU ]
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span>22 Nov 2026</span>
+                            <span>[ 5 Mnt Baca ]</span>
+                        </div>
+                        <h2 class="news-title">Green Revolution: Praktik Keberlanjutan Toko Lokal</h2>
+                        <p>Mengubah pola konsumsi masyarakat modern melalui inovasi tanpa kemasan plastik sekali pakai di pusat perkotaan.</p>
+                        
+                        <div class="news-footer">
+                            <span class="tag green">Lingkungan</span>
+                            <div class="author">
+                                <div class="author-avatar">EI</div>
+                                <span>Eco Insider</span>
+                                <button class="btn" style="padding: 0.2rem 0.5rem; font-size: 0.7rem;">+ IKUTI</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Kartu Berita 2 -->
+                <article class="news-card">
+                    <div class="news-image-placeholder img-2">
+                        [ KULINER MEDITERANIA ]
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span>22 Nov 2026</span>
+                            <span>[ 8 Mnt Baca ]</span>
+                        </div>
+                        <h2 class="news-title">Culinary Connoisseur: Menemukan Cita Rasa Mediterania</h2>
+                        <p>Eksplorasi mendalam mengenai rempah asli, minyak zaitun murni, dan bahan-bahan segar khas pesisir laut selatan Eropa.</p>
+                        
+                        <div class="news-footer">
+                            <span class="tag red">Kuliner</span>
+                            <div class="author">
+                                <div class="author-avatar">FJ</div>
+                                <span>Food Journey</span>
+                                <button class="btn" style="padding: 0.2rem 0.5rem; font-size: 0.7rem; background-color: var(--white);">DIIKUTI</button>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- BAGIAN KANAN: SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3 class="section-title">BARU DISIMPAN</h3>
+                
+                <div class="saved-item">
+                    <span class="tag red" style="font-size: 0.6rem; display: inline-block; margin-bottom: 0.5rem;">Kuliner</span>
+                    <h4>Culinary Connoisseur: Menemukan Cita Rasa...</h4>
+                    <span style="font-size: 0.8rem; font-weight: 700;">Baru Saja</span>
+                </div>
+
+                <div class="saved-item">
+                    <span class="tag green" style="font-size: 0.6rem; display: inline-block; margin-bottom: 0.5rem;">Lingkungan</span>
+                    <h4>Green Revolution: Keberlanjutan Toko...</h4>
+                    <span style="font-size: 0.8rem; font-weight: 700;">1 Jam yang lalu</span>
+                </div>
+
+                <button class="btn" style="width: 100%; text-align: center; background-color: var(--white);">[ LIHAT SEMUA ]</button>
+            </div>
+
+            <div class="sidebar-section">
+                <h3 class="section-title">KOLEKSI SAYA</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div style="border: var(--border-thin); padding: 1rem; text-align: center; font-weight: 800; cursor: pointer;">
+                        [ KESEHATAN ]
+                    </div>
+                    <div style="border: var(--border-thin); padding: 1rem; text-align: center; font-weight: 800; cursor: pointer; background-color: var(--black); color: var(--white);">
+                        [ HIBURAN ]
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- NAVIGASI BAWAH UNTUK VERSI MOBILE -->
+    <nav class="bottom-nav">
+        <a href="#" class="bottom-nav-item active">[ JELAJAHI ]</a>
+        <a href="#" class="bottom-nav-item">[ SIMPANAN ]</a>
+        <a href="#" class="bottom-nav-item">[ PROFIL ]</a>
+    </nav>
+
 </body>
 </html>
