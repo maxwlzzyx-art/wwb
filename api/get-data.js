@@ -1,13 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Mengambil konfigurasi kredensial dari Environment Variables Vercel yang sudah kamu pasang
 const SUPABASE_URL = process.env.SUPABASE_URL || "";
 const SUPABASE_KEY = process.env.SUPABASE_ANON_KEY || "";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export default async function handler(req, res) {
-  // CORS Headers agar bisa diakses secara aman
+  // Setel CORS Header secara manual agar browser tidak memblokir rute API Anda
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -27,7 +26,6 @@ export default async function handler(req, res) {
   const { action, key, value } = req.body;
 
   try {
-    // Aksi untuk mengambil seluruh data setting dari database Supabase
     if (action === 'get_all_settings') {
       const { data, error } = await supabase
         .from('settings')
@@ -35,7 +33,7 @@ export default async function handler(req, res) {
 
       if (error) throw error;
 
-      // Mapping data array menjadi objek dictionary sederhana
+      // Ubah dari bentuk larik menjadi objek kamus agar mudah dibaca oleh index.html
       const settingsMap = {};
       data.forEach(item => {
         settingsMap[item.key] = item.value;
@@ -47,10 +45,9 @@ export default async function handler(req, res) {
       });
     }
 
-    // Aksi untuk memperbarui atau menyisipkan satu set data setting baru
     if (action === 'set_setting') {
       if (!key) {
-        return res.status(400).json({ success: false, message: "Kunci tidak boleh kosong!" });
+        return res.status(400).json({ success: false, message: "Kunci konfigurasi tidak boleh kosong!" });
       }
 
       const { data, error } = await supabase
@@ -66,7 +63,7 @@ export default async function handler(req, res) {
       });
     }
 
-    return res.status(400).json({ success: false, message: "Aksi tidak dikenali." });
+    return res.status(400).json({ success: false, message: "Aksi tidak dikenali oleh sistem." });
 
   } catch (err) {
     console.error("Supabase Backend Error:", err.message);
