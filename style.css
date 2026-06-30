@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Inter,sans-serif;background:#F6F6F6;color:#111;}
+header{display:flex;justify-content:space-between;align-items:center;padding:25px 7%;}
+.logo{font-size:32px;font-weight:900;letter-spacing:2px;}
+nav{display:flex;gap:18px;}
+nav a{text-decoration:none;color:#111;padding:12px 18px;border:3px solid #111;background:#fff;box-shadow:6px 6px #111;font-weight:700;transition:.2s;}
+nav a:hover{transform:translate(-3px,-3px);box-shadow:10px 10px #111;}
+.hero{min-height:90vh;padding:60px 7%;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.tag{display:inline-block;padding:12px 20px;background:#FFD600;border:3px solid #111;box-shadow:6px 6px #111;font-weight:800;margin-bottom:30px;}
+h1{font-size:72px;line-height:1;font-weight:900;margin-bottom:25px;}
+p{font-size:18px;line-height:1.8;max-width:520px;margin-bottom:35px;}
+.buttons{display:flex;gap:20px;}
+.btn-primary,.btn-outline{text-decoration:none;padding:18px 38px;border:3px solid #111;box-shadow:6px 6px #111;font-weight:800;}
+.btn-primary{background:#ff5252;color:#fff;}
+.btn-outline{background:#fff;color:#111;}
+.btn-primary:hover,.btn-outline:hover{transform:translate(-4px,-4px);box-shadow:10px 10px #111;}
+.mockup{width:340px;height:650px;background:#fff;border:4px solid #111;box-shadow:12px 12px #111;margin:auto;}
+.topbar{height:70px;background:#2979FF;border-bottom:4px solid #111;}
+.screen{padding:30px;}
+.screen h2{font-size:32px;font-weight:900;margin-bottom:15px;}
+.download{margin-top:35px;padding:18px;background:#FFD600;border:3px solid #111;box-shadow:6px 6px #111;font-weight:900;text-align:center;}
+@media(max-width:900px){
+.hero{grid-template-columns:1fr;text-align:center;}
+p{margin:0 auto 35px;}
+.buttons{justify-content:center;}
+h1{font-size:52px;}
+}
