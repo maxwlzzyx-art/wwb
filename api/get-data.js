@@ -1,7 +1,7 @@
 // api/get-data.js — Vercel Serverless Function
 import { createClient } from '@supabase/supabase-js';
 
-// ===== ENV VARIABLES (set in Vercel Dashboard) =====
+// ===== ENV VARIABLES =====
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SECRET_KEY = process.env.SUPABASE_SECRET_KEY;
 
@@ -11,14 +11,14 @@ if (!SUPABASE_URL || !SUPABASE_SECRET_KEY) {
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_SECRET_KEY);
 
-// Default settings (fallback if Supabase table is empty)
+// Default settings
 const DEFAULT_SETTINGS = {
   web_title: 'AXELUF',
   web_subtitle: 'LINK MOD BERSIH DAN NO SCAM',
-  web_logo: 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200',
+  web_logo: 'https://cdn.discordapp.com/attachments/1460944238773797027/1520853234502205631/39616d00fc778ee5fcb60e69142ab6ba.jpg?ex=6a455773&is=6a4405f3&hm=43fc584c70e6dd191ec467fefe73233930c7cfe033179fa438149b8bc5a168b2&',
   web_background_image: 'none',
-  web_banner_image: 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200',
-  web_broadcast_text: '⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF | ⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru',
+  web_banner_image: 'https://cdn.discordapp.com/attachments/1460944238773797027/1521578537457422576/file_00000000b9647208b2c130ea7bee9dc5.png?ex=6a4557f0&is=6a440670&hm=6c9df45e2d6aba6779a749e17a6461c937a25a43be6b3627984aa2f690e9ab9a&',
+  web_broadcast_text: '⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF',
   web_safelink_time: '5',
   profile_alignment: 'items-start text-left',
   pinned_tags_db: [],
@@ -27,14 +27,98 @@ const DEFAULT_SETTINGS = {
   links_supabase_db: []
 };
 
-/**
- * Get all settings from Supabase
- * Returns a merged object: defaults + saved rows
- */
 async function getAllSettings() {
   const { data, error } = await supabase
     .from('settings')
-    .select('key, value');
+    .select('key,value');
+
+  if (error) {
+    console.error(error);
+    return DEFAULT_SETTINGS;
+  }
+
+  const settings = { ...DEFAULT_SETTINGS };
+
+  for (const row of data) {
+    let value = row.value;
+
+    try {
+      if (
+        row.key.endsWith('_db') ||
+        row.key === 'links_supabase_db' ||
+        row.key === 'credits_supabase_db' ||
+        row.key === 'pinned_tags_db' ||
+        row.key === 'web_custom_presets_db'
+      ) {
+        value = JSON.parse(value);
+      }
+    } catch {}
+
+    settings[row.key] = value;
+  }
+
+  return settings;
+}
+
+async function setSetting(key, value) {
+  const stored =
+    typeof value === 'object'
+      ? JSON.stringify(value)
+      : String(value);
+
+  const { error } = await supabase
+    .from('settings')
+    .upsert(
+      { key, value: stored },
+      { onConflict: 'key' }
+    );
+
+  if (error) throw error;
+
+  return true;
+}
+
+export default async function handler(req, res) {
+  try {
+    // GET
+    if (req.method === 'GET') {
+      const settings = await getAllSettings();
+      return res.status(200).json(settings);
+    }
+
+    // POST
+    if (req.method === 'POST') {
+      const { action, key, value } = req.body;
+
+      if (action === 'get_all_settings') {
+        const settings = await getAllSettings();
+        return res.status(200).json(settings);
+      }
+
+      if (action === 'set_setting') {
+        await setSetting(key, value);
+        return res.json({
+          success: true
+        });
+      }
+
+      return res.status(400).json({
+        error: 'Unknown action'
+      });
+    }
+
+    return res.status(405).json({
+      error: 'Method not allowed'
+    });
+
+  } catch (err) {
+    console.error(err);
+
+    return res.status(500).json({
+      error: err.message
+    });
+  }
+}    .select('key, value');
 
   if (error) {
     console.error('Supabase fetch error:', error);
