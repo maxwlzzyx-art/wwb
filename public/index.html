@@ -916,10 +916,10 @@
         updateBroadcastBanner(broadcast);
         safelinkTimerValue = parseInt(settings.web_safelink_time || "5");
         document.getElementById("setSafelinkTime").value = safelinkTimerValue;
-        pinnedTags = settings.pinned_tags || [];
-        credits = settings.credits || [];
-        customPresets = settings.custom_presets || [];
-        links = settings.links || [];
+        pinnedTags = settings.pinned_tags_db || [];
+        credits = settings.credits_supabase_db || [];
+        customPresets = settings.web_custom_presets_db || [];
+        links = settings.links_supabase_db || [];
       }
       renderCredits();
       renderCustomPresets();
