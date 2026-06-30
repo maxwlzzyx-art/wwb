@@ -4,7 +4,7 @@
   "web_logo": "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200",
   "web_banner_image": "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200",
   "web_background_image": "none",
-  "web_broadcast_text": "⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF | ⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru",
+  "web_broadcast_text": "⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF",
   "web_safelink_time": 5,
   "profile_alignment": "items-start text-left",
   "pinned_tags": ["MLBB", "GAME"],
@@ -12,10 +12,7 @@
     { "platform": "YouTube", "handle": "@axelufey", "url": "https://youtube.com/@axelufey", "color": "#B5FF3D" },
     { "platform": "Instagram", "handle": "@maxl3rd", "url": "https://www.instagram.com/maxl3rd", "color": "#FF71CD" }
   ],
-  "custom_presets": [
-    { "label": "Trailer", "url": "https://youtube.com/watch?v=...", "iconType": "video" },
-    { "label": "Support", "url": "https://t.me/...", "iconType": "chat" }
-  ],
+  "custom_presets": [],
   "links": [
     {
       "name": "Mobile Legends Mod Skin",
@@ -27,13 +24,8 @@
       "imageRatio": "aspect-video object-cover",
       "views": 142,
       "likes": 27,
-      "comments": [
-        { "name": "Dika", "text": "Mantap bang!" },
-        { "name": "Rina", "text": "kerja bagus" }
-      ],
-      "customButtons": [
-        { "label": "Video Review", "url": "https://youtube.com/watch?v=...", "iconType": "video" }
-      ]
+      "comments": [],
+      "customButtons": []
     }
   ]
 }
