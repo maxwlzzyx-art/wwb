@@ -360,7 +360,7 @@
     <div class="brutal-card bg-[#B5FF3D] p-8 max-sm w-full text-center">
       <div class="w-14 h-14 border-4 border-black border-t-transparent animate-spin rounded-full mx-auto mb-4"></div>
       <h2 class="font-syne font-extrabold text-2xl uppercase">Sinkronisasi</h2>
-      <p class="text-xs font-bold mt-2">Menghubungkan ke Cloud...</p>
+      <p class="text-xs font-bold mt-2">Memuat data lokal...</p>
     </div>
   </div>
 
@@ -728,7 +728,7 @@
     <footer class="brutal-card p-8 mt-12 text-center">
       <div id="footerCreditsContainer" class="mb-6 flex flex-wrap items-center justify-center gap-4"></div>
       <p class="font-syne font-bold uppercase tracking-wide text-sm">COPYRIGHT 2026 AXELUF</p>
-      <p class="text-[10px] text-gray-400 mt-2 font-mono">POWERED BY VERCEL + SUPABASE</p>
+      <p class="text-[10px] text-gray-400 mt-2 font-mono">POWERED BY VERCEL + LOCAL STORAGE</p>
     </footer>
 
   </main>
@@ -736,8 +736,9 @@
   <!-- ============================================================ -->
   <!-- ==================== JAVASCRIPT ENGINE ====================== -->
   <script>
-    // ===== CONFIG =====
-    const API_ENDPOINT = "/api/get-data";
+    // ====================================================
+    //  AXELUF ID V4.5 — FULL LOCAL STORAGE (NO SUPABASE)
+    // ====================================================
 
     // ===== STATE =====
     let activeCategoryFilter = "";
@@ -762,27 +763,140 @@
       try { return decodeURIComponent(escape(atob(str))); } catch { return str; }
     }
 
-    // ===== API =====
-    async function apiRequest(action, payload = {}) {
-      try {
-        console.log('📤 API Request:', action, payload);
-        const res = await fetch(API_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ action, ...payload })
-        });
-        const data = await res.json();
-        if (!res.ok) {
-          console.error('❌ API Error Response:', data);
-          throw new Error(data.error || data.message || 'API error');
-        }
-        console.log('✅ API Success:', action, data);
-        return data.data;
-      } catch (err) {
-        console.error('💥 API Request Failed:', err);
-        showToast('❌ ' + err.message, 'error');
-        return null;
+    // ===== STORAGE =====
+    const STORAGE_KEY = "axeluf_data";
+
+    function loadFromStorage() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        try {
+          return JSON.parse(raw);
+        } catch (_) { return null; }
       }
+      return null;
+    }
+
+    function saveToStorage(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function getDefaultData() {
+      return {
+        web_title: "AXELUF",
+        web_subtitle: "Link Mod Bersih & No Scam",
+        web_logo: "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200",
+        web_banner_image: "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200",
+        web_background_image: "none",
+        web_broadcast_text: "⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF | ⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru",
+        web_safelink_time: 5,
+        profile_alignment: "items-start text-left",
+        pinned_tags: ["MLBB", "GAME"],
+        credits: [
+          { platform: "YouTube", handle: "@axelufey", url: "https://youtube.com/@axelufey", color: "#B5FF3D" },
+          { platform: "Instagram", handle: "@maxl3rd", url: "https://www.instagram.com/maxl3rd", color: "#FF71CD" }
+        ],
+        custom_presets: [
+          { label: "Trailer", url: "https://youtube.com/watch?v=...", iconType: "video" },
+          { label: "Support", url: "https://t.me/...", iconType: "chat" }
+        ],
+        links: [
+          {
+            name: "Mobile Legends Mod Skin",
+            tag: "MLBB, GAME, SKIN",
+            desc: "Skin premium terbaru dan koleksi efek eksklusif.",
+            url: encodeSafe("https://example.com/mlbb-skin"),
+            password: encodeSafe("axeluf123"),
+            image: "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800",
+            imageRatio: "aspect-video object-cover",
+            views: 142,
+            likes: 27,
+            comments: [{ name: "Dika", text: "Mantap bang!" }, { name: "Rina", text: "kerja bagus" }],
+            customButtons: [{ label: "Video Review", url: "https://youtube.com/watch?v=...", iconType: "video" }]
+          },
+          {
+            name: "Free Fire Mod Menu",
+            tag: "GAME, FREE FIRE, MOD",
+            desc: "Mod menu dengan fitur aimbot, wallhack, dan damage boost.",
+            url: encodeSafe("https://example.com/ff-mod"),
+            password: encodeSafe("tanpa password"),
+            image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&q=80&w=800",
+            imageRatio: "aspect-video object-cover",
+            views: 89,
+            likes: 13,
+            comments: [],
+            customButtons: []
+          }
+        ]
+      };
+    }
+
+    // ===== LOAD / INIT =====
+    function loadAllDataFromStorage() {
+      let data = loadFromStorage();
+      if (!data) {
+        data = getDefaultData();
+        saveToStorage(data);
+      }
+      // apply to state
+      document.getElementById("mainTitleText").innerText = data.web_title || "AXELUF";
+      document.getElementById("setMainTitle").value = data.web_title || "AXELUF";
+      document.getElementById("mainSubtitleText").innerText = data.web_subtitle || "Link Mod Bersih & No Scam";
+      document.getElementById("setMainSubtitle").value = data.web_subtitle || "Link Mod Bersih & No Scam";
+      const logo = data.web_logo ||
+        "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200";
+      document.getElementById("mainLogo").src = logo;
+      document.getElementById("navLogoMin").src = logo;
+      document.getElementById("setMainLogoUrl").value = logo;
+      const align = data.profile_alignment || "items-start text-left";
+      document.getElementById("headerProfileContainer").className =
+        `p-6 pt-0 relative flex flex-col ${align} gap-4`;
+      document.getElementById("setProfilePosition").value = align;
+      const bg = data.web_background_image;
+      if (bg && bg !== "none") {
+        document.documentElement.style.setProperty("--custom-bg-image", `url(${bg})`);
+        document.getElementById("setBackgroundUrl").value = bg;
+      }
+      const banner = data.web_banner_image ||
+        "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200";
+      document.getElementById("webBannerImage").src = banner;
+      document.getElementById("setBannerUrl").value = banner;
+      const broadcast = data.web_broadcast_text ||
+        "⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF | ⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru";
+      document.getElementById("setBroadcastText").value = broadcast;
+      updateBroadcastBanner(broadcast);
+      safelinkTimerValue = parseInt(data.web_safelink_time || "5");
+      document.getElementById("setSafelinkTime").value = safelinkTimerValue;
+      pinnedTags = data.pinned_tags || [];
+      credits = data.credits || [];
+      customPresets = data.custom_presets || [];
+      links = data.links || [];
+
+      renderCredits();
+      renderCustomPresets();
+      renderPublicLinks();
+      renderAdminTable();
+      calculateCategoryCounts();
+      renderPinnedTagsList();
+      if (sessionStorage.getItem("admin_logged") === "true") setAdminState(true);
+    }
+
+    // ===== SAVE ALL =====
+    function saveAllData() {
+      const data = {
+        web_title: document.getElementById("mainTitleText").innerText,
+        web_subtitle: document.getElementById("mainSubtitleText").innerText,
+        web_logo: document.getElementById("mainLogo").src,
+        web_banner_image: document.getElementById("webBannerImage").src,
+        web_background_image: document.getElementById("setBackgroundUrl").value || "none",
+        web_broadcast_text: document.getElementById("setBroadcastText").value,
+        web_safelink_time: safelinkTimerValue,
+        profile_alignment: document.getElementById("setProfilePosition").value,
+        pinned_tags: pinnedTags,
+        credits: credits,
+        custom_presets: customPresets,
+        links: links
+      };
+      saveToStorage(data);
     }
 
     // ===== TOAST =====
@@ -816,7 +930,7 @@
     let soundEnabled = true;
 
     function getAudioCtx() {
-      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (!audioCtx) audioCtx = new(window.AudioContext || window.webkitAudioContext)();
       return audioCtx;
     }
 
@@ -878,55 +992,6 @@
       document.getElementById("activeFilterLabel").innerText = activeCategoryFilter || "";
       badge.classList.toggle("hidden", !activeCategoryFilter);
       renderPublicLinks();
-    }
-
-    // ===== LOAD DATA =====
-    async function loadAllDataFromDB() {
-      const overlay = document.getElementById("loadingOverlay");
-      const settings = await apiRequest("get_all_settings");
-      if (settings) {
-        document.getElementById("mainTitleText").innerText = settings.web_title || "AXELUF";
-        document.getElementById("setMainTitle").value = settings.web_title || "AXELUF";
-        document.getElementById("mainSubtitleText").innerText = settings.web_subtitle || "LINK MOD BERSIH DAN NO SCAM";
-        document.getElementById("setMainSubtitle").value = settings.web_subtitle || "LINK MOD BERSIH DAN NO SCAM";
-        const logo = settings.web_logo ||
-          "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200";
-        document.getElementById("mainLogo").src = logo;
-        document.getElementById("navLogoMin").src = logo;
-        document.getElementById("setMainLogoUrl").value = logo;
-        const align = settings.profile_alignment || "items-start text-left";
-        document.getElementById("headerProfileContainer").className =
-          `p-6 pt-0 relative flex flex-col ${align} gap-4`;
-        document.getElementById("setProfilePosition").value = align;
-        const bg = settings.web_background_image;
-        if (bg && bg !== "none") {
-          document.documentElement.style.setProperty("--custom-bg-image", `url(${bg})`);
-          document.getElementById("setBackgroundUrl").value = bg;
-        }
-        const banner = settings.web_banner_image ||
-          "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200";
-        document.getElementById("webBannerImage").src = banner;
-        document.getElementById("setBannerUrl").value = banner;
-        const broadcast = settings.web_broadcast_text ||
-          "⚠️ Peringatan Keamanan: Unduh hanya dari portal resmi AXELUF | ⚡ Pembaruan: Semua paket mod telah diperbarui ke patch terbaru";
-        document.getElementById("setBroadcastText").value = broadcast;
-        updateBroadcastBanner(broadcast);
-        safelinkTimerValue = parseInt(settings.web_safelink_time || "5");
-        document.getElementById("setSafelinkTime").value = safelinkTimerValue;
-        pinnedTags = settings.pinned_tags || [];
-        credits = settings.credits || [];
-        customPresets = settings.custom_presets || [];
-        links = settings.links || [];
-      }
-      renderCredits();
-      renderCustomPresets();
-      renderPublicLinks();
-      renderAdminTable();
-      calculateCategoryCounts();
-      renderPinnedTagsList();
-      if (sessionStorage.getItem("admin_logged") === "true") setAdminState(true);
-      overlay.style.opacity = "0";
-      setTimeout(() => overlay.remove(), 400);
     }
 
     // ===== BROADCAST =====
@@ -1033,7 +1098,7 @@
       if (pinnedTags.includes(upper)) return showToast("Sudah terpin!", "error");
       playSynth("success");
       pinnedTags.push(upper);
-      await apiRequest("set_setting", { key: "pinned_tags_db", value: pinnedTags });
+      saveAllData();
       document.getElementById("pinTagName").value = "";
       showToast(`Kategori ${upper} terpin!`, "success");
       renderPinnedTagsList();
@@ -1044,7 +1109,7 @@
       playSynth("delete");
       const removed = pinnedTags[index];
       pinnedTags.splice(index, 1);
-      await apiRequest("set_setting", { key: "pinned_tags_db", value: pinnedTags });
+      saveAllData();
       showToast(`Pin ${removed} dihapus`, "info");
       renderPinnedTagsList();
       calculateCategoryCounts();
@@ -1057,16 +1122,15 @@
       const subtitle = document.getElementById("setMainSubtitle").value.trim();
       const logo = document.getElementById("setMainLogoUrl").value.trim();
       const align = document.getElementById("setProfilePosition").value;
-      if (title) { await apiRequest("set_setting", { key: "web_title", value: title });
-        document.getElementById("mainTitleText").innerText = title; }
-      if (subtitle) { await apiRequest("set_setting", { key: "web_subtitle", value: subtitle });
-        document.getElementById("mainSubtitleText").innerText = subtitle; }
-      if (logo) { await apiRequest("set_setting", { key: "web_logo", value: logo });
+      if (title) { document.getElementById("mainTitleText").innerText = title; }
+      if (subtitle) { document.getElementById("mainSubtitleText").innerText = subtitle; }
+      if (logo) {
         document.getElementById("mainLogo").src = logo;
-        document.getElementById("navLogoMin").src = logo; }
-      await apiRequest("set_setting", { key: "profile_alignment", value: align });
+        document.getElementById("navLogoMin").src = logo;
+      }
       document.getElementById("headerProfileContainer").className =
         `p-6 pt-0 relative flex flex-col ${align} gap-4`;
+      saveAllData();
       showToast("Branding tersimpan!", "success");
     }
 
@@ -1076,16 +1140,17 @@
       const file = document.getElementById("uploadBgFile").files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onloadend = async function() {
+        reader.onloadend = function() {
           const base64 = reader.result;
           document.documentElement.style.setProperty("--custom-bg-image", `url(${base64})`);
-          await apiRequest("set_setting", { key: "web_background_image", value: base64 });
+          document.getElementById("setBackgroundUrl").value = base64;
+          saveAllData();
           showToast("Background lokal diunggah!", "success");
         };
         reader.readAsDataURL(file);
       } else if (url) {
         document.documentElement.style.setProperty("--custom-bg-image", `url(${url})`);
-        await apiRequest("set_setting", { key: "web_background_image", value: url });
+        saveAllData();
         showToast("Background URL disimpan!", "success");
       }
     }
@@ -1095,7 +1160,7 @@
       document.documentElement.style.setProperty("--custom-bg-image", "none");
       document.getElementById("setBackgroundUrl").value = "";
       document.getElementById("uploadBgFile").value = "";
-      await apiRequest("set_setting", { key: "web_background_image", value: "none" });
+      saveAllData();
       showToast("Background direset", "info");
     }
 
@@ -1105,16 +1170,17 @@
       const file = document.getElementById("uploadBannerFile").files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onloadend = async function() {
+        reader.onloadend = function() {
           const base64 = reader.result;
           document.getElementById("webBannerImage").src = base64;
-          await apiRequest("set_setting", { key: "web_banner_image", value: base64 });
+          document.getElementById("setBannerUrl").value = base64;
+          saveAllData();
           showToast("Banner lokal diterapkan!", "success");
         };
         reader.readAsDataURL(file);
       } else if (url) {
         document.getElementById("webBannerImage").src = url;
-        await apiRequest("set_setting", { key: "web_banner_image", value: url });
+        saveAllData();
         showToast("Banner URL disimpan!", "success");
       }
     }
@@ -1124,11 +1190,10 @@
       const text = document.getElementById("setBroadcastText").value.trim();
       const time = parseInt(document.getElementById("setSafelinkTime").value) || 5;
       if (text) {
-        await apiRequest("set_setting", { key: "web_broadcast_text", value: text });
         updateBroadcastBanner(text);
       }
-      await apiRequest("set_setting", { key: "web_safelink_time", value: time });
       safelinkTimerValue = time;
+      saveAllData();
       showToast("Konfigurasi tersimpan!", "success");
     }
 
@@ -1255,7 +1320,7 @@
       const data = { label, url, iconType: icon };
       if (editIdx !== "") customPresets[parseInt(editIdx)] = data;
       else customPresets.push(data);
-      await apiRequest("set_setting", { key: "web_custom_presets_db", value: customPresets });
+      saveAllData();
       clearPresetForm();
       renderCustomPresets();
       showToast("Preset tersimpan!", "success");
@@ -1277,7 +1342,7 @@
       e.stopPropagation();
       playSynth("delete");
       customPresets.splice(index, 1);
-      await apiRequest("set_setting", { key: "web_custom_presets_db", value: customPresets });
+      saveAllData();
       showToast("Preset dihapus", "info");
       clearPresetForm();
       renderCustomPresets();
@@ -1326,11 +1391,6 @@
       });
     }
 
-    function injectQuickLinkPreset(label, url, iconType) {
-      addCustomLinkField(label, url, iconType);
-      showToast(`Tombol "${label}" ditambahkan!`, "success");
-    }
-
     // ===== CREDITS =====
     async function addCredit() {
       const platform = document.getElementById("credPlatform").value.trim();
@@ -1340,7 +1400,7 @@
       if (!platform || !handle || !url) return showToast("Lengkapi semua field!", "error");
       playSynth("success");
       credits.push({ platform, handle, url, color });
-      await apiRequest("set_setting", { key: "credits_supabase_db", value: credits });
+      saveAllData();
       showToast("Credit ditambahkan!", "success");
       document.getElementById("credPlatform").value = "";
       document.getElementById("credHandle").value = "";
@@ -1351,7 +1411,7 @@
     async function deleteCredit(index) {
       playSynth("delete");
       credits.splice(index, 1);
-      await apiRequest("set_setting", { key: "credits_supabase_db", value: credits });
+      saveAllData();
       showToast("Credit dihapus", "info");
       renderCredits();
     }
@@ -1445,7 +1505,6 @@
     }
 
     async function saveMod() {
-      console.log('🟢 saveMod() dipanggil');
       const name = document.getElementById("modName").value.trim();
       const tag = document.getElementById("modTag").value.trim();
       const desc = document.getElementById("modDesc").value;
@@ -1458,8 +1517,6 @@
       const manualViews = parseInt(document.getElementById("modViewsInput").value) || 0;
       const manualLikes = parseInt(document.getElementById("modLikesInput").value) || 0;
       const customButtons = getCustomLinksData();
-
-      console.log('📦 Data dari form:', { name, tag, desc, url, password, imageUrl, ratio, manualViews, manualLikes, customButtons, editIdx, file });
 
       if (!name || !tag || !desc || !url) {
         showToast("Nama, Tag, Deskripsi, URL wajib!", "error");
@@ -1478,7 +1535,7 @@
         if (!finalImg) finalImg = old.image;
       }
 
-      const doSave = async (imgSrc) => {
+      const doSave = (imgSrc) => {
         const data = {
           name,
           tag: tag.toUpperCase(),
@@ -1493,36 +1550,28 @@
           comments,
           customButtons
         };
-        console.log('💾 Data yang akan disimpan:', data);
-
         if (editIdx !== "") {
           links[parseInt(editIdx)] = data;
         } else {
           links.unshift(data);
         }
-
-        // 🔥 Simpan ke Supabase
-        const result = await apiRequest('set_setting', { key: 'links_supabase_db', value: links });
-        if (result !== null) {
-          playSynth("success");
-          clearForm();
-          renderPublicLinks();
-          renderAdminTable();
-          calculateCategoryCounts();
-          showToast(editIdx !== "" ? "Mod diupdate!" : "Mod baru ditambahkan!", "success");
-        } else {
-          showToast("❌ Gagal menyimpan ke database!", "error");
-        }
+        saveAllData();
+        playSynth("success");
+        clearForm();
+        renderPublicLinks();
+        renderAdminTable();
+        calculateCategoryCounts();
+        showToast(editIdx !== "" ? "Mod diupdate!" : "Mod baru ditambahkan!", "success");
       };
 
       if (file) {
         const reader = new FileReader();
-        reader.onloadend = async function() {
-          await doSave(reader.result);
+        reader.onloadend = function() {
+          doSave(reader.result);
         };
         reader.readAsDataURL(file);
       } else {
-        await doSave(finalImg);
+        doSave(finalImg);
       }
     }
 
@@ -1540,11 +1589,11 @@
       activeDeleteIndex = null;
     }
 
-    document.getElementById("btnConfirmYes").addEventListener("click", async function() {
+    document.getElementById("btnConfirmYes").addEventListener("click", function() {
       if (activeDeleteIndex !== null) {
         playSynth("delete");
         links.splice(activeDeleteIndex, 1);
-        await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+        saveAllData();
         showToast("Mod dihapus!", "info");
         closeConfirmModal();
         renderPublicLinks();
@@ -1695,7 +1744,7 @@
       links[index].views += 1;
       const el = document.getElementById(`view-counter-${index}`);
       if (el) el.innerText = links[index].views;
-      await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+      saveAllData();
 
       if (isMain) {
         antiSpamCounter++;
@@ -1719,7 +1768,7 @@
       localStorage.setItem(`like_count_card_${index}`, userLikes);
       if (!links[index].likes) links[index].likes = 0;
       links[index].likes += 1;
-      await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+      saveAllData();
       renderPublicLinks();
     }
 
@@ -1737,7 +1786,7 @@
       links[index].comments.push({ name, text });
       document.getElementById(`comm-name-${index}`).value = "";
       document.getElementById(`comm-text-${index}`).value = "";
-      await apiRequest("set_setting", { key: "links_supabase_db", value: links });
+      saveAllData();
       renderPublicLinks();
       showToast("Komentar dikirim!", "success");
     }
@@ -1816,7 +1865,9 @@
 
     // ===== BOOT =====
     window.addEventListener("DOMContentLoaded", () => {
-      loadAllDataFromDB();
+      // hide loading after load
+      const overlay = document.getElementById("loadingOverlay");
+      loadAllDataFromStorage();
       const saved = localStorage.getItem("user_theme_choice");
       if (saved) document.documentElement.setAttribute("data-theme", saved);
       checkBanStatus();
@@ -1827,6 +1878,9 @@
           if (e.target === this) this.classList.remove("open");
         });
       });
+
+      overlay.style.opacity = "0";
+      setTimeout(() => overlay.remove(), 400);
     });
   </script>
 </body>
