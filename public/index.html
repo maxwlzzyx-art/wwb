@@ -76,11 +76,11 @@
     /* ===== NEO-BRUTALIST COMPONENTS (Rounded) ===== */
     .brutal-border {
       border: 4px solid #000000;
-      border-radius: 1.5rem; /* rounded-3xl */
+      border-radius: 1.5rem;
     }
     .brutal-border-sm {
       border: 3px solid #000000;
-      border-radius: 1rem; /* rounded-2xl */
+      border-radius: 1rem;
     }
     .brutal-shadow {
       box-shadow: 8px 8px 0px 0px #000000;
@@ -92,7 +92,6 @@
       box-shadow: 12px 12px 0px 0px #000000;
     }
 
-    /* Buttons */
     .brutal-btn {
       border-radius: 1.25rem !important;
       border: 3px solid #000000;
@@ -129,11 +128,6 @@
       background: #121214;
       color: #fff;
     }
-    .brutal-btn-dark:hover {
-      background: #2a2a2e;
-    }
-
-    /* Cards */
     .brutal-card {
       background: var(--card-bg);
       border: 4px solid #000000;
@@ -146,8 +140,6 @@
       border-radius: 1.5rem;
       box-shadow: 6px 6px 0px 0px #000000;
     }
-
-    /* Inputs */
     .brutal-input {
       border: 3px solid #000000;
       border-radius: 1rem;
@@ -365,7 +357,7 @@
 
   <!-- ===== LOADING ===== -->
   <div id="loadingOverlay" class="fixed inset-0 bg-black/70 z-50 flex items-center justify-center transition-opacity duration-300">
-    <div class="brutal-card bg-[#B5FF3D] p-8 max-w-sm w-full text-center">
+    <div class="brutal-card bg-[#B5FF3D] p-8 max-sm w-full text-center">
       <div class="w-14 h-14 border-4 border-black border-t-transparent animate-spin rounded-full mx-auto mb-4"></div>
       <h2 class="font-syne font-extrabold text-2xl uppercase">Sinkronisasi</h2>
       <p class="text-xs font-bold mt-2">Menghubungkan ke Cloud...</p>
@@ -773,17 +765,22 @@
     // ===== API =====
     async function apiRequest(action, payload = {}) {
       try {
+        console.log('📤 API Request:', action, payload);
         const res = await fetch(API_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ action, ...payload })
         });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || data.message || "API error");
+        if (!res.ok) {
+          console.error('❌ API Error Response:', data);
+          throw new Error(data.error || data.message || 'API error');
+        }
+        console.log('✅ API Success:', action, data);
         return data.data;
       } catch (err) {
-        console.error("API error:", err);
-        showToast("Gagal komunikasi dengan server!", "error");
+        console.error('💥 API Request Failed:', err);
+        showToast('❌ ' + err.message, 'error');
         return null;
       }
     }
@@ -916,10 +913,10 @@
         updateBroadcastBanner(broadcast);
         safelinkTimerValue = parseInt(settings.web_safelink_time || "5");
         document.getElementById("setSafelinkTime").value = safelinkTimerValue;
-        pinnedTags = settings.pinned_tags_db || [];
-        credits = settings.credits_supabase_db || [];
-        customPresets = settings.web_custom_presets_db || [];
-        links = settings.links_supabase_db || [];
+        pinnedTags = settings.pinned_tags || [];
+        credits = settings.credits || [];
+        customPresets = settings.custom_presets || [];
+        links = settings.links || [];
       }
       renderCredits();
       renderCustomPresets();
@@ -1448,6 +1445,7 @@
     }
 
     async function saveMod() {
+      console.log('🟢 saveMod() dipanggil');
       const name = document.getElementById("modName").value.trim();
       const tag = document.getElementById("modTag").value.trim();
       const desc = document.getElementById("modDesc").value;
@@ -1461,7 +1459,12 @@
       const manualLikes = parseInt(document.getElementById("modLikesInput").value) || 0;
       const customButtons = getCustomLinksData();
 
-      if (!name || !tag || !desc || !url) return showToast("Nama, Tag, Deskripsi, URL wajib!", "error");
+      console.log('📦 Data dari form:', { name, tag, desc, url, password, imageUrl, ratio, manualViews, manualLikes, customButtons, editIdx, file });
+
+      if (!name || !tag || !desc || !url) {
+        showToast("Nama, Tag, Deskripsi, URL wajib!", "error");
+        return;
+      }
 
       let views = manualViews,
         likes = manualLikes,
@@ -1490,20 +1493,33 @@
           comments,
           customButtons
         };
-        if (editIdx !== "") links[parseInt(editIdx)] = data;
-        else links.unshift(data);
-        playSynth("success");
-        await apiRequest("set_setting", { key: "links_supabase_db", value: links });
-        clearForm();
-        renderPublicLinks();
-        renderAdminTable();
-        calculateCategoryCounts();
-        showToast(editIdx !== "" ? "Mod diupdate!" : "Mod baru ditambahkan!", "success");
+        console.log('💾 Data yang akan disimpan:', data);
+
+        if (editIdx !== "") {
+          links[parseInt(editIdx)] = data;
+        } else {
+          links.unshift(data);
+        }
+
+        // 🔥 Simpan ke Supabase
+        const result = await apiRequest('set_setting', { key: 'links_supabase_db', value: links });
+        if (result !== null) {
+          playSynth("success");
+          clearForm();
+          renderPublicLinks();
+          renderAdminTable();
+          calculateCategoryCounts();
+          showToast(editIdx !== "" ? "Mod diupdate!" : "Mod baru ditambahkan!", "success");
+        } else {
+          showToast("❌ Gagal menyimpan ke database!", "error");
+        }
       };
 
       if (file) {
         const reader = new FileReader();
-        reader.onloadend = async function() { await doSave(reader.result); };
+        reader.onloadend = async function() {
+          await doSave(reader.result);
+        };
         reader.readAsDataURL(file);
       } else {
         await doSave(finalImg);
