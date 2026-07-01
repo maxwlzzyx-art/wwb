@@ -180,7 +180,7 @@
             border-radius: 10px;
         }
         @keyframes ticker {
-            0% { transform: translate3d(50%, 0, 0); }
+            0% { transform: translate3d(20%, 0, 0); }
             100% { transform: translate3d(-100%, 0, 0); }
         }
         .ticker-wrap {
@@ -189,7 +189,7 @@
         }
         .ticker-content {
             display: inline-block;
-            animation: ticker 22s linear infinite;
+            animation: ticker 25s linear infinite;
         }
         .ticker-content:hover {
             animation-play-state: paused;
@@ -639,7 +639,7 @@
                 </div>
             </div>
 
-            <!-- Tab SQL Setup (NEW INJECTOR!) -->
+            <!-- Tab SQL Setup -->
             <div id="adminTabSqlContent" class="hidden space-y-4">
                 <div class="bg-white brutal-border brutal-shadow-sm p-4">
                     <h3 class="font-syne font-extrabold text-sm uppercase mb-1.5 text-blue-700">⚙️ SQL Setup Injector untuk Database Baru</h3>
@@ -735,9 +735,8 @@ WITH CHECK (true);</div>
         // CONFIG SUPABASE (NEW COMPACT INSTANCE)
         // ======================================================================
         const SUPABASE_URL = "https://hhvchrojexhjdrwtsejd.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhodmNocm9qZXhoamRyd3RzZWpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4MjA2NTksImV4cCI6MjA5ODM5NjY1OX0.UzIx1pZKcCC8Eo2NK9XY1iX3djbjYLnaJm0hjABRAnA";
-const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhodmNocm9qZXhoamRyd3RzZWpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI4MjA2NTksImV4cCI6MjA5ODM5NjY1OX0.UzIx1pZKcCC8Eo2NK9XY1iX3djbjYLnaJm0hjABRAnA";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         const _0x4f12 = {
             _0x0a: "axeluf",
@@ -745,6 +744,14 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             _0x0d: "links_supabase_db",
             _0x0e: "credits_supabase_db",
             _0x0f: "pinned_tags_db"
+        };
+
+        const SVG_ICONS = {
+            video: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"/></svg>`,
+            download: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"/></svg>`,
+            chat: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20.25c4.97 0 9-3.694 9-8.25s-4.03-8.25-9-8.25S3 7.444 3 12c0 2.104.859 4.023 2.273 5.48.432.447.74 1.04.586 1.641a4.483 4.483 0 01-.92 1.78c-.082.095-.226.117-.334.05a4.344 4.344 0 01-1.411-1.425m11.517-5.467h.008v.008h-.008v-.008zm-3.12 0h.008v.008h-.008v-.008zm-3.12 0h.008v.008h-.008v-.008z"/></svg>`,
+            key: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 11-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 0115.75 5.25z"/></svg>`,
+            globe: `<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9s2.015-9 4.5-3m0 0a9.001 9.001 0 018.716 2.253M12 3a9.001 9.001 0 00-8.716 2.253m0 0A9.003 9.003 0 0112 12c0 2.13.486 4.146 1.353 5.941"/></svg>`
         };
 
         // ======================================================================
@@ -780,8 +787,8 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 name: "Mobile Legends Mod Skin & Radar Map (Default)",
                 tag: "MLBB, GAME, SKIN",
                 desc: "Unlock semua skin hero favoritmu secara aman, anti banned lengkap dengan radar map.",
-                url: encodeSafe("https://www.mediafire.com"),
-                password: encodeSafe("Password: tonton video terbaru"),
+                url: btoa("https://www.mediafire.com"),
+                password: btoa("Password: tonton video terbaru"),
                 image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
                 imageRatio: "aspect-video object-cover",
                 views: 0,
@@ -790,6 +797,13 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 customButtons: []
             }]
         };
+
+        function encodeSafe(str) {
+            try { return btoa(unescape(encodeURIComponent(str))); } catch(e) { return str; }
+        }
+        function decodeSafe(str) {
+            try { return decodeURIComponent(escape(atob(str))); } catch(e) { return str; }
+        }
 
         // ======================================================================
         // CLICK SPARK EFFECT
@@ -800,6 +814,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function createSpark(x, y) {
             const container = document.getElementById('sparkContainer');
+            if(!container) return;
             const sparkCount = 6;
             const colors = ['#A3FFD6', '#4CCD99', '#FF71CD', '#00F0FF', '#FFF200'];
             
@@ -907,7 +922,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
         // ======================================================================
-        // MINI GAME RETRO EASTER EGG
+        // RETRO EASTER EGG GAME
         // ======================================================================
         function playEasterEggGame() {
             easterEggScore++;
@@ -931,9 +946,6 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             }
         }
 
-        // ======================================================================
-        // UTILS
-        // ======================================================================
         function copySqlQueryText() {
             playSynth('success');
             const range = document.createRange();
@@ -950,30 +962,22 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         // ======================================================================
         async function cloudGet(key, defaultValue) {
             const cachedValue = localStorage.getItem(`cache_${key}`);
-            
             try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 3500);
-
                 const { data, error } = await supabaseClient
                     .from('settings')
                     .select('value')
                     .eq('key', key)
                     .maybeSingle();
 
-                clearTimeout(timeoutId);
-
                 if (error) throw new Error(error.message);
 
                 if (data && data.value !== undefined && data.value !== null) {
-                    try {
-                        localStorage.setItem(`cache_${key}`, JSON.stringify(data.value));
-                    } catch(e) {}
+                    try { localStorage.setItem(`cache_${key}`, JSON.stringify(data.value)); } catch(e) {}
                     return data.value;
                 }
                 return defaultValue;
             } catch (err) {
-                console.warn(`[Supabase Off-capacity] Menggunakan cache lokal untuk kunci: ${key}`);
+                console.warn(`[Supabase Engine] Backup cache lokal untuk: ${key}`);
                 if (cachedValue) {
                     try { return JSON.parse(cachedValue); } catch (e) { return cachedValue; }
                 }
@@ -982,12 +986,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
         async function cloudSet(key, value) {
-            try {
-                localStorage.setItem(`cache_${key}`, JSON.stringify(value));
-            } catch(e) {
-                console.warn("Penyimpanan lokal penuh saat menyimpan cache!");
-            }
-
+            try { localStorage.setItem(`cache_${key}`, JSON.stringify(value)); } catch(e) {}
             try {
                 const { error } = await supabaseClient
                     .from('settings')
@@ -995,12 +994,82 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 if (error) throw new Error(error.message);
             } catch (err) {
                 console.error(`Gagal melakukan singkronisasi cloud untuk ${key}:`, err);
-                showToast("Server sibuk. Perubahan disimpan di Cache Lokal!", "info");
+                showToast("Server sibuk. Disimpan di Cache Lokal!", "info");
             }
         }
 
         // ======================================================================
-        // LOAD DATABASE
+        // THEME MANAGEMENT
+        // ======================================================================
+        function changeTheme(themeName) {
+            playSynth('click');
+            document.documentElement.setAttribute('data-theme', themeName);
+            localStorage.setItem('axel_theme', themeName);
+        }
+
+        // ======================================================================
+        // UI CORE CONTROL
+        // ======================================================================
+        function toggleSidebarDrawer() {
+            playSynth('click');
+            const sidebar = document.getElementById('sidebarDrawer');
+            const backdrop = document.getElementById('sidebarBackdrop');
+            if (sidebar.classList.contains('-translate-x-full')) {
+                sidebar.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+                document.getElementById('easterEggHigh').innerText = localStorage.getItem('axel_tap_high') || '0';
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        }
+
+        function showToast(msg, type = "info") {
+            const box = document.getElementById('toastBox');
+            const content = document.getElementById('toastContent');
+            const message = document.getElementById('toastMessage');
+            const icon = document.getElementById('toastIcon');
+            
+            message.innerText = msg;
+            if (type === 'success') {
+                icon.innerText = "⚡";
+                content.style.backgroundColor = "#A3FFD6";
+            } else if (type === 'error') {
+                icon.innerText = "🚨";
+                content.style.backgroundColor = "#FF71CD";
+            } else {
+                icon.innerText = "💡";
+                content.style.backgroundColor = "#FFFFFF";
+            }
+            
+            box.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                box.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        function triggerScreenShake() {
+            document.body.classList.add('shake');
+            setTimeout(() => document.body.classList.remove('shake'), 300);
+        }
+
+        function selectCategoryFilter(tag) {
+            playSynth('click');
+            activeCategoryFilter = tag.toUpperCase();
+            const badge = document.getElementById('activeFilterBadge');
+            const label = document.getElementById('activeFilterLabel');
+            
+            if (activeCategoryFilter) {
+                badge.classList.remove('hidden');
+                label.innerText = activeCategoryFilter;
+            } else {
+                badge.classList.add('hidden');
+            }
+            renderPublicLinks();
+        }
+
+        // ======================================================================
+        // INITIALIZATION
         // ======================================================================
         async function loadAllDataFromDB() {
             const overlay = document.getElementById('loadingOverlay');
@@ -1031,10 +1100,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 statusLabel.innerText = `Memuat: ${q.key.replace('_supabase_db','')}...`;
                 const start = Date.now();
                 const res = await cloudGet(q.key, q.default);
-                if (Date.now() - start > 3400) {
-                    cloudFailedCount++;
-                }
-                
+                if (Date.now() - start > 3400) { cloudFailedCount++; }
                 completed++;
                 document.getElementById('loadingProgress').style.width = `${(completed / queries.length) * 100}%`;
                 document.getElementById('loadingProgressText').innerText = `${Math.round((completed / queries.length) * 100)}%`;
@@ -1050,10 +1116,9 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 document.getElementById('mainSubtitleText').innerText = subtitle;
                 document.getElementById('setMainSubtitle').value = subtitle;
 
-                const mainLogoEl = document.getElementById('mainLogo');
-                mainLogoEl.src = logo;
-                const minLogoEl = document.getElementById('navLogoMin');
-                minLogoEl.src = logo;
+                document.getElementById('mainLogo').src = logo;
+                document.getElementById('navLogoMin').src = logo;
+                document.getElementById('setMainLogoUrl').value = logo;
 
                 const profileContainer = document.getElementById('headerProfileContainer');
                 profileContainer.className = `p-4 pt-0 relative flex flex-col ${alignment} gap-2`;
@@ -1072,12 +1137,12 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 safelinkTimerValue = parseInt(safelinkTime) || 5;
                 document.getElementById('setSafelinkTime').value = safelinkTimerValue;
 
-                customPresets = presets;
+                customPresets = presets || [];
                 renderCustomPresets();
 
-                pinnedTags = pinned;
-                credits = creditData;
-                links = linkData;
+                pinnedTags = pinned || [];
+                credits = creditData || [];
+                links = linkData || [];
 
                 renderCredits();
                 renderPublicLinks();
@@ -1089,15 +1154,15 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 if (cloudFailedCount > 4) {
                     dbSourceBadge.innerText = "HYBRID STATE: CLUSTER TABLE NOT FOUND / OFFLINE";
                     dbSourceBadge.className = "text-[9px] text-red-500 mt-1.5 font-mono font-bold animate-pulse";
-                    showToast("Database baru belum siap! Harap jalankan langkah di tab SQL Setup.", "error");
                 } else {
                     dbSourceBadge.innerText = "HYBRID STATE: NEW DATABASE ACTIVE";
                     dbSourceBadge.className = "text-[9px] text-green-700 mt-1.5 font-mono font-bold";
                 }
 
-                if (sessionStorage.getItem('admin_logged') === 'true') {
-                    setAdminState(true);
-                }
+                if (sessionStorage.getItem('admin_logged') === 'true') { setAdminState(true); }
+
+                const savedTheme = localStorage.getItem('axel_theme');
+                if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
 
                 setTimeout(() => {
                     overlay.style.opacity = '0';
@@ -1112,6 +1177,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function updateBroadcastBanner(rawText) {
             const container = document.getElementById('broadcastTextContainer');
+            if(!container) return;
             container.innerHTML = '';
             const items = rawText.split('|');
             items.forEach(text => {
@@ -1125,7 +1191,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
         // ======================================================================
-        // KATEGORI & PINNING
+        // CATEGORY PROCESSING
         // ======================================================================
         function calculateCategoryCounts() {
             let totalAll = links.length;
@@ -1139,6 +1205,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
             });
             document.getElementById('countAllMods').innerText = totalAll;
             const container = document.getElementById('dynamicTagsList');
+            if(!container) return;
             container.innerHTML = '';
             
             if (uniqueTags.size === 0) {
@@ -1175,6 +1242,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         function renderPinnedTagsList() {
             const sidebarContainer = document.getElementById('pinnedTagsList');
             const adminContainer = document.getElementById('pinnedTagsAdminList');
+            if(!sidebarContainer || !adminContainer) return;
             sidebarContainer.innerHTML = '';
             adminContainer.innerHTML = '';
             
@@ -1243,7 +1311,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
         // ======================================================================
-        // ADMIN AREA
+        // ADMIN MANAGEMENT
         // ======================================================================
         function toggleAdminPanel() {
             playSynth('click');
@@ -1313,26 +1381,16 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                 document.getElementById(content).classList.add('hidden');
             });
 
-            if (tabName === 'mod') {
-                document.getElementById('tabMod').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
-                document.getElementById('adminTabModContent').classList.remove('hidden');
-            } else if (tabName === 'branding') {
-                document.getElementById('tabBranding').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
-                document.getElementById('adminTabBrandingContent').classList.remove('hidden');
-            } else if (tabName === 'social') {
-                document.getElementById('tabSocial').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
-                document.getElementById('adminTabSocialContent').classList.remove('hidden');
-            } else if (tabName === 'pinning') {
-                document.getElementById('tabPinning').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
-                document.getElementById('adminTabPinningContent').classList.remove('hidden');
-            } else if (tabName === 'sql') {
-                document.getElementById('tabSql').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
-                document.getElementById('adminTabSqlContent').classList.remove('hidden');
+            const targetTab = document.getElementById('tab' + tabName.charAt(0).toUpperCase() + tabName.slice(1));
+            const targetContent = document.getElementById('adminTab' + tabName.charAt(0).toUpperCase() + tabName.slice(1) + 'Content');
+            if(targetTab && targetContent) {
+                targetTab.className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
+                targetContent.classList.remove('hidden');
             }
         }
 
         // ======================================================================
-        // PRESETS & CUSTOM BUTTONS
+        // BUTTON PRESETS & INTEGRATION
         // ======================================================================
         function injectQuickLinkPreset(label, url, iconType) {
             addCustomLinkField(label, url, iconType);
@@ -1341,6 +1399,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function addCustomLinkField(label = "", url = "", iconType = "video") {
             const container = document.getElementById('customLinksContainer');
+            if(!container) return;
             const currentFields = container.getElementsByClassName('custom-link-row');
             if (currentFields.length >= 5) { showToast("Maksimal 5 tombol kustom!", "error"); return; }
             
@@ -1374,6 +1433,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function getCustomLinksData() {
             const container = document.getElementById('customLinksContainer');
+            if(!container) return [];
             const rows = container.getElementsByClassName('custom-link-row');
             const list = [];
             for (let i = 0; i < rows.length; i++) {
@@ -1387,6 +1447,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function setCustomLinksFields(customButtons) {
             const container = document.getElementById('customLinksContainer');
+            if(!container) return;
             container.innerHTML = '';
             if (customButtons && customButtons.length > 0) {
                 customButtons.forEach(btn => addCustomLinkField(btn.label, btn.url, btn.iconType));
@@ -1418,6 +1479,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function renderCustomPresets() {
             const container = document.getElementById('customPresetButtonList');
+            if(!container) return;
             container.innerHTML = "";
             if (customPresets.length === 0) {
                 container.innerHTML = `<span class="text-[9px] italic text-gray-400">Belum ada preset.</span>`;
@@ -1486,7 +1548,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
         // ======================================================================
-        // CRUD MOD (CLEAN DIRECT SAVING)
+        // CRUD MOD
         // ======================================================================
         async function saveMod() {
             const name = document.getElementById('modName').value.trim();
@@ -1589,6 +1651,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         function renderAdminTable() {
             const tbody = document.getElementById('adminTableBody');
+            if(!tbody) return;
             tbody.innerHTML = '';
             links.forEach((item, index) => {
                 const imageSrc = item.image ? item.image : 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=150';
@@ -1733,6 +1796,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         function renderCredits() {
             const container = document.getElementById('footerCreditsContainer');
             const adminList = document.getElementById('adminCreditsList');
+            if(!container || !adminList) return;
             container.innerHTML = '';
             adminList.innerHTML = '';
             
@@ -1757,32 +1821,117 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
         // ======================================================================
-        // BAN SYSTEM SIMULATION
+        // ANTISPAM SECURITY & SAFELINK SYSTEM
         // ======================================================================
-        function triggerBanScreen() {
-            playSynth('ban');
-            localStorage.setItem('banned_client_status', 'true');
-            document.getElementById('banScreen').classList.remove('hidden');
-        }
+        let currentTargetRedirectUrl = "";
+        let isProcessingSafelink = false;
 
-        function simulateUnban() {
-            playSynth('success');
-            localStorage.removeItem('banned_client_status');
-            document.getElementById('banScreen').classList.add('hidden');
-            showToast("Akses Anda dipulihkan!", "success");
-        }
+        function handleActionClick(cardIndex, destinationUrl, isDownload = false) {
+            if (isProcessingSafelink) return;
+            playSynth('click');
+            antiSpamCounter++;
 
-        function clearAllBans() {
-            localStorage.removeItem('banned_client_status');
-            document.getElementById('banScreen').classList.add('hidden');
-            showToast("Semua ban direset.", "info");
-        }
-
-        function checkBanStatus() {
-            if (localStorage.getItem('banned_client_status') === 'true') {
-                document.getElementById('banScreen').classList.remove('hidden');
-                playSynth('ban');
+            if (antiSpamCounter > 12) {
+                triggerBanScreen();
+                return;
             }
+            setTimeout(() => { if (antiSpamCounter > 0) antiSpamCounter--; }, 4000);
+
+            if (isDownload) {
+                links[cardIndex].views = (links[cardIndex].views || 0) + 1;
+                const viewCounter = document.getElementById(`view-counter-${cardIndex}`);
+                if (viewCounter) viewCounter.innerText = links[cardIndex].views;
+                cloudSet(_0x4f12._0x0d, links);
+            }
+
+            currentTargetRedirectUrl = destinationUrl;
+            openSafelinkOverlay();
+        }
+
+        function openSafelinkOverlay() {
+            isProcessingSafelink = true;
+            const overlay = document.getElementById('safelinkOverlay');
+            const countdownEl = document.getElementById('safelinkCountdown');
+            const redirectBtn = document.getElementById('btnSafelinkRedirect');
+            
+            overlay.classList.remove('hidden');
+            redirectBtn.disabled = true;
+            redirectBtn.innerText = "MEMPROSES ENKRIPSI...";
+            
+            let timeLeft = safelinkTimerValue;
+            countdownEl.innerText = timeLeft;
+
+            if (safelinkInterval) clearInterval(safelinkInterval);
+
+            safelinkInterval = setInterval(() => {
+                timeLeft--;
+                countdownEl.innerText = timeLeft;
+                playSynth('click');
+
+                if (timeLeft <= 0) {
+                    clearInterval(safelinkInterval);
+                    redirectBtn.disabled = false;
+                    redirectBtn.innerText = "UNDUH SEKARANG 📥";
+                    redirectBtn.onclick = executeSafelinkRedirect;
+                    playSynth('success');
+                }
+            }, 1000);
+        }
+
+        function executeSafelinkRedirect() {
+            if (!currentTargetRedirectUrl) return;
+            window.open(currentTargetRedirectUrl, '_blank');
+            abortSafelink();
+        }
+
+        function abortSafelink() {
+            if (safelinkInterval) clearInterval(safelinkInterval);
+            document.getElementById('safelinkOverlay').classList.add('hidden');
+            currentTargetRedirectUrl = "";
+            isProcessingSafelink = false;
+        }
+
+        // ======================================================================
+        // INTERACTIVE ENGAGEMENT (LIKE & COMMENT)
+        // ======================================================================
+        function likeMod(cardIndex) {
+            const currentLikes = parseInt(localStorage.getItem(`like_count_card_${cardIndex}`) || '0');
+            if (currentLikes >= 10) {
+                showToast("Batas Like tercapai untuk mod ini!", "error");
+                return;
+            }
+            playSynth('success');
+            const newLocalLikes = currentLikes + 1;
+            localStorage.setItem(`like_count_card_${cardIndex}`, newLocalLikes);
+
+            links[cardIndex].likes = (links[cardIndex].likes || 0) + 1;
+            cloudSet(_0x4f12._0x0d, links);
+            renderPublicLinks();
+        }
+
+        function toggleCommentsSection(cardIndex) {
+            playSynth('click');
+            const panel = document.getElementById(`comments-panel-${cardIndex}`);
+            if(panel) panel.classList.toggle('hidden');
+        }
+
+        async function submitComment(cardIndex) {
+            const nameInput = document.getElementById(`comment-name-${cardIndex}`);
+            const textInput = document.getElementById(`comment-text-${cardIndex}`);
+            if(!nameInput || !textInput) return;
+
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+
+            if (!name || !text) { showToast("Nama & pesan wajib diisi!", "error"); return; }
+            playSynth('success');
+
+            if (!links[cardIndex].comments) links[cardIndex].comments = [];
+            links[cardIndex].comments.push({ name, text });
+
+            await cloudSet(_0x4f12._0x0d, links);
+            showToast("Komentar dikirim!", "success");
+            renderPublicLinks();
         }
 
         // ======================================================================
@@ -1790,6 +1939,7 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         // ======================================================================
         function renderPublicLinks() {
             const linkContainer = document.getElementById('linkContainer');
+            if(!linkContainer) return;
             const searchQuery = document.getElementById('searchBar').value.toLowerCase();
             linkContainer.innerHTML = '';
             
@@ -1901,11 +2051,15 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
                                 
                                 <div id="comments-panel-${cardIndex}" class="hidden bg-zinc-50 border border-black p-2.5 text-black rounded-lg">
                                     <h4 class="font-bold text-[9px] uppercase mb-1.5 border-b border-black pb-1">Kolom Diskusi</h4>
-                                    <div class="max-h-24 overflow-y-auto bg-white border border-black mb-2 divide-y divide-gray-200 rounded-lg">${commentsListHtml}</div>
-                                    <div class="flex flex-col sm:flex-row gap-1">
-                                        <input type="text" id="comm-name-${cardIndex}" placeholder="Nama..." class="brutal-border-sm p-1 text-[9px] font-bold bg-white w-full sm:w-20 rounded-md">
-                                        <input type="text" id="comm-text-${cardIndex}" placeholder="Tulis tanggapan..." class="flex-1 brutal-border-sm p-1 text-[9px] font-bold bg-white rounded-md">
-                                        <button onclick="submitComment(${cardIndex})" class="bg-[#4CCD99] hover:bg-[#3ec08a] font-bold text-[9px] uppercase py-1 px-2.5 brutal-border-sm brutal-btn-sm text-black rounded-md">Kirim</button>
+                                    <div class="max-h-32 overflow-y-auto mb-2 space-y-1 bg-white p-1.5 border border-black rounded-md">
+                                        ${commentsListHtml}
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <input type="text" id="comment-name-${cardIndex}" placeholder="Username Anda..." class="w-full p-1.5 text-[10px] font-bold border border-black rounded bg-white text-black">
+                                        <div class="flex gap-1">
+                                            <input type="text" id="comment-text-${cardIndex}" placeholder="Tulis komentar brutal..." class="flex-1 p-1.5 text-[10px] font-bold border border-black rounded bg-white text-black">
+                                            <button onclick="submitComment(${cardIndex})" class="bg-[#2E8B6E] text-white text-[9px] font-bold px-3 border border-black rounded-md uppercase">Kirim</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1917,140 +2071,14 @@ const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
         }
 
         // ======================================================================
-        // SAFELINK REDIRECT
-        // ======================================================================
-        let globalTargetUrl = "";
-        let currentSafelinkIndex = null;
-
-        function handleActionClick(index, targetUrl, isMainDownload = false) {
-            playSynth('success');
-            
-            if (!links[index].views) links[index].views = 0;
-            links[index].views += 1;
-            const viewCounterEl = document.getElementById(`view-counter-${index}`);
-            if (viewCounterEl) viewCounterEl.innerText = links[index].views;
-            cloudSet(_0x4f12._0x0d, links).catch(console.error);
-
-            if (isMainDownload) {
-                antiSpamCounter++;
-                if (antiSpamCounter > 6) { triggerBanScreen(); return; }
-                setTimeout(() => { if (antiSpamCounter > 0) antiSpamCounter--; }, 5000);
-
-                globalTargetUrl = targetUrl;
-                currentSafelinkIndex = index;
-                startSafelinkTimer();
-            } else {
-                if (targetUrl) window.open(targetUrl, '_blank');
-            }
-        }
-
-        function startSafelinkTimer() {
-            const overlay = document.getElementById('safelinkOverlay');
-            const countdownEl = document.getElementById('safelinkCountdown');
-            const redirectBtn = document.getElementById('btnSafelinkRedirect');
-            
-            overlay.classList.remove('hidden');
-            redirectBtn.disabled = true;
-            redirectBtn.innerText = "MENYIAPKAN DATA... 🔐";
-            
-            let currentSec = safelinkTimerValue;
-            countdownEl.innerText = currentSec;
-
-            clearInterval(safelinkInterval);
-            safelinkInterval = setInterval(() => {
-                currentSec--;
-                playSynth('click');
-                countdownEl.innerText = currentSec;
-                
-                countdownEl.parentElement.classList.add('scale-105');
-                setTimeout(() => { countdownEl.parentElement.classList.remove('scale-105'); }, 150);
-
-                if (currentSec <= 0) {
-                    clearInterval(safelinkInterval);
-                    redirectBtn.disabled = false;
-                    redirectBtn.innerText = "UNDUH SEKARANG! 📥";
-                    playSynth('success');
-                    
-                    redirectBtn.onclick = function() {
-                        if (globalTargetUrl) {
-                            window.open(globalTargetUrl, '_blank');
-                        }
-                        closeSafelink();
-                    };
-                }
-            }, 1000);
-        }
-
-        function abortSafelink() {
-            playSynth('delete');
-            closeSafelink();
-            showToast("Proses unduhan dibatalkan.", "info");
-        }
-
-        function closeSafelink() {
-            clearInterval(safelinkInterval);
-            document.getElementById('safelinkOverlay').classList.add('hidden');
-            globalTargetUrl = "";
-            currentSafelinkIndex = null;
-        }
-
-        // ======================================================================
-        // SOCIAL COMMENTS & LIKES
-        // ======================================================================
-        async function likeMod(index) {
-            let userLikesCount = parseInt(localStorage.getItem(`like_count_card_${index}`) || '0');
-            if (userLikesCount >= 10) {
-                playSynth('delete');
-                triggerScreenShake();
-                showToast("Batas suka maksimal 10x saja!", "error");
-                return;
-            }
-            playSynth('success');
-            userLikesCount += 1;
-            localStorage.setItem(`like_count_card_${index}`, userLikesCount);
-            
-            if (!links[index].likes) links[index].likes = 0;
-            links[index].likes += 1;
-            await cloudSet(_0x4f12._0x0d, links);
-            renderPublicLinks();
-        }
-
-        function toggleCommentsSection(index) {
-            playSynth('click');
-            const panel = document.getElementById(`comments-panel-${index}`);
-            panel.classList.toggle('hidden');
-        }
-
-        async function submitComment(index) {
-            const nameInput = document.getElementById(`comm-name-${index}`);
-            const textInput = document.getElementById(`comm-text-${index}`);
-            const name = nameInput.value.trim();
-            const text = textInput.value.trim();
-            
-            if (!name || !text) { showToast("Lengkapi form tanggapan!", "error"); return; }
-            playSynth('success');
-            
-            if (!links[index].comments) links[index].comments = [];
-            links[index].comments.push({ name, text });
-            nameInput.value = "";
-            textInput.value = "";
-            
-            await cloudSet(_0x4f12._0x0d, links);
-            renderPublicLinks();
-            showToast("Komentar dikirim!", "success");
-        }
-
-        // ======================================================================
-        // INITIALIZATION
+        // SYSTEM RUNNERS
         // ======================================================================
         window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('banned_client_status') === 'true') {
+                document.getElementById('banScreen').classList.remove('hidden');
+                playSynth('ban');
+            }
             loadAllDataFromDB();
-            const savedTheme = localStorage.getItem('user_theme_choice');
-            if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
-            checkBanStatus();
-            
-            const currentHigh = localStorage.getItem('axel_tap_high') || '0';
-            document.getElementById('easterEggHigh').innerText = currentHigh;
         });
     </script>
 </body>
