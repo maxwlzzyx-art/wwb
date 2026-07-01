@@ -1,170 +1,2056 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-theme="green">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AXELUF - Portal Mod</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: #F4F4F5;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
-    }
-    .container { max-width: 900px; margin: 0 auto; }
-    .card {
-      background: white;
-      border: 4px solid black;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 8px 8px 0 black;
-    }
-    h1 { font-size: 2.5rem; font-weight: 900; }
-    .mod-item {
-      border: 3px solid black;
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 16px;
-      background: #fff;
-      box-shadow: 5px 5px 0 black;
-    }
-    .mod-item img {
-      max-width: 100%;
-      border-radius: 12px;
-      border: 3px solid black;
-    }
-    .tag {
-      background: #B5FF3D;
-      padding: 4px 10px;
-      border-radius: 20px;
-      border: 2px solid black;
-      font-weight: bold;
-      font-size: 12px;
-      display: inline-block;
-      margin-right: 6px;
-    }
-    .btn {
-      background: #B5FF3D;
-      border: 3px solid black;
-      border-radius: 30px;
-      padding: 10px 20px;
-      font-weight: bold;
-      display: inline-block;
-      text-decoration: none;
-      color: black;
-      box-shadow: 4px 4px 0 black;
-      transition: 0.1s ease;
-    }
-    .btn:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0 black;
-    }
-    .search {
-      width: 100%;
-      padding: 12px 20px;
-      border: 4px solid black;
-      border-radius: 40px;
-      font-size: 16px;
-      font-weight: bold;
-    }
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-      font-weight: bold;
-    }
-    .credit-badge {
-      background: #B5FF3D;
-      padding: 6px 14px;
-      border-radius: 40px;
-      border: 3px solid black;
-      display: inline-block;
-      margin: 4px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXELUF ID - Premium Portal V5.3 Pro Ultra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        syne: ['Syne', 'sans-serif'],
+                        jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-color: #A3FFD6;
+            --accent-color: #4CCD99;
+            --accent-dark: #2E8B6E;
+            --card-bg: #FFFFFF;
+            --text-color: #000000;
+            --border-color: #000000;
+            --border-radius-lg: 16px;
+            --border-radius-md: 12px;
+            --border-radius-sm: 8px;
+            --shadow-offset: 6px;
+            --shadow-offset-sm: 4px;
+            --shadow-offset-lg: 8px;
+            --custom-bg-image: none;
+        }
+        [data-theme="green"] {
+            --bg-color: #A3FFD6;
+            --accent-color: #4CCD99;
+            --accent-dark: #2E8B6E;
+            --card-bg: #FFFFFF;
+            --text-color: #000000;
+            --border-color: #000000;
+        }
+        [data-theme="pink"] {
+            --bg-color: #FF71CD;
+            --accent-color: #00F0FF;
+            --accent-dark: #0088AA;
+            --card-bg: #FFFFFF;
+            --text-color: #0C0C0C;
+            --border-color: #000000;
+        }
+        [data-theme="mint"] {
+            --bg-color: #B2F9FC;
+            --accent-color: #8D00FF;
+            --accent-dark: #5C00AA;
+            --card-bg: #FFFFFF;
+            --text-color: #0C0C0C;
+            --border-color: #000000;
+        }
+        [data-theme="dark"] {
+            --bg-color: #121214;
+            --accent-color: #39FF14;
+            --accent-dark: #1FAF0E;
+            --card-bg: #1E1E24;
+            --text-color: #FFFFFF;
+            --border-color: #FFFFFF;
+        }
+        [data-theme="orange"] {
+            --bg-color: #FF8A08;
+            --accent-color: #FFF200;
+            --accent-dark: #C4B800;
+            --card-bg: #FFFFFF;
+            --text-color: #0C0C0C;
+            --border-color: #000000;
+        }
+        body {
+            background-color: var(--bg-color);
+            background-image: var(--custom-bg-image);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-color);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+        .brutal-border {
+            border: 3px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+        }
+        .brutal-border-b {
+            border-bottom: 3px solid var(--border-color);
+        }
+        .brutal-border-sm {
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+        }
+        .brutal-border-md {
+            border: 3px solid var(--border-color);
+            border-radius: var(--border-radius-md);
+        }
+        .brutal-shadow {
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--border-color);
+            border-radius: var(--border-radius-lg);
+        }
+        .brutal-shadow-sm {
+            box-shadow: var(--shadow-offset-sm) var(--shadow-offset-sm) 0px 0px var(--border-color);
+            border-radius: var(--border-radius-sm);
+        }
+        .brutal-shadow-lg {
+            box-shadow: var(--shadow-offset-lg) var(--shadow-offset-lg) 0px 0px var(--border-color);
+            border-radius: var(--border-radius-lg);
+        }
+        .brutal-btn {
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            border-radius: var(--border-radius-md);
+        }
+        .brutal-btn:hover:not(:disabled) {
+            transform: translate(-2px, -2px);
+            box-shadow: calc(var(--shadow-offset) + 1px) calc(var(--shadow-offset) + 1px) 0px 0px var(--border-color);
+        }
+        .brutal-btn:active:not(:disabled) {
+            transform: translate(3px, 3px);
+            box-shadow: 1px 1px 0px 0px var(--border-color);
+        }
+        .brutal-btn-sm {
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+            border-radius: var(--border-radius-sm);
+        }
+        .brutal-btn-sm:hover:not(:disabled) {
+            transform: translate(-1px, -1px);
+            box-shadow: calc(var(--shadow-offset-sm) + 1px) calc(var(--shadow-offset-sm) + 1px) 0px 0px var(--border-color);
+        }
+        .brutal-btn-sm:active:not(:disabled) {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px 0px var(--border-color);
+        }
+        .brutal-card {
+            background: var(--card-bg);
+            border: 3px solid var(--border-color);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0px 0px var(--border-color);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .brutal-card:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: calc(var(--shadow-offset) + 2px) calc(var(--shadow-offset) + 2px) 0px 0px var(--border-color);
+        }
+        .brutal-card-sm {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: var(--border-radius-sm);
+            box-shadow: var(--shadow-offset-sm) var(--shadow-offset-sm) 0px 0px var(--border-color);
+        }
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            10% { transform: translate(-2px, -1px) rotate(-0.5deg); }
+            30% { transform: translate(1px, 2px) rotate(0.5deg); }
+            50% { transform: translate(-1px, 1px) rotate(-0.5deg); }
+            70% { transform: translate(2px, -1px) rotate(0.5deg); }
+            90% { transform: translate(-1px, 2px) rotate(0deg); }
+        }
+        .shake {
+            animation: shake 0.3s ease-in-out;
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--border-color);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+        }
+        @keyframes ticker {
+            0% { transform: translate3d(50%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-content {
+            display: inline-block;
+            animation: ticker 22s linear infinite;
+        }
+        .ticker-content:hover {
+            animation-play-state: paused;
+        }
+        #sidebarDrawer {
+            border-top-right-radius: var(--border-radius-lg);
+            border-bottom-right-radius: var(--border-radius-lg);
+        }
+        .click-spark {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-color);
+            border: 1px solid var(--border-color);
+            pointer-events: none;
+            border-radius: 2px;
+            transform: translate(-50%, -50%);
+            animation: spark-fade 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+            z-index: 9999;
+        }
+        @keyframes spark-fade {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2.5) rotate(180deg);
+            }
+        }
+        .img-placeholder {
+            background: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .img-placeholder::before {
+            content: "🖼️ Tanpa Gambar";
+            text-align: center;
+            padding: 4px;
+        }
+        .img-placeholder.profile::before {
+            content: "👤";
+            font-size: 36px;
+        }
+        .img-placeholder.banner::before {
+            content: "🎬 Banner Portal";
+            font-size: 18px;
+        }
+        .img-placeholder.thumbnail::before {
+            content: "📱 Thumb";
+            font-size: 11px;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div class="card">
-      <h1 id="webTitle">AXELUF</h1>
-      <p id="webSubtitle" style="background:#B5FF3D; display:inline-block; padding:4px 16px; border-radius:40px; border:3px solid black;">Link Mod Bersih</p>
+<body class="p-0 m-0">
+
+    <div id="sparkContainer" class="fixed inset-0 pointer-events-none z-[10000]"></div>
+
+    <!-- LOADING SCREEN -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-4 text-center select-none">
+        <div class="bg-white brutal-border brutal-shadow p-6 max-w-sm w-full text-black transform rotate-1">
+            <h2 class="font-syne font-extrabold text-xl uppercase tracking-tight animate-pulse">MENUJU DATABASE BARU</h2>
+            <div class="w-full bg-gray-200 brutal-border-sm h-5 mt-3 relative overflow-hidden rounded-lg">
+                <div id="loadingProgress" class="bg-[#4CCD99] h-full transition-all duration-150" style="width: 0%"></div>
+                <div class="absolute inset-0 flex items-center justify-center text-[10px] font-extrabold" id="loadingProgressText">0%</div>
+            </div>
+            <p id="loadingStatusText" class="text-[10px] font-bold mt-3 text-gray-500">Mengkoneksikan ke real-time database...</p>
+        </div>
     </div>
 
-    <div class="card">
-      <input type="text" id="searchBox" class="search" placeholder="Cari mod..." oninput="renderMods()" />
+    <!-- BROADCAST BAR -->
+    <div id="broadcastBar" class="bg-black text-[#A3FFD6] py-1 border-b-2 border-black font-extrabold text-[10px] uppercase ticker-wrap relative z-40">
+        <div class="ticker-content inline-flex gap-8" id="broadcastTextContainer">
+            <span>📢 DATABASE DISEGARKAN: Kami bermigrasi ke kluster server baru yang lebih stabil dan super ringan!</span>
+            <span>🔥 UPDATE: Semua MLBB Skin & Radar Map Mod aktif untuk patch musim terbaru 2026!</span>
+        </div>
     </div>
 
-    <div id="modContainer"></div>
+    <!-- SIDEBAR MENU -->
+    <div id="sidebarDrawer" class="fixed inset-y-0 left-0 w-72 max-w-[80vw] bg-white text-black z-50 transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-black shadow-[6px_0_0_0_#000000] flex flex-col brutal-border-md rounded-tr-xl rounded-br-xl">
+        <div class="p-4 bg-[#A3FFD6] border-b-2 border-black flex justify-between items-center shrink-0 rounded-tr-lg">
+            <div class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <h2 class="font-syne font-extrabold text-base uppercase tracking-tight">KONTROL PORTAL</h2>
+            </div>
+            <button onclick="toggleSidebarDrawer()" class="bg-[#4CCD99] text-black border-2 border-black w-8 h-8 flex items-center justify-center font-bold text-sm brutal-shadow-sm active:translate-y-0.5 rounded-full">✕</button>
+        </div>
+        
+        <div class="p-4 space-y-4 overflow-y-auto flex-1 font-bold flex flex-col justify-between text-xs">
+            <div class="space-y-3">
+                <button onclick="selectCategoryFilter(''); toggleSidebarDrawer()" class="w-full text-left p-2.5 bg-zinc-50 hover:bg-[#A3FFD6] border-2 border-black brutal-shadow-sm text-[11px] uppercase flex items-center justify-between text-black rounded-lg">
+                    <span>🏠 HOME / SEMUA MOD</span>
+                    <span class="bg-black text-white px-2 py-0.5 text-[10px] brutal-border-sm" id="countAllMods">0</span>
+                </button>
+                
+                <div class="border-t-2 border-dashed border-black pt-3">
+                    <h3 class="text-[10px] text-[#2E8B6E] uppercase tracking-wider mb-2 flex items-center gap-1">
+                        📌 PINNED CATEGORIES
+                    </h3>
+                    <div id="pinnedTagsList" class="flex flex-col gap-1.5"></div>
+                </div>
 
-    <div class="footer" id="footerCredits">
-      <p>COPYRIGHT 2026 AXELUF</p>
+                <div class="border-t-2 border-dashed border-black pt-3">
+                    <h3 class="text-[10px] text-gray-500 uppercase tracking-wider mb-2">🔥 SEMUA KATEGORI</h3>
+                    <div id="dynamicTagsList" class="flex flex-col gap-1.5"></div>
+                </div>
+
+                <!-- MINI GAME -->
+                <div class="border-t-2 border-dashed border-black pt-3 bg-zinc-50 p-2.5 brutal-border-sm rounded-lg text-center">
+                    <h4 class="text-[10px] text-black font-extrabold uppercase mb-1">🎮 MINI AXELUF TAP</h4>
+                    <p class="text-[9px] text-gray-500 font-normal mb-2">Kumpulkan skor klik brutalmu!</p>
+                    <div class="flex justify-between items-center bg-white p-1 border border-black rounded mb-2">
+                        <span class="text-[10px]">Skor: <span id="easterEggScore" class="font-extrabold text-[#2E8B6E]">0</span></span>
+                        <span class="text-[9px] text-gray-400">Record: <span id="easterEggHigh">0</span></span>
+                    </div>
+                    <button onclick="playEasterEggGame()" class="w-full bg-[#FF71CD] hover:bg-[#ff55c1] text-black font-extrabold py-1.5 px-3 brutal-border-sm brutal-btn-sm text-[10px] uppercase rounded-md">TAP DISINI! 🚀</button>
+                </div>
+            </div>
+
+            <div class="border-t-2 border-dashed border-black pt-3 mt-auto">
+                <button id="btnNavAdmin" onclick="toggleAdminPanel(); toggleSidebarDrawer()" class="w-full bg-[#4CCD99] text-black font-extrabold uppercase py-2 px-4 border-2 border-black brutal-shadow-sm brutal-btn-sm text-[10px] rounded-lg">🔑 PANEL ADMIN</button>
+                <button id="btnLogOut" onclick="logoutAdmin(); toggleSidebarDrawer()" class="hidden w-full bg-black text-[#A3FFD6] font-extrabold uppercase py-2 px-4 border-2 border-black brutal-shadow-sm brutal-btn-sm text-[10px] mt-2 rounded-lg">🚪 KELUAR MODE</button>
+            </div>
+        </div>
     </div>
-  </div>
+    <div id="sidebarBackdrop" onclick="toggleSidebarDrawer()" class="hidden fixed inset-0 bg-black/60 z-40 transition-opacity duration-300"></div>
 
-  <script>
-    let data = { links: [], credits: [], web_title: 'AXELUF', web_subtitle: 'Link Mod Bersih' };
+    <!-- BAN SCREEN -->
+    <div id="banScreen" class="hidden fixed inset-0 bg-[#2E8B6E] z-50 flex flex-col items-center justify-center p-4 text-center select-none text-white">
+        <div class="brutal-border brutal-shadow bg-black p-6 max-w-sm text-white transform -rotate-1">
+            <span class="text-5xl block mb-4 animate-bounce">🚨</span>
+            <h1 class="font-syne font-extrabold text-3xl uppercase tracking-tighter text-[#A3FFD6]">SYSTEM BANNED</h1>
+            <p class="mt-2 font-bold text-sm">AKSES ANDA TELAH DIBLOKIR OLEH AXELUF!</p>
+            <p class="text-[11px] mt-1 text-gray-300">Spam klik berlebihan terdeteksi demi perlindungan server.</p>
+            <div class="mt-4 p-3 border-2 border-dashed border-[#A3FFD6] bg-[#1a1a1a] font-mono text-[10px] text-[#A3FFD6] rounded-lg">CODE: AX_CLIENT_PROTECT_V5</div>
+            <button onclick="simulateUnban()" class="mt-4 bg-[#A3FFD6] text-black font-bold uppercase py-2 px-4 brutal-border brutal-shadow-sm brutal-btn text-xs rounded-lg">Minta Maaf ke Axeluf (Unban)</button>
+        </div>
+    </div>
 
-    async function loadData() {
-      try {
-        const res = await fetch('/data-mod.json?' + Date.now());
-        if (!res.ok) throw new Error('Gagal load data');
-        data = await res.json();
-        document.getElementById('webTitle').innerText = data.web_title || 'AXELUF';
-        document.getElementById('webSubtitle').innerText = data.web_subtitle || 'Link Mod Bersih';
-        renderCredits();
-        renderMods();
-      } catch (e) {
-        document.getElementById('modContainer').innerHTML = '<p style="color:red;">Gagal memuat data. Pastikan file data-mod.json ada.</p>';
-      }
-    }
+    <!-- TOAST -->
+    <div id="toastBox" class="fixed bottom-4 right-4 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none max-w-xs">
+        <div id="toastContent" class="brutal-border brutal-shadow bg-white p-3 font-bold text-sm flex items-center gap-2.5 text-black">
+            <span id="toastIcon">💡</span>
+            <span id="toastMessage" class="truncate text-xs">Halo!</span>
+        </div>
+    </div>
 
-    function renderCredits() {
-      const footer = document.getElementById('footerCredits');
-      if (data.credits && data.credits.length) {
-        let html = '<div style="margin-bottom:16px;">';
-        data.credits.forEach(c => {
-          html += `<a href="${c.url}" target="_blank" style="background:${c.color||'#B5FF3D'}; padding:6px 14px; border-radius:40px; border:3px solid black; display:inline-block; margin:4px; text-decoration:none; color:black; font-weight:bold;">${c.platform}: ${c.handle}</a>`;
+    <!-- CONFIRM MODAL -->
+    <div id="confirmModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+        <div class="bg-white text-black brutal-border brutal-shadow w-full max-w-sm p-5 text-center transform rotate-1">
+            <span class="text-4xl block mb-2">⚠️</span>
+            <h3 class="font-syne font-extrabold text-xl uppercase mb-1">KONFIRMASI</h3>
+            <p id="confirmModalText" class="text-xs font-medium text-gray-600 mb-4">Apakah Anda yakin?</p>
+            <div class="flex gap-3">
+                <button id="btnConfirmYes" class="flex-1 bg-[#2E8B6E] text-white font-bold uppercase py-2.5 brutal-border brutal-shadow-sm brutal-btn text-xs rounded-lg">YA, SETUJU</button>
+                <button onclick="closeConfirmModal()" class="flex-1 bg-gray-200 font-bold uppercase py-2.5 brutal-border brutal-shadow-sm brutal-btn text-xs rounded-lg">BATAL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRE-HEADER -->
+    <div class="bg-black text-white py-1.5 px-3 flex justify-between items-center text-[10px] font-bold brutal-border-b">
+        <span class="hidden sm:inline">🚀 AXELUF V5.3 Premium Portal (NEW STABLE CLUSTER)</span>
+        <span class="sm:hidden">🚀 AXELUF V5.3</span>
+        <div class="flex items-center gap-3">
+            <button id="btnToggleSound" onclick="toggleSound()" class="bg-zinc-800 px-2 py-0.5 brutal-border-sm hover:bg-zinc-700 text-[9px] uppercase text-white rounded-md">🔊 SUARA: AKTIF</button>
+            <div class="flex items-center gap-1">
+                <span>TEMA:</span>
+                <button onclick="changeTheme('green')" class="w-3.5 h-3.5 theme-dot bg-[#A3FFD6] border border-white" title="Hijau Muda"></button>
+                <button onclick="changeTheme('pink')" class="w-3.5 h-3.5 theme-dot bg-[#FF71CD] border border-white" title="Cyberpunk Pink"></button>
+                <button onclick="changeTheme('mint')" class="w-3.5 h-3.5 theme-dot bg-[#B2F9FC] border border-white" title="Retro Mint"></button>
+                <button onclick="changeTheme('dark')" class="w-3.5 h-3.5 theme-dot bg-[#121214] border border-white" title="Deep Dark"></button>
+                <button onclick="changeTheme('orange')" class="w-3.5 h-3.5 theme-dot bg-[#FF8A08] border border-white" title="Lava Orange"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOP NAVIGATION -->
+    <nav class="bg-white text-black brutal-border brutal-shadow p-3 relative z-30 max-w-3xl mx-auto mt-3 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+            <button onclick="toggleSidebarDrawer()" class="bg-[#A3FFD6] text-black border-2 border-black p-2.5 brutal-shadow-sm brutal-btn hover:bg-[#8AE8C0] font-extrabold text-lg flex items-center justify-center h-10 w-10 shrink-0 rounded-lg" title="Buka Sidebar">☰</button>
+            <div>
+                <span class="font-syne font-extrabold text-base tracking-tight uppercase block leading-none">AXELUF</span>
+                <span class="text-[8px] uppercase tracking-wider font-extrabold bg-[#4CCD99] px-1 py-0.5 brutal-border-sm text-black rounded-full inline-block mt-0.5">V5.3 Stable</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-1.5">
+            <div class="relative w-8 h-8 shrink-0">
+                <img id="navLogoMin" class="w-full h-full bg-[#4CCD99] brutal-border-sm rounded-full object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%234CCD99%22/%3E%3Ctext x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22white%22%3EA%3C/text%3E%3C/svg%3E'; this.classList.add('img-placeholder','profile');">
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-3xl mx-auto px-3 pt-3">
+
+        <!-- PROFILE SECTION -->
+        <div class="w-full bg-white brutal-border brutal-shadow mb-6 overflow-hidden">
+            <div id="webBannerWrapper" class="relative w-full h-32 sm:h-44 bg-zinc-900 border-b-2 border-black overflow-hidden flex items-center justify-center">
+                <img id="webBannerImage" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200" alt="Banner YouTube" class="w-full h-full object-cover select-none" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%221200%22 height=%22300%22%3E%3Crect width=%221200%22 height=%22300%22 fill=%22%232E8B6E%22/%3E%3Ctext x=%22600%22 y=%22170%22 font-size=%2240%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22sans-serif%22%3EAXELUF PORTAL%3C/text%3E%3C/svg%3E'; this.classList.add('img-placeholder','banner');">
+            </div>
+            <div id="headerProfileContainer" class="p-4 pt-0 relative flex flex-col items-start text-left gap-2">
+                <div class="relative -mt-10 sm:-mt-14 z-10">
+                    <img id="mainLogo" class="w-20 h-20 sm:w-24 sm:h-24 bg-[#4CCD99] brutal-border brutal-shadow rounded-full object-cover" src="https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200" alt="Logo" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Ccircle cx=%22100%22 cy=%22100%22 r=%2290%22 fill=%22%234CCD99%22/%3E%3Ctext x=%22100%22 y=%22120%22 font-size=%2280%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22sans-serif%22%3EA%3C/text%3E%3C/svg%3E'; this.classList.add('img-placeholder','profile');">
+                </div>
+                <div class="w-full">
+                    <h1 id="mainTitleText" class="font-syne font-extrabold text-2xl sm:text-3xl tracking-tight uppercase text-black leading-none">AXELUF</h1>
+                    <p id="mainSubtitleText" class="text-[10px] font-bold bg-[#4CCD99] inline-block px-2.5 py-1 brutal-border mt-1 rounded-md text-black">🔥 LINK MOD BERSIH & NO SCAM 🔥</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOGIN MODAL -->
+        <div id="loginSection" class="hidden fixed inset-0 bg-black/75 z-50 flex items-center justify-center p-4">
+            <div class="bg-[#A3FFD6] text-black brutal-border brutal-shadow w-full max-w-sm p-5 relative">
+                <button onclick="closeLoginModal()" class="absolute -top-2.5 -right-2.5 bg-white brutal-border w-8 h-8 flex items-center justify-center font-bold text-sm hover:bg-[#4CCD99] rounded-full">✕</button>
+                <h2 class="font-syne font-extrabold text-xl mb-4 uppercase tracking-tight">🔐 VERIFIKASI ADMIN</h2>
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block font-bold mb-0.5 uppercase tracking-wider text-[9px]">Username</label>
+                        <input type="text" id="adminUser" placeholder="Masukkan username" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none focus:bg-[#A3FFD6]/40 text-black rounded-lg">
+                    </div>
+                    <div>
+                        <label class="block font-bold mb-0.5 uppercase tracking-wider text-[9px]">Password</label>
+                        <input type="password" id="adminPass" placeholder="Masukkan password" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none focus:bg-[#A3FFD6]/40 text-black rounded-lg">
+                    </div>
+                    <button onclick="attemptLogin()" class="w-full bg-[#2E8B6E] text-white font-bold uppercase py-2.5 brutal-border brutal-shadow-sm brutal-btn mt-3 rounded-lg">MASUK SEKARANG ⚡</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ADMIN DASHBOARD -->
+        <section id="adminDashboard" class="hidden bg-[#A3FFD6] text-black brutal-border brutal-shadow p-4 mb-6 text-xs">
+            <div class="flex justify-between items-center border-b-2 border-black pb-2 mb-4">
+                <h2 class="font-syne font-bold text-lg uppercase">🛠️ PANEL ADMIN AXELUF</h2>
+                <span class="bg-[#4CCD99] px-2.5 py-0.5 brutal-border text-[9px] font-bold uppercase border-black text-black rounded-full">DB STABLE CLUSTER</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+                <button onclick="switchAdminTab('mod')" id="tabMod" class="bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg">Modifikasi Link</button>
+                <button onclick="switchAdminTab('branding')" id="tabBranding" class="bg-white text-black px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg">Branding & BG</button>
+                <button onclick="switchAdminTab('social')" id="tabSocial" class="bg-white text-black px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg">Kredit Sosmed</button>
+                <button onclick="switchAdminTab('pinning')" id="tabPinning" class="bg-white text-black px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg">Pin Tag</button>
+                <button onclick="switchAdminTab('sql')" id="tabSql" class="bg-white text-black px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg text-blue-700">⚙️ SQL Setup</button>
+            </div>
+
+            <!-- Tab Mod -->
+            <div id="adminTabModContent">
+                <div class="bg-white brutal-border brutal-shadow-sm p-4 mb-4 text-black">
+                    <h3 id="formTitle" class="font-syne font-extrabold text-sm uppercase mb-3 text-[#2E8B6E]">➕ Tambah Mod Baru</h3>
+                    <input type="hidden" id="editIndex" value="">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-[11px]">
+                        <div>
+                            <label class="block font-bold mb-0.5 uppercase text-gray-700 text-[9px]">Nama Aplikasi / Game Mod</label>
+                            <input type="text" id="modName" placeholder="Contoh: Mobile Legends Mod Skin" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-0.5 uppercase text-gray-700 text-[9px]">Kategori (Pisahkan dengan koma)</label>
+                            <input type="text" id="modTag" placeholder="Contoh: GAME, APK, MLBB" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black rounded-lg">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block font-bold mb-0.5 uppercase text-gray-700 text-[9px]">Deskripsi Mod</label>
+                            <textarea id="modDesc" rows="2" placeholder="Sebutkan fitur unggulan mod..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black rounded-lg"></textarea>
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-0.5 uppercase text-gray-700 text-[9px]">Link Download Utama</label>
+                            <input type="text" id="modUrl" placeholder="https://..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black rounded-lg">
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-0.5 uppercase text-gray-700 text-[9px]">Info Password (Jika ada)</label>
+                            <input type="text" id="modPassword" placeholder="Contoh: Password di Video Menit 04:20" class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black rounded-lg">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block font-bold mb-0.5 uppercase text-gray-700 text-[9px] text-[#2E8B6E]">🖼️ Link URL Gambar Mod (Unggah ke ImgBB/Postimages)</label>
+                            <input type="text" id="modImageUrl" placeholder="https://i.ibb.co/..." class="w-full brutal-border p-2 font-bold bg-white focus:outline-none text-black rounded-lg">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block font-bold mb-0.5 uppercase text-gray-700 text-[9px]">Rasio Gambar</label>
+                            <select id="modImageRatio" class="w-full brutal-border p-1.5 font-bold bg-white focus:outline-none text-black text-[10px] rounded-lg">
+                                <option value="aspect-video object-cover">Rasio Video (16:9)</option>
+                                <option value="aspect-square object-cover">Rasio Kotak (1:1)</option>
+                                <option value="aspect-[9/16] object-cover">Rasio Vertikal (9:16)</option>
+                            </select>
+                        </div>
+                        <div class="p-2.5 bg-[#A3FFD6]/30 border border-[#2E8B6E] col-span-1 md:col-span-2 rounded-lg">
+                            <h4 class="font-bold text-[9px] uppercase text-[#2E8B6E] mb-1.5">⭐ PANEL STATISTIK ADMIN (MANUAL ADJUSTMENT)</h4>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div><label class="block text-[8px] font-bold uppercase text-gray-600">Views</label><input type="number" id="modViewsInput" class="w-full brutal-border-sm p-1 font-bold bg-white text-black rounded-lg"></div>
+                                <div><label class="block text-[8px] font-bold uppercase text-gray-600">Likes</label><input type="number" id="modLikesInput" class="w-full brutal-border-sm p-1 font-bold bg-white text-black rounded-lg"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kustom Tombol Manual -->
+                    <div class="mt-4 p-3 border-2 border-black bg-zinc-50 text-black rounded-lg">
+                        <h4 class="font-syne font-extrabold text-[11px] uppercase mb-2 text-black border-b-2 border-black pb-1.5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+                            <span>🔗 Kustomisasi Tombol (Maks 5 Tombol)</span>
+                            <button type="button" onclick="addCustomLinkField()" class="bg-[#4CCD99] brutal-border-sm hover:bg-[#3ec08a] font-bold text-[9px] px-2 py-0.5 text-black rounded-lg">+ Tombol Baru</button>
+                        </h4>
+                        <div id="customLinksContainer" class="space-y-2 mb-3"></div>
+                        <div class="border-t-2 border-dashed border-black pt-3">
+                            <h5 class="font-extrabold text-[10px] uppercase mb-1.5 text-[#2E8B6E]">🛠️ Preset Cepat Tombol Anda (Cloud Persisted)</h5>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-1.5 bg-[#A3FFD6]/20 p-2 border border-black mb-3 rounded-lg text-[10px]">
+                                <input type="hidden" id="editPresetIndex" value="">
+                                <div><label class="block text-[8px] font-bold text-[#2E8B6E] uppercase">Teks Preset</label><input type="text" id="presetLabel" class="w-full brutal-border-sm p-1 text-black font-bold rounded-lg bg-white"></div>
+                                <div><label class="block text-[8px] font-bold text-[#2E8B6E] uppercase">URL Preset</label><input type="text" id="presetUrl" class="w-full brutal-border-sm p-1 text-black font-bold rounded-lg bg-white"></div>
+                                <div class="flex items-end gap-1">
+                                    <div class="flex-1"><label class="block text-[8px] font-bold text-[#2E8B6E] uppercase">Ikon</label><select id="presetIcon" class="w-full brutal-border-sm p-1 text-black font-bold rounded-lg bg-white"><option value="video">🎥 Tutorial Video</option><option value="download">📥 Download File</option><option value="chat">💬 Obrolan / Grup</option><option value="key">🔑 Password / Key</option><option value="globe">🌐 Situs Web</option></select></div>
+                                    <div class="flex gap-1 shrink-0">
+                                        <button type="button" onclick="saveCustomPreset()" id="btnSavePreset" class="bg-[#2E8B6E] text-white font-bold px-2 py-1 brutal-border-sm rounded-lg">Simpan</button>
+                                        <button type="button" onclick="clearPresetForm()" id="btnCancelPreset" class="hidden bg-gray-200 text-black font-bold px-2 py-1 brutal-border-sm rounded-lg">Batal</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="customPresetButtonList" class="flex flex-wrap gap-1.5"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 mt-4">
+                        <button onclick="saveMod()" class="flex-1 bg-[#4CCD99] font-bold uppercase py-2 brutal-border brutal-shadow-sm brutal-btn-sm text-xs text-black rounded-lg">Simpan Link Mod ke Server ⚡</button>
+                        <button onclick="clearForm()" class="bg-gray-200 font-bold uppercase py-2 px-3 brutal-border text-xs text-black rounded-lg">Reset Form</button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-sm uppercase mb-2 text-black">📋 List Link Aktif</h3>
+                    <div class="overflow-x-auto brutal-border admin-table-rounded">
+                        <table class="w-full bg-white text-left text-[11px] border-collapse">
+                            <thead>
+                                <tr class="bg-black text-white uppercase font-bold text-[9px]">
+                                    <th class="p-2 border-r border-gray-700">Preview</th>
+                                    <th class="p-2 border-r border-gray-700">Nama Mod</th>
+                                    <th class="p-2 border-r border-gray-700">Kategori</th>
+                                    <th class="p-2">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminTableBody" class="divide-y divide-black font-bold text-black"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Branding -->
+            <div id="adminTabBrandingContent" class="hidden space-y-4">
+                <div class="bg-white brutal-border brutal-shadow-sm p-4">
+                    <h3 class="font-syne font-extrabold text-sm uppercase mb-3 text-[#2E8B6E]">🎨 Ubah Branding Utama Web</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div><label class="block font-bold mb-0.5 text-[9px] uppercase">Nama Web Utama</label><input type="text" id="setMainTitle" class="w-full brutal-border p-1.5 font-bold bg-white text-black rounded-lg"></div>
+                        <div><label class="block font-bold mb-0.5 text-[9px] uppercase">Slogan / Subtitle</label><input type="text" id="setMainSubtitle" class="w-full brutal-border p-1.5 font-bold bg-white text-black rounded-lg"></div>
+                        <div class="md:col-span-2"><label class="block font-bold mb-0.5 text-[9px] uppercase text-[#2E8B6E]">🖼 Link URL Foto Profil</label><input type="text" id="setMainLogoUrl" class="w-full brutal-border p-1.5 font-bold bg-white text-[11px] text-black rounded-lg"></div>
+                        <div class="md:col-span-2 p-2 bg-[#A3FFD6]/20 border border-[#4CCD99] rounded-lg">
+                            <label class="block font-bold mb-0.5 text-[9px] uppercase">Posisi Foto Profil Header</label>
+                            <select id="setProfilePosition" class="w-full brutal-border p-1.5 font-bold bg-white text-black text-[10px] rounded-lg">
+                                <option value="items-start text-left">Rata Kiri</option>
+                                <option value="items-center text-center">Rata Tengah</option>
+                                <option value="items-end text-right">Rata Kanan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="saveBranding()" class="mt-3 bg-[#2E8B6E] text-white font-bold uppercase py-1.5 px-4 brutal-border brutal-shadow-sm brutal-btn-sm text-[10px] rounded-lg">Terapkan Perubahan Branding</button>
+                </div>
+
+                <div class="bg-white brutal-border brutal-shadow-sm p-4">
+                    <h3 class="font-syne font-extrabold text-sm uppercase mb-3 text-[#4CCD99]">📢 Pengumuman & Safelink</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div><label class="block font-bold mb-0.5 text-[9px] uppercase">Teks Pengumuman (Pemisah dengan |)</label><input type="text" id="setBroadcastText" class="w-full brutal-border p-1.5 font-bold bg-white text-xs text-black rounded-lg"></div>
+                        <div><label class="block font-bold mb-0.5 text-[9px] uppercase">Waktu Safelink (Detik)</label><input type="number" id="setSafelinkTime" min="3" max="30" class="w-full brutal-border p-1.5 font-bold bg-white text-xs text-black rounded-lg"></div>
+                    </div>
+                    <button onclick="saveSafelinkAndBroadcast()" class="mt-3 bg-[#4CCD99] text-black font-extrabold py-1.5 px-4 brutal-border brutal-shadow-sm brutal-btn-sm text-[10px] uppercase rounded-lg">Simpan Konfigurasi</button>
+                </div>
+
+                <div class="bg-white brutal-border brutal-shadow-sm p-4">
+                    <h3 class="font-syne font-extrabold text-sm uppercase mb-3 text-[#2E8B6E]">🎑 Pengaturan Gambar Banner & Background</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block font-bold mb-0.5 text-[9px] uppercase text-[#2E8B6E]">URL Gambar Banner (16:9)</label>
+                            <input type="text" id="setBannerUrl" placeholder="https://i.ibb.co/..." class="w-full brutal-border p-1.5 font-bold bg-white text-[10px] rounded-lg text-black">
+                        </div>
+                        <div class="border-t border-black my-2"></div>
+                        <div>
+                            <label class="block font-bold mb-0.5 text-[9px] uppercase text-[#2E8B6E]">URL Gambar Background Web</label>
+                            <input type="text" id="setBackgroundUrl" placeholder="https://i.ibb.co/..." class="w-full brutal-border p-1.5 font-bold bg-white text-[10px] rounded-lg text-black">
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="saveBannerConfig()" class="bg-[#4CCD99] text-black font-bold uppercase py-1.5 px-3 brutal-border brutal-shadow-sm brutal-btn-sm text-[9px] rounded-lg">Simpan Banner</button>
+                            <button onclick="saveBackgroundConfig()" class="bg-[#2E8B6E] text-white font-bold uppercase py-1.5 px-3 brutal-border brutal-shadow-sm brutal-btn-sm text-[9px] rounded-lg">Simpan Background</button>
+                            <button onclick="resetBackgroundConfig()" class="bg-gray-200 text-black font-bold uppercase py-1.5 px-3 brutal-border text-[9px] rounded-lg">Reset Default Tema</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white brutal-border brutal-shadow-sm p-4">
+                    <h3 class="font-syne font-extrabold text-sm uppercase mb-2 text-red-600">🚨 Simulasi Blokir Pengguna</h3>
+                    <p class="text-[10px] text-gray-500 mb-2">Simulasikan mode ban pada perangkat Anda sendiri untuk video demo atau pengujian sistem keamanan.</p>
+                    <div class="flex gap-2">
+                        <button onclick="triggerBanScreen()" class="bg-red-600 text-white font-bold uppercase py-1.5 px-3 brutal-border brutal-shadow-sm brutal-btn text-[9px] rounded-lg">Simulasi BAN</button>
+                        <button onclick="clearAllBans()" class="bg-gray-200 text-black font-bold uppercase py-1.5 px-3 brutal-border brutal-shadow-sm brutal-btn text-[9px] rounded-lg">Reset Semua Ban</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Social -->
+            <div id="adminTabSocialContent" class="hidden space-y-4">
+                <div class="bg-white brutal-border brutal-shadow-sm p-4">
+                    <h3 class="font-syne font-extrabold text-sm uppercase mb-3 text-[#4CCD99]">🔗 Kelola Kredit Sosial Media Footer</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                        <div><label class="block font-bold mb-0.5 text-[9px] uppercase">Platform</label><input type="text" id="credPlatform" placeholder="Contoh: TikTok" class="w-full brutal-border p-1.5 font-bold bg-white text-black rounded-lg"></div>
+                        <div><label class="block font-bold mb-0.5 text-[9px] uppercase">Handle / Username</label><input type="text" id="credHandle" placeholder="Contoh: @axeluf" class="w-full brutal-border p-1.5 font-bold bg-white text-black rounded-lg"></div>
+                        <div class="md:col-span-2"><label class="block font-bold mb-0.5 text-[9px] uppercase">URL Link Sosmed</label><input type="text" id="credUrl" class="w-full brutal-border p-1.5 font-bold bg-white text-black rounded-lg"></div>
+                        <div>
+                            <label class="block font-bold mb-0.5 text-[9px] uppercase">Warna Tombol</label>
+                            <select id="credColor" class="w-full brutal-border p-1.5 font-bold bg-white text-black rounded-lg">
+                                <option value="#4CCD99">Hijau Brutalist (#4CCD99)</option>
+                                <option value="#2E8B6E">Hijau Gelap (#2E8B6E)</option>
+                                <option value="#A3FFD6">Hijau Muda (#A3FFD6)</option>
+                                <option value="#FF71CD">Pink Cyberpunk (#FF71CD)</option>
+                                <option value="#000000">Hitam Solid (#000000)</option>
+                                <option value="#FFFFFF">Putih (#FFFFFF)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button onclick="addCredit()" class="bg-[#4CCD99] text-black font-bold uppercase py-1.5 px-4 brutal-border brutal-shadow-sm brutal-btn-sm text-[10px] rounded-lg">Tambah Kredit Sosmed</button>
+                    <div class="mt-4 border-t-2 border-black pt-3">
+                        <h4 class="font-bold text-[11px] uppercase mb-2">Daftar Kredit Aktif:</h4>
+                        <div id="adminCreditsList" class="space-y-1.5"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Pinning -->
+            <div id="adminTabPinningContent" class="hidden space-y-4">
+                <div class="bg-white brutal-border brutal-shadow-sm p-4">
+                    <h3 class="font-syne font-extrabold text-sm uppercase mb-1.5 text-[#2E8B6E]">📌 Pin Kategori Pilihan ke Sidebar Utama</h3>
+                    <p class="text-[10px] text-gray-500 mb-3">Sematkan kategori terpopuler di bagian atas sidebar Anda.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 items-end">
+                        <div><label class="block font-bold mb-0.5 text-[9px] uppercase">Nama Kategori</label><input type="text" id="pinTagName" placeholder="Contoh: GAME atau PREMIUM" class="w-full brutal-border p-1.5 font-bold bg-white text-black rounded-lg"></div>
+                        <button onclick="addPinnedTag()" class="bg-[#2E8B6E] text-white font-extrabold uppercase py-2 px-4 brutal-border brutal-shadow-sm brutal-btn-sm text-[10px] rounded-lg">Pin Kategori 📌</button>
+                    </div>
+                    <div class="mt-4 border-t-2 border-black pt-3">
+                        <h4 class="font-bold text-[11px] uppercase mb-2">Daftar Semat Aktif:</h4>
+                        <div id="pinnedTagsAdminList" class="flex flex-wrap gap-1.5"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab SQL Setup (NEW INJECTOR!) -->
+            <div id="adminTabSqlContent" class="hidden space-y-4">
+                <div class="bg-white brutal-border brutal-shadow-sm p-4">
+                    <h3 class="font-syne font-extrabold text-sm uppercase mb-1.5 text-blue-700">⚙️ SQL Setup Injector untuk Database Baru</h3>
+                    <p class="text-[10px] text-gray-500 mb-3">Salin seluruh query SQL di bawah ini, buka dasbor Supabase Anda, masuk ke menu <strong>SQL Editor</strong>, buat query baru, tempel, lalu klik <strong>Run</strong>.</p>
+                    
+                    <div class="relative bg-zinc-900 border border-black p-3 rounded-lg text-white font-mono text-[9px] max-h-56 overflow-y-auto whitespace-pre-wrap select-all mb-3" id="sqlQueryBlock">-- 1. Buat Tabel settings jika belum ada
+CREATE TABLE IF NOT EXISTS public.settings (
+    key text PRIMARY KEY,
+    value jsonb,
+    created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- 2. Aktifkan Row Level Security (RLS)
+ALTER TABLE public.settings ENABLE ROW LEVEL SECURITY;
+
+-- 3. Izinkan semua orang membaca data settings (Public Read)
+CREATE POLICY "Allow public read access" 
+ON public.settings 
+FOR SELECT 
+USING (true);
+
+-- 4. Izinkan semua orang melakukan insert/update/delete (Supabase API Key)
+CREATE POLICY "Allow write access for anyone with API key" 
+ON public.settings 
+FOR ALL 
+USING (true) 
+WITH CHECK (true);</div>
+
+                    <button onclick="copySqlQueryText()" class="bg-[#4CCD99] text-black font-extrabold uppercase py-2 px-4 brutal-border brutal-shadow-sm brutal-btn-sm text-[10px] rounded-lg">Salin Skrip SQL 📋</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN PUBLIC PORTAL VIEW -->
+        <main class="text-black">
+            <!-- Filter Badge Aktif -->
+            <div id="activeFilterBadge" class="hidden bg-black text-white p-3 mb-4 brutal-border brutal-shadow-sm flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-[#A3FFD6]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3" />
+                    </svg>
+                    <span class="font-extrabold text-xs uppercase">Menyaring: <span id="activeFilterLabel" class="text-[#A3FFD6] underline">KATEGORI</span></span>
+                </div>
+                <button onclick="selectCategoryFilter('')" class="bg-[#4CCD99] text-black brutal-border-sm hover:bg-[#3dbd8c] font-extrabold text-[10px] px-2.5 py-0.5 uppercase active:translate-y-0.5 rounded-lg">Semua ✕</button>
+            </div>
+
+            <!-- Search Bar Compact -->
+            <section class="mb-5">
+                <div class="bg-white text-black brutal-border brutal-shadow flex items-center p-0.5">
+                    <span class="px-3 text-lg">🔍</span>
+                    <input type="text" id="searchBar" oninput="renderPublicLinks()" placeholder="Cari Aplikasi atau Mod gampang disini..." class="w-full p-2.5 font-bold text-sm focus:outline-none bg-transparent text-black rounded-r-lg">
+                </div>
+            </section>
+
+            <!-- Info Bar Ringkas -->
+            <div class="bg-[#4CCD99] brutal-border brutal-shadow-sm p-3 mb-6 font-bold flex gap-2.5 items-center">
+                <svg class="w-5 h-5 text-black shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+                <p class="text-[10px] sm:text-xs text-black leading-tight">Link error atau gagal diunduh? Sampaikan langsung pada kolom komentar Youtube Axeluf terbaru agar segera diperbarui!</p>
+            </div>
+
+            <!-- CONTAINER CARD LINK UTAMA -->
+            <div id="linkContainer" class="space-y-6"></div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="mt-12 bg-white text-black brutal-border brutal-shadow p-6 text-center font-bold">
+            <div id="footerCreditsContainer" class="mb-4 flex flex-wrap items-center justify-center gap-3"></div>
+            <p class="font-syne font-bold uppercase tracking-wider text-xs">© 2026 AXELUF - Developed by Axeluf</p>
+            <p id="dbSourceBadge" class="text-[9px] text-gray-500 mt-1.5 font-mono">HYBRID SYNC STATE: CONNECTING</p>
+        </footer>
+    </div>
+
+    <!-- SAFELINK OVERLAY MODAL -->
+    <div id="safelinkOverlay" class="hidden fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center p-4">
+        <div class="bg-white text-black brutal-border brutal-shadow p-6 max-w-sm w-full text-center transform rotate-1">
+            <span class="text-4xl block mb-2 animate-bounce">⏳</span>
+            <h3 class="font-syne font-extrabold text-lg uppercase mb-1">MEMPERSIAPKAN LINK</h3>
+            <p class="text-[11px] text-gray-500 mb-4">Mohon tunggu sebentar, enkripsi data sedang diproses...</p>
+            
+            <div class="relative w-20 h-20 mx-auto flex items-center justify-center bg-[#A3FFD6] border-4 border-black rounded-full mb-4 shadow-[4px_4px_0_0_#000000]">
+                <span id="safelinkCountdown" class="font-syne font-extrabold text-2xl">5</span>
+            </div>
+
+            <button id="btnSafelinkRedirect" disabled class="w-full bg-[#4CCD99] text-black font-extrabold py-2.5 brutal-border brutal-shadow-sm brutal-btn text-xs uppercase disabled:opacity-50 disabled:cursor-not-allowed rounded-lg">UNDUH SEKARANG 📥</button>
+            <button onclick="abortSafelink()" class="w-full bg-gray-100 hover:bg-gray-200 text-black font-bold py-1.5 text-[10px] uppercase mt-2 border border-black rounded-md">Batal</button>
+        </div>
+    </div>
+
+    <script>
+        // ======================================================================
+        // CONFIG SUPABASE (NEW COMPACT INSTANCE)
+        // ======================================================================
+        const SUPABASE_URL = "https://hhvchrojexhjdrwtsejd.supabase.co";
+        const SUPABASE_KEY = "sb_publishable_czpChMuPeJoB6pVh_tiK0Q_0IeNvKmN";
+        const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+        const _0x4f12 = {
+            _0x0a: "axeluf",
+            _0x0b: "brandalz70",
+            _0x0d: "links_supabase_db",
+            _0x0e: "credits_supabase_db",
+            _0x0f: "pinned_tags_db"
+        };
+
+        // ======================================================================
+        // PORTAL STATE & LOCAL STORAGE DEFAULTS
+        // ======================================================================
+        let activeCategoryFilter = "";
+        let pinnedTags = [];
+        let safelinkTimerValue = 5;
+        let customPresets = [];
+        let links = [];
+        let credits = [];
+        let isAdmin = false;
+        let activeDeleteIndex = null;
+        let antiSpamCounter = 0;
+        let easterEggScore = 0;
+        let soundEnabled = true;
+        let audioCtx = null;
+        let safelinkInterval = null;
+
+        const fallbackDatabaseDefaults = {
+            web_title: "AXELUF",
+            web_subtitle: "🔥 LINK MOD BERSIH & NO SCAM 🔥",
+            web_logo: "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=200",
+            profile_alignment: "items-start text-left",
+            web_background_image: "none",
+            web_banner_image: "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=1200",
+            web_broadcast_text: "📢 DATABASE DISINGKRONISASI: Selamat datang di server cluster baru Axeluf yang super kencang! | 🔥 SINKRON: Semua MLBB Mod skin telah siap unduh!",
+            web_safelink_time: "5",
+            web_custom_presets_db: [{ label: "Cara Pasang", url: "https://youtube.com/@axelufey", iconType: "video" }],
+            [_0x4f12._0x0f]: ["MLBB", "GAME", "APK"],
+            [_0x4f12._0x0e]: [{ platform: "WhatsApp", handle: "Saluran Resmi", url: "https://whatsapp.com/channel/0029VaUl8HRBqbr8aHIeDW0s", color: "#4CCD99" }],
+            [_0x4f12._0x0d]: [{
+                name: "Mobile Legends Mod Skin & Radar Map (Default)",
+                tag: "MLBB, GAME, SKIN",
+                desc: "Unlock semua skin hero favoritmu secara aman, anti banned lengkap dengan radar map.",
+                url: encodeSafe("https://www.mediafire.com"),
+                password: encodeSafe("Password: tonton video terbaru"),
+                image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
+                imageRatio: "aspect-video object-cover",
+                views: 0,
+                likes: 0,
+                comments: [],
+                customButtons: []
+            }]
+        };
+
+        // ======================================================================
+        // CLICK SPARK EFFECT
+        // ======================================================================
+        document.body.addEventListener('click', function(e) {
+            createSpark(e.clientX, e.clientY);
         });
-        html += '</div>';
-        footer.innerHTML = html + '<p>COPYRIGHT 2026 AXELUF</p>';
-      }
-    }
 
-    function renderMods() {
-      const q = document.getElementById('searchBox').value.toLowerCase();
-      const container = document.getElementById('modContainer');
-      const links = data.links || [];
-      const filtered = links.filter(item => 
-        item.name.toLowerCase().includes(q) ||
-        (item.tag && item.tag.toLowerCase().includes(q))
-      );
+        function createSpark(x, y) {
+            const container = document.getElementById('sparkContainer');
+            const sparkCount = 6;
+            const colors = ['#A3FFD6', '#4CCD99', '#FF71CD', '#00F0FF', '#FFF200'];
+            
+            for (let i = 0; i < sparkCount; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'click-spark';
+                
+                const angle = (i / sparkCount) * Math.PI * 2;
+                const distance = 15 + Math.random() * 25;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                spark.style.left = `${x}px`;
+                spark.style.top = `${y}px`;
+                spark.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                spark.style.setProperty('--tx', `${tx}px`);
+                spark.style.setProperty('--ty', `${ty}px`);
+                
+                container.appendChild(spark);
+                setTimeout(() => { spark.remove(); }, 500);
+            }
+        }
 
-      if (!filtered.length) {
-        container.innerHTML = '<div class="card" style="text-align:center;">Mod tidak ditemukan.</div>';
-        return;
-      }
+        // ======================================================================
+        // SYNTHESIZER AUDIO
+        // ======================================================================
+        function getAudioContext() {
+            if (!audioCtx) {
+                audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioCtx;
+        }
 
-      let html = '';
-      filtered.forEach(item => {
-        const tags = (item.tag || '').split(',').map(t => t.trim()).filter(Boolean);
-        let tagHtml = tags.map(t => `<span class="tag">#${t}</span>`).join('');
+        function toggleSound() {
+            soundEnabled = !soundEnabled;
+            const btn = document.getElementById('btnToggleSound');
+            if (soundEnabled) {
+                btn.innerText = "🔊 SUARA: AKTIF";
+                btn.classList.replace('bg-zinc-600', 'bg-zinc-800');
+                playSynth('click');
+            } else {
+                btn.innerText = "🔇 SUARA: MATI";
+                btn.classList.replace('bg-zinc-800', 'bg-zinc-600');
+            }
+        }
 
-        html += `
-          <div class="mod-item">
-            ${item.image ? `<img src="${item.image}" alt="${item.name}" style="max-height:200px; width:100%; object-fit:cover; margin-bottom:12px;" />` : ''}
-            <h2 style="font-size:1.6rem;">${item.name}</h2>
-            <div style="margin:8px 0;">${tagHtml}</div>
-            <p>${item.desc || ''}</p>
-            <p><strong>Password:</strong> ${item.password || 'Tidak ada'}</p>
-            <a href="${item.url}" target="_blank" class="btn" style="margin-top:12px;">⬇ Download</a>
-            <div style="margin-top:8px; font-size:14px; color:#555;">👁 ${item.views||0} · ❤️ ${item.likes||0}</div>
-          </div>
-        `;
-      });
-      container.innerHTML = html;
-    }
+        function playSynth(type) {
+            if (!soundEnabled) return;
+            try {
+                const ctx = getAudioContext();
+                if (ctx.state === 'suspended') ctx.resume();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                const now = ctx.currentTime;
+                
+                if (type === 'click') {
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(450, now);
+                    osc.frequency.exponentialRampToValueAtTime(150, now + 0.1);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.15);
+                    osc.start(now);
+                    osc.stop(now + 0.15);
+                } else if (type === 'success') {
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(261.63, now);
+                    osc.frequency.setValueAtTime(329.63, now + 0.08);
+                    osc.frequency.setValueAtTime(392.00, now + 0.16);
+                    osc.frequency.setValueAtTime(523.25, now + 0.24);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.35);
+                    osc.start(now);
+                    osc.stop(now + 0.35);
+                } else if (type === 'delete') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(300, now);
+                    osc.frequency.exponentialRampToValueAtTime(30, now + 0.3);
+                    gain.gain.setValueAtTime(0.12, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.3);
+                    osc.start(now);
+                    osc.stop(now + 0.3);
+                } else if (type === 'ban') {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(100, now);
+                    osc.frequency.linearRampToValueAtTime(250, now + 0.25);
+                    osc.frequency.linearRampToValueAtTime(100, now + 0.5);
+                    gain.gain.setValueAtTime(0.18, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.6);
+                    osc.start(now);
+                    osc.stop(now + 0.6);
+                } else if (type === 'point') {
+                    osc.type = 'square';
+                    osc.frequency.setValueAtTime(600 + (easterEggScore * 15), now);
+                    gain.gain.setValueAtTime(0.08, now);
+                    gain.gain.linearRampToValueAtTime(0.01, now + 0.1);
+                    osc.start(now);
+                    osc.stop(now + 0.1);
+                }
+            } catch (err) {
+                console.warn("Audio Context blocked.");
+            }
+        }
 
-    loadData();
-  </script>
+        // ======================================================================
+        // MINI GAME RETRO EASTER EGG
+        // ======================================================================
+        function playEasterEggGame() {
+            easterEggScore++;
+            playSynth('point');
+            document.getElementById('easterEggScore').innerText = easterEggScore;
+            
+            const currentHigh = parseInt(localStorage.getItem('axel_tap_high') || '0');
+            if (easterEggScore > currentHigh) {
+                localStorage.setItem('axel_tap_high', easterEggScore);
+                document.getElementById('easterEggHigh').innerText = easterEggScore;
+            }
+            
+            const container = document.getElementById('sidebarDrawer');
+            container.classList.add('shake');
+            setTimeout(() => { container.classList.remove('shake'); }, 300);
+
+            if (easterEggScore === 15) {
+                showToast("🔥 GOKIL! Skor kamu mencapai 15 Tap!", "success");
+            } else if (easterEggScore === 30) {
+                showToast("🏆 LEGENDARIS! Kamu fans sejati Axeluf!", "success");
+            }
+        }
+
+        // ======================================================================
+        // UTILS
+        // ======================================================================
+        function copySqlQueryText() {
+            playSynth('success');
+            const range = document.createRange();
+            range.selectNode(document.getElementById("sqlQueryBlock"));
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand("copy");
+            window.getSelection().removeAllRanges();
+            showToast("Skrip SQL berhasil disalin!", "success");
+        }
+
+        // ======================================================================
+        // CLOUD & LOCAL CACHE INTEGRATION
+        // ======================================================================
+        async function cloudGet(key, defaultValue) {
+            const cachedValue = localStorage.getItem(`cache_${key}`);
+            
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3500);
+
+                const { data, error } = await supabaseClient
+                    .from('settings')
+                    .select('value')
+                    .eq('key', key)
+                    .maybeSingle();
+
+                clearTimeout(timeoutId);
+
+                if (error) throw new Error(error.message);
+
+                if (data && data.value !== undefined && data.value !== null) {
+                    try {
+                        localStorage.setItem(`cache_${key}`, JSON.stringify(data.value));
+                    } catch(e) {}
+                    return data.value;
+                }
+                return defaultValue;
+            } catch (err) {
+                console.warn(`[Supabase Off-capacity] Menggunakan cache lokal untuk kunci: ${key}`);
+                if (cachedValue) {
+                    try { return JSON.parse(cachedValue); } catch (e) { return cachedValue; }
+                }
+                return defaultValue;
+            }
+        }
+
+        async function cloudSet(key, value) {
+            try {
+                localStorage.setItem(`cache_${key}`, JSON.stringify(value));
+            } catch(e) {
+                console.warn("Penyimpanan lokal penuh saat menyimpan cache!");
+            }
+
+            try {
+                const { error } = await supabaseClient
+                    .from('settings')
+                    .upsert({ key: key, value: value }, { onConflict: 'key' });
+                if (error) throw new Error(error.message);
+            } catch (err) {
+                console.error(`Gagal melakukan singkronisasi cloud untuk ${key}:`, err);
+                showToast("Server sibuk. Perubahan disimpan di Cache Lokal!", "info");
+            }
+        }
+
+        // ======================================================================
+        // LOAD DATABASE
+        // ======================================================================
+        async function loadAllDataFromDB() {
+            const overlay = document.getElementById('loadingOverlay');
+            overlay.classList.remove('hidden');
+            overlay.style.opacity = '1';
+            
+            let completed = 0;
+            const statusLabel = document.getElementById('loadingStatusText');
+            
+            const queries = [
+                { key: "web_title", default: fallbackDatabaseDefaults.web_title },
+                { key: "web_subtitle", default: fallbackDatabaseDefaults.web_subtitle },
+                { key: "web_logo", default: fallbackDatabaseDefaults.web_logo },
+                { key: "profile_alignment", default: fallbackDatabaseDefaults.profile_alignment },
+                { key: "web_background_image", default: fallbackDatabaseDefaults.web_background_image },
+                { key: "web_banner_image", default: fallbackDatabaseDefaults.web_banner_image },
+                { key: "web_broadcast_text", default: fallbackDatabaseDefaults.web_broadcast_text },
+                { key: "web_safelink_time", default: fallbackDatabaseDefaults.web_safelink_time },
+                { key: "web_custom_presets_db", default: fallbackDatabaseDefaults.web_custom_presets_db },
+                { key: _0x4f12._0x0f, default: fallbackDatabaseDefaults[_0x4f12._0x0f] },
+                { key: _0x4f12._0x0e, default: fallbackDatabaseDefaults[_0x4f12._0x0e] },
+                { key: _0x4f12._0x0d, default: fallbackDatabaseDefaults[_0x4f12._0x0d] }
+            ];
+
+            let cloudFailedCount = 0;
+
+            async function run(q) {
+                statusLabel.innerText = `Memuat: ${q.key.replace('_supabase_db','')}...`;
+                const start = Date.now();
+                const res = await cloudGet(q.key, q.default);
+                if (Date.now() - start > 3400) {
+                    cloudFailedCount++;
+                }
+                
+                completed++;
+                document.getElementById('loadingProgress').style.width = `${(completed / queries.length) * 100}%`;
+                document.getElementById('loadingProgressText').innerText = `${Math.round((completed / queries.length) * 100)}%`;
+                return res;
+            }
+
+            try {
+                const results = await Promise.all(queries.map(q => run(q)));
+                const [title, subtitle, logo, alignment, bgImg, bannerImg, rawBroadcast, safelinkTime, presets, pinned, creditData, linkData] = results;
+
+                document.getElementById('mainTitleText').innerText = title;
+                document.getElementById('setMainTitle').value = title;
+                document.getElementById('mainSubtitleText').innerText = subtitle;
+                document.getElementById('setMainSubtitle').value = subtitle;
+
+                const mainLogoEl = document.getElementById('mainLogo');
+                mainLogoEl.src = logo;
+                const minLogoEl = document.getElementById('navLogoMin');
+                minLogoEl.src = logo;
+
+                const profileContainer = document.getElementById('headerProfileContainer');
+                profileContainer.className = `p-4 pt-0 relative flex flex-col ${alignment} gap-2`;
+                document.getElementById('setProfilePosition').value = alignment;
+
+                if (bgImg && bgImg !== "none") {
+                    document.documentElement.style.setProperty('--custom-bg-image', `url(${bgImg})`);
+                    document.getElementById('setBackgroundUrl').value = bgImg;
+                }
+
+                document.getElementById('webBannerImage').src = bannerImg;
+                document.getElementById('setBannerUrl').value = bannerImg;
+                document.getElementById('setBroadcastText').value = rawBroadcast;
+                updateBroadcastBanner(rawBroadcast);
+
+                safelinkTimerValue = parseInt(safelinkTime) || 5;
+                document.getElementById('setSafelinkTime').value = safelinkTimerValue;
+
+                customPresets = presets;
+                renderCustomPresets();
+
+                pinnedTags = pinned;
+                credits = creditData;
+                links = linkData;
+
+                renderCredits();
+                renderPublicLinks();
+                renderAdminTable();
+                calculateCategoryCounts();
+                renderPinnedTagsList();
+
+                const dbSourceBadge = document.getElementById('dbSourceBadge');
+                if (cloudFailedCount > 4) {
+                    dbSourceBadge.innerText = "HYBRID STATE: CLUSTER TABLE NOT FOUND / OFFLINE";
+                    dbSourceBadge.className = "text-[9px] text-red-500 mt-1.5 font-mono font-bold animate-pulse";
+                    showToast("Database baru belum siap! Harap jalankan langkah di tab SQL Setup.", "error");
+                } else {
+                    dbSourceBadge.innerText = "HYBRID STATE: NEW DATABASE ACTIVE";
+                    dbSourceBadge.className = "text-[9px] text-green-700 mt-1.5 font-mono font-bold";
+                }
+
+                if (sessionStorage.getItem('admin_logged') === 'true') {
+                    setAdminState(true);
+                }
+
+                setTimeout(() => {
+                    overlay.style.opacity = '0';
+                    setTimeout(() => overlay.classList.add('hidden'), 500);
+                }, 300);
+
+            } catch (err) {
+                console.error("Kesalahan inisialisasi: ", err);
+                overlay.classList.add('hidden');
+            }
+        }
+
+        function updateBroadcastBanner(rawText) {
+            const container = document.getElementById('broadcastTextContainer');
+            container.innerHTML = '';
+            const items = rawText.split('|');
+            items.forEach(text => {
+                if (text.trim()) {
+                    const span = document.createElement('span');
+                    span.className = "inline-block mr-12";
+                    span.innerText = text.trim();
+                    container.appendChild(span);
+                }
+            });
+        }
+
+        // ======================================================================
+        // KATEGORI & PINNING
+        // ======================================================================
+        function calculateCategoryCounts() {
+            let totalAll = links.length;
+            let uniqueTags = new Set();
+            links.forEach(item => {
+                const rawTags = item.tag ? item.tag.split(',') : [];
+                rawTags.forEach(t => {
+                    const cleanTag = t.trim().toUpperCase();
+                    if (cleanTag) uniqueTags.add(cleanTag);
+                });
+            });
+            document.getElementById('countAllMods').innerText = totalAll;
+            const container = document.getElementById('dynamicTagsList');
+            container.innerHTML = '';
+            
+            if (uniqueTags.size === 0) {
+                container.innerHTML = `<span class="text-[10px] italic text-gray-500">Belum ada kategori</span>`;
+                return;
+            }
+            
+            uniqueTags.forEach(tag => {
+                if (pinnedTags.map(pt => pt.toUpperCase()).includes(tag)) return;
+                let count = 0;
+                links.forEach(item => {
+                    const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
+                    if (itemTags.includes(tag)) count++;
+                });
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = "w-full flex items-center justify-between gap-1 bg-zinc-100 hover:bg-[#A3FFD6]/40 border border-black p-2 text-[10px] brutal-shadow-sm rounded-lg";
+                
+                const btn = document.createElement('button');
+                btn.onclick = () => { selectCategoryFilter(tag); toggleSidebarDrawer(); };
+                btn.className = "text-left font-extrabold uppercase flex-1 text-black truncate";
+                btn.innerText = `# ${tag}`;
+                
+                const counterSpan = document.createElement('span');
+                counterSpan.className = "bg-black text-white text-[9px] font-bold px-1 py-0.5 brutal-border-sm";
+                counterSpan.innerText = count;
+                
+                wrapper.appendChild(btn);
+                wrapper.appendChild(counterSpan);
+                container.appendChild(wrapper);
+            });
+        }
+
+        function renderPinnedTagsList() {
+            const sidebarContainer = document.getElementById('pinnedTagsList');
+            const adminContainer = document.getElementById('pinnedTagsAdminList');
+            sidebarContainer.innerHTML = '';
+            adminContainer.innerHTML = '';
+            
+            if (pinnedTags.length === 0) {
+                sidebarContainer.innerHTML = `<span class="text-[10px] italic text-gray-400">Belum ada pin</span>`;
+                adminContainer.innerHTML = `<span class="text-[10px] italic text-gray-500">Belum ada pin</span>`;
+                return;
+            }
+            
+            pinnedTags.forEach((tag, index) => {
+                const cleanTag = tag.trim().toUpperCase();
+                let count = 0;
+                links.forEach(item => {
+                    const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
+                    if (itemTags.includes(cleanTag)) count++;
+                });
+                
+                const wrapper = document.createElement('div');
+                wrapper.className = "w-full flex items-center justify-between gap-1 bg-[#A3FFD6] hover:bg-[#8AE8C0] border border-black p-2 text-[10px] brutal-shadow-sm rounded-lg";
+                
+                const btn = document.createElement('button');
+                btn.onclick = () => { selectCategoryFilter(cleanTag); toggleSidebarDrawer(); };
+                btn.className = "text-left font-extrabold uppercase flex-1 text-black flex items-center gap-1.5 truncate";
+                btn.innerHTML = `📌 <span>${cleanTag}</span>`;
+                
+                const counterSpan = document.createElement('span');
+                counterSpan.className = "bg-[#2E8B6E] text-white text-[9px] font-bold px-1.5 py-0.5 brutal-border-sm rounded-full";
+                counterSpan.innerText = count;
+                
+                wrapper.appendChild(btn);
+                wrapper.appendChild(counterSpan);
+                sidebarContainer.appendChild(wrapper);
+
+                const adminPill = document.createElement('div');
+                adminPill.className = "bg-[#A3FFD6] border border-black p-1.5 text-[10px] font-bold flex items-center gap-1.5 text-black rounded-lg shadow-sm";
+                adminPill.innerHTML = `
+                    <span>📌 ${cleanTag}</span>
+                    <button onclick="unpinTag(${index})" class="bg-red-500 text-white font-extrabold px-1 py-0.5 hover:bg-red-600 brutal-border-sm text-[8px] rounded-full">✕</button>
+                `;
+                adminContainer.appendChild(adminPill);
+            });
+        }
+
+        async function addPinnedTag() {
+            const tagInput = document.getElementById('pinTagName').value.trim();
+            if (!tagInput) { showToast("Masukkan nama kategori!", "error"); return; }
+            const upperTag = tagInput.toUpperCase();
+            if (pinnedTags.includes(upperTag)) { showToast("Sudah disematkan!", "error"); return; }
+            playSynth('success');
+            pinnedTags.push(upperTag);
+            await cloudSet(_0x4f12._0x0f, pinnedTags);
+            document.getElementById('pinTagName').value = '';
+            showToast(`Pin ${upperTag} berhasil!`, "success");
+            renderPinnedTagsList();
+            calculateCategoryCounts();
+        }
+
+        async function unpinTag(index) {
+            playSynth('delete');
+            const removed = pinnedTags[index];
+            pinnedTags.splice(index, 1);
+            await cloudSet(_0x4f12._0x0f, pinnedTags);
+            showToast(`Pin ${removed} dihapus!`, "info");
+            renderPinnedTagsList();
+            calculateCategoryCounts();
+        }
+
+        // ======================================================================
+        // ADMIN AREA
+        // ======================================================================
+        function toggleAdminPanel() {
+            playSynth('click');
+            if (isAdmin) {
+                document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                document.getElementById('loginSection').classList.remove('hidden');
+            }
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginSection').classList.add('hidden');
+        }
+
+        function attemptLogin() {
+            const user = document.getElementById('adminUser').value;
+            const pass = document.getElementById('adminPass').value;
+            if (user === _0x4f12._0x0a && pass === _0x4f12._0x0b) {
+                setAdminState(true);
+                sessionStorage.setItem('admin_logged', 'true');
+                closeLoginModal();
+                playSynth('success');
+                showToast("Login Berhasil, Bos!", "success");
+                document.getElementById('adminDashboard').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                playSynth('delete');
+                triggerScreenShake();
+                showToast("Kredensial Salah!", "error");
+            }
+        }
+
+        function logoutAdmin() {
+            playSynth('click');
+            setAdminState(false);
+            sessionStorage.removeItem('admin_logged');
+            showToast("Keluar dari mode admin.", "info");
+        }
+
+        function setAdminState(active) {
+            isAdmin = active;
+            const adminDashboard = document.getElementById('adminDashboard');
+            const btnNavAdmin = document.getElementById('btnNavAdmin');
+            const btnLogOut = document.getElementById('btnLogOut');
+            if (active) {
+                adminDashboard.classList.remove('hidden');
+                btnNavAdmin.innerText = "🛠️ DASHBOARD ADMIN";
+                btnNavAdmin.classList.replace('bg-[#4CCD99]', 'bg-[#2E8B6E]');
+                btnLogOut.classList.remove('hidden');
+            } else {
+                adminDashboard.classList.add('hidden');
+                btnNavAdmin.innerText = "🔑 PANEL ADMIN";
+                btnNavAdmin.classList.replace('bg-[#2E8B6E]', 'bg-[#4CCD99]');
+                btnLogOut.classList.add('hidden');
+            }
+            renderAdminTable();
+        }
+
+        function switchAdminTab(tabName) {
+            playSynth('click');
+            const tabs = ['tabMod', 'tabBranding', 'tabSocial', 'tabPinning', 'tabSql'];
+            const contents = ['adminTabModContent', 'adminTabBrandingContent', 'adminTabSocialContent', 'adminTabPinningContent', 'adminTabSqlContent'];
+            
+            tabs.forEach(tab => {
+                document.getElementById(tab).className = "bg-white text-black px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
+            });
+            contents.forEach(content => {
+                document.getElementById(content).classList.add('hidden');
+            });
+
+            if (tabName === 'mod') {
+                document.getElementById('tabMod').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
+                document.getElementById('adminTabModContent').classList.remove('hidden');
+            } else if (tabName === 'branding') {
+                document.getElementById('tabBranding').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
+                document.getElementById('adminTabBrandingContent').classList.remove('hidden');
+            } else if (tabName === 'social') {
+                document.getElementById('tabSocial').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
+                document.getElementById('adminTabSocialContent').classList.remove('hidden');
+            } else if (tabName === 'pinning') {
+                document.getElementById('tabPinning').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
+                document.getElementById('adminTabPinningContent').classList.remove('hidden');
+            } else if (tabName === 'sql') {
+                document.getElementById('tabSql').className = "bg-black text-white px-3 py-1.5 text-[10px] uppercase font-bold brutal-border brutal-shadow-sm rounded-lg";
+                document.getElementById('adminTabSqlContent').classList.remove('hidden');
+            }
+        }
+
+        // ======================================================================
+        // PRESETS & CUSTOM BUTTONS
+        // ======================================================================
+        function injectQuickLinkPreset(label, url, iconType) {
+            addCustomLinkField(label, url, iconType);
+            showToast(`Preset "${label}" ditambahkan ke form!`, 'success');
+        }
+
+        function addCustomLinkField(label = "", url = "", iconType = "video") {
+            const container = document.getElementById('customLinksContainer');
+            const currentFields = container.getElementsByClassName('custom-link-row');
+            if (currentFields.length >= 5) { showToast("Maksimal 5 tombol kustom!", "error"); return; }
+            
+            playSynth('click');
+            const row = document.createElement('div');
+            row.className = "custom-link-row grid grid-cols-1 sm:grid-cols-3 gap-2 p-2 bg-white brutal-border rounded-lg relative text-[10px]";
+            row.innerHTML = `
+                <div><label class="block text-[8px] font-bold uppercase text-gray-500">Teks Tombol</label><input type="text" value="${label}" placeholder="Tonton Tutorial" class="input-btn-label w-full brutal-border-sm p-1 font-bold rounded-lg bg-white"></div>
+                <div><label class="block text-[8px] font-bold uppercase text-gray-500">URL Tujuan</label><input type="text" value="${url}" placeholder="https://..." class="input-btn-url w-full brutal-border-sm p-1 font-bold rounded-lg bg-white"></div>
+                <div class="flex items-end gap-1.5">
+                    <div class="flex-1">
+                        <label class="block text-[8px] font-bold uppercase text-gray-500">Pilih Icon</label>
+                        <select class="input-btn-icon w-full brutal-border-sm p-1 font-bold rounded-lg bg-white">
+                            <option value="video" ${iconType === 'video' ? 'selected' : ''}>🎥 Video</option>
+                            <option value="download" ${iconType === 'download' ? 'selected' : ''}>📥 Download</option>
+                            <option value="chat" ${iconType === 'chat' ? 'selected' : ''}>💬 Obrolan</option>
+                            <option value="key" ${iconType === 'key' ? 'selected' : ''}>🔑 Password</option>
+                            <option value="globe" ${iconType === 'globe' ? 'selected' : ''}>🌐 Website</option>
+                        </select>
+                    </div>
+                    <button type="button" onclick="removeCustomLinkField(this)" class="bg-red-500 text-white font-bold p-1 brutal-border-sm hover:bg-red-600 text-[9px] uppercase rounded-md">Hapus</button>
+                </div>
+            `;
+            container.appendChild(row);
+        }
+
+        function removeCustomLinkField(button) {
+            playSynth('delete');
+            button.closest('.custom-link-row').remove();
+        }
+
+        function getCustomLinksData() {
+            const container = document.getElementById('customLinksContainer');
+            const rows = container.getElementsByClassName('custom-link-row');
+            const list = [];
+            for (let i = 0; i < rows.length; i++) {
+                const label = rows[i].querySelector('.input-btn-label').value.trim();
+                const url = rows[i].querySelector('.input-btn-url').value.trim();
+                const iconType = rows[i].querySelector('.input-btn-icon').value;
+                if (label && url) list.push({ label, url, iconType });
+            }
+            return list;
+        }
+
+        function setCustomLinksFields(customButtons) {
+            const container = document.getElementById('customLinksContainer');
+            container.innerHTML = '';
+            if (customButtons && customButtons.length > 0) {
+                customButtons.forEach(btn => addCustomLinkField(btn.label, btn.url, btn.iconType));
+            }
+        }
+
+        async function saveCustomPreset() {
+            const label = document.getElementById('presetLabel').value.trim();
+            const url = document.getElementById('presetUrl').value.trim();
+            const iconType = document.getElementById('presetIcon').value;
+            const editIndex = document.getElementById('editPresetIndex').value;
+            
+            if (!label || !url) { showToast("Teks & URL Preset wajib diisi!", "error"); return; }
+            playSynth('success');
+            const presetData = { label, url, iconType };
+            
+            if (editIndex !== "") {
+                customPresets[parseInt(editIndex)] = presetData;
+                showToast("Preset diupdate!", "success");
+            } else {
+                customPresets.push(presetData);
+                showToast("Preset disimpan!", "success");
+            }
+            
+            await cloudSet("web_custom_presets_db", customPresets);
+            clearPresetForm();
+            renderCustomPresets();
+        }
+
+        function renderCustomPresets() {
+            const container = document.getElementById('customPresetButtonList');
+            container.innerHTML = "";
+            if (customPresets.length === 0) {
+                container.innerHTML = `<span class="text-[9px] italic text-gray-400">Belum ada preset.</span>`;
+                return;
+            }
+            customPresets.forEach((c, index) => {
+                const wrapper = document.createElement('div');
+                wrapper.className = "flex items-center bg-white border border-black text-[9px] font-bold brutal-shadow-sm p-1 gap-1.5 hover:bg-[#A3FFD6]/40 transition-colors rounded-lg";
+                
+                const triggerBtn = document.createElement('button');
+                triggerBtn.type = "button";
+                triggerBtn.onclick = () => injectQuickLinkPreset(c.label, c.url, c.iconType);
+                triggerBtn.className = "hover:text-[#2E8B6E] uppercase flex items-center gap-1.5 flex-1 select-none text-left";
+                let iconHtml = SVG_ICONS[c.iconType] || "🔗";
+                triggerBtn.innerHTML = `<span>${iconHtml}</span> <span>${c.label}</span>`;
+                
+                const editBtn = document.createElement('button');
+                editBtn.type = "button";
+                editBtn.onclick = (e) => editCustomPreset(index, e);
+                editBtn.className = "text-[#2E8B6E] text-[8px] font-extrabold ml-1";
+                editBtn.innerText = "✏️";
+
+                const delBtn = document.createElement('button');
+                delBtn.type = "button";
+                delBtn.onclick = (e) => deleteCustomPreset(index, e);
+                delBtn.className = "text-red-500 text-[8px] font-extrabold ml-1";
+                delBtn.innerText = "✕";
+
+                wrapper.appendChild(triggerBtn);
+                wrapper.appendChild(editBtn);
+                wrapper.appendChild(delBtn);
+                container.appendChild(wrapper);
+            });
+        }
+
+        function editCustomPreset(index, event) {
+            if (event) event.stopPropagation();
+            playSynth('click');
+            const item = customPresets[index];
+            document.getElementById('presetLabel').value = item.label;
+            document.getElementById('presetUrl').value = item.url;
+            document.getElementById('presetIcon').value = item.iconType;
+            document.getElementById('editPresetIndex').value = index;
+            document.getElementById('btnSavePreset').innerText = "Update";
+            document.getElementById('btnCancelPreset').classList.remove('hidden');
+        }
+
+        async function deleteCustomPreset(index, event) {
+            if (event) event.stopPropagation();
+            playSynth('delete');
+            const removed = customPresets[index].label;
+            customPresets.splice(index, 1);
+            await cloudSet("web_custom_presets_db", customPresets);
+            showToast(`Preset "${removed}" dihapus!`, "info");
+            clearPresetForm();
+            renderCustomPresets();
+        }
+
+        function clearPresetForm() {
+            document.getElementById('presetLabel').value = "";
+            document.getElementById('presetUrl').value = "";
+            document.getElementById('presetIcon').selectedIndex = 0;
+            document.getElementById('editPresetIndex').value = "";
+            document.getElementById('btnSavePreset').innerText = "Simpan";
+            document.getElementById('btnCancelPreset').classList.add('hidden');
+        }
+
+        // ======================================================================
+        // CRUD MOD (CLEAN DIRECT SAVING)
+        // ======================================================================
+        async function saveMod() {
+            const name = document.getElementById('modName').value.trim();
+            const tag = document.getElementById('modTag').value.trim();
+            const desc = document.getElementById('modDesc').value;
+            const url = document.getElementById('modUrl').value.trim();
+            const password = document.getElementById('modPassword').value.trim();
+            const imageUrlInput = document.getElementById('modImageUrl').value.trim();
+            const imageRatio = document.getElementById('modImageRatio').value;
+            const editIndex = document.getElementById('editIndex').value;
+            const manualViews = parseInt(document.getElementById('modViewsInput').value) || 0;
+            const manualLikes = parseInt(document.getElementById('modLikesInput').value) || 0;
+            const customButtons = getCustomLinksData();
+            
+            if (!name || !tag || !desc || !url) {
+                showToast("Lengkapi form terlebih dahulu!", "error");
+                return;
+            }
+            
+            let viewsToSave = manualViews;
+            let likesToSave = manualLikes;
+            let commentsToSave = [];
+            let finalImg = imageUrlInput || "https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800";
+            
+            if (editIndex !== "") {
+                const oldItem = links[parseInt(editIndex)];
+                viewsToSave = manualViews !== 0 ? manualViews : (oldItem.views || 0);
+                likesToSave = manualLikes !== 0 ? manualLikes : (oldItem.likes || 0);
+                commentsToSave = oldItem.comments || [];
+                if (!imageUrlInput) finalImg = oldItem.image;
+            }
+            
+            const modData = {
+                name,
+                tag: tag.toUpperCase(),
+                desc,
+                url: encodeSafe(url),
+                password: encodeSafe(password || "Tanpa Password / Langsung Ekstrak"),
+                image: finalImg,
+                imageRatio: imageRatio,
+                views: viewsToSave,
+                likes: likesToSave,
+                comments: commentsToSave,
+                customButtons: customButtons
+            };
+            
+            if (editIndex !== "") {
+                links[parseInt(editIndex)] = modData;
+                showToast("Link Modifikasi di-update!", "success");
+            } else {
+                links.unshift(modData);
+                showToast("Mod Baru Berhasil Dirilis!", "success");
+            }
+            
+            playSynth('success');
+            await cloudSet(_0x4f12._0x0d, links);
+            clearForm();
+            renderPublicLinks();
+            renderAdminTable();
+            calculateCategoryCounts();
+        }
+
+        function editMod(index) {
+            playSynth('click');
+            const item = links[index];
+            document.getElementById('modName').value = item.name;
+            document.getElementById('modTag').value = item.tag;
+            document.getElementById('modDesc').value = item.desc;
+            document.getElementById('modUrl').value = decodeSafe(item.url);
+            document.getElementById('modPassword').value = decodeSafe(item.password) === "Tanpa Password / Langsung Ekstrak" ? "" : decodeSafe(item.password);
+            document.getElementById('modImageUrl').value = item.image && !item.image.startsWith("data:") ? item.image : "";
+            document.getElementById('modViewsInput').value = item.views || 0;
+            document.getElementById('modLikesInput').value = item.likes || 0;
+            
+            if (item.imageRatio) document.getElementById('modImageRatio').value = item.imageRatio;
+            setCustomLinksFields(item.customButtons);
+            
+            document.getElementById('editIndex').value = index;
+            document.getElementById('formTitle').innerText = "📝 Edit Link Modifikasi";
+            document.getElementById('formTitle').classList.replace('text-[#2E8B6E]', 'text-blue-600');
+            document.getElementById('formTitle').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function clearForm() {
+            document.getElementById('modName').value = '';
+            document.getElementById('modTag').value = '';
+            document.getElementById('modDesc').value = '';
+            document.getElementById('modUrl').value = '';
+            document.getElementById('modPassword').value = '';
+            document.getElementById('modImageUrl').value = '';
+            document.getElementById('modImageRatio').selectedIndex = 0;
+            document.getElementById('modViewsInput').value = '';
+            document.getElementById('modLikesInput').value = '';
+            document.getElementById('customLinksContainer').innerHTML = '';
+            document.getElementById('editIndex').value = '';
+            document.getElementById('formTitle').innerText = "➕ Tambah Mod Baru";
+            document.getElementById('formTitle').classList.add('text-[#2E8B6E]');
+            document.getElementById('formTitle').classList.remove('text-blue-600');
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('adminTableBody');
+            tbody.innerHTML = '';
+            links.forEach((item, index) => {
+                const imageSrc = item.image ? item.image : 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=150';
+                let pills = "";
+                if (item.tag) {
+                    item.tag.split(',').forEach(t => {
+                        if (t.trim()) pills += `<span class="bg-gray-200 px-1 py-0.5 border border-black text-[8px] uppercase text-black font-extrabold mr-1 rounded-full">${t.trim()}</span>`;
+                    });
+                }
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-black hover:bg-gray-50 text-black";
+                tr.innerHTML = `
+                    <td class="p-2 border-r border-black w-12"><img src="${imageSrc}" class="w-8 h-8 object-cover brutal-border rounded-lg" alt="Thumb" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23e5e7eb%22/%3E%3Ctext x=%2250%22 y=%2255%22 font-size=%2220%22 text-anchor=%22middle%22 fill=%22%236b7280%22%3ENo Image%3C/text%3E%3C/svg%3E'; this.classList.add('img-placeholder','thumbnail');"></td>
+                    <td class="p-2 border-r border-black font-bold text-[10px] leading-tight text-black truncate max-w-[100px]">${item.name}</td>
+                    <td class="p-2 border-r border-black"><div class="flex flex-wrap gap-0.5">${pills}</div></td>
+                    <td class="p-2"><div class="flex gap-1"><button onclick="editMod(${index})" class="bg-[#2E8B6E] text-[9px] uppercase text-white font-bold p-1 rounded-md">Edit</button><button onclick="triggerDelete(${index})" class="bg-red-500 text-[9px] uppercase text-white font-bold p-1 rounded-md">Hapus</button></div></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function triggerDelete(index) {
+            playSynth('click');
+            triggerScreenShake();
+            activeDeleteIndex = index;
+            const targetName = links[index].name;
+            document.getElementById('confirmModalText').innerText = `Hapus "${targetName}" secara permanen?`;
+            document.getElementById('confirmModal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal() {
+            playSynth('click');
+            document.getElementById('confirmModal').classList.add('hidden');
+            activeDeleteIndex = null;
+        }
+
+        document.getElementById('btnConfirmYes').addEventListener('click', async function() {
+            if (activeDeleteIndex !== null) {
+                playSynth('delete');
+                links.splice(activeDeleteIndex, 1);
+                await cloudSet(_0x4f12._0x0d, links);
+                showToast("Mod Berhasil Dihapus!", "info");
+                closeConfirmModal();
+                renderPublicLinks();
+                renderAdminTable();
+                calculateCategoryCounts();
+                clearForm();
+            }
+        });
+
+        // ======================================================================
+        // BRANDING & SOCIAL CREDITS
+        // ======================================================================
+        async function saveBranding() {
+            playSynth('success');
+            const title = document.getElementById('setMainTitle').value.trim();
+            const subtitle = document.getElementById('setMainSubtitle').value.trim();
+            const logoUrl = document.getElementById('setMainLogoUrl').value.trim();
+            const alignment = document.getElementById('setProfilePosition').value;
+            
+            if (title) { await cloudSet("web_title", title); document.getElementById('mainTitleText').innerText = title; }
+            if (subtitle) { await cloudSet("web_subtitle", subtitle); document.getElementById('mainSubtitleText').innerText = subtitle; }
+            if (logoUrl) {
+                await cloudSet("web_logo", logoUrl);
+                document.getElementById('mainLogo').src = logoUrl;
+                document.getElementById('navLogoMin').src = logoUrl;
+            }
+            await cloudSet("profile_alignment", alignment);
+            const profileContainer = document.getElementById('headerProfileContainer');
+            profileContainer.className = `p-4 pt-0 relative flex flex-col ${alignment} gap-2`;
+            showToast("Perubahan branding disimpan!", "success");
+        }
+
+        async function saveSafelinkAndBroadcast() {
+            playSynth('success');
+            const broadcastText = document.getElementById('setBroadcastText').value.trim();
+            const safelinkTime = document.getElementById('setSafelinkTime').value.trim();
+            
+            if (broadcastText) { await cloudSet("web_broadcast_text", broadcastText); updateBroadcastBanner(broadcastText); }
+            if (safelinkTime) { safelinkTimerValue = parseInt(safelinkTime); await cloudSet("web_safelink_time", safelinkTimerValue.toString()); }
+            showToast("Konfigurasi disimpan!", "success");
+        }
+
+        async function saveBackgroundConfig() {
+            playSynth('success');
+            const bgUrlInput = document.getElementById('setBackgroundUrl').value.trim();
+            if (bgUrlInput) {
+                document.documentElement.style.setProperty('--custom-bg-image', `url(${bgUrlInput})`);
+                await cloudSet("web_background_image", bgUrlInput);
+                showToast("BG URL disimpan!", "success");
+            } else {
+                showToast("Silakan isi URL background!", "error");
+            }
+        }
+
+        async function resetBackgroundConfig() {
+            playSynth('delete');
+            document.documentElement.style.setProperty('--custom-bg-image', 'none');
+            document.getElementById('setBackgroundUrl').value = '';
+            await cloudSet("web_background_image", "none");
+            showToast("Background direset ke warna default.", "info");
+        }
+
+        async function saveBannerConfig() {
+            playSynth('success');
+            const bannerUrlInput = document.getElementById('setBannerUrl').value.trim();
+            if (bannerUrlInput) {
+                document.getElementById('webBannerImage').src = bannerUrlInput;
+                await cloudSet("web_banner_image", bannerUrlInput);
+                showToast("Banner URL disimpan!", "success");
+            } else {
+                showToast("Silakan isi URL banner!", "error");
+            }
+        }
+
+        async function addCredit() {
+            const platform = document.getElementById('credPlatform').value.trim();
+            const handle = document.getElementById('credHandle').value.trim();
+            const url = document.getElementById('credUrl').value.trim();
+            const color = document.getElementById('credColor').value;
+            
+            if (!platform || !handle || !url) { showToast("Lengkapi form sosmed!", "error"); return; }
+            playSynth('success');
+            credits.push({ platform, handle, url, color });
+            await cloudSet(_0x4f12._0x0e, credits);
+            showToast("Kredit baru berhasil ditambahkan!", "success");
+            
+            document.getElementById('credPlatform').value = '';
+            document.getElementById('credHandle').value = '';
+            document.getElementById('credUrl').value = '';
+            renderCredits();
+        }
+
+        async function deleteCredit(index) {
+            playSynth('delete');
+            credits.splice(index, 1);
+            await cloudSet(_0x4f12._0x0e, credits);
+            showToast("Kredit dihapus!", "info");
+            renderCredits();
+        }
+
+        function renderCredits() {
+            const container = document.getElementById('footerCreditsContainer');
+            const adminList = document.getElementById('adminCreditsList');
+            container.innerHTML = '';
+            adminList.innerHTML = '';
+            
+            credits.forEach((c, index) => {
+                const a = document.createElement('a');
+                a.href = c.url;
+                a.target = "_blank";
+                a.onclick = () => playSynth('click');
+                a.style.backgroundColor = c.color || '#4CCD99';
+                a.className = "px-3 py-1.5 brutal-border brutal-shadow-sm brutal-btn-sm flex items-center gap-1.5 text-[10px] uppercase text-black font-bold rounded-lg transition-transform hover:-translate-y-0.5";
+                a.innerHTML = `<span>🔗</span> <span>${c.platform}:</span> <span class="font-extrabold">${c.handle}</span>`;
+                container.appendChild(a);
+
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-2 border border-black bg-white text-black text-[10px] rounded-lg shadow-sm";
+                div.innerHTML = `
+                    <span class="font-bold uppercase">${c.platform} -> ${c.handle}</span>
+                    <button onclick="deleteCredit(${index})" class="bg-red-500 text-white font-bold text-[8px] px-2 py-0.5 hover:bg-red-600 rounded-md">✕</button>
+                `;
+                adminList.appendChild(div);
+            });
+        }
+
+        // ======================================================================
+        // BAN SYSTEM SIMULATION
+        // ======================================================================
+        function triggerBanScreen() {
+            playSynth('ban');
+            localStorage.setItem('banned_client_status', 'true');
+            document.getElementById('banScreen').classList.remove('hidden');
+        }
+
+        function simulateUnban() {
+            playSynth('success');
+            localStorage.removeItem('banned_client_status');
+            document.getElementById('banScreen').classList.add('hidden');
+            showToast("Akses Anda dipulihkan!", "success");
+        }
+
+        function clearAllBans() {
+            localStorage.removeItem('banned_client_status');
+            document.getElementById('banScreen').classList.add('hidden');
+            showToast("Semua ban direset.", "info");
+        }
+
+        function checkBanStatus() {
+            if (localStorage.getItem('banned_client_status') === 'true') {
+                document.getElementById('banScreen').classList.remove('hidden');
+                playSynth('ban');
+            }
+        }
+
+        // ======================================================================
+        // RENDERING PORTAL LINKS
+        // ======================================================================
+        function renderPublicLinks() {
+            const linkContainer = document.getElementById('linkContainer');
+            const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+            linkContainer.innerHTML = '';
+            
+            const filteredLinks = links.filter(item => {
+                const matchSearch = item.name.toLowerCase().includes(searchQuery) ||
+                                    item.tag.toLowerCase().includes(searchQuery) ||
+                                    item.desc.toLowerCase().includes(searchQuery);
+                if (!matchSearch) return false;
+                if (activeCategoryFilter) {
+                    const itemTags = item.tag ? item.tag.split(',').map(t => t.trim().toUpperCase()) : [];
+                    return itemTags.includes(activeCategoryFilter);
+                }
+                return true;
+            });
+
+            if (filteredLinks.length === 0) {
+                linkContainer.innerHTML = `
+                    <div class="bg-white text-black brutal-border brutal-shadow p-6 text-center font-bold">
+                        <span class="text-3xl block mb-2">🏜️</span>
+                        <p class="text-sm uppercase font-syne">Mod Tidak Ditemukan!</p>
+                        <p class="text-[10px] text-gray-400 font-normal mt-1">Coba cari dengan kata kunci lain atau pilih semua kategori.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredLinks.forEach((item) => {
+                const decryptedUrl = decodeSafe(item.url);
+                const decryptedPassword = decodeSafe(item.password);
+                const imageSrc = item.image ? item.image : 'https://images.unsplash.com/photo-1612287230202-1bf1d85d1bdf?auto=format&fit=crop&q=80&w=800';
+                const ratioClass = item.imageRatio ? item.imageRatio : 'aspect-video object-cover';
+                const cardIndex = links.indexOf(item);
+                
+                let tagsHtml = "";
+                if (item.tag) {
+                    item.tag.split(',').forEach(t => {
+                        const cleanTag = t.trim();
+                        if (cleanTag) {
+                            tagsHtml += `
+                                <button onclick="selectCategoryFilter('${cleanTag}')" class="bg-[#4CCD99] hover:bg-[#3dbd8c] transition-colors brutal-border-sm text-[9px] font-bold uppercase px-2 py-0.5 text-black rounded-lg">#${cleanTag}</button>
+                            `;
+                        }
+                    });
+                }
+
+                let customButtonsHtml = "";
+                if (item.customButtons && item.customButtons.length > 0) {
+                    item.customButtons.forEach(btn => {
+                        const iconHtml = SVG_ICONS[btn.iconType] || "🔗";
+                        customButtonsHtml += `
+                            <button onclick="handleActionClick(${cardIndex}, '${btn.url}')" class="bg-black text-white font-bold text-[10px] uppercase py-2 px-3 brutal-border brutal-shadow-sm brutal-btn flex items-center justify-center gap-1.5 rounded-lg"><span>${iconHtml}</span> <span>${btn.label}</span></button>
+                        `;
+                    });
+                }
+
+                let commentsListHtml = "";
+                if (item.comments && item.comments.length > 0) {
+                    item.comments.forEach(c => {
+                        commentsListHtml += `
+                            <div class="p-1.5 border-b border-black text-[10px]"><span class="font-extrabold text-[#2E8B6E]">@${c.name}:</span> <span class="font-medium text-gray-800">${c.text}</span></div>
+                        `;
+                    });
+                } else {
+                    commentsListHtml = `<p class="p-1.5 text-[9px] text-gray-400 italic text-center">Belum ada komentar.</p>`;
+                }
+
+                const userLikesCount = parseInt(localStorage.getItem(`like_count_card_${cardIndex}`) || '0');
+                const isLikeDisabled = userLikesCount >= 10 ? "disabled" : "";
+
+                const card = document.createElement('div');
+                card.className = "bg-white text-black brutal-border brutal-shadow overflow-hidden flex flex-col";
+                card.innerHTML = `
+                    <div class="bg-black text-white px-3 py-1.5 flex items-center justify-between brutal-border-b font-mono text-[9px] select-none">
+                        <div class="flex items-center gap-1">
+                            <span class="w-2 h-2 rounded-full bg-[#FF6B6B] border border-black inline-block"></span>
+                            <span class="w-2 h-2 rounded-full bg-[#A3FFD6] border border-black inline-block"></span>
+                            <span class="w-2 h-2 rounded-full bg-[#4CCD99] border border-black inline-block"></span>
+                        </div>
+                        <div class="bg-zinc-900 border border-zinc-700 rounded-full px-2.5 py-0.5 text-[9px] text-zinc-400 font-extrabold truncate max-w-[120px] sm:max-w-xs">axeluf.co/mod-${cardIndex}</div>
+                        <div class="text-zinc-400 hover:text-[#A3FFD6] font-extrabold text-base cursor-pointer">⋮</div>
+                    </div>
+                    <div class="p-4 flex flex-col sm:flex-row gap-4 items-stretch">
+                        <div class="w-full sm:w-44 shrink-0 brutal-border bg-zinc-100 overflow-hidden rounded-lg flex items-center justify-center">
+                            <img src="${imageSrc}" alt="Thumbnail Mod" class="w-full ${ratioClass} transition-transform duration-200 hover:scale-[1.02] rounded-lg" onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Crect width=%22400%22 height=%22400%22 fill=%22%23e5e7eb%22/%3E%3Ctext x=%22200%22 y=%22200%22 font-size=%2224%22 text-anchor=%22middle%22 fill=%22%236b7280%22%3E📱 APK%3C/text%3E%3C/svg%3E'; this.classList.add('img-placeholder','thumbnail');">
+                        </div>
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex flex-wrap gap-1 mb-1.5">${tagsHtml}</div>
+                                <h3 class="font-syne font-extrabold text-lg uppercase leading-tight text-black">${item.name}</h3>
+                                <p class="text-[11px] text-gray-600 mb-3 leading-relaxed font-medium whitespace-pre-wrap">${item.desc}</p>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="bg-[#A3FFD6]/30 brutal-border p-2 flex items-center gap-1.5 text-[10px] font-bold text-[#2E8B6E] rounded-lg">
+                                    🔑 <span>PASSWORD: ${decryptedPassword}</span>
+                                </div>
+                                <div class="flex flex-wrap gap-1.5">
+                                    <button onclick="handleActionClick(${cardIndex}, '${decryptedUrl}', true)" class="flex-1 text-center bg-[#4CCD99] font-bold text-[10px] uppercase py-2 px-3 brutal-border brutal-shadow-sm brutal-btn flex items-center justify-center gap-1.5 text-black rounded-lg">📥 <span>DOWNLOAD MOD</span></button>
+                                    ${customButtonsHtml}
+                                </div>
+                                <div class="border-t border-dashed border-black pt-2 flex justify-between items-center text-[9px] font-bold text-gray-500">
+                                    <div class="flex items-center gap-1">
+                                        👁️ <span id="view-counter-${cardIndex}">${item.views || 0}</span> dilihat
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button onclick="likeMod(${cardIndex})" ${isLikeDisabled} class="flex items-center gap-1 bg-[#A3FFD6] px-2.5 py-1 brutal-border-sm brutal-btn-sm text-[9px] text-black disabled:opacity-50 rounded-lg">❤️ <span>${item.likes || 0}</span> (${userLikesCount}/10)</button>
+                                        <button onclick="toggleCommentsSection(${cardIndex})" class="flex items-center gap-1 bg-zinc-100 px-2 py-1 brutal-border-sm brutal-btn-sm text-[9px] text-black rounded-lg">💬 Komentar</button>
+                                    </div>
+                                </div>
+                                
+                                <div id="comments-panel-${cardIndex}" class="hidden bg-zinc-50 border border-black p-2.5 text-black rounded-lg">
+                                    <h4 class="font-bold text-[9px] uppercase mb-1.5 border-b border-black pb-1">Kolom Diskusi</h4>
+                                    <div class="max-h-24 overflow-y-auto bg-white border border-black mb-2 divide-y divide-gray-200 rounded-lg">${commentsListHtml}</div>
+                                    <div class="flex flex-col sm:flex-row gap-1">
+                                        <input type="text" id="comm-name-${cardIndex}" placeholder="Nama..." class="brutal-border-sm p-1 text-[9px] font-bold bg-white w-full sm:w-20 rounded-md">
+                                        <input type="text" id="comm-text-${cardIndex}" placeholder="Tulis tanggapan..." class="flex-1 brutal-border-sm p-1 text-[9px] font-bold bg-white rounded-md">
+                                        <button onclick="submitComment(${cardIndex})" class="bg-[#4CCD99] hover:bg-[#3ec08a] font-bold text-[9px] uppercase py-1 px-2.5 brutal-border-sm brutal-btn-sm text-black rounded-md">Kirim</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                linkContainer.appendChild(card);
+            });
+        }
+
+        // ======================================================================
+        // SAFELINK REDIRECT
+        // ======================================================================
+        let globalTargetUrl = "";
+        let currentSafelinkIndex = null;
+
+        function handleActionClick(index, targetUrl, isMainDownload = false) {
+            playSynth('success');
+            
+            if (!links[index].views) links[index].views = 0;
+            links[index].views += 1;
+            const viewCounterEl = document.getElementById(`view-counter-${index}`);
+            if (viewCounterEl) viewCounterEl.innerText = links[index].views;
+            cloudSet(_0x4f12._0x0d, links).catch(console.error);
+
+            if (isMainDownload) {
+                antiSpamCounter++;
+                if (antiSpamCounter > 6) { triggerBanScreen(); return; }
+                setTimeout(() => { if (antiSpamCounter > 0) antiSpamCounter--; }, 5000);
+
+                globalTargetUrl = targetUrl;
+                currentSafelinkIndex = index;
+                startSafelinkTimer();
+            } else {
+                if (targetUrl) window.open(targetUrl, '_blank');
+            }
+        }
+
+        function startSafelinkTimer() {
+            const overlay = document.getElementById('safelinkOverlay');
+            const countdownEl = document.getElementById('safelinkCountdown');
+            const redirectBtn = document.getElementById('btnSafelinkRedirect');
+            
+            overlay.classList.remove('hidden');
+            redirectBtn.disabled = true;
+            redirectBtn.innerText = "MENYIAPKAN DATA... 🔐";
+            
+            let currentSec = safelinkTimerValue;
+            countdownEl.innerText = currentSec;
+
+            clearInterval(safelinkInterval);
+            safelinkInterval = setInterval(() => {
+                currentSec--;
+                playSynth('click');
+                countdownEl.innerText = currentSec;
+                
+                countdownEl.parentElement.classList.add('scale-105');
+                setTimeout(() => { countdownEl.parentElement.classList.remove('scale-105'); }, 150);
+
+                if (currentSec <= 0) {
+                    clearInterval(safelinkInterval);
+                    redirectBtn.disabled = false;
+                    redirectBtn.innerText = "UNDUH SEKARANG! 📥";
+                    playSynth('success');
+                    
+                    redirectBtn.onclick = function() {
+                        if (globalTargetUrl) {
+                            window.open(globalTargetUrl, '_blank');
+                        }
+                        closeSafelink();
+                    };
+                }
+            }, 1000);
+        }
+
+        function abortSafelink() {
+            playSynth('delete');
+            closeSafelink();
+            showToast("Proses unduhan dibatalkan.", "info");
+        }
+
+        function closeSafelink() {
+            clearInterval(safelinkInterval);
+            document.getElementById('safelinkOverlay').classList.add('hidden');
+            globalTargetUrl = "";
+            currentSafelinkIndex = null;
+        }
+
+        // ======================================================================
+        // SOCIAL COMMENTS & LIKES
+        // ======================================================================
+        async function likeMod(index) {
+            let userLikesCount = parseInt(localStorage.getItem(`like_count_card_${index}`) || '0');
+            if (userLikesCount >= 10) {
+                playSynth('delete');
+                triggerScreenShake();
+                showToast("Batas suka maksimal 10x saja!", "error");
+                return;
+            }
+            playSynth('success');
+            userLikesCount += 1;
+            localStorage.setItem(`like_count_card_${index}`, userLikesCount);
+            
+            if (!links[index].likes) links[index].likes = 0;
+            links[index].likes += 1;
+            await cloudSet(_0x4f12._0x0d, links);
+            renderPublicLinks();
+        }
+
+        function toggleCommentsSection(index) {
+            playSynth('click');
+            const panel = document.getElementById(`comments-panel-${index}`);
+            panel.classList.toggle('hidden');
+        }
+
+        async function submitComment(index) {
+            const nameInput = document.getElementById(`comm-name-${index}`);
+            const textInput = document.getElementById(`comm-text-${index}`);
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+            
+            if (!name || !text) { showToast("Lengkapi form tanggapan!", "error"); return; }
+            playSynth('success');
+            
+            if (!links[index].comments) links[index].comments = [];
+            links[index].comments.push({ name, text });
+            nameInput.value = "";
+            textInput.value = "";
+            
+            await cloudSet(_0x4f12._0x0d, links);
+            renderPublicLinks();
+            showToast("Komentar dikirim!", "success");
+        }
+
+        // ======================================================================
+        // INITIALIZATION
+        // ======================================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            loadAllDataFromDB();
+            const savedTheme = localStorage.getItem('user_theme_choice');
+            if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+            checkBanStatus();
+            
+            const currentHigh = localStorage.getItem('axel_tap_high') || '0';
+            document.getElementById('easterEggHigh').innerText = currentHigh;
+        });
+    </script>
 </body>
 </html>
